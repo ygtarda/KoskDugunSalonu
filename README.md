@@ -6,6 +6,7 @@ Sitenin canlı demosuna buradan ulaşabilirsiniz: **[Canlı Demo Linki - HENÜZ 
 
 ## 🖼️ Ekran Görüntüleri
 
+
 Projenin genel görünümünü yansıtan ekran görüntüleri:
 
 **Masaüstü Görünümü**
@@ -14,7 +15,6 @@ Projenin genel görünümünü yansıtan ekran görüntüleri:
 **Mobil Görünümü**
 ![Mobil Ekran Görüntüsü](images/mobile_ss.png)
 
-*Not: Yukarıdaki resimlerin görünmesi için, proje ana dizininizde `images` adında bir klasör oluşturup, `desktop_ss.png` ve `mobile_ss.png` adında ekran görüntüleri eklemeniz gerekmektedir.*
 
 ---
 
@@ -42,14 +42,4 @@ Bu proje, aşağıdaki teknolojiler kullanılarak geliştirilmiştir:
 
 ---
 
-## 🚀 Kurulum ve Çalıştırma
 
-Bu projeyi yerel makinenizde çalıştırmak için aşağıdaki adımları izleyebilirsiniz:
-
-**Gereksinimler:**
-- [XAMPP](https://www.apachefriends.org/tr/index.html) veya benzeri bir yerel sunucu (Apache, MySQL, PHP).
-
-**Adımlar:**
-1. Projeyi klonlayın:
-   ```bash
-   git clone https://github.com/Yigitarda0/kosk-dugun-salonu-sitesi.git
