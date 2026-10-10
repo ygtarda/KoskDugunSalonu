@@ -1,0 +1,1026 @@
+/* ==========================================================================
+   Multi-Step Concierge Booking Form (Boyut & Yükseklik Sabitliği Garantili)
+   Polatlı Köşk Düğün Salonu
+   ========================================================================== */
+
+.formContainer {
+  background: var(--color-surface, #FFFFFF);
+  border: 1px solid var(--color-stone, #E8E4DF);
+  border-radius: var(--radius-md, 6px);
+  box-shadow: 0 10px 30px rgba(44, 40, 38, 0.05);
+  padding: clamp(1.75rem, 2.5vw, 2.25rem);
+  position: relative;
+  height: 100%; /* Sol kartla tam eşit yükseklik */
+  min-height: 560px; /* Form boyutunun adımlarda asla bozulmaması için taban yükseklik */
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  box-sizing: border-box;
+}
+
+/* Form Header */
+.formHeader {
+  margin-bottom: 1.25rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid var(--color-stone, #E8E4DF);
+}
+
+.formEyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--color-champagne, #B8956E);
+  margin-bottom: 0.35rem;
+}
+
+.eyebrowDot {
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background-color: var(--color-champagne, #B8956E);
+}
+
+.formTitle {
+  font-family: var(--font-serif);
+  font-size: clamp(1.45rem, 2vw, 1.85rem);
+  font-weight: 500;
+  color: var(--color-anthracite, #2C2826);
+  line-height: 1.25;
+  margin-bottom: 0.35rem;
+  letter-spacing: -0.01em;
+}
+
+.formSubtitle {
+  font-size: 0.88rem;
+  color: var(--color-text-secondary, #524C48);
+  line-height: 1.5;
+}
+
+/* ==========================================================================
+   3-Step Progress Indicator
+   ========================================================================== */
+.progressBarWrapper {
+  margin-bottom: 1.75rem;
+}
+
+.stepsList {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: relative;
+}
+
+.stepItem {
+  display: flex;
+  align-items: center;
+  gap: 0.60rem;
+  position: relative;
+  z-index: 2;
+  background: var(--color-surface, #FFFFFF);
+  padding: 0 0.25rem;
+}
+
+.stepBadge {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.80rem;
+  font-weight: 600;
+  border: 1.5px solid var(--color-stone, #E8E4DF);
+  background: var(--color-surface-subtle, #F4F1EC);
+  color: var(--color-cashmere, #7A7471);
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.stepBadgeActive {
+  background: var(--color-champagne, #B8956E);
+  border-color: var(--color-champagne, #B8956E);
+  color: #FFFFFF;
+  box-shadow: 0 4px 10px rgba(184, 149, 110, 0.3);
+}
+
+.stepBadgeCompleted {
+  background: var(--color-anthracite, #2C2826);
+  border-color: var(--color-anthracite, #2C2826);
+  color: #FFFFFF;
+}
+
+.stepTextWrapper {
+  display: flex;
+  flex-direction: column;
+}
+
+.stepNumberLabel {
+  font-size: 0.66rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--color-cashmere, #7A7471);
+}
+
+.stepTitle {
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: var(--color-anthracite, #2C2826);
+  white-space: nowrap;
+}
+
+.stepTitleActive {
+  color: var(--color-champagne, #B8956E);
+}
+
+/* Connecting Line between steps */
+.stepConnector {
+  flex: 1;
+  height: 2px;
+  background: var(--color-stone, #E8E4DF);
+  margin: 0 0.5rem;
+  position: relative;
+  z-index: 1;
+  overflow: hidden;
+}
+
+.stepConnectorFill {
+  height: 100%;
+  background: var(--color-champagne, #B8956E);
+  transition: width 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* ==========================================================================
+   Step Transitions & Body Layout (Sabit Kilitli Yükseklik)
+   ========================================================================== */
+.stepContent {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  animation: stepFadeIn 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.stepBody {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+@keyframes stepFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ==========================================================================
+   Clear & Robust Field Layout (No Label Overlaps)
+   ========================================================================== */
+.fieldGridDouble {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.15rem;
+}
+
+.fieldGroup {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 1.15rem;
+  position: relative;
+}
+
+.fieldLabel {
+  font-size: 0.84rem;
+  font-weight: 600;
+  color: var(--color-anthracite, #2C2826);
+  margin-bottom: 0.4rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.reqStar {
+  color: var(--color-champagne, #B8956E);
+  margin-left: 3px;
+}
+
+.inputWrapper {
+  position: relative;
+  width: 100%;
+}
+
+.textInput {
+  width: 100%;
+  height: 48px;
+  padding: 0 1rem;
+  font-size: 0.92rem;
+  font-family: var(--font-sans);
+  color: var(--color-anthracite, #2C2826);
+  background: var(--color-surface, #FFFFFF);
+  border: 1px solid var(--color-stone, #E8E4DF);
+  border-radius: var(--radius-xs, 2px);
+  outline: none;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+  -webkit-appearance: none;
+  box-sizing: border-box;
+}
+
+.textInput::placeholder {
+  color: #AAA49F;
+  font-size: 0.88rem;
+}
+
+.textInput:focus {
+  border-color: var(--color-champagne, #B8956E);
+  box-shadow: 0 0 0 3px rgba(184, 149, 110, 0.15);
+}
+
+.inputValid {
+  border-color: rgba(46, 125, 79, 0.5);
+  padding-right: 2.5rem;
+}
+
+.inputError {
+  border-color: #C05638 !important;
+  box-shadow: 0 0 0 3px rgba(192, 86, 56, 0.12) !important;
+}
+
+.inputIconRight {
+  position: absolute;
+  right: 0.85rem;
+  top: 50%;
+  transform: translateY(-50%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  pointer-events: none;
+}
+
+.errorMessage {
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+  margin-top: 0.35rem;
+  font-size: 0.76rem;
+  font-weight: 500;
+  color: #C05638;
+}
+
+/* ==========================================================================
+   Custom Dropdown
+   ========================================================================== */
+.customSelectWrapper {
+  position: relative;
+  width: 100%;
+}
+
+.selectTrigger {
+  width: 100%;
+  height: 48px;
+  padding: 0 2.5rem 0 1rem;
+  font-size: 0.92rem;
+  font-family: var(--font-sans);
+  color: var(--color-anthracite, #2C2826);
+  background: var(--color-surface, #FFFFFF);
+  border: 1px solid var(--color-stone, #E8E4DF);
+  border-radius: var(--radius-xs, 2px);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  text-align: left;
+  cursor: pointer;
+  outline: none;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+  user-select: none;
+  box-sizing: border-box;
+}
+
+.selectTrigger:focus-visible,
+.selectTriggerOpen {
+  border-color: var(--color-champagne, #B8956E);
+  box-shadow: 0 0 0 3px rgba(184, 149, 110, 0.15);
+}
+
+.selectChevron {
+  position: absolute;
+  right: 1rem;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--color-cashmere, #7A7471);
+  pointer-events: none;
+  transition: transform 0.2s ease, color 0.2s ease;
+}
+
+.selectTriggerOpen .selectChevron {
+  transform: translateY(-50%) rotate(180deg);
+  color: var(--color-champagne, #B8956E);
+}
+
+.dropdownMenu {
+  position: absolute;
+  top: calc(100% + 4px);
+  left: 0;
+  right: 0;
+  z-index: 200;
+  background: #FFFFFF;
+  border: 1px solid var(--color-stone, #E8E4DF);
+  border-radius: var(--radius-xs, 2px);
+  box-shadow: 0 12px 32px rgba(44, 40, 38, 0.12);
+  padding: 0.35rem;
+  max-height: 240px;
+  overflow-y: auto;
+  animation: popDown 0.18s ease;
+}
+
+.dropdownOption {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  padding: 0.65rem 0.85rem;
+  font-size: 0.88rem;
+  color: var(--color-anthracite, #2C2826);
+  background: transparent;
+  border: none;
+  border-radius: var(--radius-xs, 2px);
+  text-align: left;
+  cursor: pointer;
+  transition: background-color 0.15s ease;
+  font-family: var(--font-sans);
+}
+
+.dropdownOption:hover {
+  background-color: var(--color-surface-subtle, #F4F1EC);
+}
+
+.dropdownOptionSelected {
+  background-color: rgba(212, 181, 158, 0.2);
+  font-weight: 600;
+}
+
+/* ==========================================================================
+   Bespoke Date Picker
+   ========================================================================== */
+.datePickerWrapper {
+  position: relative;
+  width: 100%;
+}
+
+.dateTrigger {
+  width: 100%;
+  height: 48px;
+  padding: 0 2.5rem 0 1rem;
+  font-size: 0.92rem;
+  font-family: var(--font-sans);
+  color: var(--color-anthracite, #2C2826);
+  background: var(--color-surface, #FFFFFF);
+  border: 1px solid var(--color-stone, #E8E4DF);
+  border-radius: var(--radius-xs, 2px);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  text-align: left;
+  cursor: pointer;
+  outline: none;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+  user-select: none;
+  box-sizing: border-box;
+}
+
+.dateTrigger:focus-visible,
+.dateTriggerOpen {
+  border-color: var(--color-champagne, #B8956E);
+  box-shadow: 0 0 0 3px rgba(184, 149, 110, 0.15);
+}
+
+.dateIcon {
+  position: absolute;
+  right: 1rem;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--color-cashmere, #7A7471);
+  pointer-events: none;
+}
+
+.dateTriggerOpen .dateIcon {
+  color: var(--color-champagne, #B8956E);
+}
+
+.calendarPopover {
+  position: absolute;
+  top: calc(100% + 4px);
+  left: 0;
+  width: min(330px, 92vw);
+  z-index: 250;
+  background: #FFFFFF;
+  border: 1px solid var(--color-stone, #E8E4DF);
+  border-radius: var(--radius-sm, 4px);
+  box-shadow: 0 16px 40px rgba(44, 40, 38, 0.14);
+  padding: 1.15rem;
+  animation: popDown 0.18s ease;
+}
+
+.calendarHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 0.75rem;
+}
+
+.calendarMonthTitle {
+  font-family: var(--font-serif);
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--color-anthracite, #2C2826);
+}
+
+.calendarNavBtn {
+  background: var(--color-surface-subtle, #F4F1EC);
+  border: 1px solid var(--color-stone, #E8E4DF);
+  width: 28px;
+  height: 28px;
+  border-radius: var(--radius-xs, 2px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  color: var(--color-anthracite, #2C2826);
+  transition: all 0.15s ease;
+}
+
+.calendarNavBtn:hover:not(:disabled) {
+  background-color: var(--color-stone, #E8E4DF);
+  color: var(--color-champagne, #B8956E);
+}
+
+.calendarNavBtn:disabled {
+  opacity: 0.35;
+  cursor: not-allowed;
+}
+
+.calendarWeekdays {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  text-align: center;
+  margin-bottom: 0.35rem;
+}
+
+.weekdayLabel {
+  font-size: 0.70rem;
+  font-weight: 600;
+  color: var(--color-cashmere, #7A7471);
+}
+
+.calendarGrid {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 3px;
+}
+
+.calendarDay {
+  aspect-ratio: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: transparent;
+  border: 1px solid transparent;
+  border-radius: var(--radius-xs, 2px);
+  font-size: 0.82rem;
+  color: var(--color-anthracite, #2C2826);
+  cursor: pointer;
+  font-family: var(--font-sans);
+  position: relative;
+  transition: background-color 0.15s ease;
+}
+
+.calendarDay:hover:not(:disabled) {
+  background-color: var(--color-surface-subtle, #F4F1EC);
+}
+
+.dayWeekend {
+  font-weight: 600;
+}
+
+.dayWeekendIndicator {
+  position: absolute;
+  bottom: 2px;
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background-color: var(--color-powder, #D4B59E);
+}
+
+.dayToday {
+  border-color: var(--color-champagne, #B8956E) !important;
+  font-weight: 700;
+}
+
+.daySelected {
+  background-color: var(--color-champagne, #B8956E) !important;
+  color: #FFFFFF !important;
+  font-weight: 600;
+}
+
+.daySelected .dayWeekendIndicator {
+  background-color: #FFFFFF;
+}
+
+.dayDisabled {
+  color: #CCC7C1;
+  cursor: not-allowed;
+  opacity: 0.45;
+}
+
+.calendarFooter {
+  margin-top: 0.65rem;
+  padding-top: 0.5rem;
+  border-top: 1px solid var(--color-stone, #E8E4DF);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 0.70rem;
+  color: var(--color-cashmere, #7A7471);
+}
+
+/* ==========================================================================
+   Davetli Sayısı Slider
+   ========================================================================== */
+.sliderCard {
+  background: var(--color-surface-subtle, #F4F1EC);
+  border: 1px solid var(--color-stone, #E8E4DF);
+  border-radius: var(--radius-sm, 4px);
+  padding: 1.15rem;
+  margin-top: 0.2rem;
+}
+
+.sliderHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 0.75rem;
+}
+
+.sliderTitle {
+  font-size: 0.84rem;
+  font-weight: 600;
+  color: var(--color-anthracite, #2C2826);
+}
+
+.sliderValueBadge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 0.25rem 0.75rem;
+  background-color: var(--color-anthracite, #2C2826);
+  color: #FFFFFF;
+  border-radius: 20px;
+  font-size: 0.85rem;
+  font-weight: 600;
+}
+
+.sliderTrackWrapper {
+  position: relative;
+  width: 100%;
+  padding: 0.35rem 0;
+}
+
+.rangeInput {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 100%;
+  height: 8px;
+  background: transparent;
+  outline: none;
+  cursor: pointer;
+  position: relative;
+  z-index: 2;
+}
+
+.rangeInput::-webkit-slider-runnable-track {
+  width: 100%;
+  height: 8px;
+  background: #DDD8D2;
+  border-radius: 4px;
+}
+
+.rangeInput::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: #FFFFFF;
+  border: 3px solid var(--color-champagne, #B8956E);
+  box-shadow: 0 2px 8px rgba(44, 40, 38, 0.25);
+  cursor: grab;
+  margin-top: -6px;
+  transition: transform 0.15s ease;
+}
+
+.rangeInput::-webkit-slider-thumb:hover {
+  transform: scale(1.15);
+}
+
+.rangeFillBar {
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  height: 8px;
+  border-radius: 4px;
+  background: linear-gradient(90deg, var(--color-powder, #D4B59E) 0%, var(--color-champagne, #B8956E) 100%);
+  pointer-events: none;
+  z-index: 1;
+}
+
+.capacityTiers {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0.45rem;
+  margin-top: 0.85rem;
+}
+
+.tierBtn {
+  background: #FFFFFF;
+  border: 1px solid var(--color-stone, #E8E4DF);
+  border-radius: var(--radius-xs, 2px);
+  padding: 0.4rem 0.45rem;
+  text-align: center;
+  cursor: pointer;
+  transition: all 0.18s ease;
+}
+
+.tierBtn:hover {
+  border-color: var(--color-powder, #D4B59E);
+}
+
+.tierBtnActive {
+  background: rgba(184, 149, 110, 0.14);
+  border-color: var(--color-champagne, #B8956E);
+}
+
+.tierLabel {
+  display: block;
+  font-size: 0.72rem;
+  font-weight: 600;
+  color: var(--color-anthracite, #2C2826);
+}
+
+.tierRange {
+  font-size: 0.66rem;
+  color: var(--color-cashmere, #7A7471);
+}
+
+/* ==========================================================================
+   Step 3: Textarea & Summary
+   ========================================================================== */
+.textareaWrapper {
+  position: relative;
+  width: 100%;
+}
+
+.autoTextarea {
+  width: 100%;
+  min-height: 95px;
+  max-height: 180px;
+  padding: 0.75rem 1rem 1.6rem 1rem;
+  font-size: 0.92rem;
+  font-family: var(--font-sans);
+  color: var(--color-anthracite, #2C2826);
+  background: var(--color-surface, #FFFFFF);
+  border: 1px solid var(--color-stone, #E8E4DF);
+  border-radius: var(--radius-xs, 2px);
+  outline: none;
+  resize: vertical;
+  line-height: 1.55;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+  box-sizing: border-box;
+}
+
+.autoTextarea:focus {
+  border-color: var(--color-champagne, #B8956E);
+  box-shadow: 0 0 0 3px rgba(184, 149, 110, 0.15);
+}
+
+.textareaCounter {
+  position: absolute;
+  right: 0.85rem;
+  bottom: 0.45rem;
+  font-size: 0.70rem;
+  color: var(--color-cashmere, #7A7471);
+}
+
+.stepPreviewCard {
+  background: var(--color-surface-subtle, #F4F1EC);
+  border: 1px solid var(--color-stone, #E8E4DF);
+  border-radius: var(--radius-sm, 4px);
+  padding: 1rem 1.15rem;
+  margin-top: 1rem;
+}
+
+.previewTitle {
+  font-size: 0.74rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--color-cashmere, #7A7471);
+  margin-bottom: 0.55rem;
+}
+
+.previewGrid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 0.55rem;
+}
+
+.previewItem {
+  font-size: 0.82rem;
+}
+
+.previewLabel {
+  color: var(--color-cashmere, #7A7471);
+  font-size: 0.72rem;
+  display: block;
+}
+
+.previewValue {
+  font-weight: 600;
+  color: var(--color-anthracite, #2C2826);
+}
+
+/* ==========================================================================
+   Navigation Buttons (Hep En Altta Sabit Hizada)
+   ========================================================================== */
+.stepActions {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-top: auto; /* Butonları hep en alta kilitler */
+  padding-top: 1.25rem;
+  border-top: 1px solid var(--color-stone, #E8E4DF);
+}
+
+.btnBack {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  padding: 0.70rem 1.25rem;
+  font-size: 0.88rem;
+  font-weight: 600;
+  color: var(--color-anthracite, #2C2826);
+  background: var(--color-surface-subtle, #F4F1EC);
+  border: 1px solid var(--color-stone, #E8E4DF);
+  border-radius: var(--radius-xs, 2px);
+  cursor: pointer;
+  transition: all 0.2s ease;
+  font-family: var(--font-sans);
+}
+
+.btnBack:hover {
+  background-color: var(--color-stone, #E8E4DF);
+}
+
+.btnNext {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.45rem;
+  padding: 0.70rem 1.5rem;
+  font-size: 0.90rem;
+  font-weight: 600;
+  color: #FFFFFF;
+  background: var(--color-champagne, #B8956E);
+  border: 1px solid var(--color-champagne, #B8956E);
+  border-radius: var(--radius-xs, 2px);
+  cursor: pointer;
+  box-shadow: 0 4px 12px rgba(184, 149, 110, 0.25);
+  transition: all 0.2s ease;
+  font-family: var(--font-sans);
+  margin-left: auto;
+}
+
+.btnNext:hover {
+  background-color: #A3825C;
+  transform: translateY(-1px);
+  box-shadow: 0 6px 16px rgba(184, 149, 110, 0.35);
+}
+
+.submitBtn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.45rem;
+  padding: 0.70rem 1.5rem;
+  font-size: 0.90rem;
+  font-weight: 600;
+  color: #FFFFFF;
+  background: var(--color-champagne, #B8956E);
+  border: 1px solid var(--color-champagne, #B8956E);
+  border-radius: var(--radius-xs, 2px);
+  cursor: pointer;
+  box-shadow: 0 4px 12px rgba(184, 149, 110, 0.25);
+  transition: all 0.2s ease;
+  font-family: var(--font-sans);
+  margin-left: auto;
+}
+
+.submitBtn:hover:not(:disabled) {
+  background-color: #A3825C;
+  transform: translateY(-1px);
+}
+
+.submitBtn:disabled {
+  opacity: 0.8;
+  cursor: not-allowed;
+}
+
+.btnSpinner {
+  width: 16px;
+  height: 16px;
+  border: 2px solid rgba(255, 255, 255, 0.35);
+  border-top-color: #FFFFFF;
+  border-radius: 50%;
+  animation: spinnerRotate 0.65s linear infinite;
+}
+
+@keyframes spinnerRotate {
+  to { transform: rotate(360deg); }
+}
+
+@keyframes popDown {
+  from {
+    opacity: 0;
+    transform: translateY(-4px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ==========================================================================
+   Receipt Card (Success State - Tam Yükseklikte Ortalı)
+   ========================================================================== */
+.successCard {
+  background: var(--color-surface, #FFFFFF);
+  border: 1px solid var(--color-stone, #E8E4DF);
+  border-top: 3px solid var(--color-champagne, #B8956E);
+  border-radius: var(--radius-md, 6px);
+  padding: clamp(1.75rem, 3vw, 2.5rem);
+  text-align: center;
+  height: 100%;
+  min-height: 560px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  animation: stepFadeIn 0.35s ease;
+  box-sizing: border-box;
+}
+
+.successIconWrapper {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background: rgba(184, 149, 110, 0.12);
+  border: 2px solid var(--color-powder, #D4B59E);
+  color: var(--color-champagne, #B8956E);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 1.15rem;
+}
+
+.successTitle {
+  font-family: var(--font-serif);
+  font-size: clamp(1.5rem, 2.2vw, 1.95rem);
+  font-weight: 500;
+  color: var(--color-anthracite, #2C2826);
+  margin-bottom: 0.45rem;
+}
+
+.successSubtitle {
+  font-size: 0.94rem;
+  color: var(--color-text-secondary, #524C48);
+  max-width: 480px;
+  margin: 0 auto 1.5rem auto;
+  line-height: 1.55;
+}
+
+.receiptBox {
+  background: var(--color-surface-subtle, #F4F1EC);
+  border: 1px dashed var(--color-powder, #D4B59E);
+  border-radius: var(--radius-sm, 4px);
+  padding: 1.25rem;
+  width: 100%;
+  max-width: 440px;
+  margin: 0 auto 1.5rem auto;
+  text-align: left;
+}
+
+.receiptTitle {
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--color-cashmere, #7A7471);
+  margin-bottom: 0.75rem;
+  padding-bottom: 0.4rem;
+  border-bottom: 1px solid var(--color-stone, #E8E4DF);
+}
+
+.receiptGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.65rem;
+}
+
+.receiptLabel {
+  font-size: 0.70rem;
+  color: var(--color-cashmere, #7A7471);
+  display: block;
+}
+
+.receiptValue {
+  font-size: 0.86rem;
+  font-weight: 600;
+  color: var(--color-anthracite, #2C2826);
+}
+
+.whatsappForwardBtn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.45rem;
+  background: #25D366;
+  color: #FFFFFF;
+  padding: 0.65rem 1.4rem;
+  font-size: 0.88rem;
+  font-weight: 600;
+  border-radius: var(--radius-xs, 2px);
+  text-decoration: none;
+  box-shadow: 0 4px 12px rgba(37, 211, 102, 0.28);
+  transition: all 0.2s ease;
+  margin-bottom: 1rem;
+}
+
+.whatsappForwardBtn:hover {
+  background: #20BA5A;
+  transform: translateY(-1px);
+}
+
+.resetBtn {
+  background: transparent;
+  border: 1px solid var(--color-stone, #E8E4DF);
+  color: var(--color-anthracite, #2C2826);
+  padding: 0.55rem 1.15rem;
+  font-size: 0.82rem;
+  font-weight: 500;
+  border-radius: var(--radius-xs, 2px);
+  cursor: pointer;
+  transition: all 0.2s ease;
+  display: block;
+  margin: 0 auto;
+}
+
+.resetBtn:hover {
+  background-color: var(--color-surface-subtle, #F4F1EC);
+}
+
+/* ==========================================================================
+   Responsive Adaptations
+   ========================================================================== */
+@media (max-width: 640px) {
+  .fieldGridDouble {
+    grid-template-columns: 1fr;
+    gap: 0.5rem;
+  }
+
+  .stepTitle {
+    display: none;
+  }
+
+  .capacityTiers {
+    grid-template-columns: 1fr;
+  }
+
+  .previewGrid,
+  .receiptGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .formContainer {
+    padding: 1.25rem 1rem;
+    min-height: auto;
+  }
+}

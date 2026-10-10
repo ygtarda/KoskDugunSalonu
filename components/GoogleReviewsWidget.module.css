@@ -1,0 +1,164 @@
+/* ==========================================================================
+   Clean Google Reviews Stream - Zero Watermarks & Zero Owner Bars
+   Polatlı Köşk Düğün Salonu
+   ========================================================================== */
+
+.widgetWrapper {
+  width: 100%;
+  margin: 0 auto;
+}
+
+/* Elegant Top Google Header Bar */
+.topGoogleStrip {
+  background: var(--color-surface);
+  border: 1px solid var(--color-stone);
+  border-left: 3px solid var(--color-champagne);
+  border-radius: var(--radius-xs);
+  padding: 1.25rem 2rem;
+  margin-bottom: 2.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 1.25rem;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.03);
+  transition: var(--transition-smooth);
+}
+
+.topGoogleStrip:hover {
+  border-color: var(--color-powder);
+  box-shadow: 0 6px 24px rgba(184, 149, 110, 0.08);
+}
+
+.stripLeft {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.googleGLogo {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: #FFFFFF;
+  border: 1px solid var(--color-stone);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.04);
+}
+
+.stripTitle {
+  font-family: var(--font-serif);
+  font-size: 1.15rem;
+  color: var(--color-anthracite);
+  font-weight: 500;
+  margin-bottom: 2px;
+}
+
+.stripSubtitle {
+  font-size: 0.82rem;
+  color: var(--color-cashmere);
+  display: block;
+}
+
+.stripActions {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+}
+
+.btnStripGoogle {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  background: #FFFFFF;
+  border: 1px solid var(--color-stone);
+  color: var(--color-anthracite);
+  padding: 0.55rem 1.1rem;
+  font-size: 0.86rem;
+  font-weight: 500;
+  border-radius: var(--radius-xs);
+  text-decoration: none;
+  transition: var(--transition-smooth);
+}
+
+.btnStripGoogle:hover {
+  border-color: var(--color-champagne);
+  color: var(--color-champagne);
+  background: var(--color-sand);
+}
+
+.btnStripReview {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  background: var(--color-anthracite);
+  color: #FFFFFF;
+  padding: 0.55rem 1.15rem;
+  font-size: 0.86rem;
+  font-weight: 500;
+  border-radius: var(--radius-xs);
+  text-decoration: none;
+  transition: var(--transition-smooth);
+}
+
+.btnStripReview:hover {
+  background: var(--color-champagne);
+}
+
+/* Live Stream Container */
+.liveStreamContainer {
+  width: 100%;
+  min-height: 250px;
+  margin-bottom: 2rem;
+  position: relative;
+}
+
+/* Aggressively hide any Elfsight watermarks or owner toolbar within this widget */
+.liveStreamContainer :global(a[href*="elfsight.com"]),
+.liveStreamContainer :global(a[href*="elfsight.com"] *),
+.liveStreamContainer :global(a[href*="dash.elfsight.com"]),
+.liveStreamContainer :global(a[href*="dash.elfsight.com"] *),
+.liveStreamContainer :global(div[class*="Badge"]),
+.liveStreamContainer :global(div[class*="UserPanel"]),
+.liveStreamContainer :global(div[class*="OwnerPanel"]),
+.liveStreamContainer :global(div[class*="badge"]),
+.liveStreamContainer :global(div[class*="panel-only-seen-by"]) {
+  display: none !important;
+  visibility: hidden !important;
+  opacity: 0 !important;
+  height: 0 !important;
+  width: 0 !important;
+  max-height: 0 !important;
+  max-width: 0 !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  border: none !important;
+  position: absolute !important;
+  pointer-events: none !important;
+  clip: rect(0, 0, 0, 0) !important;
+  clip-path: inset(100%) !important;
+  transform: scale(0) !important;
+  overflow: hidden !important;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .topGoogleStrip {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .stripActions {
+    width: 100%;
+  }
+
+  .btnStripGoogle,
+  .btnStripReview {
+    flex: 1;
+    justify-content: center;
+  }
+}

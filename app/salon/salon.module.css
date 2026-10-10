@@ -1,0 +1,177 @@
+.salonPage {
+  padding-top: 5rem;
+}
+
+.pageHero {
+  padding: 5rem 0 3.5rem 0;
+  text-align: center;
+}
+
+.heroTextWrapper {
+  max-width: 820px;
+  margin: 0 auto;
+}
+
+.pagePreTitle {
+  font-size: 0.84rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--color-cashmere);
+  font-weight: 500;
+  margin-bottom: 0.5rem;
+}
+
+.pageTitle {
+  font-family: var(--font-serif);
+  font-size: clamp(2.4rem, 4.5vw, 3.8rem);
+  margin-bottom: 1.25rem;
+  color: var(--color-anthracite);
+  font-weight: 450;
+}
+
+.pageLead {
+  font-size: 1.12rem;
+  color: var(--color-text-secondary);
+  line-height: 1.75;
+}
+
+.specsGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.75rem;
+}
+
+.specCard {
+  background: var(--color-surface);
+  border: 1px solid var(--color-stone);
+  border-bottom: 2px solid var(--color-stone);
+  padding: 2.2rem;
+  border-radius: var(--radius-xs);
+  transition: var(--transition-smooth);
+}
+
+.specCard:hover {
+  border-bottom-color: var(--color-powder);
+  background-color: #FCFBFA;
+  transform: translateY(-2px);
+}
+
+.specIcon {
+  width: 48px;
+  height: 48px;
+  border-radius: var(--radius-xs);
+  background: var(--color-surface-subtle);
+  border: 1px solid var(--color-stone);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--color-champagne);
+  margin-bottom: 1.25rem;
+}
+
+.specTitle {
+  font-family: var(--font-serif);
+  font-size: 1.3rem;
+  color: var(--color-anthracite);
+  margin-bottom: 0.65rem;
+  font-weight: 500;
+}
+
+.specDesc {
+  font-size: 0.92rem;
+  color: var(--color-text-secondary);
+  line-height: 1.65;
+}
+
+.deepDiveGrid,
+.deepDiveGridReversed {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4rem;
+  align-items: center;
+}
+
+.deepDiveContent {
+  display: flex;
+  flex-direction: column;
+}
+
+.deepDiveContent h2 {
+  font-family: var(--font-serif);
+  font-size: clamp(2rem, 3.5vw, 2.7rem);
+  color: var(--color-anthracite);
+  margin-bottom: 1.25rem;
+  font-weight: 400;
+}
+
+.problemSolutionBox {
+  margin-top: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.boxItem {
+  background: var(--color-surface);
+  border: 1px solid var(--color-stone);
+  border-left: 3px solid var(--color-powder);
+  padding: 1.5rem 1.8rem;
+  border-radius: var(--radius-xs);
+}
+
+.boxItem h4 {
+  font-family: var(--font-serif);
+  font-size: 1.18rem;
+  color: var(--color-anthracite);
+  margin-bottom: 0.5rem;
+  font-weight: 500;
+}
+
+.boxItem p {
+  font-size: 0.94rem;
+  color: var(--color-text-secondary);
+  line-height: 1.65;
+}
+
+.suiteFeaturesList {
+  list-style: none;
+  margin-top: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.85rem;
+}
+
+.suiteFeaturesList li {
+  position: relative;
+  padding-left: 1.5rem;
+  color: var(--color-text-secondary);
+  font-size: 0.95rem;
+}
+
+.suiteFeaturesList li::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0.6rem;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background-color: var(--color-champagne);
+}
+
+@media (max-width: 1024px) {
+  .specsGrid {
+    grid-template-columns: 1fr 1fr;
+  }
+  .deepDiveGrid,
+  .deepDiveGridReversed {
+    grid-template-columns: 1fr;
+    gap: 2.5rem;
+  }
+}
+
+@media (max-width: 640px) {
+  .specsGrid {
+    grid-template-columns: 1fr;
+  }
+}
