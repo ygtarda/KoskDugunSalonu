@@ -123,6 +123,12 @@
   flex-direction: column;
   align-items: center;
   text-align: center;
+  background: #FFFFFF;
+  padding: 1.6rem 1.2rem;
+  border-radius: var(--radius-xs);
+  border: 1px solid var(--color-stone);
+  border-bottom: 2px solid var(--color-stone);
+  transition: border-color 0.3s ease;
 }
 
 .statNumber {
@@ -149,23 +155,76 @@
 
 .archGrid {
   display: grid;
-  grid-template-columns: 1.15fr 1fr;
-  gap: 4rem;
-  align-items: center;
+  grid-template-columns: 1fr 1.15fr;
+  gap: 3.5rem;
+  align-items: stretch; /* Her iki sütun birbirine dikeyde tam eşitlenir */
+}
+
+.archImageContainer {
+  position: relative;
+  width: 100%;
+  height: 100%; /* Sağdaki içerik ve butonların toplam yüksekliğini tam kaplar */
+  min-height: 540px;
+  border-radius: var(--radius-xs);
+  overflow: hidden;
+  box-shadow: 0 16px 40px rgba(44, 40, 38, 0.08);
+  border: 1px solid var(--color-stone);
+  background-color: var(--color-stone);
+}
+
+.archRealImg {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center center;
+  display: block;
+  transition: transform 0.6s ease;
+}
+
+.archImageContainer:hover .archRealImg {
+  transform: scale(1.02);
+}
+
+.archImgCaption {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: linear-gradient(to top, rgba(26, 24, 22, 0.88) 0%, rgba(26, 24, 22, 0) 100%);
+  padding: 1.5rem 1.5rem 1rem 1.5rem;
+  color: #FFFFFF;
+  font-size: 0.85rem;
+  letter-spacing: 0.06em;
+  font-weight: 500;
+}
+
+.archContent {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between; /* Üst metin grubu ile alt buton grubu dikeyde eşit gerilir */
+  height: 100%;
+}
+
+.archIntroText {
+  font-size: 1.05rem;
+  line-height: 1.75;
+  color: var(--color-anthracite);
+  margin-bottom: 1.5rem;
 }
 
 .archFeaturesList {
   list-style: none;
   display: flex;
   flex-direction: column;
-  gap: 1.5rem;
-  margin: 2rem 0;
+  gap: 1.25rem;
+  margin: 0 0 1.75rem 0;
+  padding: 0;
 }
 
 .archFeatureItem {
   display: flex;
   align-items: flex-start;
-  gap: 1rem;
+  gap: 0.9rem;
 }
 
 .featureDot {
@@ -173,22 +232,75 @@
   height: 8px;
   border-radius: 50%;
   background-color: var(--color-champagne);
-  margin-top: 0.55rem;
+  margin-top: 0.5rem;
   flex-shrink: 0;
 }
 
 .featureItemTitle {
   font-family: var(--font-serif);
-  font-size: 1.2rem;
+  font-size: 1.15rem;
   color: var(--color-anthracite);
-  margin-bottom: 0.25rem;
+  margin-bottom: 0.2rem;
   font-weight: 500;
 }
 
 .featureItemDesc {
-  font-size: 0.95rem;
+  font-size: 0.93rem;
   color: var(--color-text-secondary);
-  line-height: 1.62;
+  line-height: 1.58;
+  margin: 0;
+}
+
+.archActionGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+  width: 100%;
+  margin-top: auto;
+  padding-top: 1.25rem;
+  border-top: 1px solid var(--color-stone);
+}
+
+.archBtn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  width: 100%;
+  height: 50px;
+  padding: 0 1rem;
+  font-size: 0.92rem;
+  font-weight: 500;
+  border-radius: var(--radius-xs);
+  cursor: pointer;
+  transition: var(--transition-smooth);
+  text-align: center;
+  white-space: nowrap;
+  box-sizing: border-box;
+}
+
+.archBtnSecondary {
+  background-color: #FFFFFF;
+  color: var(--color-anthracite);
+  border: 1px solid var(--color-stone);
+}
+
+.archBtnSecondary:hover {
+  border-color: var(--color-powder);
+  background-color: #FCFBFA;
+  transform: translateY(-1px);
+}
+
+.archBtnPrimary {
+  background-color: var(--color-champagne);
+  color: #FFFFFF;
+  border: 1px solid var(--color-champagne);
+}
+
+.archBtnPrimary:hover {
+  background-color: #A3825C;
+  border-color: #A3825C;
+  transform: translateY(-1px);
 }
 
 /* ==========================================================================
@@ -204,12 +316,34 @@
   background: var(--color-surface);
   border: 1px solid var(--color-stone);
   border-left: 3px solid var(--color-powder);
-  padding: 2.2rem 2.5rem;
+  padding: 1.6rem 2.2rem;
   display: grid;
-  grid-template-columns: 220px 1fr auto;
-  gap: 2.5rem;
+  grid-template-columns: 120px 200px 1fr auto;
+  gap: 2.2rem;
   align-items: center;
   transition: var(--transition-smooth);
+}
+
+.serviceThumbWrap {
+  width: 120px;
+  height: 80px;
+  position: relative;
+  border-radius: var(--radius-xs);
+  overflow: hidden;
+  border: 1px solid var(--color-stone);
+  flex-shrink: 0;
+  background-color: var(--color-stone);
+}
+
+.serviceThumb {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s ease;
+}
+
+.serviceStripe:hover .serviceThumb {
+  transform: scale(1.08);
 }
 
 .serviceStripe:hover {
@@ -243,100 +377,215 @@
 }
 
 /* ==========================================================================
-   Editorial Testimonial Quote
+   Timeline / Davet Yolculuğu (4 Adım)
    ========================================================================== */
-.editorialQuote {
-  background-color: #FFFFFF;
+.timelineGrid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1.75rem;
+}
+
+.timelineStepCard {
+  background: var(--color-surface);
   border: 1px solid var(--color-stone);
-  border-left: 3px solid var(--color-champagne);
-  padding: clamp(2.5rem, 5vw, 4rem);
-  max-width: 880px;
-  margin: 0 auto;
-  position: relative;
-}
-
-.quoteGoogleHeader {
+  border-bottom: 2px solid var(--color-stone);
+  border-radius: var(--radius-xs);
+  padding: 2.2rem 1.6rem;
   display: flex;
-  align-items: center;
-  justify-content: space-between;
-  margin-bottom: 1.5rem;
-  flex-wrap: wrap;
-  gap: 1rem;
-}
-
-.googleRatingBadge {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.6rem;
-  background: #F8F9FA;
-  border: 1px solid #DADCE0;
-  padding: 0.4rem 0.85rem;
-  border-radius: 20px;
-  font-size: 0.82rem;
-  font-weight: 500;
-  color: #3C4043;
-}
-
-.googleStars {
-  display: inline-flex;
-  align-items: center;
-  gap: 2px;
-  color: #FBBC05;
-}
-
-.googleLinkBtn {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.4rem;
-  font-size: 0.85rem;
-  font-weight: 500;
-  color: #1A73E8;
-  text-decoration: none;
+  flex-direction: column;
+  position: relative;
   transition: var(--transition-smooth);
 }
 
-.googleLinkBtn:hover {
-  color: #1557B0;
-  text-decoration: underline;
-}
-
-.quoteWords {
+.stepNumberBadge {
   font-family: var(--font-serif);
-  font-size: clamp(1.3rem, 2.4vw, 1.85rem);
+  font-size: 2rem;
+  font-weight: 500;
+  color: var(--color-champagne);
+  line-height: 1;
+  margin-bottom: 1.25rem;
+  display: inline-block;
+  opacity: 0.85;
+}
+
+.stepTitle {
+  font-family: var(--font-serif);
+  font-size: 1.22rem;
   color: var(--color-anthracite);
-  line-height: 1.55;
-  font-style: italic;
-  margin-bottom: 1.5rem;
+  font-weight: 500;
+  margin-bottom: 0.75rem;
+  line-height: 1.3;
 }
 
-.quoteMeta {
+.stepDesc {
+  font-size: 0.92rem;
+  color: var(--color-text-secondary);
+  line-height: 1.65;
+}
+
+/* ==========================================================================
+   Seçkin Fotoğraf Vitrini (Mosaic Grid)
+   ========================================================================== */
+.galleryMosaicHeader {
   display: flex;
-  align-items: center;
+  align-items: flex-end;
   justify-content: space-between;
-  border-top: 1px solid var(--color-stone);
-  padding-top: 1.1rem;
-}
-
-.authorName {
-  font-size: 0.98rem;
-  font-weight: 600;
-  color: var(--color-anthracite);
-}
-
-.eventDetails {
-  font-size: 0.85rem;
-  color: var(--color-cashmere);
-}
-
-.quoteFootActions {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  margin-top: 1.5rem;
-  padding-top: 1.25rem;
-  border-top: 1px dashed var(--color-stone);
+  margin-bottom: 2.5rem;
   flex-wrap: wrap;
-  gap: 1rem;
+  gap: 1.5rem;
+}
+
+.mosaicGrid {
+  display: grid;
+  grid-template-columns: 1.25fr 1fr;
+  grid-template-rows: 280px 280px;
+  gap: 1.5rem;
+}
+
+.mosaicItem {
+  position: relative;
+  border-radius: var(--radius-xs);
+  overflow: hidden;
+  border: 1px solid var(--color-stone);
+  background-color: var(--color-stone);
+  box-shadow: 0 8px 24px rgba(44, 40, 38, 0.06);
+}
+
+.mosaicLarge {
+  grid-row: span 2;
+}
+
+.mosaicWide {
+  grid-column: span 1;
+}
+
+.mosaicImg {
+  object-fit: cover;
+  transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.mosaicItem:hover .mosaicImg {
+  transform: scale(1.05);
+}
+
+.mosaicBadge {
+  position: absolute;
+  bottom: 1.25rem;
+  left: 1.25rem;
+  background: rgba(44, 40, 38, 0.82);
+  border: 1px solid rgba(212, 181, 158, 0.45);
+  backdrop-filter: blur(8px);
+  color: #FFFFFF;
+  padding: 0.45rem 1rem;
+  border-radius: 999px;
+  font-size: 0.78rem;
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  pointer-events: none;
+}
+
+/* ==========================================================================
+   Salon Olanakları & Güvenceler Strip
+   ========================================================================== */
+.amenitiesStrip {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1.5rem;
+}
+
+.amenityCard {
+  background: #FFFFFF;
+  border: 1px solid var(--color-stone);
+  border-bottom: 2px solid var(--color-stone);
+  border-radius: var(--radius-xs);
+  padding: 2rem 1.6rem;
+  display: flex;
+  flex-direction: column;
+  transition: var(--transition-smooth);
+}
+
+.amenityCard:hover {
+  border-bottom-color: var(--color-powder);
+  transform: translateY(-2px);
+}
+
+.amenityIcon {
+  width: 48px;
+  height: 48px;
+  border-radius: var(--radius-xs);
+  background: var(--color-surface-subtle);
+  border: 1px solid var(--color-stone);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--color-champagne);
+  margin-bottom: 1.25rem;
+}
+
+.amenityCard h4 {
+  font-family: var(--font-serif);
+  font-size: 1.2rem;
+  color: var(--color-anthracite);
+  font-weight: 500;
+  margin-bottom: 0.5rem;
+}
+
+.amenityCard p {
+  font-size: 0.9rem;
+  color: var(--color-text-secondary);
+  line-height: 1.6;
+}
+
+/* ==========================================================================
+   Ziyaret & Kahveye Davet (Invitation Banner)
+   ========================================================================== */
+.invitationCard {
+  background: #FFFFFF;
+  border: 1px solid var(--color-stone);
+  border-top: 3px solid var(--color-champagne);
+  border-radius: var(--radius-xs);
+  padding: clamp(3rem, 5vw, 4.5rem) 2.5rem;
+  text-align: center;
+  max-width: 860px;
+  margin: 0 auto;
+  box-shadow: 0 16px 40px rgba(44, 40, 38, 0.06);
+}
+
+.invitationBadge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.78rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--color-cashmere);
+  font-weight: 600;
+  margin-bottom: 1rem;
+}
+
+.invitationTitle {
+  font-family: var(--font-serif);
+  font-size: clamp(2rem, 3.5vw, 2.8rem);
+  color: var(--color-anthracite);
+  font-weight: 450;
+  line-height: 1.25;
+  margin-bottom: 1.25rem;
+}
+
+.invitationDesc {
+  font-size: 1.05rem;
+  color: var(--color-text-secondary);
+  line-height: 1.75;
+  max-width: 680px;
+  margin: 0 auto 2.5rem auto;
+}
+
+.invitationActions {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1.2rem;
+  flex-wrap: wrap;
 }
 
 /* ==========================================================================
@@ -351,9 +600,34 @@
     grid-template-columns: 1fr;
     gap: 2.5rem;
   }
+  .archImageContainer {
+    aspect-ratio: 4 / 3;
+    min-height: 380px;
+    height: auto;
+  }
+  .archContent {
+    height: auto;
+  }
   .serviceStripe {
     grid-template-columns: 1fr;
     gap: 1.25rem;
+  }
+  .timelineGrid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .mosaicGrid {
+    grid-template-columns: 1fr;
+    grid-template-rows: auto;
+  }
+  .mosaicLarge,
+  .mosaicWide,
+  .mosaicItem {
+    aspect-ratio: 16 / 10;
+    grid-row: auto;
+    grid-column: auto;
+  }
+  .amenitiesStrip {
+    grid-template-columns: repeat(2, 1fr);
   }
 }
 
@@ -361,5 +635,31 @@
   .statsGrid {
     grid-template-columns: 1fr;
     gap: 1.5rem;
+  }
+  .archActionGrid {
+    grid-template-columns: 1fr;
+    gap: 0.75rem;
+  }
+  .archBtn {
+    height: 48px;
+    font-size: 0.9rem;
+    white-space: normal;
+  }
+  .archImageContainer {
+    aspect-ratio: 1 / 1;
+    min-height: 280px;
+  }
+  .timelineGrid {
+    grid-template-columns: 1fr;
+  }
+  .amenitiesStrip {
+    grid-template-columns: 1fr;
+  }
+  .invitationActions {
+    flex-direction: column;
+    width: 100%;
+  }
+  .invitationActions a {
+    width: 100%;
   }
 }

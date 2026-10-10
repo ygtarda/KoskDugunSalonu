@@ -14,32 +14,32 @@ const faqItems: FaqItem[] = [
   {
     question: 'Salonun tam kapasitesi nedir ve oturma düzeni nasıldır?',
     answer:
-      'Köşk Düğün Salonu 1.200 m² yekpare kapalı alana sahiptir. Yuvarlak ziyafet masalarıyla banket düzeninde 800 ila 1.000 misafiri son derece konforlu şekilde ağırlayabiliyoruz. Kokteyl davetlerinde bu kapasite 1.200 kişiye ulaşmaktadır. Masalar arasında gelinlik ve servis görevlilerinin rahatça geçebileceği geniş sirkülasyon koridorları bırakılmaktadır.',
+      'Köşk Düğün Salonu 1.200 m² kolonsuz ve geniş bir kapalı alana sahiptir. Salonda görüşü engelleyen kolon bulunmadığından tüm masalardan sahne ve dans pisti rahatça görünür. Yuvarlak masalarla 800 ila 1.000 misafiri son derece ferah şekilde ağırlayabiliyoruz. Masalar ve pist arasında davetlilerin rahatça hareket edebileceği geniş aralıklar bırakılmaktadır.',
   },
   {
-    question: 'Kapalı salonunuzda havalandırma ve klima sistemi nasıl çalışır?',
+    question: 'Kapalı salonunuzda havalandırma sistemi nasıl çalışır?',
     answer:
-      'Salonumuzda endüstriyel VRF iklimlendirme ve çift çevrimli taze hava santralleri bulunmaktadır. 1.000 davetlinin bulunduğu anlarda dahi saatte 14.000 m³ taze hava salona verilirken kullanılmış hava tahliye edilir. Yaz aylarında ferah bir serinlik, kış aylarında ise homojen bir oda sıcaklığı garanti edilir; basıklık ve havasızlık kesinlikle yaşanmaz.',
+      'Yüksek tavanlı yapımız ve düzenli havalandırma sistemimiz sayesinde salonumuzda hava sirkülasyonu sürekli sağlanır. Kalabalık davetlerde dahi salon havası temiz ve ferah kalır. Dört mevsim çalışan iklimlendirme altyapısıyla yazın serin, kışın ideal oda sıcaklığında konforlu bir ortam sunulur; basıklık ve havasızlık yaşanmaz.',
   },
   {
     question: 'Rezervasyon ve sözleşme süreci nasıl işler? Ne kadar önceden yer ayırtmalıyız?',
     answer:
-      'Özellikle ilkbahar, yaz ve sonbahar hafta sonları yoğun talep gördüğünden, düğün tarihinizden 4 ila 9 ay öncesinde rezervasyon yaptırmanızı öneririz. Tarih belirleme sonrasında karşılıklı şartları güvenceye alan resmi bir sözleşme imzalanır ve kapora bedeli alınır. Kalan bakiye ise düğün haftasında taksitlendirilebilir.',
+      'Özellikle ilkbahar, yaz ve sonbahar hafta sonları yoğun talep gördüğünden, düğün tarihinizden birkaç ay öncesinde rezervasyon yaptırmanızı öneririz. Tarih belirleme sonrasında karşılıklı şartları güvenceye alan resmi bir sözleşme imzalanır ve kapora bedeli alınır. Kalan bakiye ise düğün haftasında planlanabilir.',
   },
   {
     question: 'Elektrik kesintisi veya arıza durumunda bir güvenceniz var mı?',
     answer:
-      'Evet. Salonumuza ait 400 kVA gücünde sanayi tipi tam otomatik yedek jeneratör bulunmaktadır. Şehir şebekesinde elektrik kesintisi yaşansa dahi sistem 4 saniye içinde devreye girerek tüm salon aydınlatmasını, sahne ses-ışık sistemini ve klimaları tam güçte kesintisiz çalıştırmaya devam eder.',
+      'Evet. Salonumuzda elektrik kesintilerine karşı tam otomatik kesintisiz jeneratör sistemi bulunmaktadır. Olası bir şebeke kesintisinde sistem anında devreye girerek salon aydınlatmasını, müzik ve havalandırmayı aksatmadan devam ettirir; düğününüz hiçbir kesintiye uğramaz.',
   },
   {
     question: 'Dışarıdan catering, fotoğrafçı veya organizasyon şirketi getirebilir miyiz?',
     answer:
-      'Salonumuz zengin ve hijyen sertifikalı menüleri, profesyonel HD çekim ekibi ve tecrübeli orkestrasıyla anahtar teslim hizmet verir. Ancak özel bir catering firması, fotoğrafçı ya da dış dekorasyon ekibiyle çalışmak isterseniz, teknik koordinasyon ve hijyen standartlarımıza uymak koşuluyla memnuniyetle esneklik sağlıyoruz.',
+      'Salonumuz lezzetli ve taze menüleri, fotoğraf/kamera çekimi ve müzik ekibiyle eksiksiz hizmet verir. Ancak özel bir catering firması, fotoğrafçı ya da süsleme ekibiyle çalışmak isterseniz, salon düzenimize ve hijyen kurallarımıza uymak koşuluyla memnuniyetle esneklik sağlıyoruz.',
   },
   {
     question: 'Gelin ve damat için özel hazırlık odası var mı?',
     answer:
-      'Evet, salonumuzda gelin ve damadımıza tahsis edilen 2 adet bağımsız VIP hazırlık süiti mevcuttur. İçerisinde özel banyo, profesyonel LED makyaj masası, dinlenme koltuğu, klima ve tören öncesi çifte özel ikram servisi yer alır.',
+      'Evet, salonumuzda gelin ve damadımıza tahsis edilen konforlu bir hazırlık ve dinlenme odası mevcuttur. Düğün öncesinde çiftimizin rahatça dinlenebileceği, giyinebileceği ve son hazırlıklarını yapabileceği ferah bir alandır.',
   },
   {
     question: 'Davetlilerimiz için otopark ve engelli erişimi mevcut mu?',
@@ -112,7 +112,7 @@ export default function SssPage() {
                 margin: '0 auto',
               }}
             >
-              Düğün ve davet planlama sürecinde aklınıza takılabilecek tüm teknik detaylar
+              Düğün ve davet planlama sürecinde aklınıza takılabilecek tüm merak edilen sorular
               ve salonumuzda evlenen çiftlerimizin Google Haritalar üzerindeki gerçek yorumları.
             </p>
           </div>

@@ -1,102 +1,115 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
+import Image from 'next/image';
 import { Check, CalendarCheck } from 'lucide-react';
+import TiltCard from '@/components/TiltCard';
 import styles from './hizmetler.module.css';
 
 export const metadata: Metadata = {
   title: 'Hizmetler & Organizasyon Paketleri | Polatlı Köşk Düğün Salonu',
   description:
-    'Düğün, kına gecesi, nişan ve kurumsal davetler için 1000 kişilik kapalı salonda eksiksiz hizmet paketleri. Polatlı’da şeffaf planlama ve kişiye özel fiyat teklifi.',
+    'Düğün, kına gecesi, nişan ve özel davetler için kolonsuz ve geniş salonda eksiksiz hizmet. Polatlı’da şeffaf planlama ve bütçenize uygun teklif.',
 };
 
 const servicePackages = [
   {
     id: 'dugun',
-    title: 'Görkemli Düğün Daveti',
-    subtitle: '1.000 Kişilik Kapalı Balo Konsepti',
+    title: 'Düğün Daveti',
+    subtitle: '1.000 Kişilik Geniş ve Ferah Salon',
     capacity: '800 – 1.000 Kişi',
     badge: 'Ana Hizmet',
-    desc: 'Büyük aileleri ve geniş davetli listelerini ferahça ağırlamak isteyen çiftler için tasarlandı. Ses akustiği, görkemli aydınlatma ve kusursuz servis bir arada.',
+    imageSrc: '/images/venue/kosk-ilk-dans-sis-bulutu.webp',
+    imageAlt: 'Köşk Düğün Salonu Düğün Daveti ve İlk Dans Alanı',
+    desc: 'Geniş aileleri ve kalabalık davetli listelerini rahatça ağırlamak isteyen çiftler için tasarlandı. Kolonsuz ferah salon, yüksek tavan ve güler yüzlü servis bir arada.',
     features: [
-      '1.200 m² sütunsuz kapalı salonda 1.000 kişilik yuvarlak masa banket düzeni',
-      'Özel gelin yolu, canlı çiçek detaylı tag ve sisli ilk dans koreografisi',
-      'Bilgisayarlı truss robot ışık sistemi ve profesyonel line-array ses altyapısı',
-      'Gelin ve damat için 2 bağımsız VIP hazırlık süiti ve özel ikram servisi',
-      'Yemekli veya zengin kokteyl menü seçenekleri (Geleneksel kavurma/tavuk veya lüks ikramlar)',
-      '7 katlı gösterişli düğün pastası merasimi ve meşrubat servisi',
-      'HD çoklu kamera çekimi, canlı yayın reji masası ve tam düğün video kaydı',
-      '250 araçlık özel otopark alanı ve vale yönlendirmesi',
-      '400 kVA sanayi tipi jeneratör ile kesintisiz enerji güvencesi',
+      'Kolonsuz ferah salonda 1.000 kişiye kadar yuvarlak masa oturma düzeni',
+      'Özel gelin yolu, şık süslemeler ve sisli romantik ilk dans alanı',
+      'Eğlence ve canlı müzik için kaliteli ses sistemi ve sahne aydınlatması',
+      'Gelin ve damat için rahat dinlenme ve hazırlık odası',
+      'Yemekli veya pastalı menü seçenekleri (Kavurma, tavuk veya zengin ikram tabakları)',
+      'Özel düğün pastası merasimi ve taze meşrubat servisi',
+      'Kamera çekimi ve profesyonel fotoğraf hizmeti',
+      'Geniş misafir otoparkı ile araç park kolaylığı',
+      'Kesintisiz jeneratör desteği ile kesintisiz eğlence güvencesi',
     ],
   },
   {
     id: 'kina',
     title: 'Geleneksel Kına Gecesi',
-    subtitle: 'Zarafet ve Eğlencenin Doruğu',
+    subtitle: 'Eğlenceli ve Sıcak Kına Merasimi',
     capacity: '500 – 800 Kişi',
-    badge: 'Özel Kadınlar Koridoru',
-    desc: 'Geleneksel dokuları modern salon konforuyla harmanlayan, gelin hanımın ve nedimelerin kendilerini prenses gibi hissedeceği zengin konsept.',
+    badge: 'Kadın Davetlilere Özel',
+    imageSrc: '/images/venue/kosk-sahne-mor-isik-gosterisi.webp',
+    imageAlt: 'Köşk Düğün Salonu Geleneksel Kına Gecesi Sahne Düzeni',
+    desc: 'Geleneksel adetleri modern salon ferahlığıyla buluşturan, gelin hanımın ve davetlilerin doyasıya eğleneceği samimi bir atmosfer.',
     features: [
-      'Göz alıcı kadife kına tahtı ve özel cibinlikli sahne dekorasyonu',
+      'Şık kadife kına tahtı ve özel arka fon sahne dekorasyonu',
       'Nedime ekibi ile koreografili kına çıkışı ve bendir gösterisi',
-      'Kadın garson, kadın DJ ve kadın güvenlik ekibi opsiyonu',
-      'Gelin için kaftan ve nedimeler için tef/mum/fayton aksesuarları',
+      'Kadın garson ve kadın DJ tercihi opsiyonu',
+      'Gelin için kaftan ve nedimeler için tef/mum aksesuarları',
       'Özel kına tepsisi, dağıtımlık yaş ve kuru kına paketleri',
       'Kına gecesine özel ikram tabağı ve taze meşrubat servisi',
-      'Salona ait VIP gelin süitinde rahat giyinme ve dinlenme alanı',
-      'Merkezi VRF havalandırma ile kesintisiz ferah ortam',
+      'Gelin hanım için konforlu giyinme ve dinlenme odası',
+      'Yüksek tavan ve ferah havalandırmalı rahat salon ortamı',
     ],
   },
   {
     id: 'nisan',
     title: 'Nişan & Söz Töreni',
-    subtitle: 'Zarif Başlangıçlar İçin Butik Düzen',
+    subtitle: 'Aileler ve Dostlar İçin Samimi Bir Başlangıç',
     capacity: '300 – 600 Kişi',
-    badge: 'Romantik Ambiyans',
-    desc: 'Ailelerin ve yakın dostların bir araya geldiği, sıcak, samimi ama son derece şık bir balo salonu atmosferinde yüzük takma töreni.',
+    badge: 'Sıcak & Şık Ambiyans',
+    imageSrc: '/images/venue/kosk-nisan-soz-ozel-konsept-aynasi.webp',
+    imageAlt: 'Köşk Düğün Salonu Nişan ve Söz Töreni Konsept Alanı',
+    desc: 'Ailelerin ve yakın dostların bir araya geldiği, sıcak, samimi ve şık bir ortamda yüzük takma merasimi.',
     features: [
-      'Özel tasarım nişan tagı, pampa ve çiçek arka fon süslemesi',
+      'Özel tasarım nişan tagı ve çiçekli fotoğraf arka fonu',
       'Yüzük tepsisi, merasim makası ve özel sehpa sunumu',
-      'Yumuşak şampanya tonlarında zarif masa giydirmeleri',
-      'Canlı akustik müzik veya DJ performans desteği',
-      'Özel tasarım nişan pastası ve zengin karşılama ikramları',
-      'Fotoğraf ve video çekimi ile anıların ölümsüzleştirilmesi',
-      'Kapalı salon konforunda 4 mevsim ideal oda sıcaklığı',
+      'Şık masa örtüleri ve zarif masa süslemeleri',
+      'Müzik yayını ve isteğe bağlı canlı müzik desteği',
+      'Özel tasarım nişan pastası ve taze ikramlar',
+      'Fotoğraf ve video çekimi ile anıların kaydedilmesi',
+      'Dört mevsim ideal oda sıcaklığında ferah salon',
     ],
   },
   {
     id: 'sunnet',
     title: 'Sünnet Düğünü Şöleni',
-    subtitle: 'Aile Boyu Coşkulu Kutlama',
+    subtitle: 'Aile Boyu Coşkulu ve Rahat Kutlama',
     capacity: '500 – 1.000 Kişi',
     badge: 'Çocuklara Özel Alan',
-    desc: 'Minik evladınızın bu önemli gününde tüm akrabalarınızın rahatça ağırlanacağı, geleneksel merasimlerin ve eğlencenin bir arada yaşandığı organizasyon.',
+    imageSrc: '/images/venue/kosk-dans-pisti-spot-isik-sov.webp',
+    imageAlt: 'Köşk Düğün Salonu Sünnet Düğünü Şöleni ve Dans Pisti',
+    desc: 'Çocuğunuzun bu anlamlı gününde tüm akrabalarınızın rahatça ağırlanacağı, geleneksel merasimlerin ve eğlencenin bir arada yaşandığı organizasyon.',
     features: [
-      'Özel işlemeli sünnet tahtı ve yeniçeri karşılama seremonisi',
-      'Palyaço, yüz boyama ve çocuk oyun animasyon alanı',
+      'Özel işlemeli sünnet tahtı ve karşılama seremonisi',
+      'Palyaço ve çocuk oyun animasyon alanı',
       'Yemekli veya pastalı geleneksel ikram menüleri',
-      'Geniş sahnede fasıl, halk oyunları veya canlı orkestra imkânı',
-      'Salona giriş anında konfeti ve ışık şovları',
+      'Geniş sahnede müzik, oyun havaları ve canlı orkestra imkânı',
+      'Salona giriş anında konfeti ve ışık efektleri',
       'Geniş misafir otoparkı ile konuklara rahat varış imkânı',
     ],
   },
   {
     id: 'kurumsal',
-    title: 'Kurumsal Gala & Kongre',
-    subtitle: 'Prestijli İş ve Toplantı Buluşmaları',
+    title: 'Kurumsal Yemek & Toplantı',
+    subtitle: 'Şirket ve Kurum Buluşmaları',
     capacity: '400 – 1.200 Kişi',
-    badge: 'Profesyonel AV Donanımı',
-    desc: 'Polatlı ve Ankara’daki şirketler, sivil toplum kuruluşları ve kurumlar için gala yemekleri, bayi toplantıları, mezuniyetler ve ödül törenleri.',
+    badge: 'Geniş Katılımlı Davetler',
+    imageSrc: '/images/venue/kosk-dev-projeksiyon-ve-sahne-duzeni.webp',
+    imageAlt: 'Köşk Düğün Salonu Kurumsal Yemek, Toplantı ve Sahne Düzeni',
+    desc: 'Polatlı’daki şirketler, sivil toplum kuruluşları ve kurumlar için yemekli toplantılar, bayi buluşmaları, mezuniyetler ve veda geceleri.',
     features: [
-      'Dev projeksiyon / LED ekran ve çoklu mikrofon sistemi',
-      'Kürsü, konuşmacı sahnesi ve simultane ses iletimi',
-      'U-düzen, sınıf düzeni veya yuvarlak masa protokol oturumu',
-      'Protokol karşılama fuayesi ve tebrik kokteyli',
-      'Fasıl, orkestra veya kurumsal sunum teknik desteği',
-      'Yüksek hızlı Wi-Fi ve teknik operatör refakati',
+      'Büyük projeksiyon ekranı ve ses/mikrofon sistemi',
+      'Konuşmacı kürsüsü ve sahne düzeni',
+      'Geniş yuvarlak masa veya isteğe göre oturma düzeni',
+      'Giriş karşılama alanı ve ikram standı',
+      'Müzik ve ses teknik desteği',
+      'Misafirler için kolay ulaşım ve otopark imkanı',
     ],
   },
 ];
+
 export default function HizmetlerPage() {
   return (
     <div style={{ paddingTop: '1rem' }}>
@@ -104,13 +117,13 @@ export default function HizmetlerPage() {
       <section className={styles.pageHero}>
         <div className="container">
           <div className={styles.heroTextWrapper}>
-            <div className={styles.pagePreTitle}>Organizasyon Konseptleri</div>
+            <div className={styles.pagePreTitle}>Davet & Organizasyon Seçenekleri</div>
             <h1 className={styles.pageTitle}>
-              Her Davete Özel Kusursuz Hizmet Paketleri
+              Her Davetiniz İçin Rahat ve Eksiksiz Hizmet
             </h1>
             <p className={styles.pageLead}>
-              Köşk Düğün Salonu’nda hazır kalıplara sıkışmazsınız. İhtiyacınıza, davetli sayınıza ve 
-              hayal ettiğiniz konsepte göre şekillenen profesyonel organizasyon çözümleri sunuyoruz.
+              Düğün, kına, nişan ve tüm özel günleriniz için davetli sayınıza ve bütçenize uygun,
+              samimi ve eksiksiz organizasyon çözümleri sunuyoruz.
             </p>
           </div>
         </div>
@@ -120,7 +133,22 @@ export default function HizmetlerPage() {
       <section className="container" style={{ paddingBottom: '6rem' }}>
         <div style={{ display: 'flex', flexDirection: 'column', gap: '3rem' }}>
           {servicePackages.map((pkg) => (
-            <div key={pkg.id} id={pkg.id} className={styles.packageCard}>
+            <TiltCard key={pkg.id} id={pkg.id} className={styles.packageCard} maxTilt={2} scale={1.008} glare>
+              <div className={styles.packageMediaWrap}>
+                <Image
+                  src={pkg.imageSrc}
+                  alt={pkg.imageAlt}
+                  fill
+                  className={styles.packageImg}
+                  sizes="(max-width: 1024px) 100vw, 1200px"
+                  unoptimized
+                />
+                <div className={styles.packageMediaOverlay}>
+                  <span className={styles.packageMediaCategory}>{pkg.title}</span>
+                  <span className={styles.packageMediaCapacity}>{pkg.capacity}</span>
+                </div>
+              </div>
+
               <div className={styles.cardHeader}>
                 <div>
                   <span className={styles.badge}>{pkg.badge}</span>
@@ -162,7 +190,7 @@ export default function HizmetlerPage() {
                   <span>Bu Paket İçin Teklif & Randevu Alın</span>
                 </Link>
               </div>
-            </div>
+            </TiltCard>
           ))}
         </div>
       </section>

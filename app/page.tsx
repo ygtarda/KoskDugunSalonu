@@ -1,30 +1,41 @@
 import React from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
-import { CalendarCheck, Star, ExternalLink } from 'lucide-react';
+import { 
+  CalendarCheck, 
+  ArrowRight, 
+  Sparkles, 
+  Car, 
+  Zap, 
+  Accessibility, 
+  Wind,
+  CheckCircle2,
+  Phone
+} from 'lucide-react';
 import Header from '@/components/Header';
 import HeroCalligraphy from '@/components/HeroCalligraphy';
-import ImagePlaceholder from '@/components/ImagePlaceholder';
-import BookingForm from '@/components/BookingForm';
-import { GoogleIcon, GOOGLE_BUSINESS_URL } from '@/components/GoogleReviewsWidget';
+import TiltCard from '@/components/TiltCard';
+import VideoHeroSection from '@/components/VideoHeroSection';
+import AtmosphereSwitcher from '@/components/AtmosphereSwitcher';
 import styles from './page.module.css';
 
 export default function HomePage() {
   return (
     <div className={styles.pageRoot}>
       {/* ===================================================================
-          1. FIXED PINNED HERO (Stays in place while content scrolls over it)
-          Header-free, ultra-cinematic welcoming screen.
+          1. FIXED PINNED HERO (İlk Karşılama Bölümü - Kesinlikle Korundu)
+          Header-free, ultra-cinematic welcoming screen with cursive signature.
           =================================================================== */}
       <section className={styles.fixedHero} aria-label="Köşk Düğün Salonu Karşılama">
         <div className={styles.heroBgLayer}>
           <Image
-            src="/images/polatli-kapali-dugun-salonu-ana-salon.jpg"
+            src="/images/venue/kosk-ana-balo-salonu-genel-perspektif.webp"
             alt="Köşk Düğün Salonu 1000 Kişilik Kapalı Balo Salonu Atmosferi"
             fill
             priority
             className={styles.heroBackdropImg}
             sizes="100vw"
+            unoptimized
           />
           <div className={styles.heroVignette} />
           <div className={styles.heroGridLines} />
@@ -38,80 +49,93 @@ export default function HomePage() {
 
       {/* ===================================================================
           2. SLIDING CONTENT WRAPPER (Slides up OVER the fixed hero on scroll)
-          The Header is embedded at the very top of this container:
-          It travels with the content and sticks to top: 0 once it reaches the top.
           =================================================================== */}
       <div className={styles.slidingContent}>
-        {/* Header embedded at the top of content (Sticky on scroll) */}
+        {/* Sticky Header embedded at top of content */}
         <Header embedded />
 
         {/* Precise Scroll Anchor Target */}
         <div id="sliding-content-start" className={styles.scrollAnchor} />
 
-        {/* Key Metrics Strip (Generous padding so it is 100% visible and never cut off) */}
+        {/* ===================================================================
+            BÖLÜM 1: SİNEMATİK TANITIM VİDEOSU HERO BÖLÜMÜ
+            Tam ekran boyutunda, header'ın hemen altında konumlandırılan video alanı
+            =================================================================== */}
+        <VideoHeroSection />
+
+        {/* ===================================================================
+            BÖLÜM 2: 4 TEMEL METRİK ŞERİDİ (Videonun hemen altına eklendi)
+            =================================================================== */}
         <div className={styles.welcomeStatsBar}>
           <div className="container">
             <div className={styles.statsGrid}>
-              <div className={styles.statItem}>
+              <TiltCard className={styles.statItem} maxTilt={5} glare>
                 <span className={styles.statNumber}>1.000</span>
-                <span className={styles.statLabel}>Kişilik Kapalı Kapasite</span>
-              </div>
-              <div className={styles.statItem}>
+                <span className={styles.statLabel}>Kişilik Kapasite</span>
+              </TiltCard>
+              <TiltCard className={styles.statItem} maxTilt={5} glare>
                 <span className={styles.statNumber}>1.200 m²</span>
-                <span className={styles.statLabel}>Sütunsuz Yekpare Alan</span>
-              </div>
-              <div className={styles.statItem}>
+                <span className={styles.statLabel}>Kolonsuz Geniş Alan</span>
+              </TiltCard>
+              <TiltCard className={styles.statItem} maxTilt={5} glare>
                 <span className={styles.statNumber}>6.5 m</span>
-                <span className={styles.statLabel}>Akustik Tavan Yüksekliği</span>
-              </div>
-              <div className={styles.statItem}>
-                <span className={styles.statNumber}>%100</span>
-                <span className={styles.statLabel}>VRF Taze Hava İklimlendirmesi</span>
-              </div>
+                <span className={styles.statLabel}>Yüksek Tavan Ferahlığı</span>
+              </TiltCard>
+              <TiltCard className={styles.statItem} maxTilt={5} glare>
+                <span className={styles.statNumber}>Merkezi</span>
+                <span className={styles.statLabel}>Kolay Ulaşım & Otopark</span>
+              </TiltCard>
             </div>
           </div>
         </div>
 
-        {/* 1. Mimari Vurgu ve Kapalı Salon Mimarisi */}
-        <section className={`${styles.archSection} section-spacing`} aria-label="Mimari ve Salon Nitelikleri">
+        {/* ===================================================================
+            BÖLÜM 3: KOLONSUZ SALON MİMARİSİ VE 4 DOĞAL AVANTAJ
+            =================================================================== */}
+        <section className={`${styles.archSection} section-spacing`} aria-label="Salon Özellikleri ve Ferah Alan">
           <div className="container">
             <div className="section-header">
               <div className="section-header-inner">
                 <div className="editorial-indicator" />
                 <div className="section-title-wrap">
-                  <div className="section-category">Mimari Standartlar</div>
-                  <h2>Büyük Davetler İçin Tasarlanmış Kapalı Balo Mimarisi</h2>
+                  <div className="section-category">Ferah & Geniş Salon</div>
+                  <h2>Geniş Alanı, Yüksek Tavanı ve Kolay Ulaşımıyla Köşk Düğün Salonu</h2>
                   <p className="section-subtitle">
-                    Hava koşullarından bağımsız, dört mevsim kesintisiz konfor sunan 1.200 m² kapalı alan.
+                    Düğün, nişan ve özel davetleriniz için ferah oturma düzeni ve rahat bir eğlence ortamı.
                   </p>
                 </div>
               </div>
             </div>
 
             <div className={styles.archGrid}>
-              <div>
-                <ImagePlaceholder
-                  title="Ana Balo Salonu Mimari Yerleşimi"
-                  dimensions="1600 × 900 · 16:9 Mimari Kesit"
-                  aspectRatio="16/9"
-                  category="800 - 1.000 Kişilik Banket Düzeni"
+              <div className={styles.archImageContainer}>
+                <Image
+                  src="/images/venue/kosk-ana-salon-kusursuz-simetri.webp"
+                  alt="Köşk Düğün Salonu Kolonsuz Geniş Alan ve Yüksek Tavan Görünümü"
+                  fill
+                  className={styles.archRealImg}
+                  sizes="(max-width: 1024px) 100vw, 45vw"
+                  unoptimized
                 />
+                <div className={styles.archImgCaption}>
+                  <span>Ferah Oturma Düzeni & Geniş Dans Pisti</span>
+                </div>
               </div>
 
-              <div>
-                <p style={{ fontSize: '1.08rem', lineHeight: '1.75', color: 'var(--color-anthracite)', marginBottom: '1.5rem' }}>
-                  Polatlı’nın kalbinde yer alan Köşk Düğün Salonu, hava koşullarının yarattığı riskleri tamamen ortadan kaldıran
-                  kapalı salon mimarisiyle inşa edilmiştir. Kolonsuz ferah yapısı, yüksek tavanı ve endüstriyel havalandırma altyapısıyla
-                  davetlilerinize nefes alan bir atmosfer sunar.
+              <div className={styles.archContent}>
+                <p className={styles.archIntroText}>
+                  Polatlı’nın merkezinde yer alan Köşk Düğün Salonu; kolonsuz ferah yapısı, yüksek tavanı ve havadar ortamıyla
+                  tüm davetlilerinize rahat bir deneyim sunar. Geniş oturma planı ve kolay ulaşılabilir konumu
+                  sayesinde en kalabalık günlerinizde bile herkes keyifle ağırlanır.
                 </p>
 
                 <ul className={styles.archFeaturesList}>
                   <li className={styles.archFeatureItem}>
                     <div className={styles.featureDot} />
                     <div>
-                      <h3 className={styles.featureItemTitle}>Kolonsuz Geniş Görüş Açısı</h3>
+                      <h3 className={styles.featureItemTitle}>Kolonsuz Geniş Alan</h3>
                       <p className={styles.featureItemDesc}>
-                        Tüm masalardan nikah kürsüsü, orkestra sahnesi ve dans pisti engelsiz bir şekilde izlenebilir.
+                        Salonda görüşü engelleyen kolon bulunmaz; tüm masalardan sahne ve dans pisti rahatça görünür.
                       </p>
                     </div>
                   </li>
@@ -119,9 +143,9 @@ export default function HomePage() {
                   <li className={styles.archFeatureItem}>
                     <div className={styles.featureDot} />
                     <div>
-                      <h3 className={styles.featureItemTitle}>Endüstriyel VRF Havalandırma</h3>
+                      <h3 className={styles.featureItemTitle}>Yüksek Tavan & Havadar Ortam</h3>
                       <p className={styles.featureItemDesc}>
-                        1.000 kişilik davetlerde dahi içerideki havayı sürekli tazeleyen, sessiz çalışan çift çevrimli havalandırma santrali.
+                        Yüksek tavanlı yapısı ve düzenli havalandırmasıyla kalabalık davetlerde bile salon havası ferah ve temiz kalır.
                       </p>
                     </div>
                   </li>
@@ -129,20 +153,30 @@ export default function HomePage() {
                   <li className={styles.archFeatureItem}>
                     <div className={styles.featureDot} />
                     <div>
-                      <h3 className={styles.featureItemTitle}>Akustik Tavan & Profesyonel Sahne</h3>
+                      <h3 className={styles.featureItemTitle}>Merkezi Konum & Kolay Ulaşım</h3>
                       <p className={styles.featureItemDesc}>
-                        6.5 metre tavan yüksekliğine entegre ses sönümleyici paneller sayesinde müzik sesleri berrak ve dengeli yayılır.
+                        Polatlı merkezde, misafirlerinizin rahatça gelebileceği ve araç park sorunu yaşamayacağı bir konumdadır.
+                      </p>
+                    </div>
+                  </li>
+
+                  <li className={styles.archFeatureItem}>
+                    <div className={styles.featureDot} />
+                    <div>
+                      <h3 className={styles.featureItemTitle}>Geniş Dans Pisti & Ferah Masalar</h3>
+                      <p className={styles.featureItemDesc}>
+                        Davetlilerinizin sıkışmadan dans edebileceği geniş mermer pisti ve rahat geçiş koridorları vardır.
                       </p>
                     </div>
                   </li>
                 </ul>
 
-                <div style={{ display: 'flex', gap: '1rem', flexWrap: 'wrap' }}>
-                  <Link href="/hizmetler" className="btn btn-outline">
+                <div className={styles.archActionGrid}>
+                  <Link href="/hizmetler" className={`${styles.archBtn} ${styles.archBtnSecondary}`}>
                     <span>Hizmet Paketlerimizi İnceleyin</span>
                   </Link>
-                  <Link href="/iletisim" className="btn btn-primary">
-                    <CalendarCheck size={18} />
+                  <Link href="/iletisim" className={`${styles.archBtn} ${styles.archBtnPrimary}`}>
+                    <CalendarCheck size={17} />
                     <span>İletişime Geçin & Teklif Alın</span>
                   </Link>
                 </div>
@@ -151,8 +185,33 @@ export default function HomePage() {
           </div>
         </section>
 
-        {/* 2. Organizasyon Türleri — Serbest Bant (Stripe) Düzeni */}
-        <section className="section-spacing" style={{ backgroundColor: 'var(--color-surface-subtle)' }} aria-label="Gerçekleştirilen Davet Türleri">
+        {/* ===================================================================
+            BÖLÜM 4: İNTERAKTİF IŞIK & AMBİYANS DENEYİMİ (YENİ)
+            İlk Dans, Kına, Dans Pisti ve Ziyafet atmosferlerini tek tıkla canlı geçişle deneyimleme
+            =================================================================== */}
+        <section className="section-spacing" style={{ backgroundColor: 'var(--color-surface-subtle)' }} aria-label="İnteraktif Salon Ambiyansları">
+          <div className="container">
+            <div className="section-header">
+              <div className="section-header-inner">
+                <div className="editorial-indicator" />
+                <div className="section-title-wrap">
+                  <div className="section-category">Işık & Atmosfer</div>
+                  <h2>Davetinizin Her Anına Özel Farklı Bir Ambiyans</h2>
+                  <p className="section-subtitle">
+                    Sisli ilk danstan coşkulu kına gecesine kadar salonumuzun özel ışıklandırmasını inceleyin.
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <AtmosphereSwitcher />
+          </div>
+        </section>
+
+        {/* ===================================================================
+            BÖLÜM 5: ORGANİZASYON KONSEPTLERİ VE PAKETLER (Stripe Layout)
+            =================================================================== */}
+        <section className="section-spacing" aria-label="Gerçekleştirilen Davet Türleri">
           <div className="container">
             <div className="section-header">
               <div className="section-header-inner">
@@ -161,20 +220,30 @@ export default function HomePage() {
                   <div className="section-category">Kusursuz Organizasyonlar</div>
                   <h2>Her Davet İçin Özelleştirilmiş Salon Düzeni</h2>
                   <p className="section-subtitle">
-                    Düğünden kına merasimine, nişandan kurumsal galaya kadar geniş oturma planları.
+                    Düğünden kına merasimine, nişandan kurumsal toplantıya kadar geniş oturma planları.
                   </p>
                 </div>
               </div>
             </div>
 
             <div className={styles.servicesBand}>
-              <div className={styles.serviceStripe}>
+              <TiltCard className={styles.serviceStripe} maxTilt={2.5} scale={1.01} glare>
+                <div className={styles.serviceThumbWrap}>
+                  <Image
+                    src="/images/venue/kosk-ilk-dans-sis-bulutu.webp"
+                    alt="Köşk Düğün Salonu İlk Dans ve Sis Bulutu"
+                    fill
+                    className={styles.serviceThumb}
+                    sizes="120px"
+                    unoptimized
+                  />
+                </div>
                 <div>
                   <h3 className={styles.serviceType}>Düğün Daveti</h3>
                   <div className={styles.serviceCapacity}>800 – 1.000 Davetli Kapasitesi</div>
                 </div>
                 <p className={styles.serviceText}>
-                  Geniş ziyafet masa düzeni, romantik pist aydınlatması, gelin-damat VIP hazırlık süiti ve
+                  Geniş ziyafet masa düzeni, romantik pist aydınlatması, sisli ilk dans ve
                   özenle hazırlanan zengin ikram menüleri ile hayatınızın en görkemli gecesi.
                 </p>
                 <div className={styles.serviceAction}>
@@ -182,15 +251,25 @@ export default function HomePage() {
                     Detaylı İncele
                   </Link>
                 </div>
-              </div>
+              </TiltCard>
 
-              <div className={styles.serviceStripe}>
+              <TiltCard className={styles.serviceStripe} maxTilt={2.5} scale={1.01} glare>
+                <div className={styles.serviceThumbWrap}>
+                  <Image
+                    src="/images/venue/kosk-sahne-mor-isik-gosterisi.webp"
+                    alt="Köşk Düğün Salonu Kına Gecesi Mor Işık Ambiyansı"
+                    fill
+                    className={styles.serviceThumb}
+                    sizes="120px"
+                    unoptimized
+                  />
+                </div>
                 <div>
                   <h3 className={styles.serviceType}>Kına Gecesi</h3>
                   <div className={styles.serviceCapacity}>400 – 800 Davetli Kapasitesi</div>
                 </div>
                 <p className={styles.serviceText}>
-                  Özel kına tahtı, sis ve ışık efektleri, nedime geçiş seremonisi ve kapalı salonda
+                  Özel kına tahtı, sis ve mistik mor ışık efektleri, nedime geçiş seremonisi ve kapalı salonda
                   kesintisiz kadınlar arası eğlence konsepti.
                 </p>
                 <div className={styles.serviceAction}>
@@ -198,31 +277,51 @@ export default function HomePage() {
                     Detaylı İncele
                   </Link>
                 </div>
-              </div>
+              </TiltCard>
 
-              <div className={styles.serviceStripe}>
+              <TiltCard className={styles.serviceStripe} maxTilt={2.5} scale={1.01} glare>
+                <div className={styles.serviceThumbWrap}>
+                  <Image
+                    src="/images/venue/kosk-nisan-soz-ozel-konsept-aynasi.webp"
+                    alt="Köşk Düğün Salonu Nişan ve Söz Özel Konsept Aynası"
+                    fill
+                    className={styles.serviceThumb}
+                    sizes="120px"
+                    unoptimized
+                  />
+                </div>
                 <div>
                   <h3 className={styles.serviceType}>Nişan & Söz Töreni</h3>
                   <div className={styles.serviceCapacity}>300 – 600 Davetli Kapasitesi</div>
                 </div>
                 <p className={styles.serviceText}>
                   Zarif aile merasimleri ve geniş katılımlı nişan kutlamaları için özel dekore edilmiş
-                  arka fon alanı ve lüks kokteyl oturma planı.
+                  barok ayna fon alanı ve lüks kokteyl oturma planı.
                 </p>
                 <div className={styles.serviceAction}>
                   <Link href="/hizmetler#nisan" className="btn btn-text">
                     Detaylı İncele
                   </Link>
                 </div>
-              </div>
+              </TiltCard>
 
-              <div className={styles.serviceStripe}>
+              <TiltCard className={styles.serviceStripe} maxTilt={2.5} scale={1.01} glare>
+                <div className={styles.serviceThumbWrap}>
+                  <Image
+                    src="/images/venue/kosk-dev-projeksiyon-ve-sahne-duzeni.webp"
+                    alt="Köşk Düğün Salonu Dev Projeksiyon ve Sahne Düzeni"
+                    fill
+                    className={styles.serviceThumb}
+                    sizes="120px"
+                    unoptimized
+                  />
+                </div>
                 <div>
                   <h3 className={styles.serviceType}>Kurumsal Gala & Kongre</h3>
                   <div className={styles.serviceCapacity}>500 – 1.200 Katılımcı</div>
                 </div>
                 <p className={styles.serviceText}>
-                  Polatlı kurum ve şirketleri için profesyonel ses, projeksiyon ve truss ışık sistemine
+                  Polatlı kurum ve şirketleri için kaliteli ses, dev projeksiyon ve sahne aydınlatmasına
                   sahip yemekli toplantı, lansman ve mezuniyet baloları.
                 </p>
                 <div className={styles.serviceAction}>
@@ -230,62 +329,220 @@ export default function HomePage() {
                     Detaylı İncele
                   </Link>
                 </div>
+              </TiltCard>
+            </div>
+          </div>
+        </section>
+
+        {/* ===================================================================
+            BÖLÜM 6: DAVET YOLCULUĞU — 4 ADIMDA KUSURSUZ GÜN (YENİ)
+            Düğün gününün akışını şeffaf ve güven veren bir zaman çizelgesiyle gösterir
+            =================================================================== */}
+        <section className="section-spacing" style={{ backgroundColor: 'var(--color-surface-subtle)' }} aria-label="Davet Yolculuğu ve Organizasyon Akışı">
+          <div className="container">
+            <div className="section-header">
+              <div className="section-header-inner">
+                <div className="editorial-indicator" />
+                <div className="section-title-wrap">
+                  <div className="section-category">Kusursuz Koordinasyon</div>
+                  <h2>Bir Davetin Başından Sonuna Kusursuz Akışı</h2>
+                  <p className="section-subtitle">
+                    En özel gecenizde hiçbir detayı tesadüfe bırakmıyoruz. Deneyimli ekibimizle planlanan standart adımlar:
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <div className={styles.timelineGrid}>
+              <TiltCard className={styles.timelineStepCard} maxTilt={4} glare>
+                <div className={styles.stepNumberBadge}>01</div>
+                <h3 className={styles.stepTitle}>Özel Hazırlık & Fuaye Karşılama</h3>
+                <p className={styles.stepDesc}>
+                  Çiftimiz kendilerine tahsis edilen özel odada dinlenip son hazırlıklarını yaparken, 
+                  davetlileriniz giriş fuayesinde güler yüzlü ekibimizce karşılanır.
+                </p>
+              </TiltCard>
+
+              <TiltCard className={styles.timelineStepCard} maxTilt={4} glare>
+                <div className={styles.stepNumberBadge}>02</div>
+                <h3 className={styles.stepTitle}>Gelin Yolu & Sisli İlk Dans</h3>
+                <p className={styles.stepDesc}>
+                  Işık ve müzik eşliğinde gelin yolundan salona giriş; ardından zemine yayılan sis bulutları 
+                  üzerinde romantik ilk dans koreografisi.
+                </p>
+              </TiltCard>
+
+              <TiltCard className={styles.timelineStepCard} maxTilt={4} glare>
+                <div className={styles.stepNumberBadge}>03</div>
+                <h3 className={styles.stepTitle}>Ziyafet & Eş Zamanlı Sıcak Servis</h3>
+                <p className={styles.stepDesc}>
+                  Usta şefler tarafından hazırlanan leziz menüler ve pasta ikramları, geniş servis 
+                  koridorları sayesinde tüm masalara aynı anda ve sıcak olarak ulaştırılır.
+                </p>
+              </TiltCard>
+
+              <TiltCard className={styles.timelineStepCard} maxTilt={4} glare>
+                <div className={styles.stepNumberBadge}>04</div>
+                <h3 className={styles.stepTitle}>Kolonsuz Pistte Coşkulu Eğlence</h3>
+                <p className={styles.stepDesc}>
+                  Salonda kolon bulunmadığı için tüm davetliler eğlenceyi rahatça takip eder; geniş 
+                  mermer pistte gecenin sonuna kadar doyasıya oynanır.
+                </p>
+              </TiltCard>
+            </div>
+          </div>
+        </section>
+
+        {/* ===================================================================
+            BÖLÜM 7: SEÇKİN FOTOĞRAF VİTRİNİ (YENİ ASİMETRİK GALERİ MOZAİK)
+            Salondan 4 gerçek seçkin kare ve galeriye geçiş köprüsü
+            =================================================================== */}
+        <section className="section-spacing" aria-label="Fotoğraf Vitrini">
+          <div className="container">
+            <div className={styles.galleryMosaicHeader}>
+              <div>
+                <div className="section-category">Fotoğraf Vitrini</div>
+                <h2 style={{ fontFamily: 'var(--font-serif)', fontSize: 'clamp(2rem, 3.2vw, 2.6rem)', color: 'var(--color-anthracite)', fontWeight: 450 }}>
+                  Salondan Gerçek Karelerle Tanışın
+                </h2>
+              </div>
+              <Link href="/galeri" className="btn btn-outline">
+                <span>Fotoğraf Galerisinin Tamamı (20+ Fotoğraf)</span>
+                <ArrowRight size={16} />
+              </Link>
+            </div>
+
+            <div className={styles.mosaicGrid}>
+              <div className={`${styles.mosaicItem} ${styles.mosaicLarge}`}>
+                <Image
+                  src="/images/venue/kosk-gelin-damat-nikah-tahti-masasi.webp"
+                  alt="Köşk Düğün Salonu Nikah Kürsüsü ve Özel Taht Alanı"
+                  fill
+                  className={styles.mosaicImg}
+                  sizes="(max-width: 1024px) 100vw, 60vw"
+                  unoptimized
+                />
+                <div className={styles.mosaicBadge}>Nikah & Sahne Düzeni</div>
+              </div>
+
+              <div className={styles.mosaicItem}>
+                <Image
+                  src="/images/venue/kosk-ziyafet-masalari-ve-orkestra-gorunumu.webp"
+                  alt="Köşk Düğün Salonu Ziyafet Masaları ve Çiçek Vazo Düzeni"
+                  fill
+                  className={styles.mosaicImg}
+                  sizes="(max-width: 1024px) 100vw, 40vw"
+                  unoptimized
+                />
+                <div className={styles.mosaicBadge}>Ziyafet Masaları</div>
+              </div>
+
+              <div className={styles.mosaicItem}>
+                <Image
+                  src="/images/venue/kosk-orkestra-sahnesi-ve-dans-pisti.webp"
+                  alt="Köşk Düğün Salonu Canlı Orkestra Sahnesi"
+                  fill
+                  className={styles.mosaicImg}
+                  sizes="(max-width: 1024px) 100vw, 40vw"
+                  unoptimized
+                />
+                <div className={styles.mosaicBadge}>Canlı Orkestra & Sahne</div>
+              </div>
+
+              <div className={`${styles.mosaicItem} ${styles.mosaicWide}`}>
+                <Image
+                  src="/images/venue/kosk-dans-pisti-spot-isik-sov.webp"
+                  alt="Köşk Düğün Salonu Dans Pisti Takip Spotu"
+                  fill
+                  className={styles.mosaicImg}
+                  sizes="(max-width: 1024px) 100vw, 60vw"
+                  unoptimized
+                />
+                <div className={styles.mosaicBadge}>Geniş Mermer Dans Pisti</div>
               </div>
             </div>
           </div>
         </section>
 
-        {/* 3. Dergi Alıntısı Stili Referans / Yorum & Google Entegrasyonu */}
-        <section className="section-spacing" aria-label="Misafir Deneyimi ve Google Yorumları">
+        {/* ===================================================================
+            BÖLÜM 8: SALON OLANAKLARI & GÜVENCELER (YENİ)
+            Otopark, Jeneratör, Engelsiz Erişim, Havalandırma
+            =================================================================== */}
+        <section className="section-spacing" style={{ backgroundColor: 'var(--color-surface-subtle)' }} aria-label="Salon Olanakları">
           <div className="container">
-            <div className={styles.editorialQuote}>
-              <div className={styles.quoteGoogleHeader}>
-                <div className={styles.googleRatingBadge}>
-                  <GoogleIcon size={18} />
-                  <span>Google Puanı: <strong>4.9 / 5.0</strong></span>
-                  <div className={styles.googleStars} aria-label="5 yıldız">
-                    {[...Array(5)].map((_, i) => (
-                      <Star key={i} size={13} fill="#FBBC05" color="#FBBC05" />
-                    ))}
-                  </div>
+            <div className={styles.amenitiesStrip}>
+              <div className={styles.amenityCard}>
+                <div className={styles.amenityIcon}>
+                  <Car size={24} />
                 </div>
-                <a
-                  href={GOOGLE_BUSINESS_URL}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className={styles.googleLinkBtn}
-                  id="home-quote-google-link"
-                >
-                  <span>Google Doğrulanmış Profil</span>
-                  <ExternalLink size={13} />
-                </a>
+                <h4>250 Araçlık Otopark</h4>
+                <p>Salona bitişik geniş otopark sayesinde misafirleriniz araç park sorunu yaşamaz.</p>
               </div>
 
+              <div className={styles.amenityCard}>
+                <div className={styles.amenityIcon}>
+                  <Zap size={24} />
+                </div>
+                <h4>Kesintisiz Jeneratör</h4>
+                <p>Olası elektrik kesintilerinde hemen devreye giren otomatik jeneratör desteği.</p>
+              </div>
 
+              <div className={styles.amenityCard}>
+                <div className={styles.amenityIcon}>
+                  <Accessibility size={24} />
+                </div>
+                <h4>%100 Engelsiz Erişim</h4>
+                <p>Tekerlekli sandalye ve bebek arabaları için düz giriş, rampa ve kolay ulaşım imkânı.</p>
+              </div>
 
+              <div className={styles.amenityCard}>
+                <div className={styles.amenityIcon}>
+                  <Wind size={24} />
+                </div>
+                <h4>Ferah Havalandırma</h4>
+                <p>Yüksek tavan ve düzenli havalandırma sistemiyle kalabalıkta bile salon havası taze kalır.</p>
+              </div>
+            </div>
+          </div>
+        </section>
 
-              <div className={styles.quoteFootActions}>
-                <Link href="/referanslar" className="btn-text" style={{ fontSize: '0.88rem' }}>
-                  <span>Tüm Google Yorumlarını İnceleyin →</span>
+        {/* ===================================================================
+            BÖLÜM 9: ZİYARET VE KAHVEYE DAVET ÇAĞRISI (CTA INVITATION BANNER)
+            BookingForm kaldırıldığı için onun yerine zarif, konuksever ve yüksek dönüşümlü davet alanı
+            =================================================================== */}
+        <section className="section-spacing" aria-label="Salonu Ziyaret Daveti">
+          <div className="container">
+            <div className={styles.invitationCard}>
+              <div className={styles.invitationBadge}>
+                <Sparkles size={14} style={{ color: 'var(--color-champagne)' }} />
+                <span>KEŞİF & TANIŞMA</span>
+              </div>
+              <h2 className={styles.invitationTitle}>
+                Salonu Kendi Gözlerinizle Görmeye ve Kahvemizi İçmeye Davetlisiniz
+              </h2>
+              <p className={styles.invitationDesc}>
+                Fotoğraflar fikir verir; ancak 1.200 m² kolonsuz salonun ferahlığını, yüksek tavan atmosferini 
+                ve masaların yerleşimini yerinde görmek bambaşka bir histir. Polatlı merkezindeki salonumuzu 
+                haftanın her günü ziyaret edebilir, tarih takvimini organizasyon şefimizle birlikte inceleyebilirsiniz.
+              </p>
+
+              <div className={styles.invitationActions}>
+                <Link href="/iletisim" className="btn btn-primary" id="home-invitation-randevu-btn">
+                  <CalendarCheck size={18} />
+                  <span>İletişime Geçin & Randevu Alın</span>
                 </Link>
                 <a
-                  href={GOOGLE_BUSINESS_URL}
+                  href="https://wa.me/903126230000?text=Merhaba,%20K%C3%B6%C5%9Fk%20D%C3%BC%C4%9F%C3%BCn%20Salonu%20i%C3%A7in%20bilgi%20ve%20ziyaret%20randevusu%20almak%20istiyorum."
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="btn-text"
-                  style={{ fontSize: '0.88rem', color: '#1A73E8' }}
+                  className="btn btn-outline"
+                  id="home-invitation-whatsapp-btn"
                 >
-                  <span>Google Haritalar'da Değerlendirin ↗</span>
+                  <Phone size={17} />
+                  <span>WhatsApp ile Hızlı Bilgi Alın</span>
                 </a>
               </div>
             </div>
-          </div>
-        </section>
-
-        {/* 4. Hızlı Rezervasyon & Teklif Formu */}
-        <section id="randevu" className="section-spacing" style={{ backgroundColor: '#FFFFFF', borderTop: '1px solid var(--color-stone)', scrollMarginTop: '90px' }} aria-label="Keşif Formu">
-          <div className="container" style={{ maxWidth: '860px' }}>
-            <BookingForm />
           </div>
         </section>
       </div>

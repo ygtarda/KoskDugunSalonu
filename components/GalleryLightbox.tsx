@@ -1,8 +1,8 @@
 'use client';
 
 import React, { useState, useEffect, useCallback } from 'react';
+import Image from 'next/image';
 import { X, ChevronLeft, ChevronRight, ArrowUpRight } from 'lucide-react';
-import ImagePlaceholder from './ImagePlaceholder';
 import styles from './GalleryLightbox.module.css';
 
 export interface GalleryItem {
@@ -11,6 +11,8 @@ export interface GalleryItem {
   categoryName: string;
   title: string;
   description: string;
+  src: string;
+  fallbackSrc?: string;
   dimensions?: string;
   aspectRatio?: '16/9' | '4/3' | '3/2' | '1/1' | '21/9';
 }
@@ -20,11 +22,12 @@ interface GalleryLightboxProps {
 }
 
 const categories = [
-  { id: 'all', label: 'Tüm Kareler' },
+  { id: 'all', label: 'Tüm Kareler (25 Fotoğraf)' },
   { id: 'salon', label: 'Kapalı Salon & Mimari' },
-  { id: 'sahne', label: 'Sahne & Akustik Işık' },
-  { id: 'masa', label: 'Masa Düzeni & Lobi' },
-  { id: 'ozel', label: 'Özel Alanlar (VIP Süit)' },
+  { id: 'sahne', label: 'Sahne & Işık Şovları' },
+  { id: 'dans', label: 'İlk Dans & Özel Anlar' },
+  { id: 'ozel', label: 'Nişan, Nikah & Karşılama' },
+  { id: 'masa', label: 'Masa Düzeni & Detaylar' },
 ];
 
 export default function GalleryLightbox({ items }: GalleryLightboxProps) {
@@ -107,17 +110,21 @@ export default function GalleryLightbox({ items }: GalleryLightboxProps) {
             onKeyDown={(e) => {
               if (e.key === 'Enter' || e.key === ' ') handleOpen(idx);
             }}
-            aria-label={`${item.title} detaylarını görüntüle`}
+            aria-label={`${item.title} detaylarını tam boy görüntüle`}
           >
-            {/* 1. Strict 16:9 Image Container */}
+            {/* 1. Strict 16:9 Image Container with Real Photograph */}
             <div className={styles.cardMediaWrapper}>
-              <ImagePlaceholder
-                title={item.title}
-                dimensions={item.dimensions || '1600 × 900 · 16:9 Mimari Kesit'}
-                aspectRatio="16/9"
-                category={item.categoryName}
-                style={{ height: '100%', width: '100%', border: 'none' }}
+              <Image
+                src={item.src}
+                alt={item.title}
+                fill
+                sizes="(max-width: 680px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                className={styles.cardImage}
+                unoptimized
               />
+              <div className={styles.cardBadgeOverlay}>
+                <span>{item.categoryName}</span>
+              </div>
             </div>
 
             {/* 2. Strict Equal Height & Vertically Aligned Footer */}
@@ -130,9 +137,9 @@ export default function GalleryLightbox({ items }: GalleryLightboxProps) {
 
               {/* 3. Strict Bottom Line & Action Indicator */}
               <div className={styles.cardBottomBar}>
-                <span className={styles.cardDimensionBadge}>16:9 Format</span>
+                <span className={styles.cardDimensionBadge}>Yüksek Çözünürlük</span>
                 <span className={styles.cardActionLink}>
-                  <span>İncele</span>
+                  <span>Büyüt</span>
                   <ArrowUpRight size={14} />
                 </span>
               </div>
@@ -164,12 +171,18 @@ export default function GalleryLightbox({ items }: GalleryLightboxProps) {
 
             {/* Main Content */}
             <div className={styles.lightboxBody}>
-              <ImagePlaceholder
-                title={currentItem.title}
-                dimensions={currentItem.dimensions || '1600 × 900 · 16:9 Mimari Kesit'}
-                aspectRatio="16/9"
-                category={currentItem.categoryName}
-              />
+              <div className={styles.lightboxMediaWrapper}>
+                <Image
+                  src={currentItem.src}
+                  alt={currentItem.title}
+                  width={2560}
+                  height={1707}
+                  sizes="(max-width: 1024px) 95vw, 1200px"
+                  className={styles.lightboxImage}
+                  priority
+                  unoptimized
+                />
+              </div>
 
               <div className={styles.lightboxMeta}>
                 <span className={styles.captionCategory}>{currentItem.categoryName}</span>

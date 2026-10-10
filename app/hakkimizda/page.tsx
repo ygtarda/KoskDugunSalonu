@@ -1,7 +1,8 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
+import Image from 'next/image';
 import { Award, HeartHandshake, ShieldCheck, Clock, CalendarCheck } from 'lucide-react';
-import ImagePlaceholder from '@/components/ImagePlaceholder';
+import TiltCard from '@/components/TiltCard';
 
 export const metadata: Metadata = {
   title: 'Hakkımızda | Polatlı Köşk Düğün Salonu Hikayesi ve Felsefesi',
@@ -41,12 +42,15 @@ export default function HakkimizdaPage() {
             alignItems: 'center',
           }}
         >
-          <div>
-            <ImagePlaceholder
-              title="Giriş Fuayesi ve Karşılama Alanı"
-              dimensions="1600 × 1200 · 4:3 Mimari Kesit"
-              aspectRatio="4/3"
-              category="Misafir Karşılama ve Lobi Alanı"
+          <div style={{ position: 'relative', width: '100%', aspectRatio: '4/3', borderRadius: 'var(--radius-xs)', overflow: 'hidden', boxShadow: '0 12px 32px rgba(44, 40, 38, 0.08)', border: '1px solid var(--color-stone)' }}>
+            <Image
+              src="/images/venue/kosk-karsilama-panosu-sovale-dekoru.webp"
+              alt="Köşk Düğün Salonu Giriş Fuayesi ve Karşılama Şövale Dekoru"
+              fill
+              style={{ objectFit: 'cover' }}
+              sizes="(max-width: 1024px) 100vw, 50vw"
+              priority
+              unoptimized
             />
           </div>
 
@@ -63,10 +67,10 @@ export default function HakkimizdaPage() {
               yarattığı uğultu olduğunu fark ettik.
             </p>
             <p style={{ color: 'var(--color-text-secondary)', marginBottom: '1.5rem', lineHeight: '1.75' }}>
-              Bu eksikliği gidermek için yola çıktık: 1.200 m² zemin üzerine inşa edilen salonumuzda 
-              6.5 metrelik tavan yüksekliği, endüstriyel VRF taze hava santralleri ve özel akustik paneller 
-              kullandık. Böylece 1.000 kişilik tam kapasiteli davetlerde bile ilk andan gecenin sonuna dek 
-              ferah, dinlendirici ve kusursuz bir atmosfer sağladık.
+              Bu eksikliği gidermek için yola çıktık: 1.200 m² kolonsuz ve geniş salon yapımız, 
+              6.5 metrelik yüksek tavanımız ve düzenli havalandırma sistemimizle tüm davetlilere ferah 
+              bir ortam sunuyoruz. Salonda kolon bulunmaması ve geniş dans pistimiz sayesinde 1.000 kişilik 
+              davetlerde bile herkes eğlenceyi rahatça takip edebilir.
             </p>
             <div style={{ display: 'flex', gap: '2.5rem', borderTop: '1px solid var(--color-stone)', paddingTop: '1.5rem' }}>
               <div>
@@ -115,7 +119,7 @@ export default function HakkimizdaPage() {
               gap: '1.75rem',
             }}
           >
-            <div className="arch-card">
+            <TiltCard className="arch-card" maxTilt={5} glare>
               <div style={{ color: 'var(--color-champagne)', marginBottom: '1.25rem' }}>
                 <Clock size={28} />
               </div>
@@ -126,9 +130,9 @@ export default function HakkimizdaPage() {
                 Karşılama kokteylinden nikâh seremonisine, ilk danstan pasta kesimine kadar tüm akış 
                 deneyimli organizasyon şefimiz tarafından koordine edilir.
               </p>
-            </div>
+            </TiltCard>
 
-            <div className="arch-card">
+            <TiltCard className="arch-card" maxTilt={5} glare>
               <div style={{ color: 'var(--color-champagne)', marginBottom: '1.25rem' }}>
                 <ShieldCheck size={28} />
               </div>
@@ -136,12 +140,12 @@ export default function HakkimizdaPage() {
                 Sıfır Aksaklık Garantisi
               </h3>
               <p style={{ fontSize: '0.94rem', color: 'var(--color-text-secondary)', lineHeight: '1.65' }}>
-                Elektrik kesintilerine karşı yedekli sanayi jeneratörü, yangın ve havalandırma otomasyonu 
+                Elektrik kesintilerine karşı tam otomatik kesintisiz jeneratör desteği ve düzenli havalandırma 
                 ile geceniz en ufak bir aksamaya uğramaz.
               </p>
-            </div>
+            </TiltCard>
 
-            <div className="arch-card">
+            <TiltCard className="arch-card" maxTilt={5} glare>
               <div style={{ color: 'var(--color-champagne)', marginBottom: '1.25rem' }}>
                 <HeartHandshake size={28} />
               </div>
@@ -152,9 +156,9 @@ export default function HakkimizdaPage() {
                 Sözleşmede ne konuştuysak düğün günü harfiyen onu uygularız. Gizli maliyetler veya sürpriz 
                 ek ücretler Köşk prensiplerinde asla yer almaz.
               </p>
-            </div>
+            </TiltCard>
 
-            <div className="arch-card">
+            <TiltCard className="arch-card" maxTilt={5} glare>
               <div style={{ color: 'var(--color-champagne)', marginBottom: '1.25rem' }}>
                 <Award size={28} />
               </div>
@@ -165,7 +169,7 @@ export default function HakkimizdaPage() {
                 İkram edilen kuru pasta, yaş pasta ve yemekli menülerimizin her biri günlük taze üretimdir. 
                 Sıcak servisler aynı anda ve nezaketle masalara ulaştırılır.
               </p>
-            </div>
+            </TiltCard>
           </div>
         </div>
       </section>

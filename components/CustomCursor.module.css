@@ -1,0 +1,90 @@
+.cursorContainer {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  pointer-events: none;
+  z-index: 9999999;
+  overflow: hidden;
+}
+
+/* Primary Champagne Gold Pointer Dot */
+.cursorDot {
+  position: absolute;
+  top: -4px;
+  left: -4px;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #B8956E;
+  box-shadow: 0 0 8px rgba(184, 149, 110, 0.85), 0 0 2px #FFFFFF;
+  pointer-events: none;
+  opacity: 0;
+  will-change: transform, opacity;
+  transition: opacity 0.2s ease;
+}
+
+/* Trailing Luxury Halo Ring */
+.cursorRing {
+  position: absolute;
+  top: -13px;
+  left: -13px;
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  border: 1.2px solid rgba(184, 149, 110, 0.55);
+  background: rgba(212, 181, 158, 0.08);
+  box-shadow: 0 0 10px rgba(184, 149, 110, 0.22);
+  pointer-events: none;
+  opacity: 0;
+  will-change: transform, opacity;
+  transition: border-color 0.25s ease, background-color 0.25s ease, box-shadow 0.25s ease;
+}
+
+.ringHover {
+  border-color: #B8956E !important;
+  background-color: rgba(212, 181, 158, 0.14) !important;
+  box-shadow: 0 0 14px rgba(184, 149, 110, 0.35) !important;
+}
+
+/* Stardust Trail Nodes */
+.trailNode {
+  position: absolute;
+  border-radius: 50%;
+  background: #D4B59E;
+  pointer-events: none;
+  opacity: 0;
+  will-change: transform, opacity;
+}
+
+.trailNode1 {
+  top: -3px;
+  left: -3px;
+  width: 6px;
+  height: 6px;
+  box-shadow: 0 0 8px rgba(184, 149, 110, 0.55);
+}
+
+.trailNode2 {
+  top: -2.5px;
+  left: -2.5px;
+  width: 5px;
+  height: 5px;
+  box-shadow: 0 0 6px rgba(184, 149, 110, 0.4);
+}
+
+.trailNode3 {
+  top: -2px;
+  left: -2px;
+  width: 4px;
+  height: 4px;
+  box-shadow: 0 0 5px rgba(184, 149, 110, 0.3);
+}
+
+/* Hide on Touch Screens / Coarse Pointers */
+@media (hover: none) or (pointer: coarse) {
+  .cursorContainer {
+    display: none !important;
+  }
+}

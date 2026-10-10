@@ -3,6 +3,8 @@ import './globals.css';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import FloatingContactBar from '@/components/FloatingContactBar';
+import ScrollRevealProvider from '@/components/ScrollRevealProvider';
+import CustomCursor from '@/components/CustomCursor';
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://koskdugunsalonu.com'),
@@ -11,14 +13,14 @@ export const metadata: Metadata = {
     template: '%s | Köşk Düğün Salonu Polatlı',
   },
   description:
-    'Polatlı Ankara’da 1000 kişilik ferah iç mekânı, yüksek tavanı, modern iklimlendirmesi ve son teknoloji sahne akustiğiyle Köşk Düğün Salonu kapalı balo konseptinde hizmetinizde.',
+    'Polatlı Ankara’da 1000 kişilik kolonsuz ferah salonu, yüksek tavanı, havadar ortamı ve geniş dans pistiyle Köşk Düğün Salonu hizmetinizde.',
   keywords: [
     'Polatlı düğün salonu',
     'Ankara Polatlı düğün salonu',
     'Polatlı 1000 kişilik düğün salonu',
     'Polatlı kına salonu',
     'Polatlı nişan mekanları',
-    'Polatlı kapalı balo salonu',
+    'Polatlı kapalı düğün salonu',
     'Köşk düğün salonu Polatlı',
   ],
   authors: [{ name: 'Köşk Düğün Salonu' }],
@@ -28,9 +30,9 @@ export const metadata: Metadata = {
     locale: 'tr_TR',
     url: 'https://koskdugunsalonu.com',
     siteName: 'Köşk Düğün Salonu Polatlı',
-    title: 'Köşk Düğün Salonu Polatlı | 1000 Kişilik Lüks Kapalı Balo Salonu',
+    title: 'Köşk Düğün Salonu Polatlı | 1000 Kişilik Kapalı Düğün Salonu',
     description:
-      'Polatlı’nın en prestijli kapalı düğün salonu. 1000 kişilik ferah salon, 4 mevsim iklimlendirme ve profesyonel organizasyon ekibi.',
+      'Polatlı’nın en geniş kapalı düğün salonu. 1000 kişilik kolonsuz ferah salon, yüksek tavan ve profesyonel organizasyon ekibi.',
     images: [
       {
         url: '/images/polatli-kapali-dugun-salonu-ana-salon.jpg',
@@ -74,7 +76,7 @@ const localBusinessSchema = {
   name: 'Köşk Düğün Salonu Polatlı',
   alternateName: 'Köşk Davet ve Balo Salonu',
   description:
-    'Ankara Polatlı’da 800-1000 kişi kapasiteli, 6 metre yüksek tavanlı, tam donanımlı kapalı düğün, nişan ve balo salonu.',
+    'Ankara Polatlı’da 800-1000 kişi kapasiteli, kolonsuz, yüksek tavanlı, geniş dans pistine sahip tam donanımlı kapalı düğün ve davet salonu.',
   url: 'https://koskdugunsalonu.com',
   telephone: '+903126230000',
   sameAs: ['https://share.google/Ut9Fd72yIZ5c9Tg4P'],
@@ -124,32 +126,32 @@ const localBusinessSchema = {
   amenityFeature: [
     {
       '@type': 'LocationFeatureSpecification',
-      name: 'Tamamen Kapalı Balo Salonu',
+      name: 'Kolonsuz Geniş Kapalı Salon',
       value: true,
     },
     {
       '@type': 'LocationFeatureSpecification',
-      name: 'Merkezi VRF Havalandırma ve %100 Taze Hava',
+      name: 'Yüksek Tavan ve Düzenli Havalandırma',
       value: true,
     },
     {
       '@type': 'LocationFeatureSpecification',
-      name: 'Özel Akustik Tavan ve Truss Işık Sistemi',
+      name: 'Geniş Dans Pisti ve Sahne Işıklandırması',
       value: true,
     },
     {
       '@type': 'LocationFeatureSpecification',
-      name: 'Gelin ve Damat VIP Hazırlık Süiti',
+      name: 'Gelin ve Damat Özel Hazırlık Odası',
       value: true,
     },
     {
       '@type': 'LocationFeatureSpecification',
-      name: 'Geniş Kapalı Misafir Otoparkı',
+      name: 'Geniş Misafir Otoparkı',
       value: true,
     },
     {
       '@type': 'LocationFeatureSpecification',
-      name: 'Kesintisiz Sanayi Tipi Jeneratör',
+      name: 'Kesintisiz Jeneratör Güvencesi',
       value: true,
     },
   ],
@@ -173,6 +175,8 @@ export default function RootLayout({
         <a href="#main-content" className="sr-only-skip">
           İçeriğe Atla
         </a>
+        <CustomCursor />
+        <ScrollRevealProvider />
         <Header />
         <main id="main-content">{children}</main>
         <Footer />

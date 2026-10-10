@@ -1,0 +1,37 @@
+.tiltWrapper {
+  position: relative;
+  transform-style: preserve-3d;
+  will-change: transform;
+  overflow: hidden;
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.4s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.4s ease;
+}
+
+.tiltWrapper.isHovered {
+  box-shadow: 0 16px 38px rgba(44, 40, 38, 0.12), 0 0 24px rgba(212, 181, 158, 0.22);
+  border-color: var(--color-powder, #D4B59E) !important;
+}
+
+.tiltGlare {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  pointer-events: none;
+  z-index: 10;
+  opacity: 0;
+  mix-blend-mode: overlay;
+  border-radius: inherit;
+  transition: opacity 0.3s ease;
+}
+
+/* Reduced motion or touch screen fallback */
+@media (prefers-reduced-motion: reduce) {
+  .tiltWrapper {
+    transform: none !important;
+    transition: none !important;
+  }
+  .tiltGlare {
+    display: none !important;
+  }
+}

@@ -47,7 +47,7 @@ export default function HeroCalligraphy({ onScrollClick }: HeroCalligraphyProps)
   };
 
   const handleScrollToBooking = () => {
-    const target = document.getElementById('randevu');
+    const target = document.getElementById('cta-banner') || document.getElementById('randevu');
     if (target) {
       target.scrollIntoView({ behavior: 'smooth', block: 'start' });
     } else {
@@ -203,7 +203,7 @@ export default function HeroCalligraphy({ onScrollClick }: HeroCalligraphyProps)
           <span>ANKARA</span>
         </div>
         <p className={styles.tagline}>
-          1.000 Kişilik Kapalı Balo Mimarisi · Dört Mevsim Kesintisiz İhtişam
+          1.000 Kişilik Kolonsuz Kapalı Salon · Ferah ve Havadar Davetler
         </p>
       </div>
 

@@ -18,8 +18,8 @@ export default function Footer() {
               </div>
               <h2 className={styles.ctaTitle}>1000 Kişilik Kapalı Balo Salonumuzda Yerinizi Ayırtın</h2>
               <p className={styles.ctaDesc}>
-                Polatlı şehir merkezindeki yüksek tavanlı, ferah iç mekânımız ve dört mevsim iklimlendirme 
-                konforumuzla hayalinizdeki daveti birlikte planlayalım.
+                Polatlı şehir merkezindeki kolonsuz, yüksek tavanlı ferah salonumuz ve kolay ulaşım 
+                imkânımızla hayalinizdeki daveti birlikte planlayalım.
               </p>
             </div>
             <div className={styles.ctaActions}>
@@ -54,17 +54,17 @@ export default function Footer() {
                 </div>
               </div>
               <p className={styles.brandAbout}>
-                Polatlı'nın en geniş kapalı balo salonu: 6.5 metre yüksek tavan, %100 taze hava iklimlendirmesi, 
-                özel akustik ses mimarisi ve 1000 kişilik tam donanımlı kapalı salon altyapısı.
+                Polatlı'nın en geniş kapalı düğün salonu: Kolonsuz ferah mimari, yüksek tavan, 
+                geniş dans pisti ve 1.000 kişilik rahat oturma düzeni.
               </p>
               <div className={styles.highlightsBadge}>
                 <div className={styles.badgeItem}>
                   <ShieldCheck size={16} className={styles.badgeIcon} />
-                  <span>Kesintisiz Sanayi Tipi Jeneratör</span>
+                  <span>Kesintisiz Jeneratör Güvencesi</span>
                 </div>
                 <div className={styles.badgeItem}>
                   <Sparkles size={16} className={styles.badgeIcon} />
-                  <span>Dört Mevsim VRF İklimlendirme</span>
+                  <span>Dört Mevsim Ferah Havalandırma</span>
                 </div>
               </div>
             </div>

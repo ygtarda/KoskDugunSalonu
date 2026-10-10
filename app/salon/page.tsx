@@ -12,60 +12,61 @@ import {
   Accessibility, 
   CalendarCheck
 } from 'lucide-react';
-import ImagePlaceholder from '@/components/ImagePlaceholder';
+import Image from 'next/image';
+import TiltCard from '@/components/TiltCard';
 import styles from './salon.module.css';
 
 export const metadata: Metadata = {
-  title: 'Salon & Olanaklar | Polatlı 1000 Kişilik Kapalı Düğün Salonu',
+  title: 'Salon & Olanaklar | Polatlı 1.000 Kişilik Köşk Düğün Salonu',
   description:
-    'Polatlı’da 1000 kişilik sütunsuz kapalı balo salonu, 6.5 metre tavan yüksekliği, 4 mevsim VRF iklimlendirme ve profesyonel sahne akustiği teknik detayları.',
+    'Polatlı’da 1.000 kişilik kolonsuz ferah salon, yüksek tavan, havadar ortam, geniş dans pisti ve kolay otopark imkanıyla Köşk Düğün Salonu.',
 };
 
 const technicalSpecs = [
   {
     icon: <Users size={24} />,
-    title: '800 – 1.000 Kişilik Banket Kapasitesi',
-    desc: 'Yuvarlak ziyafet masalarıyla 1.000 konuk, kokteyl düzeninde 1.200 konuğa kadar ferah ve rahat ağırlama kapasitesi.',
+    title: '800 – 1.000 Kişilik Kapasite',
+    desc: 'Yuvarlak masalarla kalabalık ailelerin ve tüm davetlilerin ferahça oturabileceği geniş ağırlama kapasitesi.',
   },
   {
     icon: <Maximize2 size={24} />,
-    title: '1.200 m² Yekpare Kapalı Alan',
-    desc: 'Merkezi sütun engeli bulunmayan, sahne ve dans pistinin her açıdan kusursuz görünmesini sağlayan açık görüş mimarisi.',
+    title: 'Kolonsuz Geniş Salon',
+    desc: 'Salonda görüşü kapatan kolon bulunmaz; sahne, nikah masası ve dans pisti her noktadan rahatça görünür.',
   },
   {
     icon: <ArrowUp size={24} />,
-    title: '6.5 Metre Akustik Tavan Yüksekliği',
-    desc: 'Basıklık hissini tamamen yok eden, kristal avizelerin zarafetini yansıtan ferah dikey hacim.',
+    title: 'Yüksek Tavan Ferahlığı',
+    desc: 'Yüksek tavanlı yapısı sayesinde basıklık hissi oluşturmaz; ferah ve aydınlık bir ortam sunar.',
   },
   {
     icon: <Wind size={24} />,
-    title: 'VRF İklimlendirme & %100 Taze Hava',
-    desc: 'Dış hava koşullarına bağlı kalmaksızın salon havasını saatte defalarca yenileyen, oksijen seviyesini koruyan çift filtreli havalandırma.',
+    title: 'Düzenli Havalandırma',
+    desc: 'En kalabalık davetlerde dahi içerideki havanın temiz ve ferah kalmasını sağlayan düzenli havalandırma.',
   },
   {
     icon: <Volume2 size={24} />,
-    title: 'Line-Array Ses & Truss Işık Altyapısı',
-    desc: 'Yankı önleyici akustik tavan panelleri, bilgisayar kontrollü hareketli robot ışıklar ve davetlileri yormayan dengeli ses dağılımı.',
+    title: 'Kaliteli Ses ve Sahne Işıkları',
+    desc: 'Davetlileri yormayan dengeli ses sistemi ve düğün coşkusunu artıran hareketli sahne aydınlatması.',
   },
   {
     icon: <Heart size={24} />,
-    title: '2 Bağımsız VIP Gelin & Damat Süiti',
-    desc: 'Özel banyosu, makyaj aynaları, ikram alanı ve dinlenme koltuklarıyla tören öncesi çifte tam mahremiyet sunan lüks odalar.',
+    title: 'Gelin & Damat Hazırlık Odası',
+    desc: 'Tören öncesi rahatça dinlenebileceğiniz, makyaj aynası ve oturma alanı bulunan özel hazırlık odası.',
   },
   {
     icon: <Car size={24} />,
-    title: '250 Araçlık Özel Otopark Alanı',
-    desc: 'Şehir merkezi yoğunluğuna takılmadan misafirlerinizin araçlarını güvenle park edebileceği geniş otopark alanı.',
+    title: 'Geniş Otopark Alanı',
+    desc: 'Misafirlerinizin araçlarını park etmekte zorlanmayacağı, salona bitişik geniş otopark imkanı.',
   },
   {
     icon: <Zap size={24} />,
-    title: '400 kVA Kesintisiz Otomatik Jeneratör',
-    desc: 'Şebeke elektrik kesintisinde 4 saniyede devreye giren tam güç sanayi jeneratörü ile eğlenceniz tek bir saniye dahi aksamaz.',
+    title: 'Kesintisiz Jeneratör Güvencesi',
+    desc: 'Olası elektrik kesintilerinde hemen devreye giren jeneratör desteğiyle eğlenceniz kesintisiz devam eder.',
   },
   {
     icon: <Accessibility size={24} />,
-    title: '%100 Engelsiz ve Asansörlü Erişim',
-    desc: 'Tekerlekli sandalye, bebek arabası ve yaşlı misafirlerimizin salona konforla ulaşabilmesi için geniş rampa ve asansör dizaynı.',
+    title: 'Kolay ve Engelsiz Erişim',
+    desc: 'Tekerlekli sandalye, bebek arabası ve yaşlı misafirlerimizin salona rahatça ulaşabilmesi için düz giriş ve rampa imkanı.',
   },
 ];
 
@@ -76,25 +77,34 @@ export default function SalonPage() {
       <section className={styles.pageHero}>
         <div className="container">
           <div className={styles.heroTextWrapper}>
-            <div className={styles.pagePreTitle}>Mimari ve Teknik Standartlar</div>
-            <h1 className={styles.pageTitle}>Polatlı’nın En Donanımlı Kapalı Balo Salonu</h1>
+            <div className={styles.pagePreTitle}>Salonumuzun Özellikleri</div>
+            <h1 className={styles.pageTitle}>Geniş ve Ferah Salonumuzda Rahat Davetler</h1>
             <p className={styles.pageLead}>
-              Düğün ve büyük davetlerde hava koşulu riski yoktur. 1.000 kişilik konuk ağırlamalarında 
-              hava sirkülasyonundan ses akustiğine kadar her teknik detayı profesyonel balo salonu 
-              standartlarında projelendirdik.
+              Düğün ve büyük davetleriniz için ferah bir ortam sunuyoruz. 1.000 kişilik kapasitesi, 
+              kolonsuz ferah yapısı, yüksek tavanı ve kolay ulaşılabilir konumuyla tüm misafirlerinize 
+              konforlu bir gece hazırladık.
             </p>
           </div>
         </div>
       </section>
 
-      {/* Visual Showcase: Architectural Blueprint Placeholder */}
+      {/* Visual Showcase: Architectural Real Photography */}
       <section className="container" style={{ marginBottom: '4rem' }}>
-        <ImagePlaceholder
-          title="Kapalı Balo Salonu İç Mimari Planı"
-          dimensions="1920 × 1080 · 16:9 Mimari Kesit"
-          aspectRatio="16/9"
-          category="Tamamen Kapalı Salon · 4 Mevsim İklimlendirme"
-        />
+        <div className={styles.showcaseMedia}>
+          <Image
+            src="/images/venue/kosk-ana-balo-salonu-genel-perspektif.webp"
+            alt="Köşk Düğün Salonu 1.000 Kişilik Kapalı Balo Salonu Panoramik Görünüm"
+            fill
+            className={styles.showcaseImg}
+            sizes="100vw"
+            priority
+            unoptimized
+          />
+          <div className={styles.showcaseCaption}>
+            <span className={styles.captionTitle}>1.000 Kişilik Kolonsuz Salon & Geniş Dans Pisti</span>
+            <span className={styles.captionBadge}>Ferah Oturma Düzeni · Düzenli Havalandırma</span>
+          </div>
+        </div>
       </section>
 
       {/* Technical Specifications Grid */}
@@ -104,10 +114,10 @@ export default function SalonPage() {
             <div className="section-header-inner">
               <div className="editorial-indicator" />
               <div className="section-title-wrap">
-                <div className="section-category">Teknik Kapasite</div>
-                <h2>Teknik Altyapı ve Konfor Olanakları</h2>
+                <div className="section-category">Salon İmkânları</div>
+                <h2>Misafirlerinizin Rahatı İçin Hazırlanan Detaylar</h2>
                 <p className="section-subtitle">
-                  Köşk Düğün Salonu, estetiğin yanı sıra mühendislik ve misafir konforunu da en üst düzeyde tutar.
+                  Köşk Düğün Salonu, geniş alanı ve kullanışlı yapısıyla davet boyunca rahat etmenizi sağlar.
                 </p>
               </div>
             </div>
@@ -115,11 +125,11 @@ export default function SalonPage() {
 
           <div className={styles.specsGrid}>
             {technicalSpecs.map((spec, index) => (
-              <div key={index} className={styles.specCard}>
+              <TiltCard key={index} className={styles.specCard} maxTilt={6} glare>
                 <div className={styles.specIcon}>{spec.icon}</div>
                 <h3 className={styles.specTitle}>{spec.title}</h3>
                 <p className={styles.specDesc}>{spec.desc}</p>
-              </div>
+              </TiltCard>
             ))}
           </div>
         </div>
@@ -129,36 +139,36 @@ export default function SalonPage() {
       <section className="section-spacing">
         <div className="container">
           <div className={styles.deepDiveGrid}>
-            <div>
-              <ImagePlaceholder
-                title="Akustik Tavan ve Truss Sahne Detayı"
-                dimensions="1200 × 900 · 4:3 Yerleşim"
-                aspectRatio="4/3"
-                category="Line-Array Ses ve Robotik Işık"
+            <div className={styles.deepDiveMedia}>
+              <Image
+                src="/images/venue/kosk-orkestra-sahnesi-ve-dans-pisti.webp"
+                alt="Köşk Düğün Salonu Sahne ve Dans Pisti"
+                fill
+                className={styles.deepDiveImg}
+                sizes="(max-width: 1024px) 100vw, 50vw"
+                unoptimized
               />
             </div>
             <div className={styles.deepDiveContent}>
-              <div className={styles.pagePreTitle}>Akustik ve Havalandırma</div>
-              <h2>Büyük Salonlarda En Sık Yaşanan İki Problemi Çözdük</h2>
+              <div className={styles.pagePreTitle}>Ferah & Havadar Ortam</div>
+              <h2>Kalabalık Davetlerde Bile Ferah Bir Atmosfer</h2>
               <p style={{ color: 'var(--color-text-secondary)', lineHeight: '1.7', marginBottom: '1.5rem' }}>
-                Düğün salonlarında misafirlerin en çok şikayet ettiği iki konu vardır: 
-                <strong> basık/ağırlaşan hava</strong> ve <strong>uğultu yapan kulak tırmalayıcı ses</strong>.
+                Düğün salonlarında misafirlerin en çok önem verdiği iki konu vardır: 
+                <strong> havasız kalmamak</strong> ve <strong>müziğin kulak tırmalamadan keyifle dinlenmesi</strong>.
               </p>
               <div className={styles.problemSolutionBox}>
                 <div className={styles.boxItem}>
-                  <h4>1. Çift Çevrimli Taze Hava Santrali</h4>
+                  <h4>1. Düzenli Havalandırma ile Temiz Hava</h4>
                   <p>
-                    Salonumuzda bulunan endüstriyel klima santralleri, içerideki kullanılmış havayı 
-                    sürekli tahliye ederken dışarıdan filtre edilmiş %100 taze havayı basar. 1.000 kişi salonda 
-                    olduğunda bile baş ağrısı ve havasızlık yaşanmaz.
+                    Salonumuzdaki havalandırma sistemi içerideki havayı sürekli tazeler. 1.000 kişilik tam 
+                    kapasiteli davetlerde bile salon içinde basıklık ve havasızlık hissedilmez.
                   </p>
                 </div>
                 <div className={styles.boxItem}>
-                  <h4>2. Ses Sönümleyici Akustik Tavan Mimarisi</h4>
+                  <h4>2. Yüksek Tavan ve Dengeli Ses Dağılımı</h4>
                   <p>
-                    6.5 metrelik tavanımız özel akustik panellerle kaplanmıştır. Ses tavana çarptığında 
-                    yankı yapmadan absorbe edilir. Sahnedeki orkestra masalardaki sohbeti 
-                    bastırmaz; müzik net, konuşmalar anlaşılır kalır.
+                    Yüksek tavanlı ferah yapımız sayesinde müzik sesi uğultu yapmaz. Sahnedeki müzik 
+                    keyifle dinlenirken, masalardaki sohbetler de rahatça devam eder.
                   </p>
                 </div>
               </div>
@@ -173,16 +183,16 @@ export default function SalonPage() {
           <div className={styles.deepDiveGridReversed}>
             <div className={styles.deepDiveContent}>
               <div className={styles.pagePreTitle}>Çiftlerimize Özel Alan</div>
-              <h2>Düğün Öncesi Huzur: Özel VIP Hazırlık Süitleri</h2>
+              <h2>Düğün Öncesi Rahat Hazırlık: Gelin & Damat Odası</h2>
               <p style={{ color: 'var(--color-text-secondary)', lineHeight: '1.7', marginBottom: '1.5rem' }}>
-                Gelin ve damadın düğün öncesi dinlenebileceği, son hazırlıklarını rahatça yapabileceği 
-                ve en yakınlarıyla heyecanını paylaşabileceği müstakil 2 adet süit hazırladık.
+                Gelin ve damadın düğün öncesinde dinlenebileceği, son hazırlıklarını rahatça yapabileceği 
+                ve en yakınlarıyla heyecanını paylaşabileceği konforlu hazırlık odamız mevcuttur.
               </p>
               <ul className={styles.suiteFeaturesList}>
-                <li>Geniş boy aynaları ve profesyonel LED makyaj masası</li>
-                <li>Müstakil temiz banyo ve giyinme alanı</li>
-                <li>Konforlu oturma grubu, iklimlendirme ve ikram servisi</li>
-                <li>Salona doğrudan ve gizli geçiş imkânı</li>
+                <li>Ayna ve makyaj masası alanı</li>
+                <li>Temiz lavabo ve rahat giyinme alanı</li>
+                <li>Konforlu oturma grubu ve dinlenme alanı</li>
+                <li>Salona doğrudan ve rahat geçiş imkânı</li>
               </ul>
               <div style={{ marginTop: '2rem' }}>
                 <Link href="/iletisim" className="btn btn-primary">
@@ -191,12 +201,14 @@ export default function SalonPage() {
                 </Link>
               </div>
             </div>
-            <div>
-              <ImagePlaceholder
-                title="VIP Gelin & Damat Hazırlık Süiti"
-                dimensions="1200 × 900 · 4:3 Yerleşim"
-                aspectRatio="4/3"
-                category="Müstakil Banyo · Makyaj İstasyonu"
+            <div className={styles.deepDiveMedia}>
+              <Image
+                src="/images/venue/kosk-gelin-damat-nikah-tahti-masasi.webp"
+                alt="Köşk Düğün Salonu Gelin & Damat Nikah Kürsüsü ve Masası"
+                fill
+                className={styles.deepDiveImg}
+                sizes="(max-width: 1024px) 100vw, 50vw"
+                unoptimized
               />
             </div>
           </div>

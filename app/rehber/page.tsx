@@ -5,7 +5,7 @@ import { Calendar, Clock, CheckCircle2 } from 'lucide-react';
 export const metadata: Metadata = {
   title: 'Düğün Rehberi & Tavsiyeler | Polatlı Köşk Düğün Salonu',
   description:
-    'Polatlı ve Ankara’da düğün salonu seçimi, 1000 kişilik davet planlaması, kapalı mekan iklimlendirme ve akustik kriterleri üzerine uzman rehber yazıları.',
+    'Polatlı ve Ankara’da düğün salonu seçimi, 1000 kişilik davet planlaması, ferah mekan düzeni ve organizasyon tavsiyeleri üzerine rehber yazıları.',
 };
 
 const guideArticles = [
@@ -16,27 +16,27 @@ const guideArticles = [
     readTime: '5 dk okuma',
     category: 'Salon Seçimi',
     summary:
-      'Düğün salonu seçerken yalnızca fiyata veya süslemelere bakmak büyük riskler barındırır. Tavan yüksekliği, taze hava kapasitesi, jeneratör gücü ve otopark gibi düğününüzün kaderini belirleyen 7 teknik unsuru inceleyin.',
+      'Düğün salonu seçerken yalnızca fiyata veya süslemelere bakmak yanıltıcı olabilir. Kolonsuz alan, tavan yüksekliği, düzenli havalandırma, jeneratör desteği ve otopark gibi davetinizin konforunu belirleyen kritik unsurları inceleyin.',
     highlights: [
-      'Neden en az 6 metre tavan yüksekliği aranmalı?',
-      'Klima ile taze hava sirkülasyonu arasındaki hayati fark',
-      'Beklenmedik elektrik kesintilerine karşı yedek jeneratör standardı',
-      'Masa aralıkları ve gelinlik hareket serbestliği',
+      'Neden yüksek tavan ve kolonsuz alan aranmalı?',
+      'Düzenli havalandırmanın salon ferahlığına etkisi',
+      'Beklenmedik elektrik kesintilerine karşı kesintisiz jeneratör desteği',
+      'Geniş masa aralıkları ve rahat dans pistinin önemi',
     ],
   },
   {
-    slug: 'kapali-dugun-salonunda-iklimlendirme-ve-akustik-onemi',
-    title: 'Kapalı Salonda Kusursuz Akustik ve Havalandırma Neden Hayatidir?',
+    slug: 'kapali-dugun-salonunda-havadar-ortam-ve-ses-duzeni',
+    title: 'Kapalı Düğün Salonunda Havadar Ortam ve Dengeli Müzik Neden Önemlidir?',
     date: 'Ocak 2026',
     readTime: '6 dk okuma',
-    category: 'Teknik Standartlar',
+    category: 'Salon Konforu',
     summary:
-      '1.000 kişinin bir arada bulunduğu bir salonda saatler ilerledikçe havanın ağırlaşması veya orkestra sesinin uğultuya dönüşmesi en sık yaşanan sorunlardır. Doğru mimari mühendisliğin bu sorunları nasıl çözdüğünü keşfedin.',
+      '1.000 kişinin bir arada bulunduğu bir davette salonun havasız kalmaması ve müziğin konukları yormayacak dengeli bir ses düzeyinde olması büyük fark yaratır. Havadar bir salonun ve ferah yerleşimin püf noktalarını keşfedin.',
     highlights: [
-      'VRF sistemler ve saatlik taze hava emiş debisi',
-      'Akustik tavan panellerinin konuşma anlaşılırlığına etkisi',
-      'Orkestra sesiyle misafir sohbeti arasındaki dengeli ses dağılımı',
-      'Hava değişiminin yaşlı ve çocuk konuklar üzerindeki rahatlatıcı etkisi',
+      'Yüksek tavanın ferahlığa ve hava sirkülasyonuna katkısı',
+      'Kalabalık davetlerde salon havasını taze tutmanın yolları',
+      'Müziğin davetlileri yormadan dengeli şekilde salona dağılması',
+      'Yaşlı ve çocuk konuklar için konforlu bir davet ortamı',
     ],
   },
   {
@@ -46,12 +46,12 @@ const guideArticles = [
     readTime: '4 dk okuma',
     category: 'Organizasyon Planlama',
     summary:
-      'Geniş ailelerin ve kalabalık çevrelerin katıldığı büyük düğünlerde karmaşa yaşamamak için banket düzeni, servis koridorları ve sahne görüş açısı nasıl kurgulanmalı?',
+      'Geniş ailelerin ve kalabalık çevrelerin katıldığı büyük düğünlerde karmaşa yaşamamak için oturma düzeni, servis koridorları ve sahne görüş açısı nasıl kurgulanmalı?',
     highlights: [
-      'Yuvarlak banket masalarının sosyal iletişime katkısı',
-      'Kolonsuz ve sütunsuz geniş görüş açısının avantajları',
-      'Yemek servisinde sıcak zincirin korunması stratejisi',
-      'Tebrik ve takı merasimi sırasında oluşabilecek yığılmanın önlenmesi',
+      'Yuvarlak masaların ferah ve samimi oturma düzenine katkısı',
+      'Kolonsuz salonun sahneyi engelsiz izleme avantajı',
+      'Yemek ve ikram servisinde düzenli ve sıcak servis planı',
+      'Tebrik ve takı merasimi sırasında rahat alan kullanımı',
     ],
   },
 ];
@@ -145,7 +145,7 @@ export default function RehberPage() {
 
               <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: '1rem' }}>
                 <span style={{ fontSize: '0.84rem', color: 'var(--color-cashmere)' }}>
-                  Köşk Düğün Salonu Organizasyon & Mimarlık Danışmanlığı
+                  Köşk Düğün Salonu Organizasyon Danışmanlığı
                 </span>
                 <Link href="/iletisim" className="btn btn-outline">
                   <span>Bu Konuda Danışmanımızla Görüşün</span>
