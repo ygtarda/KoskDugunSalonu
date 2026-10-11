@@ -54,8 +54,10 @@ export default function FaqAccordion({ items }: FaqAccordionProps) {
               aria-labelledby={`faq-question-${idx}`}
               className={`${styles.answerWrapper} ${isOpen ? styles.answerOpen : ''}`}
             >
-              <div className={styles.answerContent}>
-                <p>{item.answer}</p>
+              <div className={styles.answerInner}>
+                <div className={styles.answerContent}>
+                  <p>{item.answer}</p>
+                </div>
               </div>
             </div>
           </div>

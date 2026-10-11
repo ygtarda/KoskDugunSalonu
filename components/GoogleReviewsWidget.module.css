@@ -162,3 +162,118 @@
     justify-content: center;
   }
 }
+
+/* Fallback Reviews Cards */
+.ratingBadge {
+  background: #FFF8E7;
+  color: #B8860B;
+  border: 1px solid #FFE4A0;
+  font-size: 0.76rem;
+  font-weight: 700;
+  padding: 0.15rem 0.5rem;
+  border-radius: 999px;
+}
+
+.fallbackCardsGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 1.5rem;
+  margin-top: 1rem;
+}
+
+.reviewCard {
+  background: var(--color-surface, #FFFFFF);
+  border: 1px solid var(--color-stone, #E8E4DF);
+  border-radius: var(--radius-xs, 4px);
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.03);
+}
+
+.reviewCard:hover {
+  transform: translateY(-2px);
+  border-color: var(--color-powder, #D4B59E);
+  box-shadow: 0 8px 24px rgba(184, 149, 110, 0.1);
+}
+
+.cardHeader {
+  display: flex;
+  align-items: center;
+  gap: 0.85rem;
+  margin-bottom: 0.85rem;
+}
+
+.avatar {
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  color: #FFFFFF;
+  font-weight: 600;
+  font-size: 0.88rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.authorMeta {
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+}
+
+.authorNameRow {
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+}
+
+.authorName {
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--color-anthracite, #2C2826);
+}
+
+.verifiedIcon {
+  color: #1A73E8;
+  display: flex;
+  align-items: center;
+}
+
+.reviewDate {
+  font-size: 0.78rem;
+  color: var(--color-cashmere, #7A7471);
+}
+
+.starsRow {
+  display: flex;
+  gap: 0.2rem;
+  margin-bottom: 0.85rem;
+}
+
+.reviewText {
+  font-size: 0.90rem;
+  line-height: 1.6;
+  color: var(--color-anthracite, #2C2826);
+  flex: 1;
+  margin-bottom: 1.25rem;
+  font-style: italic;
+}
+
+.cardFooter {
+  padding-top: 0.75rem;
+  border-top: 1px solid var(--color-stone, #E8E4DF);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.googleVerifiedBadge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: 0.76rem;
+  color: var(--color-cashmere, #7A7471);
+}

@@ -42,8 +42,39 @@
   z-index: 2;
   pointer-events: none;
   background: 
-    linear-gradient(180deg, rgba(18, 16, 15, 0.35) 0%, transparent 15%, transparent 85%, rgba(18, 16, 15, 0.45) 100%),
-    radial-gradient(circle at center, transparent 40%, rgba(18, 16, 15, 0.2) 100%);
+    linear-gradient(180deg, rgba(18, 16, 15, 0.4) 0%, transparent 18%, transparent 80%, rgba(18, 16, 15, 0.5) 100%),
+    radial-gradient(circle at center, transparent 35%, rgba(18, 16, 15, 0.25) 100%);
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  padding-bottom: 2.5rem;
+}
+
+.heroBadgeWrapper {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.65rem;
+  background: rgba(22, 19, 18, 0.85);
+  border: 1px solid rgba(212, 181, 158, 0.4);
+  backdrop-filter: blur(12px);
+  padding: 0.65rem 1.4rem;
+  border-radius: 999px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.35);
+}
+
+.heroBadgeDot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--color-champagne);
+  box-shadow: 0 0 10px var(--color-champagne);
+}
+
+.heroBadgeText {
+  font-size: 0.88rem;
+  font-weight: 500;
+  letter-spacing: 0.03em;
+  color: #F5EFEB;
 }
 
 @media (max-width: 768px) {

@@ -7,18 +7,20 @@
 }
 
 .accordionItem {
-  background: var(--color-surface);
-  border: 1px solid var(--color-stone);
-  border-bottom: 2px solid var(--color-stone);
+  background: #FFFFFF;
+  border: 1.5px solid var(--color-stone);
+  border-bottom: 2.5px solid var(--color-stone);
   border-radius: var(--radius-xs);
   overflow: hidden;
-  transition: var(--transition-smooth);
+  box-shadow: 0 3px 12px rgba(44, 40, 38, 0.04);
+  transition: border-color 0.4s ease, background-color 0.4s ease, box-shadow 0.4s ease;
 }
 
 .accordionItemOpen {
-  border-color: var(--color-stone);
-  border-bottom-color: var(--color-powder);
-  background: #FCFBFA;
+  border-color: var(--color-champagne);
+  border-bottom-color: var(--color-champagne);
+  background: #FFFFFF;
+  box-shadow: 0 8px 24px -6px rgba(184, 149, 110, 0.16);
 }
 
 .questionButton {
@@ -32,6 +34,11 @@
   border: none;
   cursor: pointer;
   text-align: left;
+  transition: background-color 0.4s ease;
+}
+
+.questionButton:hover {
+  background-color: rgba(250, 248, 245, 0.6);
 }
 
 .questionText {
@@ -40,7 +47,7 @@
   color: var(--color-anthracite);
   line-height: 1.35;
   font-weight: 500;
-  transition: color 0.2s ease;
+  transition: color 0.35s ease;
 }
 
 .questionButton:hover .questionText {
@@ -52,40 +59,71 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 32px;
-  height: 32px;
+  width: 34px;
+  height: 34px;
   border-radius: var(--radius-xs);
   background: var(--color-surface-subtle);
   border: 1px solid var(--color-stone);
   flex-shrink: 0;
-  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), background-color 0.2s ease;
+  transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1),
+              background-color 0.45s ease,
+              border-color 0.45s ease,
+              color 0.45s ease;
 }
 
 .chevronOpen {
   transform: rotate(180deg);
-  background: rgba(212, 181, 158, 0.2);
-  border-color: var(--color-powder);
+  background: rgba(212, 181, 158, 0.22);
+  border-color: var(--color-champagne);
+  color: var(--color-anthracite);
 }
 
+/* Silky-Smooth Pure CSS Grid Animation */
 .answerWrapper {
-  max-height: 0;
-  overflow: hidden;
-  transition: max-height 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+  display: grid;
+  grid-template-rows: 0fr;
+  transition: grid-template-rows 0.6s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .answerOpen {
-  max-height: 500px;
+  grid-template-rows: 1fr;
+}
+
+.answerInner {
+  min-height: 0;
+  overflow: hidden;
 }
 
 .answerContent {
   padding: 0 1.8rem 1.6rem 1.8rem;
-  border-top: 1px solid var(--color-stone);
+  border-top: 1px solid rgba(232, 228, 223, 0.8);
   margin-top: -0.25rem;
-  padding-top: 1.25rem;
+  padding-top: 1.35rem;
+  opacity: 0;
+  transform: translateY(-10px);
+  transition: opacity 0.55s cubic-bezier(0.16, 1, 0.3, 1),
+              transform 0.55s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: opacity, transform;
+}
+
+.answerOpen .answerContent {
+  opacity: 1;
+  transform: translateY(0);
 }
 
 .answerContent p {
   color: var(--color-text-secondary);
   font-size: 0.98rem;
-  line-height: 1.75;
+  line-height: 1.78;
 }
+
+@media (prefers-reduced-motion: reduce) {
+  .accordionItem,
+  .chevronWrapper,
+  .answerWrapper,
+  .answerContent {
+    transition: none !important;
+    animation: none !important;
+  }
+}
+

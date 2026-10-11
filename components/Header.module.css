@@ -59,18 +59,16 @@
 /* Symmetrical desktop navigation menus with equal total spans */
 .leftNav {
   justify-self: end;
-  width: clamp(280px, 22vw, 320px);
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  gap: clamp(0.5rem, 1.1vw, 1.25rem);
 }
 
 .rightNav {
   justify-self: start;
-  width: clamp(280px, 22vw, 320px);
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  gap: clamp(0.5rem, 1.1vw, 1.25rem);
 }
 
 .navLink {
@@ -154,15 +152,18 @@
 }
 
 .brandLogoImg {
-  width: 76px;
-  height: 76px;
-  object-fit: contain;
-  filter: drop-shadow(0 2px 8px rgba(44, 40, 38, 0.12));
-  transition: filter 0.3s ease;
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid rgba(212, 181, 158, 0.7);
+  box-shadow: 0 2px 8px rgba(44, 40, 38, 0.12);
+  transition: transform 0.3s ease, border-color 0.3s ease;
 }
 
 .headerTransparent .brandLogoImg {
-  filter: drop-shadow(0 2px 8px rgba(0, 0, 0, 0.45));
+  border-color: rgba(255, 255, 255, 0.6);
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.4);
 }
 
 .brandLink:hover .brandLogoImg {
@@ -307,20 +308,20 @@
 .drawerBrandLogoWrapper {
   width: 44px;
   height: 44px;
-  background: transparent;
-  border: none;
+  border-radius: 50%;
+  overflow: hidden;
+  border: 1.5px solid var(--color-champagne);
   display: flex;
   align-items: center;
   justify-content: center;
-  overflow: visible;
   flex-shrink: 0;
+  box-shadow: 0 2px 6px rgba(44, 40, 38, 0.12);
 }
 
 .drawerBrandLogo {
   width: 100%;
   height: 100%;
-  object-fit: contain;
-  filter: drop-shadow(0 2px 6px rgba(44, 40, 38, 0.2));
+  object-fit: cover;
 }
 
 
@@ -631,8 +632,16 @@
     pointer-events: none;
   }
 
+  .mobileFloatingActionGroup {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.65rem;
+    pointer-events: auto;
+  }
+
   .mobileFloatingToggleBtn,
-  .mobileFloatingPhoneBtn {
+  .mobileFloatingPhoneBtn,
+  .mobileFloatingWhatsappBtn {
     pointer-events: auto;
     border-radius: 20px;
     background: rgba(18, 16, 15, 0.55);
@@ -659,20 +668,32 @@
     letter-spacing: 0.12em;
   }
 
-  .mobileFloatingPhoneBtn {
+  .mobileFloatingPhoneBtn,
+  .mobileFloatingWhatsappBtn {
     width: 40px;
     height: 40px;
     display: flex;
     align-items: center;
     justify-content: center;
     text-decoration: none;
+    border-radius: 50%;
+  }
+
+  .mobileFloatingWhatsappBtn {
+    background: linear-gradient(135deg, #25D366 0%, #128C7E 100%);
+    border-color: rgba(255, 255, 255, 0.45);
   }
 
   .mobileFloatingToggleBtn:hover,
-  .mobileFloatingPhoneBtn:hover {
+  .mobileFloatingPhoneBtn:hover,
+  .mobileFloatingWhatsappBtn:hover {
     border-color: #FFFFFF;
     background: rgba(212, 181, 158, 0.4);
     transform: scale(1.05);
+  }
+
+  .mobileFloatingWhatsappBtn:hover {
+    background: linear-gradient(135deg, #2ae06d 0%, #0e7b6e 100%);
   }
 
   .mobileFloatingBarHidden {

@@ -1,118 +1,195 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
 import Image from 'next/image';
-import { Check, CalendarCheck } from 'lucide-react';
-import TiltCard from '@/components/TiltCard';
+import {
+  Check,
+  CalendarCheck,
+  Sparkles,
+  Building2,
+  BookOpen,
+  Star,
+  Heart,
+  CheckCircle2,
+  ShieldCheck,
+} from 'lucide-react';
+import Breadcrumb from '@/components/Breadcrumb';
 import styles from './hizmetler.module.css';
 
 export const metadata: Metadata = {
   title: 'Hizmetler & Organizasyon Paketleri | Polatlı Köşk Düğün Salonu',
   description:
-    'Düğün, kına gecesi, nişan ve özel davetler için kolonsuz ve geniş salonda eksiksiz hizmet. Polatlı’da şeffaf planlama ve bütçenize uygun teklif.',
+    'Düğün daveti, geleneksel kına gecesi, nişan ve kurumsal etkinlikler için 1.000 kişilik kolonsuz ferah salon, zengin menüler ve eksiksiz paketler. Şeffaf fiyatlandırma.',
+  alternates: {
+    canonical: '/hizmetler',
+  },
+  keywords: [
+    'Polatlı düğün paketleri',
+    'Polatlı kına gecesi organizasyonu',
+    'Polatlı nişan salonu',
+    'Polatlı sünnet düğünü',
+    'Polatlı kurumsal davet mekanı',
+    'Köşk düğün salonu hizmetleri',
+  ],
+  openGraph: {
+    title: 'Hizmetler & Organizasyon Paketleri | Polatlı Köşk Düğün Salonu',
+    description:
+      'Düğün, kına gecesi, nişan ve özel davetler için kolonsuz ve geniş salonda eksiksiz hizmet. Polatlı’da şeffaf planlama ve bütçenize uygun teklif.',
+    url: 'https://koskdugunsalonu.com/hizmetler',
+    type: 'website',
+    locale: 'tr_TR',
+    images: [
+      {
+        url: '/images/venue/kosk-ilk-dans-sis-bulutu.webp',
+        width: 1200,
+        height: 675,
+        alt: 'Köşk Düğün Salonu Organizasyon Hizmetleri',
+      },
+    ],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Hizmetler & Organizasyon Paketleri | Polatlı Köşk Düğün Salonu',
+    description: '1.000 kişilik kolonsuz salonda düğün, kına, nişan ve kurumsal etkinlikler.',
+    images: ['/images/venue/kosk-ilk-dans-sis-bulutu.webp'],
+  },
 };
 
 const servicePackages = [
   {
     id: 'dugun',
     title: 'Düğün Daveti',
-    subtitle: '1.000 Kişilik Geniş ve Ferah Salon',
+    subtitle: '1.000 Kişilik Kolonsuz Balo Salonu',
     capacity: '800 – 1.000 Kişi',
     badge: 'Ana Hizmet',
+    featured: true,
     imageSrc: '/images/venue/kosk-ilk-dans-sis-bulutu.webp',
     imageAlt: 'Köşk Düğün Salonu Düğün Daveti ve İlk Dans Alanı',
-    desc: 'Geniş aileleri ve kalabalık davetli listelerini rahatça ağırlamak isteyen çiftler için tasarlandı. Kolonsuz ferah salon, yüksek tavan ve güler yüzlü servis bir arada.',
+    desc: 'Geniş aileleri ve kalabalık davetli listelerini ferahça ağırlamak isteyen çiftler için tasarlandı. Kolonsuz ferah salon, yüksek tavan ve güler yüzlü servis anlayışı bir arada.',
     features: [
       'Kolonsuz ferah salonda 1.000 kişiye kadar yuvarlak masa oturma düzeni',
-      'Özel gelin yolu, şık süslemeler ve sisli romantik ilk dans alanı',
-      'Eğlence ve canlı müzik için kaliteli ses sistemi ve sahne aydınlatması',
-      'Gelin ve damat için rahat dinlenme ve hazırlık odası',
-      'Yemekli veya pastalı menü seçenekleri (Kavurma, tavuk veya zengin ikram tabakları)',
-      'Özel düğün pastası merasimi ve taze meşrubat servisi',
-      'Kamera çekimi ve profesyonel fotoğraf hizmeti',
-      'Geniş misafir otoparkı ile araç park kolaylığı',
-      'Kesintisiz jeneratör desteği ile kesintisiz eğlence güvencesi',
+      'Geniş mermer dans pisti ve profesyonel sahne aydınlatması',
+      'Özel gelin yolu süslemesi ve ilk dans için sis bulutu efekti',
+      'Gelin ve damat için konforlu hazırlık ve dinlenme odası',
+      'Yemekli (Kavurma/Tavuk) veya pastalı zengin menü seçenekleri',
+      'Katlı düğün pastası merasimi ve taze meşrubat ikramı',
+      'Canlı orkestra ve kaliteli ses sistemi altyapısı',
+      'Profesyonel kamera çekimi ve fotoğraf hizmeti',
+      'Geniş misafir otoparkı ve kesintisiz jeneratör desteği',
     ],
   },
   {
     id: 'kina',
     title: 'Geleneksel Kına Gecesi',
-    subtitle: 'Eğlenceli ve Sıcak Kına Merasimi',
+    subtitle: 'Coşkulu ve Samimi Kına Merasimi',
     capacity: '500 – 800 Kişi',
-    badge: 'Kadın Davetlilere Özel',
+    badge: 'Geleneksel & Coşkulu',
     imageSrc: '/images/venue/kosk-sahne-mor-isik-gosterisi.webp',
     imageAlt: 'Köşk Düğün Salonu Geleneksel Kına Gecesi Sahne Düzeni',
-    desc: 'Geleneksel adetleri modern salon ferahlığıyla buluşturan, gelin hanımın ve davetlilerin doyasıya eğleneceği samimi bir atmosfer.',
+    desc: 'Geleneksel kına adetlerini modern salon ferahlığıyla buluşturan, aileniz ve sevdiklerinizle doyasıya eğlenebileceğiniz samimi ve güvenli bir atmosfer.',
     features: [
       'Şık kadife kına tahtı ve özel arka fon sahne dekorasyonu',
-      'Nedime ekibi ile koreografili kına çıkışı ve bendir gösterisi',
-      'Kadın garson ve kadın DJ tercihi opsiyonu',
-      'Gelin için kaftan ve nedimeler için tef/mum aksesuarları',
-      'Özel kına tepsisi, dağıtımlık yaş ve kuru kına paketleri',
-      'Kına gecesine özel ikram tabağı ve taze meşrubat servisi',
-      'Gelin hanım için konforlu giyinme ve dinlenme odası',
-      'Yüksek tavan ve ferah havalandırmalı rahat salon ortamı',
+      'Geniş mermer pistte kına merasimi ve yöresel oyun havaları',
+      'Canlı müzik, DJ ve kaliteli ses & sahne ışıklandırması',
+      'Gelin hanım ve ailesi için konforlu hazırlık odası',
+      'Kına gecesine özel ikram tabağı, pasta ve meşrubat servisi',
+      'Profesyonel kamera ve fotoğraf çekim hizmeti',
+      'Yüksek tavan ve güçlü iklimlendirme ile ferah salon ortamı',
+      '250 araçlık geniş misafir otoparkı',
     ],
   },
   {
     id: 'nisan',
     title: 'Nişan & Söz Töreni',
-    subtitle: 'Aileler ve Dostlar İçin Samimi Bir Başlangıç',
+    subtitle: 'Aileler ve Sevdikleriniz İçin Sıcak Bir Başlangıç',
     capacity: '300 – 600 Kişi',
     badge: 'Sıcak & Şık Ambiyans',
     imageSrc: '/images/venue/kosk-nisan-soz-ozel-konsept-aynasi.webp',
     imageAlt: 'Köşk Düğün Salonu Nişan ve Söz Töreni Konsept Alanı',
-    desc: 'Ailelerin ve yakın dostların bir araya geldiği, sıcak, samimi ve şık bir ortamda yüzük takma merasimi.',
+    desc: 'Evliliğe ilk adımı atarken ailelerin ve yakın dostların bir araya geldiği, sıcak, şık ve nezih bir söz ve nişan merasimi.',
     features: [
-      'Özel tasarım nişan tagı ve çiçekli fotoğraf arka fonu',
-      'Yüzük tepsisi, merasim makası ve özel sehpa sunumu',
-      'Şık masa örtüleri ve zarif masa süslemeleri',
-      'Müzik yayını ve isteğe bağlı canlı müzik desteği',
-      'Özel tasarım nişan pastası ve taze ikramlar',
-      'Fotoğraf ve video çekimi ile anıların kaydedilmesi',
-      'Dört mevsim ideal oda sıcaklığında ferah salon',
+      'Özel tasarım nişan tagı ve çiçekli fotoğraf çekim fonu',
+      'Merasim sahnesi, şık masa örtüleri ve salon süslemeleri',
+      'Kutlama pastası merasimi ve taze ikram/meşrubat servisi',
+      'Müzik yayını, ses sistemi ve canlı müzik desteği',
+      'Profesyonel video ve fotoğraf çekim hizmeti',
+      'Geniş dans pisti ve ferah yuvarlak masa oturma düzeni',
+      'Dört mevsim ideal oda sıcaklığında ferah salon konforu',
     ],
   },
   {
     id: 'sunnet',
     title: 'Sünnet Düğünü Şöleni',
-    subtitle: 'Aile Boyu Coşkulu ve Rahat Kutlama',
+    subtitle: 'Aile Boyu Coşkulu ve Ferah Kutlama',
     capacity: '500 – 1.000 Kişi',
-    badge: 'Çocuklara Özel Alan',
+    badge: 'Geleneksel Tören',
     imageSrc: '/images/venue/kosk-dans-pisti-spot-isik-sov.webp',
     imageAlt: 'Köşk Düğün Salonu Sünnet Düğünü Şöleni ve Dans Pisti',
-    desc: 'Çocuğunuzun bu anlamlı gününde tüm akrabalarınızın rahatça ağırlanacağı, geleneksel merasimlerin ve eğlencenin bir arada yaşandığı organizasyon.',
+    desc: 'Çocuğunuzun bu anlamlı gününde akrabalarınızın ve tüm konuklarınızın rahatça ağırlanacağı, geleneksel merasimlerin ve neşeli eğlencenin buluştuğu şölen.',
     features: [
-      'Özel işlemeli sünnet tahtı ve karşılama seremonisi',
-      'Palyaço ve çocuk oyun animasyon alanı',
-      'Yemekli veya pastalı geleneksel ikram menüleri',
-      'Geniş sahnede müzik, oyun havaları ve canlı orkestra imkânı',
-      'Salona giriş anında konfeti ve ışık efektleri',
-      'Geniş misafir otoparkı ile konuklara rahat varış imkânı',
+      'Görkemli işlemeli sünnet tahtı ve özel karşılama sahnesi',
+      'Yemekli (Kavurma/Tavuk) veya pastalı geleneksel ikram menüleri',
+      'Geniş sahnede canlı orkestra, oyun havaları ve kaliteli ses sistemi',
+      'Salona giriş anında volkan ve ışık efektleri seremonisi',
+      'Tüm anları kaydeden profesyonel kamera ve fotoğraf çekimi',
+      'Kolonsuz salonda geniş masa aralıkları ve ferah oturma düzeni',
+      'Geniş misafir otoparkı ve kesintisiz jeneratör güvencesi',
     ],
   },
   {
     id: 'kurumsal',
-    title: 'Kurumsal Yemek & Toplantı',
-    subtitle: 'Şirket ve Kurum Buluşmaları',
-    capacity: '400 – 1.200 Kişi',
+    title: 'Kurumsal Davet & Mezuniyet',
+    subtitle: 'Şirket, Kurum ve Mezuniyet Buluşmaları',
+    capacity: '400 – 1.000 Kişi',
     badge: 'Geniş Katılımlı Davetler',
     imageSrc: '/images/venue/kosk-dev-projeksiyon-ve-sahne-duzeni.webp',
     imageAlt: 'Köşk Düğün Salonu Kurumsal Yemek, Toplantı ve Sahne Düzeni',
-    desc: 'Polatlı’daki şirketler, sivil toplum kuruluşları ve kurumlar için yemekli toplantılar, bayi buluşmaları, mezuniyetler ve veda geceleri.',
+    desc: 'Polatlı’daki şirketler, sivil toplum kuruluşları ve okullar için geniş katılımlı yemekli toplantılar, gala geceleri ve mezuniyet baloları.',
     features: [
-      'Büyük projeksiyon ekranı ve ses/mikrofon sistemi',
-      'Konuşmacı kürsüsü ve sahne düzeni',
-      'Geniş yuvarlak masa veya isteğe göre oturma düzeni',
-      'Giriş karşılama alanı ve ikram standı',
-      'Müzik ve ses teknik desteği',
-      'Misafirler için kolay ulaşım ve otopark imkanı',
+      'Büyük projeksiyon ekranı, kablosuz mikrofonlar ve kaliteli ses sistemi',
+      'Konuşmacı kürsüsü ve geniş sahne platformu',
+      'Davet konseptine uygun yuvarlak masa veya banket oturma planı',
+      'Yemekli, kokteyl veya zengin ikram menü seçenekleri',
+      'Organizasyon süresince teknik altyapı ve salon desteği',
+      'Misafirler için kolay ulaşım ve geniş otopark imkanı',
     ],
   },
 ];
 
+const servicesSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'ItemList',
+  name: 'Köşk Düğün Salonu Hizmet ve Paketleri',
+  itemListElement: servicePackages.map((pkg, index) => ({
+    '@type': 'ListItem',
+    position: index + 1,
+    item: {
+      '@type': 'Service',
+      name: pkg.title,
+      description: pkg.desc,
+      provider: {
+        '@type': 'LocalBusiness',
+        name: 'Köşk Düğün Salonu',
+        url: 'https://koskdugunsalonu.com',
+      },
+      areaServed: {
+        '@type': 'City',
+        name: 'Polatlı, Ankara',
+      },
+    },
+  })),
+};
+
 export default function HizmetlerPage() {
   return (
-    <div style={{ paddingTop: '1rem' }}>
+    <div>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(servicesSchema) }}
+      />
+
+      {/* Breadcrumb Navigation */}
+      <Breadcrumb items={[{ label: 'Hizmetler & Paketler' }]} />
+
       {/* Hero */}
       <section className={styles.pageHero}>
         <div className="container">
@@ -130,10 +207,21 @@ export default function HizmetlerPage() {
       </section>
 
       {/* Services List */}
-      <section className="container" style={{ paddingBottom: '6rem' }}>
+      <section className="container" style={{ paddingBottom: '4rem' }}>
         <div style={{ display: 'flex', flexDirection: 'column', gap: '3rem' }}>
-          {servicePackages.map((pkg) => (
-            <TiltCard key={pkg.id} id={pkg.id} className={styles.packageCard} maxTilt={2} scale={1.008} glare>
+          {servicePackages.map((pkg, idx) => (
+            <article
+              key={pkg.id}
+              id={pkg.id}
+              className={`${styles.packageCard} ${pkg.featured ? styles.packageCardFeatured : ''}`}
+            >
+              {pkg.featured && (
+                <div className={styles.featuredRibbon}>
+                  <Star size={14} fill="#FFFFFF" />
+                  <span>Öne Çıkan Ana Organizasyon</span>
+                </div>
+              )}
+
               <div className={styles.packageMediaWrap}>
                 <Image
                   src={pkg.imageSrc}
@@ -141,7 +229,8 @@ export default function HizmetlerPage() {
                   fill
                   className={styles.packageImg}
                   sizes="(max-width: 1024px) 100vw, 1200px"
-                  unoptimized
+                  priority={idx === 0}
+                  loading={idx === 0 ? 'eager' : 'lazy'}
                 />
                 <div className={styles.packageMediaOverlay}>
                   <span className={styles.packageMediaCategory}>{pkg.title}</span>
@@ -171,7 +260,17 @@ export default function HizmetlerPage() {
                 <div className={styles.featuresGrid}>
                   {pkg.features.map((feature, fIdx) => (
                     <div key={fIdx} className={styles.featureItem}>
-                      <Check size={18} className={styles.featureIcon} />
+                      {pkg.id === 'dugun' ? (
+                        <Sparkles size={17} className={styles.featureIcon} style={{ color: 'var(--color-champagne)' }} />
+                      ) : pkg.id === 'kina' ? (
+                        <Heart size={17} className={styles.featureIcon} style={{ color: '#D45D79' }} />
+                      ) : pkg.id === 'nisan' ? (
+                        <CheckCircle2 size={17} className={styles.featureIcon} style={{ color: 'var(--color-champagne)' }} />
+                      ) : pkg.id === 'sunnet' ? (
+                        <ShieldCheck size={17} className={styles.featureIcon} style={{ color: '#3B798A' }} />
+                      ) : (
+                        <Check size={17} className={styles.featureIcon} />
+                      )}
                       <span>{feature}</span>
                     </div>
                   ))}
@@ -185,13 +284,57 @@ export default function HizmetlerPage() {
                     Davetli sayısı, menü tercihi ve tarihe göre kişiselleştirilmiş net bütçe planı sunulur.
                   </span>
                 </div>
-                <Link href={`/iletisim?paket=${pkg.id}`} className="btn btn-primary">
+                <Link href={`/iletisim?paket=${pkg.id}#concierge-booking-form`} className="btn btn-primary">
                   <CalendarCheck size={18} />
                   <span>Bu Paket İçin Teklif & Randevu Alın</span>
                 </Link>
               </div>
-            </TiltCard>
+            </article>
           ))}
+        </div>
+
+        {/* SEO Cross-Links Section */}
+        <div
+          style={{
+            marginTop: '4rem',
+            padding: '2.5rem',
+            background: 'var(--color-surface)',
+            border: '1px solid var(--color-stone)',
+            borderRadius: 'var(--radius-xs)',
+            display: 'grid',
+            gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))',
+            gap: '2rem',
+          }}
+        >
+          <div>
+            <div style={{ display: 'flex', alignItems: 'center', gap: '0.6rem', color: 'var(--color-champagne)', marginBottom: '0.5rem' }}>
+              <Building2 size={20} />
+              <h3 style={{ fontFamily: 'var(--font-serif)', fontSize: '1.25rem', margin: 0, color: 'var(--color-anthracite)' }}>
+                Salon Olanakları & Mimari
+              </h3>
+            </div>
+            <p style={{ fontSize: '0.92rem', color: 'var(--color-text-secondary)', lineHeight: 1.6, marginBottom: '1rem' }}>
+              1.200 m² kolonsuz ferah alan, 6.5 m tavan, 180 m² mermer dans pisti, 250 araçlık otopark ve 250 kVA kesintisiz jeneratör altyapımızın tüm teknik detaylarını inceleyin.
+            </p>
+            <Link href="/salon" className="btn btn-outline" style={{ display: 'inline-flex' }}>
+              <span>Salon Detaylarını İnceleyin</span>
+            </Link>
+          </div>
+
+          <div>
+            <div style={{ display: 'flex', alignItems: 'center', gap: '0.6rem', color: 'var(--color-champagne)', marginBottom: '0.5rem' }}>
+              <BookOpen size={20} />
+              <h3 style={{ fontFamily: 'var(--font-serif)', fontSize: '1.25rem', margin: 0, color: 'var(--color-anthracite)' }}>
+                Düğün & Kına Planlama Rehberi
+              </h3>
+            </div>
+            <p style={{ fontSize: '0.92rem', color: 'var(--color-text-secondary)', lineHeight: 1.6, marginBottom: '1rem' }}>
+              Masa düzeni optimizasyonu, gündüz ve akşam seansları karşılaştırması ve kusursuz bir organizasyon için uzman ipuçlarını okuyun.
+            </p>
+            <Link href="/rehber" className="btn btn-outline" style={{ display: 'inline-flex' }}>
+              <span>Rehberi Keşfedin</span>
+            </Link>
+          </div>
         </div>
       </section>
     </div>

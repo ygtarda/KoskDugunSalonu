@@ -1,6 +1,7 @@
 'use client';
 
 import React, { useState, useRef, useEffect } from 'react';
+import { useSearchParams } from 'next/navigation';
 import {
   Calendar as CalendarIcon,
   ChevronLeft,
@@ -14,6 +15,9 @@ import {
   ArrowRight,
   RotateCcw,
   ShieldCheck,
+  Sun,
+  Moon,
+  X,
 } from 'lucide-react';
 import styles from './BookingForm.module.css';
 
@@ -26,6 +30,17 @@ const EVENT_TYPES = [
   'Mezuniyet & Balo',
   'Kurumsal Davet & Gala',
 ];
+
+// Hizmetler sayfasından gelen parametrelerle eşleşme haritası
+const PACKAGE_PARAM_MAP: Record<string, { eventType: string; defaultGuests: number }> = {
+  dugun: { eventType: 'Düğün Daveti', defaultGuests: 800 },
+  kina: { eventType: 'Kına Gecesi', defaultGuests: 600 },
+  nisan: { eventType: 'Nişan & Söz Töreni', defaultGuests: 400 },
+  sunnet: { eventType: 'Sünnet Düğünü', defaultGuests: 600 },
+  kurumsal: { eventType: 'Kurumsal Davet & Gala', defaultGuests: 500 },
+  mezuniyet: { eventType: 'Mezuniyet & Balo', defaultGuests: 500 },
+};
+
 
 // Turkish Month and Day Names
 const TURKISH_MONTHS = [
@@ -82,6 +97,9 @@ function formatDisplayDate(date: Date | null): string {
 }
 
 export default function BookingForm() {
+  const searchParams = useSearchParams();
+  const paketParam = searchParams.get('paket');
+
   // Current Step: 1, 2, or 3
   const [currentStep, setCurrentStep] = useState<number>(1);
 
@@ -90,9 +108,107 @@ export default function BookingForm() {
   const [phone, setPhone] = useState('');
   const [email, setEmail] = useState('');
   const [eventType, setEventType] = useState(EVENT_TYPES[0]);
+  const [selectedPackageBadge, setSelectedPackageBadge] = useState<string | null>(null);
   const [selectedDate, setSelectedDate] = useState<Date | null>(null);
+  const [timeSlot, setTimeSlot] = useState<'aksam' | 'gunduz'>('aksam');
   const [guestCount, setGuestCount] = useState<number>(600);
+  const [displayGuestCount, setDisplayGuestCount] = useState<number>(600);
+  const [isSliderAnimated, setIsSliderAnimated] = useState<boolean>(true);
   const [notes, setNotes] = useState('');
+  // Anti-bot Spam Koruması (Honeypot & Zaman Kilidi)
+  const [hpWebsite, setHpWebsite] = useState('');
+  const formLoadedAtRef = useRef<number>(Date.now());
+  const animFrameRef = useRef<number | null>(null);
+
+  // Butona basıldığında veya + / - tıklandığında çubuğun pat pat değil, akışkan animasyonla sürüklenmesi
+  const animateToGuestCount = (targetVal: number) => {
+    const clampedTarget = Math.max(100, Math.min(1000, targetVal));
+    setGuestCount(clampedTarget);
+    setIsSliderAnimated(true);
+
+    if (animFrameRef.current) {
+      cancelAnimationFrame(animFrameRef.current);
+    }
+
+    const startVal = displayGuestCount;
+    const diff = clampedTarget - startVal;
+    if (diff === 0) return;
+
+    const duration = 440; // ms
+    const startTime = performance.now();
+
+    const step = (now: number) => {
+      const elapsed = now - startTime;
+      const progress = Math.min(1, elapsed / duration);
+      // İpeksi cubic ease-out formülü
+      const ease = 1 - Math.pow(1 - progress, 3);
+      const currentVal = Math.round(startVal + diff * ease);
+
+      if (progress >= 1) {
+        setDisplayGuestCount(clampedTarget);
+      } else {
+        setDisplayGuestCount(Math.round(currentVal / 5) * 5);
+        animFrameRef.current = requestAnimationFrame(step);
+      }
+    };
+
+    animFrameRef.current = requestAnimationFrame(step);
+  };
+
+  // Elle sürükleme yapıldığında gecikmesiz anlık takip
+  const handleRangeInput = (val: number) => {
+    if (animFrameRef.current) {
+      cancelAnimationFrame(animFrameRef.current);
+    }
+    setIsSliderAnimated(false);
+    setGuestCount(val);
+    setDisplayGuestCount(val);
+  };
+
+  // URL'deki ?paket= parametresini otomatik seç ve ardından URL'den temizle (yenilemede kalıcı olmasın)
+  useEffect(() => {
+    if (paketParam) {
+      const cleanParam = paketParam.toLowerCase().trim();
+      let matchedPackage: string | null = null;
+      if (PACKAGE_PARAM_MAP[cleanParam]) {
+        matchedPackage = PACKAGE_PARAM_MAP[cleanParam].eventType;
+        const targetGuests = PACKAGE_PARAM_MAP[cleanParam].defaultGuests;
+        setEventType(matchedPackage);
+        setGuestCount(targetGuests);
+        setDisplayGuestCount(targetGuests);
+        setSelectedPackageBadge(matchedPackage);
+      } else {
+        const found = EVENT_TYPES.find((t) =>
+          t.toLowerCase().includes(cleanParam)
+        );
+        if (found) {
+          matchedPackage = found;
+          setEventType(found);
+          setSelectedPackageBadge(found);
+        }
+      }
+
+      // Sayfa yenilendiğinde parametrenin sabit kalmaması için adresten ?paket= sorgusunu temizle
+      if (typeof window !== 'undefined' && window.history?.replaceState) {
+        const cleanUrl = window.location.pathname + (window.location.hash || '');
+        window.history.replaceState(null, '', cleanUrl);
+      }
+    }
+
+    // Hash veya paket parametresiyle gelindiğinde forma kusursuz odaklanma & smooth scroll
+    if (typeof window !== 'undefined') {
+      if (window.location.hash === '#concierge-booking-form' || paketParam) {
+        const timer = setTimeout(() => {
+          const formEl = document.getElementById('concierge-booking-form');
+          if (formEl) {
+            formEl.scrollIntoView({ behavior: 'smooth', block: 'start' });
+          }
+        }, 120);
+        return () => clearTimeout(timer);
+      }
+    }
+  }, [paketParam]);
+
 
   // Interactive UI States
   const [isSelectOpen, setIsSelectOpen] = useState(false);
@@ -108,6 +224,7 @@ export default function BookingForm() {
   const [errors, setErrors] = useState<Record<string, string>>({});
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSuccess, setIsSuccess] = useState(false);
+  const [submitError, setSubmitError] = useState<string | null>(null);
 
   // Refs
   const selectRef = useRef<HTMLDivElement>(null);
@@ -253,14 +370,49 @@ export default function BookingForm() {
     setErrors((prev) => ({ ...prev, eventDate: '' }));
   };
 
-  // Final Submit Handler
-  const handleSubmit = (e: React.FormEvent) => {
+  // Final Submit Handler: API rotasına istek atar ve e-posta tetikler
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
-    setTimeout(() => {
+    setSubmitError(null);
+    try {
+      const res = await fetch('/api/contact', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          fullName,
+          phone,
+          email,
+          eventType,
+          selectedDate: selectedDate ? selectedDate.toISOString() : null,
+          formattedDate: selectedDate ? formatDisplayDate(selectedDate) : 'Tarih seçilmedi',
+          timeSlot,
+          guestCount,
+          notes,
+          _hp_website: hpWebsite,
+          _form_loaded_at: formLoadedAtRef.current,
+        }),
+      });
+
+      if (res.ok) {
+        setIsSuccess(true);
+        setSelectedPackageBadge(null);
+      } else {
+        const errorData = await res.json().catch(() => null);
+        const errorMsg =
+          errorData?.message ||
+          errorData?.error ||
+          'Talebiniz iletilemedi. Lütfen doğrudan 0 (312) 623 00 00 numaramızdan bizi arayınız veya WhatsApp üzerinden iletiniz.';
+        setSubmitError(errorMsg);
+      }
+    } catch (err) {
+      console.error('Randevu formu iletilirken hata:', err);
+      setSubmitError(
+        'Bağlantı hatası nedeniyle talebiniz iletilemedi. Lütfen doğrudan 0 (312) 623 00 00 numaramızdan bizi arayınız.'
+      );
+    } finally {
       setIsSubmitting(false);
-      setIsSuccess(true);
-    }, 600);
+    }
   };
 
   // Reset Form
@@ -269,21 +421,38 @@ export default function BookingForm() {
     setPhone('');
     setEmail('');
     setEventType(EVENT_TYPES[0]);
+    setSelectedPackageBadge(null);
     setSelectedDate(null);
+    setTimeSlot('aksam');
     setGuestCount(600);
+    setDisplayGuestCount(600);
+    setIsSliderAnimated(true);
     setNotes('');
+    setHpWebsite('');
+    formLoadedAtRef.current = Date.now();
     setTouched({});
     setErrors({});
     setCurrentStep(1);
     setIsSuccess(false);
+    setSubmitError(null);
+
+    if (typeof window !== 'undefined' && window.history?.replaceState) {
+      const cleanUrl = window.location.pathname;
+      window.history.replaceState(null, '', cleanUrl);
+    }
   };
 
-  // WhatsApp Message Text
+  // Formatlı Seans ve Tarih Metinleri
+  const timeSlotLabel =
+    timeSlot === 'aksam' ? 'Akşam Seansı (19:00 – 23:00)' : 'Gündüz Seansı (12:00 – 16:00)';
   const formattedDateStr = selectedDate ? formatDisplayDate(selectedDate) : 'Tarih seçilmedi';
+
+  // WhatsApp Message Text
   const whatsappText = encodeURIComponent(
     `Merhaba Köşk Düğün Salonu Yetkilisi,\n\nBen ${fullName}.\n` +
     `Organizasyon Türü: ${eventType}\n` +
     `Tahmini Tarih: ${formattedDateStr}\n` +
+    `Zaman Dilimi: ${timeSlotLabel}\n` +
     `Davetli Sayısı: ${guestCount} Kişi\n` +
     `Özel İstek / Notlar: ${notes || 'Belirtilmedi'}\n\n` +
     `Web siteniz üzerinden keşif randevusu ve salon teklifi almak istiyorum.`
@@ -316,8 +485,10 @@ export default function BookingForm() {
               <span className={styles.receiptValue}>{eventType}</span>
             </div>
             <div>
-              <span className={styles.receiptLabel}>Tahmini Tarih</span>
-              <span className={styles.receiptValue}>{formattedDateStr}</span>
+              <span className={styles.receiptLabel}>Tarih & Seans</span>
+              <span className={styles.receiptValue}>
+                {formattedDateStr} · {timeSlot === 'aksam' ? 'Akşam (19:00 - 23:00)' : 'Gündüz (12:00 - 16:00)'}
+              </span>
             </div>
             <div>
               <span className={styles.receiptLabel}>Davetli Sayısı</span>
@@ -367,7 +538,40 @@ export default function BookingForm() {
         <p className={styles.formSubtitle}>
           3 adımda salon takvimini sorgulayın ve davetinize özel şeffaf bütçe teklifi alın.
         </p>
+        {selectedPackageBadge && (
+          <div className={styles.selectedPackageAlert}>
+            <div style={{ display: 'inline-flex', alignItems: 'center', gap: '0.45rem' }}>
+              <CheckCircle2 size={15} style={{ color: 'var(--color-champagne, #B8956E)' }} />
+              <span>
+                Seçilen Paket: <strong>{selectedPackageBadge}</strong>
+              </span>
+            </div>
+            <button
+              type="button"
+              onClick={() => setSelectedPackageBadge(null)}
+              className={styles.dismissBadgeBtn}
+              aria-label="Paket bildirimini kapat"
+              title="Kapat"
+            >
+              <X size={13} />
+            </button>
+          </div>
+        )}
       </header>
+
+      {/* Spam Bot Tuzağı (Honeypot) - İnsanlar görmez, botlar doldurur */}
+      <div className={styles.hpField} aria-hidden="true">
+        <label htmlFor="field-hp-website">Lütfen bu alanı boş bırakın</label>
+        <input
+          type="text"
+          id="field-hp-website"
+          name="_hp_website"
+          value={hpWebsite}
+          onChange={(e) => setHpWebsite(e.target.value)}
+          tabIndex={-1}
+          autoComplete="off"
+        />
+      </div>
 
       {/* 3-Step Progress Bar */}
       <div className={styles.progressBarWrapper}>
@@ -640,6 +844,7 @@ export default function BookingForm() {
                             }`}
                           onClick={() => {
                             setEventType(type);
+                            setSelectedPackageBadge(null);
                             setIsSelectOpen(false);
                           }}
                         >
@@ -776,74 +981,134 @@ export default function BookingForm() {
               </div>
             </div>
 
-            {/* Davetli Sayısı Slider'ı */}
+            {/* Davet Seansı Seçici (Kompakt ve Sade) */}
             <div className={styles.fieldGroup}>
               <label className={styles.fieldLabel}>
-                <span>Tahmini Davetli Sayısı</span>
+                <span>
+                  Davet Seansı <span className={styles.reqStar}>*</span>
+                </span>
               </label>
-              <div className={styles.sliderCard}>
-                <div className={styles.sliderHeader}>
-                  <div style={{ display: 'flex', alignItems: 'center', gap: '0.45rem' }}>
-                    <Users size={17} style={{ color: 'var(--color-champagne)' }} />
-                    <span className={styles.sliderTitle}>Salon Kapasite Planı</span>
-                  </div>
-                  <div className={styles.sliderValueBadge}>
-                    <span>{guestCount}</span>
-                    <span style={{ fontSize: '0.72rem', opacity: 0.85 }}>Kişi</span>
+
+              <div className={styles.segmentedControl}>
+                <button
+                  type="button"
+                  id="time-slot-gunduz"
+                  className={`${styles.segmentBtn} ${
+                    timeSlot === 'gunduz' ? styles.segmentBtnActive : ''
+                  }`}
+                  onClick={() => setTimeSlot('gunduz')}
+                >
+                  <Sun size={16} className={styles.segmentIconSun} />
+                  <span>Gündüz (12:00 – 16:00)</span>
+                </button>
+
+                <button
+                  type="button"
+                  id="time-slot-aksam"
+                  className={`${styles.segmentBtn} ${
+                    timeSlot === 'aksam' ? styles.segmentBtnActive : ''
+                  }`}
+                  onClick={() => setTimeSlot('aksam')}
+                >
+                  <Moon size={16} className={styles.segmentIconMoon} />
+                  <span>Akşam (19:00 – 23:00)</span>
+                </button>
+              </div>
+            </div>
+
+            {/* Davetli Sayısı Seçici (Kompakt, Sade & Lüks) */}
+            <div className={styles.fieldGroup}>
+              <div className={styles.sliderCompactCard}>
+                <div className={styles.guestCountHeader}>
+                  <label className={styles.fieldLabelNoMargin} htmlFor="field-guestCount">
+                    <span style={{ display: 'inline-flex', alignItems: 'center', gap: '0.45rem' }}>
+                      <Users size={16} style={{ color: 'var(--color-champagne)' }} />
+                      <span>Tahmini Davetli Sayısı</span>
+                    </span>
+                  </label>
+
+                  {/* Kompakt Hızlı Stepper & Değer Göstergesi */}
+                  <div className={styles.guestStepper}>
+                    <button
+                      type="button"
+                      className={styles.stepperBtn}
+                      onClick={() => animateToGuestCount(guestCount - 25)}
+                      aria-label="25 kişi azalt"
+                      title="25 kişi azalt"
+                    >
+                      −
+                    </button>
+                    <div className={styles.stepperValue}>
+                      <strong>{displayGuestCount}</strong>
+                      <span>Kişi</span>
+                    </div>
+                    <button
+                      type="button"
+                      className={styles.stepperBtn}
+                      onClick={() => animateToGuestCount(guestCount + 25)}
+                      aria-label="25 kişi artır"
+                      title="25 kişi artır"
+                    >
+                      +
+                    </button>
                   </div>
                 </div>
 
-                <div className={styles.sliderTrackWrapper}>
-                  <div
-                    className={styles.rangeFillBar}
-                    style={{
-                      width: `${((guestCount - 100) / 900) * 100}%`,
-                    }}
-                  />
+                {/* Range Slider Track & Animasyonlu Çubuk / Başlık */}
+                <div
+                  className={`${styles.sliderTrackWrapper} ${
+                    isSliderAnimated ? styles.sliderAnimated : ''
+                  }`}
+                >
+                  <div className={styles.sliderTrackBg}>
+                    <div
+                      className={styles.rangeFillBar}
+                      style={{
+                        width: `${((guestCount - 100) / 900) * 100}%`,
+                      }}
+                    />
+                    <div
+                      className={styles.sliderCustomThumb}
+                      style={{
+                        left: `${((guestCount - 100) / 900) * 100}%`,
+                      }}
+                    />
+                  </div>
                   <input
                     type="range"
                     min={100}
                     max={1000}
                     step={25}
                     value={guestCount}
-                    onChange={(e) => setGuestCount(Number(e.target.value))}
-                    className={styles.rangeInput}
+                    onPointerDown={() => setIsSliderAnimated(false)}
+                    onTouchStart={() => setIsSliderAnimated(false)}
+                    onMouseDown={() => setIsSliderAnimated(false)}
+                    onChange={(e) => handleRangeInput(Number(e.target.value))}
+                    className={styles.rangeInputInvisible}
                     id="field-guestCount"
-                    aria-label="Davetli sayısı seçici"
+                    aria-label="Tahmini davetli sayısı seçici"
                   />
                 </div>
 
-                {/* 3 Capacity Tier Buttons */}
-                <div className={styles.capacityTiers}>
-                  <button
-                    type="button"
-                    className={`${styles.tierBtn} ${guestCount <= 350 ? styles.tierBtnActive : ''
+                {/* Tek Satır Kompakt Hızlı Seçim Butonları (Akışkan Geçişli) */}
+                <div className={styles.guestPresetRow}>
+                  {[
+                    { count: 300, label: '300 Kişi' },
+                    { count: 500, label: '500 Kişi' },
+                    { count: 800, label: '800 Kişi' },
+                    { count: 1000, label: '1.000 Kişi' },
+                  ].map((preset) => (
+                    <button
+                      key={preset.count}
+                      type="button"
+                      className={`${styles.guestPresetBtn} ${
+                        guestCount === preset.count ? styles.guestPresetBtnActive : ''
                       }`}
-                    onClick={() => setGuestCount(250)}
-                  >
-                    <span className={styles.tierLabel}>Butik & Kına</span>
-                    <span className={styles.tierRange}>100 – 350 Kişi</span>
-                  </button>
-
-                  <button
-                    type="button"
-                    className={`${styles.tierBtn} ${guestCount > 350 && guestCount <= 700 ? styles.tierBtnActive : ''
-                      }`}
-                    onClick={() => setGuestCount(550)}
-                  >
-                    <span className={styles.tierLabel}>Geniş Davet</span>
-                    <span className={styles.tierRange}>350 – 700 Kişi</span>
-                  </button>
-
-                  <button
-                    type="button"
-                    className={`${styles.tierBtn} ${guestCount > 700 ? styles.tierBtnActive : ''
-                      }`}
-                    onClick={() => setGuestCount(850)}
-                  >
-                    <span className={styles.tierLabel}>Tam Kapasite</span>
-                    <span className={styles.tierRange}>700 – 1.000 Kişi</span>
-                  </button>
+                      onClick={() => animateToGuestCount(preset.count)}
+                    >
+                      {preset.label}
+                    </button>
+                  ))}
                 </div>
               </div>
             </div>
@@ -913,12 +1178,24 @@ export default function BookingForm() {
                   </span>
                 </div>
                 <div className={styles.previewItem} style={{ gridColumn: 'span 2' }}>
-                  <span className={styles.previewLabel}>Seçilen Tarih</span>
-                  <span className={styles.previewValue}>{formattedDateStr}</span>
+                  <span className={styles.previewLabel}>Seçilen Tarih & Seans</span>
+                  <span className={styles.previewValue}>
+                    {formattedDateStr} · {timeSlot === 'aksam' ? '🌙 Akşam Seansı (19:00 – 23:00)' : '☀️ Gündüz Seansı (12:00 – 16:00)'}
+                  </span>
                 </div>
               </div>
             </div>
           </div>
+
+          {/* Hata Durumu Bildirimi */}
+          {submitError && (
+            <div className={styles.submitErrorAlert} role="alert" id="booking-submit-error">
+              <AlertCircle size={20} className={styles.submitErrorIcon} />
+              <div className={styles.submitErrorText}>
+                <strong>Talep Gönderilemedi:</strong> {submitError}
+              </div>
+            </div>
+          )}
 
           {/* Step 3 Actions */}
           <div className={styles.stepActions}>

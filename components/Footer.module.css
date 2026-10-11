@@ -1,16 +1,19 @@
 .footer {
-  background-color: var(--color-anthracite);
+  background-color: var(--color-anthracite, #2C2826);
   color: #FAF8F5;
-  border-top: 1px solid var(--color-stone);
+  border-top: 1px solid var(--color-stone, #E8E4DF);
   position: relative;
   z-index: 10;
 }
 
+/* ==========================================================================
+   1. Pre-Footer Call to Action Band
+   ========================================================================== */
 .ctaBand {
   background-color: #F4F1EC;
-  border-bottom: 1px solid var(--color-stone);
-  padding: 5rem 0;
-  color: var(--color-anthracite);
+  border-bottom: 1px solid var(--color-stone, #E8E4DF);
+  padding: 4.5rem 0;
+  color: var(--color-anthracite, #2C2826);
 }
 
 .ctaGrid {
@@ -29,118 +32,195 @@
   display: flex;
   align-items: center;
   gap: 0.75rem;
-  font-size: 0.84rem;
-  letter-spacing: 0.12em;
+  font-size: 0.82rem;
+  letter-spacing: 0.14em;
   text-transform: uppercase;
-  color: var(--color-cashmere);
-  font-weight: 500;
+  color: var(--color-cashmere, #7A7471);
+  font-weight: 600;
   margin-bottom: 0.6rem;
 }
 
 .accentLine {
-  width: 20px;
+  width: 22px;
   height: 2px;
-  background-color: var(--color-powder);
+  background-color: var(--color-champagne, #B8956E);
 }
 
 .ctaTitle {
-  font-size: clamp(1.8rem, 3.2vw, 2.5rem);
-  color: var(--color-anthracite);
+  font-size: clamp(1.75rem, 3vw, 2.4rem);
+  color: var(--color-anthracite, #2C2826);
   margin-bottom: 0.85rem;
-  font-weight: 400;
+  font-weight: 500;
+  line-height: 1.25;
 }
 
 .ctaDesc {
-  font-size: 1.05rem;
-  color: var(--color-text-secondary);
+  font-size: 1.02rem;
+  color: var(--color-text-secondary, #524C48);
   line-height: 1.7;
 }
 
 .ctaActions {
   display: flex;
+  align-items: center;
   gap: 1rem;
   flex-wrap: wrap;
 }
 
+.ctaPhoneDirect {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  padding: 0.65rem 1rem;
+  color: var(--color-anthracite, #2C2826);
+  font-size: 0.92rem;
+  font-weight: 600;
+  text-decoration: none;
+  border-radius: var(--radius-xs, 4px);
+  transition: all 0.2s ease;
+}
+
+.ctaPhoneDirect:hover {
+  color: var(--color-champagne, #B8956E);
+  background: rgba(44, 40, 38, 0.05);
+}
+
+/* ==========================================================================
+   2. Main Footer Grid (Ferah & Geniş 4 Sütun)
+   ========================================================================== */
 .footerMain {
-  padding: 4.5rem 0 3.5rem 0;
+  padding: 5rem 0 4rem 0;
 }
 
 .footerGrid {
   display: grid;
-  grid-template-columns: 2fr 1fr 1fr 1.5fr;
-  gap: 3rem;
+  grid-template-columns: 1.35fr 1fr 1.15fr 1.2fr;
+  gap: 3.5rem;
 }
 
+/* Sütun 1: Marka */
 .brandTitleGroup {
   display: flex;
   align-items: center;
-  gap: 0.85rem;
-  margin-bottom: 1.25rem;
+  gap: 0.95rem;
+  margin-bottom: 1.35rem;
+  text-decoration: none;
 }
 
-.brandMonogram {
-  font-family: var(--font-serif);
-  font-size: 1.35rem;
-  font-weight: 500;
-  color: #FFFFFF;
-  background-color: var(--color-champagne);
-  width: 38px;
-  height: 38px;
-  border-radius: var(--radius-xs);
+.brandLogoCard {
+  width: 52px;
+  height: 52px;
+  background-color: #FFFFFF;
+  border: 1.5px solid rgba(212, 181, 158, 0.45);
+  border-radius: 9px;
   display: flex;
   align-items: center;
   justify-content: center;
+  overflow: hidden;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.25);
+  flex-shrink: 0;
+}
+
+.brandLogoImg {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 
 .brandName {
-  font-size: 1.25rem;
+  font-size: 1.2rem;
   color: #FFFFFF;
   letter-spacing: 0.12em;
   margin: 0;
   font-family: var(--font-serif);
+  font-weight: 600;
 }
 
 .brandLocation {
-  font-size: 0.76rem;
-  color: var(--color-powder);
-  letter-spacing: 0.14em;
+  font-size: 0.74rem;
+  color: var(--color-powder, #D4B59E);
+  letter-spacing: 0.16em;
   text-transform: uppercase;
+  font-weight: 500;
+  display: block;
 }
 
 .brandAbout {
-  font-size: 0.92rem;
+  font-size: 0.9rem;
   color: #BFB8B2;
   line-height: 1.7;
-  margin-bottom: 1.5rem;
+  margin-bottom: 1.35rem;
 }
 
 .highlightsBadge {
   display: flex;
   flex-direction: column;
-  gap: 0.6rem;
+  gap: 0.55rem;
+  margin-bottom: 1.5rem;
 }
 
 .badgeItem {
   display: flex;
   align-items: center;
   gap: 0.6rem;
-  font-size: 0.85rem;
+  font-size: 0.83rem;
   color: #E8E4DF;
 }
 
 .badgeIcon {
-  color: var(--color-powder);
+  color: var(--color-champagne, #B8956E);
+  flex-shrink: 0;
 }
 
+.googleBadgeWrapper {
+  margin-top: 0.5rem;
+}
+
+.googleBadgeLink {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(212, 181, 158, 0.35);
+  padding: 0.6rem 0.95rem;
+  border-radius: 6px;
+  color: #FFFFFF;
+  text-decoration: none;
+  transition: all 0.2s ease;
+}
+
+.googleBadgeLink:hover {
+  background: rgba(255, 255, 255, 0.14);
+  border-color: var(--color-champagne, #B8956E);
+  transform: translateY(-1px);
+}
+
+.googleRatingText {
+  font-size: 0.82rem;
+  color: #FAF8F5;
+}
+
+.googleRatingText strong {
+  color: #FFC107;
+  font-weight: 700;
+}
+
+.googleSubText {
+  font-size: 0.71rem;
+  color: var(--color-powder, #D4B59E);
+  display: block;
+}
+
+/* Sütunlar: Başlıklar ve Bağlantı Listesi */
 .colHeading {
-  font-size: 1.1rem;
+  font-size: 1.08rem;
   font-family: var(--font-serif);
   color: #FFFFFF;
-  margin-bottom: 1.2rem;
+  margin-bottom: 1.35rem;
   letter-spacing: 0.04em;
   position: relative;
-  padding-bottom: 0.5rem;
+  padding-bottom: 0.55rem;
+  font-weight: 600;
 }
 
 .colHeading::after {
@@ -148,72 +228,151 @@
   position: absolute;
   bottom: 0;
   left: 0;
-  width: 24px;
-  height: 1.5px;
-  background-color: var(--color-powder);
+  width: 26px;
+  height: 2px;
+  background-color: var(--color-powder, #D4B59E);
 }
 
 .linkList {
   list-style: none;
+  margin: 0;
+  padding: 0;
   display: flex;
   flex-direction: column;
-  gap: 0.65rem;
+  gap: 0.75rem;
 }
 
 .linkList a {
   color: #BFB8B2;
-  font-size: 0.92rem;
-  transition: color 0.2s ease, padding-left 0.2s ease;
-  display: inline-block;
+  font-size: 0.9rem;
+  text-decoration: none;
+  transition: all 0.2s ease;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  line-height: 1.5;
+}
+
+.bulletIcon {
+  color: var(--color-powder, #D4B59E);
+  opacity: 0.6;
+  flex-shrink: 0;
+  transition: transform 0.2s ease, opacity 0.2s ease;
 }
 
 .linkList a:hover {
-  color: var(--color-powder);
+  color: #FFFFFF;
   padding-left: 4px;
 }
 
-.contactList {
-  list-style: none;
+.linkList a:hover .bulletIcon {
+  opacity: 1;
+  color: var(--color-champagne, #B8956E);
+  transform: translateX(2px);
+}
+
+/* Seans Kutusu (Sütun 3 Altı) */
+.sessionBox {
+  margin-top: 1.35rem;
+  padding: 0.85rem 1rem;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(212, 181, 158, 0.25);
+  border-radius: 6px;
+}
+
+.sessionBoxTitle {
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: #FAF8F5;
+  margin-bottom: 0.55rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+.sessionBoxRow {
   display: flex;
   flex-direction: column;
-  gap: 1.1rem;
+  gap: 0.35rem;
 }
 
-.contactList li {
-  display: flex;
-  align-items: flex-start;
-  gap: 0.85rem;
-  font-size: 0.9rem;
-  color: #D6D0CA;
+.sessionBadge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: 0.8rem;
+  color: #E8E4DF;
+  font-weight: 500;
 }
 
-.contactIcon {
-  color: var(--color-powder);
-  margin-top: 3px;
-  flex-shrink: 0;
+/* Hızlı İletişim Satırı (Sütun 4 Altı) */
+.quickContactLine {
+  margin-top: 1.35rem;
+  padding-top: 1rem;
+  border-top: 1px dashed rgba(232, 228, 223, 0.16);
 }
 
-.contactList strong {
-  display: block;
-  font-size: 0.74rem;
-  text-transform: uppercase;
-  color: #A39B95;
-  letter-spacing: 0.08em;
-  margin-bottom: 2px;
-}
-
-.contactList a {
-  color: #FFFFFF;
+.quickContactLine a {
+  text-decoration: none;
   transition: color 0.2s ease;
 }
 
-.contactList a:hover {
-  color: var(--color-powder);
+.quickContactLine a:hover {
+  color: var(--color-powder, #D4B59E) !important;
 }
 
+/* ==========================================================================
+   3. SEO Bölgesel Etiketler Bandı
+   ========================================================================== */
+.seoKeywordsBand {
+  border-top: 1px solid rgba(232, 228, 223, 0.1);
+  background: rgba(0, 0, 0, 0.22);
+  padding: 1.25rem 0;
+}
+
+.seoKeywordsFlex {
+  display: flex;
+  align-items: center;
+  gap: 0.85rem;
+  flex-wrap: wrap;
+  font-size: 0.82rem;
+}
+
+.seoKeywordsTitle {
+  color: var(--color-powder, #D4B59E);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  font-size: 0.74rem;
+  flex-shrink: 0;
+}
+
+.seoKeywordsList {
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+  flex-wrap: wrap;
+  color: rgba(255, 255, 255, 0.25);
+}
+
+.seoKeywordsList a {
+  color: #A39B95;
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.seoKeywordsList a:hover {
+  color: #FFFFFF;
+}
+
+/* ==========================================================================
+   4. Alt Bilgi Çubuğu
+   ========================================================================== */
 .footerBottom {
-  border-top: 1px solid rgba(232, 228, 223, 0.12);
-  padding: 1.75rem 0;
+  border-top: 1px solid rgba(232, 228, 223, 0.1);
+  padding: 1.65rem 0;
 }
 
 .bottomFlex {
@@ -221,12 +380,13 @@
   align-items: center;
   justify-content: space-between;
   flex-wrap: wrap;
-  gap: 1rem;
+  gap: 1.2rem;
 }
 
 .copyright {
   font-size: 0.85rem;
   color: #9C948E;
+  margin: 0;
 }
 
 .bottomMeta {
@@ -234,37 +394,66 @@
   align-items: center;
   gap: 0.75rem;
   font-size: 0.82rem;
-  color: var(--color-powder);
+  color: var(--color-powder, #D4B59E);
 }
 
 .dotSeparator {
   width: 4px;
   height: 4px;
   border-radius: 50%;
-  background-color: var(--color-powder);
-  opacity: 0.6;
+  background-color: var(--color-powder, #D4B59E);
+  opacity: 0.5;
 }
 
-@media (max-width: 1024px) {
+/* ==========================================================================
+   Responsive
+   ========================================================================== */
+@media (max-width: 1100px) {
   .footerGrid {
     grid-template-columns: 1fr 1fr;
-    gap: 2.5rem;
+    gap: 3rem;
   }
 }
 
 @media (max-width: 640px) {
-  .footerGrid {
-    grid-template-columns: 1fr;
-    gap: 2.2rem;
+  .footerMain {
+    padding: 3.5rem 0 2.5rem 0;
+  }
+
+  .ctaBand {
+    padding: 3.5rem 0;
   }
 
   .ctaGrid {
     flex-direction: column;
     align-items: flex-start;
+    gap: 2rem;
+  }
+
+  .ctaActions {
+    flex-direction: column;
+    width: 100%;
+    align-items: stretch;
+  }
+
+  .ctaActions a {
+    text-align: center;
+    justify-content: center;
+  }
+
+  .footerGrid {
+    grid-template-columns: 1fr;
+    gap: 2.5rem;
   }
 
   .bottomFlex {
     flex-direction: column;
     align-items: flex-start;
+    gap: 0.6rem;
+  }
+
+  .bottomMeta {
+    flex-wrap: wrap;
+    gap: 0.4rem;
   }
 }

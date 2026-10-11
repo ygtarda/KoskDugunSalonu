@@ -2,6 +2,7 @@
 
 import React, { useState, useEffect } from 'react';
 import Image from 'next/image';
+import { useRouter } from 'next/navigation';
 import { ChevronDown, ArrowRight, CalendarCheck } from 'lucide-react';
 import styles from './HeroCalligraphy.module.css';
 
@@ -10,6 +11,7 @@ interface HeroCalligraphyProps {
 }
 
 export default function HeroCalligraphy({ onScrollClick }: HeroCalligraphyProps) {
+  const router = useRouter();
   const [isScrolled, setIsScrolled] = useState(false);
 
   useEffect(() => {
@@ -51,7 +53,7 @@ export default function HeroCalligraphy({ onScrollClick }: HeroCalligraphyProps)
     if (target) {
       target.scrollIntoView({ behavior: 'smooth', block: 'start' });
     } else {
-      window.location.href = '/iletisim';
+      router.push('/iletisim#concierge-booking-form');
     }
   };
 

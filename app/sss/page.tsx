@@ -2,12 +2,35 @@ import type { Metadata } from 'next';
 import Link from 'next/link';
 import FaqAccordion, { FaqItem } from '@/components/FaqAccordion';
 import GoogleReviewsWidget from '@/components/GoogleReviewsWidget';
+import Breadcrumb from '@/components/Breadcrumb';
 import { CalendarCheck, HelpCircle, MessageSquare } from 'lucide-react';
 
 export const metadata: Metadata = {
-  title: 'Sıkça Sorulan Sorular & Yorumlar | Polatlı Köşk Düğün Salonu',
+  title: 'Sıkça Sorulan Sorular & Misafir Yorumları | Polatlı Köşk Düğün Salonu',
   description:
-    'Polatlı Köşk Düğün Salonu kapasite, rezervasyon, iklimlendirme, otopark bilgileri ve Google Haritalar doğrulanmış gerçek misafir yorumları.',
+    'Polatlı Köşk Düğün Salonu kapasite, rezervasyon süreci, iklimlendirme, otopark olanakları ve Google Haritalar doğrulanmış gerçek çift yorumları.',
+  alternates: {
+    canonical: '/sss',
+  },
+  keywords: [
+    'Polatlı düğün salonu yorumları',
+    'Köşk düğün salonu tavsiyeler',
+    'Polatlı düğün salonu sıkça sorulan sorular',
+    'Polatlı düğün fiyatı nasıl belirlenir',
+  ],
+  openGraph: {
+    title: 'Sıkça Sorulan Sorular & Yorumlar | Polatlı Köşk Düğün Salonu',
+    description:
+      'Kapasite, havalandırma, rezervasyon ve ikramlar hakkında en sık sorulan sorular ve Google 4.9 yıldızlı gerçek misafir değerlendirmeleri.',
+    url: 'https://koskdugunsalonu.com/sss',
+    type: 'website',
+    locale: 'tr_TR',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Sıkça Sorulan Sorular | Polatlı Köşk Düğün Salonu',
+    description: 'Polatlı Köşk Düğün Salonu hakkında tüm merak edilenler ve gerçek kullanıcı yorumları.',
+  },
 };
 
 const faqItems: FaqItem[] = [
@@ -68,11 +91,14 @@ const faqSchema = {
 
 export default function SssPage() {
   return (
-    <div style={{ paddingTop: '1rem', minHeight: '100vh', backgroundColor: 'var(--color-sand)' }}>
+    <div style={{ minHeight: '100vh', backgroundColor: 'var(--color-sand)' }}>
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
       />
+
+      {/* Breadcrumb Navigation */}
+      <Breadcrumb items={[{ label: 'Sıkça Sorulan Sorular & Yorumlar' }]} />
 
       {/* Hero Header */}
       <section style={{ padding: '2.5rem 0 2rem 0', textAlign: 'center' }}>

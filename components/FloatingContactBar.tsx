@@ -1,16 +1,23 @@
 'use client';
 
 import React from 'react';
+import { usePathname } from 'next/navigation';
 import styles from './FloatingContactBar.module.css';
 
 export default function FloatingContactBar() {
+  const pathname = usePathname();
+  const isHome = pathname === '/';
+
   const whatsappUrl =
     'https://wa.me/903126230000?text=Merhaba,%20K%C3%B6%C5%9Fk%20D%C3%BC%C4%9F%C3%BCn%20Salonu%20hakk%C4%B1nda%20bilgi%20ve%20tarih%20m%C3%BCsaitli%C4%9Fi%20%C3%B6%C4%9Frenmek%20istiyorum.';
   const instagramUrl = 'https://www.instagram.com/koskdugunsalonu';
   const phoneUrl = 'tel:+903126230000';
 
   return (
-    <aside className={styles.floatingDock} aria-label="Hızlı İletişim Kanalları">
+    <aside
+      className={`${styles.floatingDock} ${isHome ? styles.hideOnMobileHome : ''}`}
+      aria-label="Hızlı İletişim Kanalları"
+    >
       {/* 1. WhatsApp Button */}
       <a
         href={whatsappUrl}

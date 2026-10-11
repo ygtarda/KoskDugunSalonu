@@ -24,6 +24,18 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.85,
     },
     {
+      url: `${baseUrl}/salon`,
+      lastModified: now,
+      changeFrequency: 'monthly',
+      priority: 0.9,
+    },
+    {
+      url: `${baseUrl}/rehber`,
+      lastModified: now,
+      changeFrequency: 'weekly',
+      priority: 0.88,
+    },
+    {
       url: `${baseUrl}/hakkimizda`,
       lastModified: now,
       changeFrequency: 'monthly',
@@ -34,6 +46,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
       lastModified: now,
       changeFrequency: 'weekly',
       priority: 0.85,
+    },
+    {
+      url: `${baseUrl}/referanslar`,
+      lastModified: now,
+      changeFrequency: 'weekly',
+      priority: 0.88,
     },
     {
       url: `${baseUrl}/iletisim`,

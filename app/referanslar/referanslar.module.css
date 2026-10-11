@@ -1,0 +1,339 @@
+/* ==========================================================================
+   Referanslar & Misafir Yorumları Sayfası Stilleri
+   Polatlı Köşk Düğün Salonu
+   ========================================================================== */
+
+.pageWrapper {
+  min-height: 100vh;
+  background-color: var(--color-sand);
+}
+
+.heroSection {
+  padding: 3rem 0 2.5rem 0;
+  text-align: center;
+  position: relative;
+  background: radial-gradient(circle at 50% 20%, rgba(212, 181, 158, 0.15) 0%, transparent 70%);
+  border-bottom: 1px solid var(--color-stone);
+}
+
+.heroBadge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: rgba(184, 149, 110, 0.12);
+  border: 1px solid rgba(184, 149, 110, 0.35);
+  padding: 0.4rem 1.1rem;
+  border-radius: 999px;
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: var(--color-champagne);
+  letter-spacing: 0.04em;
+  margin-bottom: 1.25rem;
+}
+
+.heroBadgeDot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--color-champagne);
+  box-shadow: 0 0 8px var(--color-champagne);
+}
+
+.heroTitle {
+  font-family: var(--font-serif);
+  font-size: clamp(2.2rem, 4.5vw, 3.6rem);
+  color: var(--color-anthracite);
+  line-height: 1.18;
+  margin-bottom: 1rem;
+}
+
+.heroSubtitle {
+  font-size: clamp(1rem, 1.8vw, 1.15rem);
+  color: var(--color-cashmere);
+  max-width: 740px;
+  margin: 0 auto 2.5rem auto;
+  line-height: 1.65;
+}
+
+/* 3'lü İstatistik Şeridi */
+.statsGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.statCard {
+  background: #FFFFFF;
+  border: 1px solid var(--color-stone);
+  border-radius: var(--radius-xs);
+  padding: 1.5rem 1rem;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.03);
+  transition: transform 0.25s ease, border-color 0.25s ease;
+}
+
+.statCard:hover {
+  transform: translateY(-2px);
+  border-color: var(--color-powder);
+}
+
+.statValue {
+  font-family: var(--font-serif);
+  font-size: 2.2rem;
+  font-weight: 600;
+  color: var(--color-anthracite);
+  display: block;
+  margin-bottom: 0.35rem;
+}
+
+.statLabel {
+  font-size: 0.84rem;
+  color: var(--color-cashmere);
+  font-weight: 500;
+}
+
+/* Filtreleme Sekmeleri */
+.filterSection {
+  padding: 2.5rem 0 1.5rem 0;
+}
+
+.filterTabs {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 0.65rem;
+}
+
+.filterBtn {
+  background: #FFFFFF;
+  border: 1px solid var(--color-stone);
+  color: var(--color-anthracite);
+  padding: 0.55rem 1.25rem;
+  font-size: 0.86rem;
+  font-weight: 500;
+  border-radius: 999px;
+  cursor: pointer;
+  transition: var(--transition-smooth);
+}
+
+.filterBtn:hover {
+  border-color: var(--color-champagne);
+  color: var(--color-champagne);
+}
+
+.filterBtnActive {
+  background: var(--color-anthracite);
+  border-color: var(--color-anthracite);
+  color: #FFFFFF;
+  font-weight: 600;
+}
+
+.filterBtnActive:hover {
+  background: var(--color-champagne);
+  border-color: var(--color-champagne);
+  color: #FFFFFF;
+}
+
+/* Yorum Kartları Izgarası */
+.reviewsGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+  gap: 1.75rem;
+  margin-bottom: 3.5rem;
+}
+
+.reviewCard {
+  background: #FFFFFF;
+  border: 1px solid var(--color-stone);
+  border-radius: var(--radius-xs);
+  padding: 1.75rem;
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.03);
+  position: relative;
+}
+
+.reviewCard:hover {
+  transform: translateY(-3px);
+  border-color: var(--color-powder);
+  box-shadow: 0 10px 30px rgba(184, 149, 110, 0.12);
+}
+
+.cardTop {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 1rem;
+}
+
+.authorGroup {
+  display: flex;
+  align-items: center;
+  gap: 0.85rem;
+}
+
+.avatar {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  color: #FFFFFF;
+  font-weight: 600;
+  font-size: 0.90rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.12);
+}
+
+.authorName {
+  font-size: 0.98rem;
+  font-weight: 600;
+  color: var(--color-anthracite);
+  display: block;
+}
+
+.reviewMeta {
+  font-size: 0.78rem;
+  color: var(--color-cashmere);
+  display: block;
+}
+
+.categoryTag {
+  background: rgba(212, 181, 158, 0.18);
+  color: var(--color-anthracite);
+  border: 1px solid rgba(184, 149, 110, 0.35);
+  font-size: 0.72rem;
+  font-weight: 600;
+  padding: 0.25rem 0.65rem;
+  border-radius: 999px;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.starsRow {
+  display: flex;
+  gap: 0.25rem;
+  margin-bottom: 1rem;
+}
+
+.quoteText {
+  font-size: 0.93rem;
+  line-height: 1.65;
+  color: #3C3835;
+  flex: 1;
+  margin-bottom: 1.5rem;
+  font-style: italic;
+}
+
+.cardBottom {
+  padding-top: 0.85rem;
+  border-top: 1px solid var(--color-stone);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.verifiedGoogleBadge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  font-size: 0.78rem;
+  color: var(--color-cashmere);
+}
+
+/* Google Canlı Doğrulama & Harita Aksiyonu */
+.googleBanner {
+  background: #FFFFFF;
+  border: 1px solid var(--color-stone);
+  border-left: 4px solid var(--color-champagne);
+  border-radius: var(--radius-xs);
+  padding: 2rem;
+  margin-bottom: 4rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+  box-shadow: 0 6px 24px rgba(0, 0, 0, 0.04);
+}
+
+.bannerText h3 {
+  font-family: var(--font-serif);
+  font-size: 1.35rem;
+  color: var(--color-anthracite);
+  margin-bottom: 0.35rem;
+}
+
+.bannerText p {
+  font-size: 0.90rem;
+  color: var(--color-cashmere);
+  line-height: 1.5;
+}
+
+.bannerActions {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+/* CTA Bölümü */
+.ctaSection {
+  background: var(--color-anthracite);
+  color: #FFFFFF;
+  padding: 4rem 0;
+  text-align: center;
+  border-top: 1px solid var(--color-stone);
+}
+
+.ctaTitle {
+  font-family: var(--font-serif);
+  font-size: clamp(1.8rem, 3.2vw, 2.6rem);
+  color: #FFFFFF;
+  margin-bottom: 0.85rem;
+}
+
+.ctaDesc {
+  font-size: 1rem;
+  color: #D6D0CA;
+  max-width: 620px;
+  margin: 0 auto 2rem auto;
+  line-height: 1.6;
+}
+
+.ctaButtons {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+@media (max-width: 768px) {
+  .statsGrid {
+    grid-template-columns: 1fr;
+    gap: 0.85rem;
+  }
+
+  .reviewsGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .googleBanner {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .bannerActions {
+    width: 100%;
+  }
+
+  .bannerActions a {
+    width: 100%;
+    justify-content: center;
+  }
+}

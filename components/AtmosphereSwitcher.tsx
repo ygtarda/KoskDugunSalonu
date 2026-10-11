@@ -2,7 +2,7 @@
 
 import React, { useState } from 'react';
 import Image from 'next/image';
-import { Sparkles, Heart, Moon, Music, UtensilsCrossed } from 'lucide-react';
+import { Heart, Moon, Music, UtensilsCrossed } from 'lucide-react';
 import styles from './AtmosphereSwitcher.module.css';
 
 interface MoodItem {
@@ -103,12 +103,8 @@ export default function AtmosphereSwitcher() {
             fill
             className={styles.moodImage}
             sizes="(max-width: 1024px) 100vw, 55vw"
-            unoptimized
+            loading="lazy"
           />
-          <div className={styles.imageOverlayBadge}>
-            <Sparkles size={14} style={{ color: 'var(--color-champagne)' }} />
-            <span>{activeMood.badge}</span>
-          </div>
         </div>
 
         {/* Right: Detailed Atmosphere Information */}

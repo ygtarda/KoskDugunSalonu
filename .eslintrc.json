@@ -1,0 +1,11 @@
+{
+  "extends": "next/core-web-vitals",
+  "rules": {
+    "react/no-unescaped-entities": "off",
+    "@next/next/no-img-element": "error",
+    "@next/next/no-sync-scripts": "error",
+    "@next/next/no-unwanted-polyfillio": "error",
+    "@next/next/no-css-tags": "error",
+    "@next/next/no-head-element": "warn"
+  }
+}

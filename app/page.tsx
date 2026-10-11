@@ -12,12 +12,20 @@ import {
   CheckCircle2,
   Phone
 } from 'lucide-react';
+import dynamic from 'next/dynamic';
 import Header from '@/components/Header';
 import HeroCalligraphy from '@/components/HeroCalligraphy';
 import TiltCard from '@/components/TiltCard';
 import VideoHeroSection from '@/components/VideoHeroSection';
-import AtmosphereSwitcher from '@/components/AtmosphereSwitcher';
 import styles from './page.module.css';
+
+const AtmosphereSwitcher = dynamic(() => import('@/components/AtmosphereSwitcher'), {
+  loading: () => (
+    <div style={{ minHeight: '380px', display: 'flex', alignItems: 'center', justifyContent: 'center', color: 'var(--color-cashmere)' }}>
+      Ambiyans vitrini yükleniyor...
+    </div>
+  ),
+});
 
 export default function HomePage() {
   return (
@@ -35,7 +43,6 @@ export default function HomePage() {
             priority
             className={styles.heroBackdropImg}
             sizes="100vw"
-            unoptimized
           />
           <div className={styles.heroVignette} />
           <div className={styles.heroGridLines} />
@@ -69,22 +76,22 @@ export default function HomePage() {
         <div className={styles.welcomeStatsBar}>
           <div className="container">
             <div className={styles.statsGrid}>
-              <TiltCard className={styles.statItem} maxTilt={5} glare>
+              <div className={styles.statItem}>
                 <span className={styles.statNumber}>1.000</span>
                 <span className={styles.statLabel}>Kişilik Kapasite</span>
-              </TiltCard>
-              <TiltCard className={styles.statItem} maxTilt={5} glare>
+              </div>
+              <div className={styles.statItem}>
                 <span className={styles.statNumber}>1.200 m²</span>
                 <span className={styles.statLabel}>Kolonsuz Geniş Alan</span>
-              </TiltCard>
-              <TiltCard className={styles.statItem} maxTilt={5} glare>
+              </div>
+              <div className={styles.statItem}>
                 <span className={styles.statNumber}>6.5 m</span>
                 <span className={styles.statLabel}>Yüksek Tavan Ferahlığı</span>
-              </TiltCard>
-              <TiltCard className={styles.statItem} maxTilt={5} glare>
-                <span className={styles.statNumber}>Merkezi</span>
-                <span className={styles.statLabel}>Kolay Ulaşım & Otopark</span>
-              </TiltCard>
+              </div>
+              <div className={styles.statItem}>
+                <span className={styles.statNumber}>250 Araç</span>
+                <span className={styles.statLabel}>Özel Otopark Kapasitesi</span>
+              </div>
             </div>
           </div>
         </div>
@@ -115,7 +122,7 @@ export default function HomePage() {
                   fill
                   className={styles.archRealImg}
                   sizes="(max-width: 1024px) 100vw, 45vw"
-                  unoptimized
+                  loading="lazy"
                 />
                 <div className={styles.archImgCaption}>
                   <span>Ferah Oturma Düzeni & Geniş Dans Pisti</span>
@@ -227,7 +234,7 @@ export default function HomePage() {
             </div>
 
             <div className={styles.servicesBand}>
-              <TiltCard className={styles.serviceStripe} maxTilt={2.5} scale={1.01} glare>
+              <div className={`${styles.serviceStripe} ${styles.serviceStripeFeatured}`}>
                 <div className={styles.serviceThumbWrap}>
                   <Image
                     src="/images/venue/kosk-ilk-dans-sis-bulutu.webp"
@@ -235,7 +242,7 @@ export default function HomePage() {
                     fill
                     className={styles.serviceThumb}
                     sizes="120px"
-                    unoptimized
+                    loading="lazy"
                   />
                 </div>
                 <div>
@@ -251,9 +258,9 @@ export default function HomePage() {
                     Detaylı İncele
                   </Link>
                 </div>
-              </TiltCard>
+              </div>
 
-              <TiltCard className={styles.serviceStripe} maxTilt={2.5} scale={1.01} glare>
+              <div className={styles.serviceStripe}>
                 <div className={styles.serviceThumbWrap}>
                   <Image
                     src="/images/venue/kosk-sahne-mor-isik-gosterisi.webp"
@@ -261,7 +268,7 @@ export default function HomePage() {
                     fill
                     className={styles.serviceThumb}
                     sizes="120px"
-                    unoptimized
+                    loading="lazy"
                   />
                 </div>
                 <div>
@@ -277,9 +284,9 @@ export default function HomePage() {
                     Detaylı İncele
                   </Link>
                 </div>
-              </TiltCard>
+              </div>
 
-              <TiltCard className={styles.serviceStripe} maxTilt={2.5} scale={1.01} glare>
+              <div className={styles.serviceStripe}>
                 <div className={styles.serviceThumbWrap}>
                   <Image
                     src="/images/venue/kosk-nisan-soz-ozel-konsept-aynasi.webp"
@@ -287,7 +294,7 @@ export default function HomePage() {
                     fill
                     className={styles.serviceThumb}
                     sizes="120px"
-                    unoptimized
+                    loading="lazy"
                   />
                 </div>
                 <div>
@@ -303,9 +310,9 @@ export default function HomePage() {
                     Detaylı İncele
                   </Link>
                 </div>
-              </TiltCard>
+              </div>
 
-              <TiltCard className={styles.serviceStripe} maxTilt={2.5} scale={1.01} glare>
+              <div className={styles.serviceStripe}>
                 <div className={styles.serviceThumbWrap}>
                   <Image
                     src="/images/venue/kosk-dev-projeksiyon-ve-sahne-duzeni.webp"
@@ -313,12 +320,12 @@ export default function HomePage() {
                     fill
                     className={styles.serviceThumb}
                     sizes="120px"
-                    unoptimized
+                    loading="lazy"
                   />
                 </div>
                 <div>
                   <h3 className={styles.serviceType}>Kurumsal Gala & Kongre</h3>
-                  <div className={styles.serviceCapacity}>500 – 1.200 Katılımcı</div>
+                  <div className={styles.serviceCapacity}>500 – 1.000 Katılımcı</div>
                 </div>
                 <p className={styles.serviceText}>
                   Polatlı kurum ve şirketleri için kaliteli ses, dev projeksiyon ve sahne aydınlatmasına
@@ -329,7 +336,7 @@ export default function HomePage() {
                     Detaylı İncele
                   </Link>
                 </div>
-              </TiltCard>
+              </div>
             </div>
           </div>
         </section>
@@ -354,41 +361,41 @@ export default function HomePage() {
             </div>
 
             <div className={styles.timelineGrid}>
-              <TiltCard className={styles.timelineStepCard} maxTilt={4} glare>
+              <div className={styles.timelineStepCard}>
                 <div className={styles.stepNumberBadge}>01</div>
                 <h3 className={styles.stepTitle}>Özel Hazırlık & Fuaye Karşılama</h3>
                 <p className={styles.stepDesc}>
                   Çiftimiz kendilerine tahsis edilen özel odada dinlenip son hazırlıklarını yaparken, 
                   davetlileriniz giriş fuayesinde güler yüzlü ekibimizce karşılanır.
                 </p>
-              </TiltCard>
+              </div>
 
-              <TiltCard className={styles.timelineStepCard} maxTilt={4} glare>
+              <div className={styles.timelineStepCard}>
                 <div className={styles.stepNumberBadge}>02</div>
                 <h3 className={styles.stepTitle}>Gelin Yolu & Sisli İlk Dans</h3>
                 <p className={styles.stepDesc}>
                   Işık ve müzik eşliğinde gelin yolundan salona giriş; ardından zemine yayılan sis bulutları 
                   üzerinde romantik ilk dans koreografisi.
                 </p>
-              </TiltCard>
+              </div>
 
-              <TiltCard className={styles.timelineStepCard} maxTilt={4} glare>
+              <div className={styles.timelineStepCard}>
                 <div className={styles.stepNumberBadge}>03</div>
                 <h3 className={styles.stepTitle}>Ziyafet & Eş Zamanlı Sıcak Servis</h3>
                 <p className={styles.stepDesc}>
                   Usta şefler tarafından hazırlanan leziz menüler ve pasta ikramları, geniş servis 
                   koridorları sayesinde tüm masalara aynı anda ve sıcak olarak ulaştırılır.
                 </p>
-              </TiltCard>
+              </div>
 
-              <TiltCard className={styles.timelineStepCard} maxTilt={4} glare>
+              <div className={styles.timelineStepCard}>
                 <div className={styles.stepNumberBadge}>04</div>
                 <h3 className={styles.stepTitle}>Kolonsuz Pistte Coşkulu Eğlence</h3>
                 <p className={styles.stepDesc}>
                   Salonda kolon bulunmadığı için tüm davetliler eğlenceyi rahatça takip eder; geniş 
                   mermer pistte gecenin sonuna kadar doyasıya oynanır.
                 </p>
-              </TiltCard>
+              </div>
             </div>
           </div>
         </section>
@@ -420,7 +427,7 @@ export default function HomePage() {
                   fill
                   className={styles.mosaicImg}
                   sizes="(max-width: 1024px) 100vw, 60vw"
-                  unoptimized
+                  loading="lazy"
                 />
                 <div className={styles.mosaicBadge}>Nikah & Sahne Düzeni</div>
               </div>
@@ -432,7 +439,7 @@ export default function HomePage() {
                   fill
                   className={styles.mosaicImg}
                   sizes="(max-width: 1024px) 100vw, 40vw"
-                  unoptimized
+                  loading="lazy"
                 />
                 <div className={styles.mosaicBadge}>Ziyafet Masaları</div>
               </div>
@@ -444,7 +451,7 @@ export default function HomePage() {
                   fill
                   className={styles.mosaicImg}
                   sizes="(max-width: 1024px) 100vw, 40vw"
-                  unoptimized
+                  loading="lazy"
                 />
                 <div className={styles.mosaicBadge}>Canlı Orkestra & Sahne</div>
               </div>
@@ -456,7 +463,7 @@ export default function HomePage() {
                   fill
                   className={styles.mosaicImg}
                   sizes="(max-width: 1024px) 100vw, 60vw"
-                  unoptimized
+                  loading="lazy"
                 />
                 <div className={styles.mosaicBadge}>Geniş Mermer Dans Pisti</div>
               </div>
@@ -512,7 +519,7 @@ export default function HomePage() {
             =================================================================== */}
         <section className="section-spacing" aria-label="Salonu Ziyaret Daveti">
           <div className="container">
-            <div className={styles.invitationCard}>
+            <TiltCard className={styles.invitationCard} maxTilt={2.5} glare={false}>
               <div className={styles.invitationBadge}>
                 <Sparkles size={14} style={{ color: 'var(--color-champagne)' }} />
                 <span>KEŞİF & TANIŞMA</span>
@@ -542,7 +549,7 @@ export default function HomePage() {
                   <span>WhatsApp ile Hızlı Bilgi Alın</span>
                 </a>
               </div>
-            </div>
+            </TiltCard>
           </div>
         </section>
       </div>

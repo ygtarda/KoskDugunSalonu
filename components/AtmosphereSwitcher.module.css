@@ -106,24 +106,6 @@
   }
 }
 
-.imageOverlayBadge {
-  position: absolute;
-  top: 1.25rem;
-  left: 1.25rem;
-  display: inline-flex;
-  align-items: center;
-  gap: 0.5rem;
-  padding: 0.45rem 0.95rem;
-  background: rgba(44, 40, 38, 0.78);
-  border: 1px solid rgba(212, 181, 158, 0.4);
-  backdrop-filter: blur(8px);
-  color: #FFFFFF;
-  font-size: 0.78rem;
-  font-weight: 500;
-  border-radius: 999px;
-  letter-spacing: 0.04em;
-}
-
 .moodContent {
   display: flex;
   flex-direction: column;

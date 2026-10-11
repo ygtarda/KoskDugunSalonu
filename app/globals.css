@@ -1,12 +1,10 @@
-@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700;800&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,400&display=swap');
-
 :root {
-  /* Typography */
-  --font-serif: 'Fraunces', Georgia, serif;
-  --font-sans: 'DM Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-  --font-royal: 'Cinzel', 'Times New Roman', serif;
-  --font-cormorant: 'Cormorant Garamond', Georgia, serif;
-  --font-script: 'Cormorant Garamond', Georgia, serif;
+  /* Typography - Loaded via next/font/google with zero render blocking */
+  --font-serif: var(--font-serif), 'Fraunces', Georgia, serif;
+  --font-sans: var(--font-sans), 'DM Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-royal: var(--font-royal), 'Cinzel', 'Times New Roman', serif;
+  --font-cormorant: var(--font-cormorant), 'Cormorant Garamond', Georgia, serif;
+  --font-script: var(--font-cormorant), 'Cormorant Garamond', Georgia, serif;
 
   /* 6-Color Curated Luxury Neutral Palette */
   --color-sand: #FAF8F5;
@@ -78,6 +76,18 @@
   margin: 0;
   padding: 0;
 }
+
+/* Luxury Brand Selection Style */
+::selection {
+  background-color: var(--color-champagne);
+  color: #FFFFFF;
+}
+
+::-moz-selection {
+  background-color: var(--color-champagne);
+  color: #FFFFFF;
+}
+
 
 html {
   scroll-behavior: smooth;
@@ -362,9 +372,10 @@ textarea:focus-visible {
   content: '';
   position: absolute;
   top: 0;
-  left: -150%;
+  left: 0;
   width: 100%;
   height: 100%;
+  transform: translateX(-150%);
   background: linear-gradient(
     105deg,
     transparent 20%,
@@ -389,10 +400,10 @@ textarea:focus-visible {
 
 @keyframes goldShimmerSweep {
   0% {
-    left: -150%;
+    transform: translateX(-150%);
   }
   100% {
-    left: 150%;
+    transform: translateX(150%);
   }
 }
 
@@ -437,7 +448,7 @@ textarea:focus-visible {
 /* Keyframe Animations for Cinematic Hero */
 @keyframes heroLineExpand {
   0% {
-    width: 0;
+    transform: scaleX(0);
     opacity: 0;
   }
 
@@ -446,7 +457,7 @@ textarea:focus-visible {
   }
 
   100% {
-    width: 80px;
+    transform: scaleX(1);
     opacity: 1;
   }
 }

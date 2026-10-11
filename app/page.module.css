@@ -43,20 +43,20 @@
   height: 100%;
   object-fit: cover;
   object-position: center;
-  opacity: 0.42;
-  filter: contrast(1.1) brightness(0.85);
+  opacity: 0.35;
+  filter: contrast(1.15) brightness(0.75);
   transform: scale(1.02);
   transition: transform 12s ease-out;
 }
 
-/* Luxury Overlay Gradients (Ensures 100% text contrast for white calligraphy) */
+/* Luxury Overlay Gradients (Ensures 100% text contrast for white calligraphy on all screens) */
 .heroVignette {
   position: absolute;
   inset: 0;
   z-index: 2;
   background: 
-    radial-gradient(circle at 50% 45%, rgba(18, 16, 15, 0.4) 0%, rgba(18, 16, 15, 0.85) 85%),
-    linear-gradient(180deg, rgba(18, 16, 15, 0.5) 0%, rgba(18, 16, 15, 0.95) 100%);
+    radial-gradient(circle at 50% 45%, rgba(14, 12, 11, 0.65) 0%, rgba(14, 12, 11, 0.90) 80%, rgba(14, 12, 11, 0.98) 100%),
+    linear-gradient(180deg, rgba(14, 12, 11, 0.6) 0%, rgba(14, 12, 11, 0.96) 100%);
   pointer-events: none;
 }
 
@@ -128,7 +128,13 @@
   border-radius: var(--radius-xs);
   border: 1px solid var(--color-stone);
   border-bottom: 2px solid var(--color-stone);
-  transition: border-color 0.3s ease;
+  transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.35s ease, border-color 0.3s ease;
+}
+
+.statItem:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 24px rgba(44, 40, 38, 0.06);
+  border-bottom-color: var(--color-champagne);
 }
 
 .statNumber {
@@ -352,6 +358,11 @@
   transform: translateX(4px);
 }
 
+.serviceStripeFeatured {
+  border-left-color: var(--color-champagne);
+  box-shadow: 0 8px 24px rgba(44, 40, 38, 0.05);
+}
+
 .serviceType {
   font-family: var(--font-serif);
   font-size: 1.4rem;
@@ -394,7 +405,13 @@
   display: flex;
   flex-direction: column;
   position: relative;
-  transition: var(--transition-smooth);
+  transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.35s ease, border-color 0.3s ease;
+}
+
+.timelineStepCard:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 30px rgba(44, 40, 38, 0.08);
+  border-bottom-color: var(--color-champagne);
 }
 
 .stepNumberBadge {

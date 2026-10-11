@@ -1,31 +1,40 @@
-const path = require('path');
+const withBundleAnalyzer = require('@next/bundle-analyzer')({
+  enabled: process.env.ANALYZE === 'true',
+});
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   reactStrictMode: true,
+  poweredByHeader: false,
+  compress: true,
   images: {
-    unoptimized: true,
+    formats: ['image/webp'],
+    deviceSizes: [640, 750, 828, 1080, 1200, 1920],
+    imageSizes: [16, 32, 48, 64, 96, 128, 256, 384],
+    minimumCacheTTL: 31536000,
   },
-  async redirects() {
+  async headers() {
     return [
       {
-        source: '/salon',
-        destination: '/hizmetler',
-        permanent: true,
+        source: '/images/:path*',
+        headers: [
+          {
+            key: 'Cache-Control',
+            value: 'public, max-age=31536000, immutable',
+          },
+        ],
       },
       {
-        source: '/rehber',
-        destination: '/sss',
-        permanent: true,
-      },
-      {
-        source: '/referanslar',
-        destination: '/sss',
-        permanent: true,
+        source: '/_next/static/:path*',
+        headers: [
+          {
+            key: 'Cache-Control',
+            value: 'public, max-age=31536000, immutable',
+          },
+        ],
       },
     ];
   },
-
 };
 
-module.exports = nextConfig;
+module.exports = withBundleAnalyzer(nextConfig);

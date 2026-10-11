@@ -1,18 +1,78 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
 import Image from 'next/image';
-import { Award, HeartHandshake, ShieldCheck, Clock, CalendarCheck } from 'lucide-react';
-import TiltCard from '@/components/TiltCard';
+import { Award, HeartHandshake, ShieldCheck, Clock, CalendarCheck, MessageSquare } from 'lucide-react';
+import Breadcrumb from '@/components/Breadcrumb';
 
 export const metadata: Metadata = {
   title: 'Hakkımızda | Polatlı Köşk Düğün Salonu Hikayesi ve Felsefesi',
   description:
     'Polatlı’da 1000 kişilik kapalı balo salonu vizyonuyla kurulan Köşk Düğün Salonu’nun hikayesi, hizmet ilkeleri ve misafir memnuniyeti odaklı organizasyon felsefesi.',
+  alternates: {
+    canonical: '/hakkimizda',
+  },
+  keywords: [
+    'Köşk Düğün Salonu hakkında',
+    'Polatlı düğün salonu hikayesi',
+    'Köşk balo salonu Polatlı',
+    'Polatlı düğün mekanı ilkeleri',
+  ],
+  openGraph: {
+    title: 'Hakkımızda | Polatlı Köşk Düğün Salonu Hikayesi ve Felsefesi',
+    description:
+      'Polatlı’da 1000 kişilik kapalı balo salonu vizyonuyla kurulan Köşk Düğün Salonu’nun hikayesi ve hizmet ilkeleri.',
+    url: 'https://koskdugunsalonu.com/hakkimizda',
+    type: 'website',
+    locale: 'tr_TR',
+    images: [
+      {
+        url: '/images/venue/kosk-karsilama-panosu-sovale-dekoru.webp',
+        width: 1200,
+        height: 675,
+        alt: 'Köşk Düğün Salonu Giriş Fuayesi',
+      },
+    ],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Hakkımızda | Polatlı Köşk Düğün Salonu',
+    description: 'Polatlı’da zarafetin ve güvenin adresi Köşk Düğün Salonu.',
+    images: ['/images/venue/kosk-karsilama-panosu-sovale-dekoru.webp'],
+  },
+};
+
+const aboutPageSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'AboutPage',
+  name: 'Köşk Düğün Salonu Hakkında',
+  description: 'Polatlı Köşk Düğün Salonu kurumsal hikayesi, hizmet felsefesi ve salon standartları.',
+  url: 'https://koskdugunsalonu.com/hakkimizda',
+  mainEntity: {
+    '@type': 'LocalBusiness',
+    name: 'Köşk Düğün Salonu',
+    url: 'https://koskdugunsalonu.com',
+    address: {
+      '@type': 'PostalAddress',
+      streetAddress: 'Gülveren, Kutluhan Sk. No: 2/2',
+      addressLocality: 'Polatlı',
+      addressRegion: 'Ankara',
+      postalCode: '06960',
+      addressCountry: 'TR',
+    },
+  },
 };
 
 export default function HakkimizdaPage() {
   return (
-    <div style={{ paddingTop: '1rem' }}>
+    <div>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(aboutPageSchema) }}
+      />
+
+      {/* Breadcrumb Navigation */}
+      <Breadcrumb items={[{ label: 'Hakkımızda' }]} />
+
       {/* Header */}
       <section style={{ padding: '2.25rem 0 2rem 0', textAlign: 'center' }}>
         <div className="container">
@@ -50,7 +110,6 @@ export default function HakkimizdaPage() {
               style={{ objectFit: 'cover' }}
               sizes="(max-width: 1024px) 100vw, 50vw"
               priority
-              unoptimized
             />
           </div>
 
@@ -68,7 +127,7 @@ export default function HakkimizdaPage() {
             </p>
             <p style={{ color: 'var(--color-text-secondary)', marginBottom: '1.5rem', lineHeight: '1.75' }}>
               Bu eksikliği gidermek için yola çıktık: 1.200 m² kolonsuz ve geniş salon yapımız, 
-              6.5 metrelik yüksek tavanımız ve düzenli havalandırma sistemimizle tüm davetlilere ferah 
+              6.5 metrelik yüksek tavanımız, 250 araçlık özel otoparkımız ve düzenli havalandırma sistemimizle tüm davetlilere ferah 
               bir ortam sunuyoruz. Salonda kolon bulunmaması ve geniş dans pistimiz sayesinde 1.000 kişilik 
               davetlerde bile herkes eğlenceyi rahatça takip edebilir.
             </p>
@@ -119,9 +178,22 @@ export default function HakkimizdaPage() {
               gap: '1.75rem',
             }}
           >
-            <TiltCard className="arch-card" maxTilt={5} glare>
-              <div style={{ color: 'var(--color-champagne)', marginBottom: '1.25rem' }}>
-                <Clock size={28} />
+            <div
+              style={{
+                background: '#FFFFFF',
+                border: '1px solid var(--color-stone)',
+                borderTop: '3px solid var(--color-champagne)',
+                borderRadius: 'var(--radius-xs)',
+                padding: '2rem 1.75rem',
+                boxShadow: '0 4px 16px rgba(0,0,0,0.03)',
+                transition: 'var(--transition-smooth)',
+              }}
+            >
+              <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '1.25rem' }}>
+                <div style={{ color: 'var(--color-champagne)' }}>
+                  <Clock size={28} />
+                </div>
+                <span style={{ fontSize: '0.85rem', fontWeight: 600, color: 'var(--color-cashmere)', letterSpacing: '0.1em' }}>01</span>
               </div>
               <h3 style={{ fontFamily: 'var(--font-serif)', fontSize: '1.3rem', color: 'var(--color-anthracite)', marginBottom: '0.65rem' }}>
                 Dakik Zaman Yönetimi
@@ -130,11 +202,24 @@ export default function HakkimizdaPage() {
                 Karşılama kokteylinden nikâh seremonisine, ilk danstan pasta kesimine kadar tüm akış 
                 deneyimli organizasyon şefimiz tarafından koordine edilir.
               </p>
-            </TiltCard>
+            </div>
 
-            <TiltCard className="arch-card" maxTilt={5} glare>
-              <div style={{ color: 'var(--color-champagne)', marginBottom: '1.25rem' }}>
-                <ShieldCheck size={28} />
+            <div
+              style={{
+                background: '#FFFFFF',
+                border: '1px solid var(--color-stone)',
+                borderTop: '3px solid var(--color-champagne)',
+                borderRadius: 'var(--radius-xs)',
+                padding: '2rem 1.75rem',
+                boxShadow: '0 4px 16px rgba(0,0,0,0.03)',
+                transition: 'var(--transition-smooth)',
+              }}
+            >
+              <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '1.25rem' }}>
+                <div style={{ color: 'var(--color-champagne)' }}>
+                  <ShieldCheck size={28} />
+                </div>
+                <span style={{ fontSize: '0.85rem', fontWeight: 600, color: 'var(--color-cashmere)', letterSpacing: '0.1em' }}>02</span>
               </div>
               <h3 style={{ fontFamily: 'var(--font-serif)', fontSize: '1.3rem', color: 'var(--color-anthracite)', marginBottom: '0.65rem' }}>
                 Sıfır Aksaklık Garantisi
@@ -143,11 +228,24 @@ export default function HakkimizdaPage() {
                 Elektrik kesintilerine karşı tam otomatik kesintisiz jeneratör desteği ve düzenli havalandırma 
                 ile geceniz en ufak bir aksamaya uğramaz.
               </p>
-            </TiltCard>
+            </div>
 
-            <TiltCard className="arch-card" maxTilt={5} glare>
-              <div style={{ color: 'var(--color-champagne)', marginBottom: '1.25rem' }}>
-                <HeartHandshake size={28} />
+            <div
+              style={{
+                background: '#FFFFFF',
+                border: '1px solid var(--color-stone)',
+                borderTop: '3px solid var(--color-champagne)',
+                borderRadius: 'var(--radius-xs)',
+                padding: '2rem 1.75rem',
+                boxShadow: '0 4px 16px rgba(0,0,0,0.03)',
+                transition: 'var(--transition-smooth)',
+              }}
+            >
+              <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '1.25rem' }}>
+                <div style={{ color: 'var(--color-champagne)' }}>
+                  <HeartHandshake size={28} />
+                </div>
+                <span style={{ fontSize: '0.85rem', fontWeight: 600, color: 'var(--color-cashmere)', letterSpacing: '0.1em' }}>03</span>
               </div>
               <h3 style={{ fontFamily: 'var(--font-serif)', fontSize: '1.3rem', color: 'var(--color-anthracite)', marginBottom: '0.65rem' }}>
                 Şeffaf ve Dürüst İletişim
@@ -156,11 +254,24 @@ export default function HakkimizdaPage() {
                 Sözleşmede ne konuştuysak düğün günü harfiyen onu uygularız. Gizli maliyetler veya sürpriz 
                 ek ücretler Köşk prensiplerinde asla yer almaz.
               </p>
-            </TiltCard>
+            </div>
 
-            <TiltCard className="arch-card" maxTilt={5} glare>
-              <div style={{ color: 'var(--color-champagne)', marginBottom: '1.25rem' }}>
-                <Award size={28} />
+            <div
+              style={{
+                background: '#FFFFFF',
+                border: '1px solid var(--color-stone)',
+                borderTop: '3px solid var(--color-champagne)',
+                borderRadius: 'var(--radius-xs)',
+                padding: '2rem 1.75rem',
+                boxShadow: '0 4px 16px rgba(0,0,0,0.03)',
+                transition: 'var(--transition-smooth)',
+              }}
+            >
+              <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '1.25rem' }}>
+                <div style={{ color: 'var(--color-champagne)' }}>
+                  <Award size={28} />
+                </div>
+                <span style={{ fontSize: '0.85rem', fontWeight: 600, color: 'var(--color-cashmere)', letterSpacing: '0.1em' }}>04</span>
               </div>
               <h3 style={{ fontFamily: 'var(--font-serif)', fontSize: '1.3rem', color: 'var(--color-anthracite)', marginBottom: '0.65rem' }}>
                 Seçkin Ziyafet Standardı
@@ -169,7 +280,7 @@ export default function HakkimizdaPage() {
                 İkram edilen kuru pasta, yaş pasta ve yemekli menülerimizin her biri günlük taze üretimdir. 
                 Sıcak servisler aynı anda ve nezaketle masalara ulaştırılır.
               </p>
-            </TiltCard>
+            </div>
           </div>
         </div>
       </section>
@@ -193,7 +304,8 @@ export default function HakkimizdaPage() {
               <span>İletişime Geçin & Teklif Alın</span>
             </Link>
             <Link href="/referanslar" className="btn btn-outline">
-              <span>Evlenen Çiftlerin Yorumlarını Okuyun</span>
+              <MessageSquare size={18} />
+              <span>Gerçek Çift Yorumlarını & Deneyimleri Okuyun</span>
             </Link>
           </div>
         </div>

@@ -1,12 +1,45 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
 import GalleryLightbox, { GalleryItem } from '@/components/GalleryLightbox';
-import { CalendarCheck } from 'lucide-react';
+import Breadcrumb from '@/components/Breadcrumb';
+import { CalendarCheck, Building2 } from 'lucide-react';
 
 export const metadata: Metadata = {
   title: 'Fotoğraf Galerisi | Polatlı Köşk Kapalı Düğün Salonu',
   description:
     'Köşk Düğün Salonu’nun 1.000 kişilik kolonsuz kapalı salonu, ferah masa düzeni, sahne ışıklandırması ve gelin hazırlık odasından fotoğrafları inceleyin.',
+  alternates: {
+    canonical: '/galeri',
+  },
+  keywords: [
+    'Polatlı düğün salonu fotoğrafları',
+    'Köşk düğün salonu galeri',
+    'Polatlı kapalı salon görselleri',
+    'gelin odası ve dans pisti Polatlı',
+    'Polatlı kına gecesi fotoğrafları',
+  ],
+  openGraph: {
+    title: 'Fotoğraf Galerisi | Polatlı Köşk Kapalı Düğün Salonu',
+    description:
+      '1.000 kişilik kolonsuz ferah salon, tiffany sandalyeler, geniş dans pisti ve sahne ışıklandırması fotoğrafları.',
+    url: 'https://koskdugunsalonu.com/galeri',
+    type: 'website',
+    locale: 'tr_TR',
+    images: [
+      {
+        url: '/images/venue/kosk-ana-balo-salonu-genel-perspektif.webp',
+        width: 1200,
+        height: 675,
+        alt: 'Köşk Düğün Salonu Kapalı Balo Salonu Panoramik Bakış',
+      },
+    ],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Fotoğraf Galerisi | Polatlı Köşk Kapalı Düğün Salonu',
+    description: '1.200 m² kolonsuz salon ve organizasyon detaylarından fotoğraflar.',
+    images: ['/images/venue/kosk-ana-balo-salonu-genel-perspektif.webp'],
+  },
 };
 
 const galleryItems: GalleryItem[] = [
@@ -18,7 +51,10 @@ const galleryItems: GalleryItem[] = [
     title: '1.000 Kişilik Ana Balo Salonu Panoramik Bakış',
     description: '1.200 m² kolonsuz ferah salon yapısı, kristal avizeler ve geniş dans pistini merkezine alan görkemli mimari yerleşim.',
     src: '/images/venue/kosk-ana-balo-salonu-genel-perspektif.webp',
-    fallbackSrc: '/images/venue/kosk-ana-balo-salonu-genel-perspektif.jpg',
+    fallbackSrc: '/images/venue/kosk-ana-balo-salonu-genel-perspektif.webp',
+    aspectRatio: '3/4',
+    dimensions: '1920 × 2560 HD',
+    isPortrait: true,
   },
   {
     id: 'ana-salon-kusursuz-simetri',
@@ -27,7 +63,10 @@ const galleryItems: GalleryItem[] = [
     title: 'Kusursuz Simetri ve Yüksek Tavan Ferahlığı',
     description: '6.5 metre tavan yüksekliği, sarkıt çiçek detayları ve her masadan sahneyi kesintisiz gören geniş görüş koridoru.',
     src: '/images/venue/kosk-ana-salon-kusursuz-simetri.webp',
-    fallbackSrc: '/images/venue/kosk-ana-salon-kusursuz-simetri.jpg',
+    fallbackSrc: '/images/venue/kosk-ana-salon-kusursuz-simetri.webp',
+    aspectRatio: '3/4',
+    dimensions: '1920 × 2560 HD',
+    isPortrait: true,
   },
   {
     id: 'balo-salonu-panoramik-oturma-duzeni',
@@ -36,7 +75,10 @@ const galleryItems: GalleryItem[] = [
     title: 'Panoramik Oturma Düzeni ve Banket Masaları',
     description: 'Beyaz tiffany sandalyeler ve şampanya örtülü yuvarlak ziyafet masaları ile konforlu davetli yerleşimi.',
     src: '/images/venue/kosk-balo-salonu-panoramik-oturma-duzeni.webp',
-    fallbackSrc: '/images/venue/kosk-balo-salonu-panoramik-oturma-duzeni.jpg',
+    fallbackSrc: '/images/venue/kosk-balo-salonu-panoramik-oturma-duzeni.webp',
+    aspectRatio: '3/4',
+    dimensions: '1920 × 2560 HD',
+    isPortrait: true,
   },
   {
     id: 'salon-genel-yerlesim-ve-ferah-mimari',
@@ -45,7 +87,10 @@ const galleryItems: GalleryItem[] = [
     title: 'Geniş İç Hacim ve Kolonsuz Ferah Salon',
     description: 'Hiçbir kolonun görüşü engellemediği, her masadan sahne ve dans pistinin rahatça izlendiği ferah salon düzeni.',
     src: '/images/venue/kosk-salon-genel-yerlesim-ve-ferah-mimari.webp',
-    fallbackSrc: '/images/venue/kosk-salon-genel-yerlesim-ve-ferah-mimari.jpg',
+    fallbackSrc: '/images/venue/kosk-salon-genel-yerlesim-ve-ferah-mimari.webp',
+    aspectRatio: '9/16',
+    dimensions: '1440 × 2560 HD',
+    isPortrait: true,
   },
   {
     id: 'salon-oturma-plani-ve-isik-ambiyasi',
@@ -54,7 +99,10 @@ const galleryItems: GalleryItem[] = [
     title: 'Yan Kanat Yerleşimi ve Loş Ambiyans Işıkları',
     description: 'Çevre duvar aplikleri ve tavan aydınlatmalarıyla dengelenen zarif davet atmosferi.',
     src: '/images/venue/kosk-salon-oturma-plani-ve-isik-ambiyasi.webp',
-    fallbackSrc: '/images/venue/kosk-salon-oturma-plani-ve-isik-ambiyasi.jpg',
+    fallbackSrc: '/images/venue/kosk-salon-oturma-plani-ve-isik-ambiyasi.webp',
+    aspectRatio: '3/4',
+    dimensions: '1920 × 2560 HD',
+    isPortrait: true,
   },
   {
     id: 'tiffany-sandalyeler-ve-genis-dans-pisti',
@@ -63,7 +111,10 @@ const galleryItems: GalleryItem[] = [
     title: 'Tiffany Sandalye Sıraları ve Dans Pisti',
     description: 'Davetlilerin rahat hareket edebileceği geniş geçiş koridorları ve mermer dans pisti geçişi.',
     src: '/images/venue/kosk-tiffany-sandalyeler-ve-genis-dans-pisti.webp',
-    fallbackSrc: '/images/venue/kosk-tiffany-sandalyeler-ve-genis-dans-pisti.jpg',
+    fallbackSrc: '/images/venue/kosk-tiffany-sandalyeler-ve-genis-dans-pisti.webp',
+    aspectRatio: '9/16',
+    dimensions: '1440 × 2560 HD',
+    isPortrait: true,
   },
 
   // 2. Sahne, Ses & Işık Şovları
@@ -74,7 +125,10 @@ const galleryItems: GalleryItem[] = [
     title: 'Canlı Orkestra Sahnesi ve Sahne Işıklandırması',
     description: 'Geniş orkestra podyumu, renkli sahne ışıkları ve tavandaki mor salkım çiçek tentesi.',
     src: '/images/venue/kosk-orkestra-sahnesi-ve-dans-pisti.webp',
-    fallbackSrc: '/images/venue/kosk-orkestra-sahnesi-ve-dans-pisti.jpg',
+    fallbackSrc: '/images/venue/kosk-orkestra-sahnesi-ve-dans-pisti.webp',
+    aspectRatio: '3/4',
+    dimensions: '1920 × 2560 HD',
+    isPortrait: true,
   },
   {
     id: 'dev-projeksiyon-ve-sahne-duzeni',
@@ -83,7 +137,10 @@ const galleryItems: GalleryItem[] = [
     title: 'Dev Projeksiyon Ekranı ve Sahne Rejisi',
     description: 'Düğün videosu, canlı yayın ve kurumsal sunumlar için sahne arkasında yüksek çözünürlüklü dev yansıtma ekranı.',
     src: '/images/venue/kosk-dev-projeksiyon-ve-sahne-duzeni.webp',
-    fallbackSrc: '/images/venue/kosk-dev-projeksiyon-ve-sahne-duzeni.jpg',
+    fallbackSrc: '/images/venue/kosk-dev-projeksiyon-ve-sahne-duzeni.webp',
+    aspectRatio: '3/4',
+    dimensions: '1920 × 2560 HD',
+    isPortrait: true,
   },
   {
     id: 'sahne-mor-isik-gosterisi',
@@ -92,7 +149,10 @@ const galleryItems: GalleryItem[] = [
     title: 'Kına ve Gece Kutlamaları İçin Mor Işık Ambiyansı',
     description: 'Derin mor ve menekşe tonlarında güçlü LED aydınlatma ile kına merasimlerine özel mistik atmosfer.',
     src: '/images/venue/kosk-sahne-mor-isik-gosterisi.webp',
-    fallbackSrc: '/images/venue/kosk-sahne-mor-isik-gosterisi.jpg',
+    fallbackSrc: '/images/venue/kosk-sahne-mor-isik-gosterisi.webp',
+    aspectRatio: '3/4',
+    dimensions: '1920 × 2560 HD',
+    isPortrait: true,
   },
   {
     id: 'sahne-turkuaz-led-ambiyans',
@@ -101,7 +161,10 @@ const galleryItems: GalleryItem[] = [
     title: 'Turkuaz & Camgöbeği Sahne LED Efekti',
     description: 'Canlı dans ve hareketli müzik performanslarında sahneyi aydınlatan ferahlatıcı turkuaz robot ışıklar.',
     src: '/images/venue/kosk-sahne-turkuaz-led-ambiyans.webp',
-    fallbackSrc: '/images/venue/kosk-sahne-turkuaz-led-ambiyans.jpg',
+    fallbackSrc: '/images/venue/kosk-sahne-turkuaz-led-ambiyans.webp',
+    aspectRatio: '3/4',
+    dimensions: '1920 × 2560 HD',
+    isPortrait: true,
   },
   {
     id: 'sahne-amber-sicak-isik-sov',
@@ -110,7 +173,10 @@ const galleryItems: GalleryItem[] = [
     title: 'Sıcak Amber & Altın Işık Şovu',
     description: 'Yemek ve karşılama esnasında göz yormayan, salona altın sarısı sıcaklık katan özel amber tonlaması.',
     src: '/images/venue/kosk-sahne-amber-sicak-isik-sov.webp',
-    fallbackSrc: '/images/venue/kosk-sahne-amber-sicak-isik-sov.jpg',
+    fallbackSrc: '/images/venue/kosk-sahne-amber-sicak-isik-sov.webp',
+    aspectRatio: '3/4',
+    dimensions: '1920 × 2560 HD',
+    isPortrait: true,
   },
   {
     id: 'sahne-kirmizi-isik-ve-efektler',
@@ -119,7 +185,10 @@ const galleryItems: GalleryItem[] = [
     title: 'Dramatik Kırmızı Işık ve Pasta Kesim Efekti',
     description: 'Pasta seremonisi ve coşkulu kutlama anlarında sahneye dinamizm katan güçlü kırmızı ışık hüzmeleri.',
     src: '/images/venue/kosk-sahne-kirmizi-isik-ve-efektler.webp',
-    fallbackSrc: '/images/venue/kosk-sahne-kirmizi-isik-ve-efektler.jpg',
+    fallbackSrc: '/images/venue/kosk-sahne-kirmizi-isik-ve-efektler.webp',
+    aspectRatio: '3/4',
+    dimensions: '1920 × 2560 HD',
+    isPortrait: true,
   },
   {
     id: 'sahne-cok-renkli-robot-isik-demetleri',
@@ -128,7 +197,10 @@ const galleryItems: GalleryItem[] = [
     title: 'Çok Renkli Bilgisayarlı Hareketli Robot Işıklar',
     description: 'Orkestranın temposuna göre senkronize hareket eden çok renkli ışık demetleri ve parti coşkusu.',
     src: '/images/venue/kosk-sahne-cok-renkli-robot-isik-demetleri.webp',
-    fallbackSrc: '/images/venue/kosk-sahne-cok-renkli-robot-isik-demetleri.jpg',
+    fallbackSrc: '/images/venue/kosk-sahne-cok-renkli-robot-isik-demetleri.webp',
+    aspectRatio: '3/4',
+    dimensions: '1920 × 2560 HD',
+    isPortrait: true,
   },
   {
     id: 'sahne-yesil-ve-mavi-isik-armonisi',
@@ -137,7 +209,10 @@ const galleryItems: GalleryItem[] = [
     title: 'Zümrüt Yeşili ve Gece Mavisi Işık Armonisi',
     description: 'Halk oyunları ve özel şovlar için programlanan tematik renk geçişleri ve sahne aydınlatması.',
     src: '/images/venue/kosk-sahne-yesil-ve-mavi-isik-armonisi.webp',
-    fallbackSrc: '/images/venue/kosk-sahne-yesil-ve-mavi-isik-armonisi.jpg',
+    fallbackSrc: '/images/venue/kosk-sahne-yesil-ve-mavi-isik-armonisi.webp',
+    aspectRatio: '3/4',
+    dimensions: '1920 × 2560 HD',
+    isPortrait: true,
   },
   {
     id: 'sahne-beyaz-isik-ve-cicek-tavani',
@@ -146,7 +221,10 @@ const galleryItems: GalleryItem[] = [
     title: 'Doğal Günışığı Beyazı ve Çiçekli Tavan Mimarisi',
     description: 'Fotoğraf ve video çekimlerinde yüzleri pürüzsüz gösteren yüksek CRI değerine sahip doğal beyaz aydınlatma.',
     src: '/images/venue/kosk-sahne-beyaz-isik-ve-cicek-tavani.webp',
-    fallbackSrc: '/images/venue/kosk-sahne-beyaz-isik-ve-cicek-tavani.jpg',
+    fallbackSrc: '/images/venue/kosk-sahne-beyaz-isik-ve-cicek-tavani.webp',
+    aspectRatio: '3/4',
+    dimensions: '1920 × 2560 HD',
+    isPortrait: true,
   },
 
   // 3. İlk Dans & Özel Anlar
@@ -157,7 +235,10 @@ const galleryItems: GalleryItem[] = [
     title: 'Bulutlar Üzerinde Masalsı İlk Dans',
     description: 'Ağır kuru buz dumanı teknolojisiyle zemine yayılan sis bulutu üzerinde büyülü ve romantik ilk dans anı.',
     src: '/images/venue/kosk-ilk-dans-sis-bulutu.webp',
-    fallbackSrc: '/images/venue/kosk-ilk-dans-sis-bulutu.jpg',
+    fallbackSrc: '/images/venue/kosk-ilk-dans-sis-bulutu.webp',
+    aspectRatio: '9/16',
+    dimensions: '1170 × 2080 HD',
+    isPortrait: true,
   },
   {
     id: 'dans-pisti-spot-isik-sov',
@@ -166,7 +247,10 @@ const galleryItems: GalleryItem[] = [
     title: 'Dans Pisti Takip Spotu & Tavan Çiçek Çemberi',
     description: 'Çiftimizin merkezde olduğu anları aydınlatan güçlü takip spotu ve tavandaki mor çiçek halkası.',
     src: '/images/venue/kosk-dans-pisti-spot-isik-sov.webp',
-    fallbackSrc: '/images/venue/kosk-dans-pisti-spot-isik-sov.jpg',
+    fallbackSrc: '/images/venue/kosk-dans-pisti-spot-isik-sov.webp',
+    aspectRatio: '3/4',
+    dimensions: '1920 × 2560 HD',
+    isPortrait: true,
   },
   {
     id: 'renkli-dans-pisti-isik-yansimasi',
@@ -175,7 +259,10 @@ const galleryItems: GalleryItem[] = [
     title: 'Pist Üzerinde Hareketli Renk Yansımaları',
     description: 'Özel cilalı mermer pist üzerinde dans ederken oluşan canlı robot ışık kırılmaları ve görsel şölen.',
     src: '/images/venue/kosk-renkli-dans-pisti-isik-yansimasi.webp',
-    fallbackSrc: '/images/venue/kosk-renkli-dans-pisti-isik-yansimasi.jpg',
+    fallbackSrc: '/images/venue/kosk-renkli-dans-pisti-isik-yansimasi.webp',
+    aspectRatio: '3/4',
+    dimensions: '1920 × 2560 HD',
+    isPortrait: true,
   },
 
   // 4. Nişan, Nikah & Karşılama
@@ -186,7 +273,10 @@ const galleryItems: GalleryItem[] = [
     title: 'Gelin & Damat Nikah Kürsüsü ve Özel Taht',
     description: 'Altın varak kaplama oymalı taht sandalyeleri, piliseli arka fon panelleri ve dikey amber LED hatları.',
     src: '/images/venue/kosk-gelin-damat-nikah-tahti-masasi.webp',
-    fallbackSrc: '/images/venue/kosk-gelin-damat-nikah-tahti-masasi.jpg',
+    fallbackSrc: '/images/venue/kosk-gelin-damat-nikah-tahti-masasi.webp',
+    aspectRatio: '3/4',
+    dimensions: '1920 × 2560 HD',
+    isPortrait: true,
   },
   {
     id: 'nikah-kursusu-ve-dans-pisti-acisi',
@@ -195,7 +285,10 @@ const galleryItems: GalleryItem[] = [
     title: 'Nikah Platformu ve Pistten Çapraz Bakış',
     description: 'Nikah töreninin tüm salon davetlileri tarafından net biçimde izlenebildiği yükseltilmiş platform konumu.',
     src: '/images/venue/kosk-nikah-kursusu-ve-dans-pisti-acisi.webp',
-    fallbackSrc: '/images/venue/kosk-nikah-kursusu-ve-dans-pisti-acisi.jpg',
+    fallbackSrc: '/images/venue/kosk-nikah-kursusu-ve-dans-pisti-acisi.webp',
+    aspectRatio: '3/4',
+    dimensions: '1920 × 2560 HD',
+    isPortrait: true,
   },
   {
     id: 'nisan-soz-ozel-konsept-aynasi',
@@ -204,7 +297,10 @@ const galleryItems: GalleryItem[] = [
     title: 'Özel Nişan & Söz Konsept Aynası ve Şamdanlar',
     description: 'Barok altın oymalı ayna, beş kollu kristal mumluklar ve taze çiçek buketleri ile bezenmiş karşılama kaidesi.',
     src: '/images/venue/kosk-nisan-soz-ozel-konsept-aynasi.webp',
-    fallbackSrc: '/images/venue/kosk-nisan-soz-ozel-konsept-aynasi.jpg',
+    fallbackSrc: '/images/venue/kosk-nisan-soz-ozel-konsept-aynasi.webp',
+    aspectRatio: '3/4',
+    dimensions: '1920 × 2560 HD',
+    isPortrait: true,
   },
   {
     id: 'soz-nisan-fotograf-kosesi',
@@ -213,7 +309,10 @@ const galleryItems: GalleryItem[] = [
     title: 'Söz & Nişan Hatıra Fotoğraf Köşesi',
     description: 'Zümrüt yeşili kadife istiridye koltuklar, dairesel çiçek arkalığı ve çiftlere özel fotoğraf çekim alanı.',
     src: '/images/venue/kosk-soz-nisan-fotograf-kosesi.webp',
-    fallbackSrc: '/images/venue/kosk-soz-nisan-fotograf-kosesi.jpg',
+    fallbackSrc: '/images/venue/kosk-soz-nisan-fotograf-kosesi.webp',
+    aspectRatio: '3/4',
+    dimensions: '1920 × 2560 HD',
+    isPortrait: true,
   },
 
   // 5. Masa Düzeni & Detaylar
@@ -224,7 +323,10 @@ const galleryItems: GalleryItem[] = [
     title: 'Giriş Şövalesi & Kişiselleştirilmiş Karşılama',
     description: 'Doğal ahşap şövale üzerinde davetlileri karşılayan altın aynalı Hoş Geldiniz panosu ve gül salkımları.',
     src: '/images/venue/kosk-karsilama-panosu-sovale-dekoru.webp',
-    fallbackSrc: '/images/venue/kosk-karsilama-panosu-sovale-dekoru.jpg',
+    fallbackSrc: '/images/venue/kosk-karsilama-panosu-sovale-dekoru.webp',
+    aspectRatio: '3/4',
+    dimensions: '1920 × 2560 HD',
+    isPortrait: true,
   },
   {
     id: 'ziyafet-masalari-ve-orkestra-gorunumu',
@@ -233,7 +335,10 @@ const galleryItems: GalleryItem[] = [
     title: 'Gümüş Vazo Çiçek Tasarımları & Ziyafet Düzeni',
     description: 'Masalarda yüksek gümüş trompet vazolar, beyaz gül aranjmanları ve sahneye bakan ferah banket masaları.',
     src: '/images/venue/kosk-ziyafet-masalari-ve-orkestra-gorunumu.webp',
-    fallbackSrc: '/images/venue/kosk-ziyafet-masalari-ve-orkestra-gorunumu.jpg',
+    fallbackSrc: '/images/venue/kosk-ziyafet-masalari-ve-orkestra-gorunumu.webp',
+    aspectRatio: '3/4',
+    dimensions: '1920 × 2560 HD',
+    isPortrait: true,
   },
   {
     id: 'masa-duzeni-gold-vazo-samdan',
@@ -242,14 +347,39 @@ const galleryItems: GalleryItem[] = [
     title: 'Gold Detaylı Vazo ve Zarif Masa Aksesuarları',
     description: 'Zarif masa örtüleri üzerinde yüksek altın şamdan-vazo, pudra tonlarında gül çiçekleri ve kaliteli servis takımları.',
     src: '/images/venue/kosk-masa-duzeni-gold-vazo-samdan.webp',
-    fallbackSrc: '/images/venue/kosk-masa-duzeni-gold-vazo-samdan.jpg',
+    fallbackSrc: '/images/venue/kosk-masa-duzeni-gold-vazo-samdan.webp',
+    aspectRatio: '3/4',
+    dimensions: '1920 × 2560 HD',
+    isPortrait: true,
   },
 ];
 
+const imageGallerySchema = {
+  '@context': 'https://schema.org',
+  '@type': 'ImageGallery',
+  name: 'Köşk Düğün Salonu Fotoğraf Galerisi',
+  description: '1.000 kişilik kolonsuz kapalı balo salonu, gelin odası, ışık ve masa düzeni fotoğrafları.',
+  url: 'https://koskdugunsalonu.com/galeri',
+  image: galleryItems.slice(0, 10).map((item) => ({
+    '@type': 'ImageObject',
+    name: item.title,
+    description: item.description,
+    contentUrl: `https://koskdugunsalonu.com${item.src}`,
+  })),
+};
+
 export default function GaleriPage() {
   return (
-    <div style={{ paddingTop: '1rem' }}>
-      <section style={{ padding: '2.25rem 0 2rem 0', textAlign: 'center' }}>
+    <div>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(imageGallerySchema) }}
+      />
+
+      {/* Breadcrumb Navigation */}
+      <Breadcrumb items={[{ label: 'Fotoğraf Galerisi' }]} />
+
+      <section style={{ padding: '2.5rem 0 2rem 0', textAlign: 'center' }}>
         <div className="container">
           <div style={{ maxWidth: '820px', margin: '0 auto' }}>
             <span style={{ fontSize: '0.84rem', letterSpacing: '0.15em', textTransform: 'uppercase', color: 'var(--color-cashmere)', fontWeight: 500, display: 'block', marginBottom: '0.5rem' }}>
@@ -287,10 +417,16 @@ export default function GaleriPage() {
             Fotoğraflar atmosferi hissettirir; ancak yüksek tavan ferahlığını ve salonun genişliğini 
             yerinde görmek ve tarih müsaitliğini öğrenmek için bizimle hemen iletişime geçebilirsiniz.
           </p>
-          <Link href="/iletisim" className="btn btn-primary">
-            <CalendarCheck size={18} />
-            <span>İletişime Geçin & Tarih Bilgisi Alın</span>
-          </Link>
+          <div style={{ display: 'flex', justifyContent: 'center', gap: '1rem', flexWrap: 'wrap' }}>
+            <Link href="/salon" className="btn btn-secondary">
+              <Building2 size={18} />
+              <span>Teknik Özellikleri & Mimariyi Gör</span>
+            </Link>
+            <Link href="/iletisim" className="btn btn-primary">
+              <CalendarCheck size={18} />
+              <span>İletişime Geçin & Tarih Bilgisi Alın</span>
+            </Link>
+          </div>
         </div>
       </section>
     </div>

@@ -1,15 +1,40 @@
 import type { Metadata } from 'next';
+import { Suspense } from 'react';
 import BookingForm from '@/components/BookingForm';
+import Breadcrumb from '@/components/Breadcrumb';
 import { MapPin, Phone, Clock, Navigation } from 'lucide-react';
 import styles from './page.module.css';
 
 export const metadata: Metadata = {
   title: 'İletişim & Fiyat Teklifi | Polatlı Köşk Düğün Salonu',
   description:
-    'Polatlı Köşk Düğün Salonu iletişim bilgileri, adres ve harita konumu, telefon numarası ve düğün organizasyonu teklif formu. Gülveren, Kutluhan Sk. 2/2, Polatlı / Ankara.',
+    'Polatlı Köşk Düğün Salonu iletişim bilgileri, adres ve harita konumu, telefon numarası ve düğün organizasyonu teklif formu. Gülveren, Kutluhan Sk. No: 2/2, Polatlı / Ankara.',
+  alternates: {
+    canonical: '/iletisim',
+  },
+  keywords: [
+    'Polatlı düğün salonu iletişim',
+    'Köşk düğün salonu telefon',
+    'Polatlı düğün salonu adres',
+    'Polatlı düğün fiyat teklifi al',
+    'Polatlı düğün salonu randevu',
+  ],
+  openGraph: {
+    title: 'İletişim & Fiyat Teklifi | Polatlı Köşk Düğün Salonu',
+    description:
+      'Polatlı Köşk Düğün Salonu adres, telefon ve keşif randevusu formu. Gülveren, Kutluhan Sk. No: 2/2.',
+    url: 'https://koskdugunsalonu.com/iletisim',
+    type: 'website',
+    locale: 'tr_TR',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'İletişim & Fiyat Teklifi | Polatlı Köşk Düğün Salonu',
+    description: 'Polatlı Köşk Düğün Salonu randevu ve iletişim bilgileri.',
+  },
 };
 
-const EXACT_ADDRESS = 'Gülveren, Kutluhan Sk. 2/2, 06960 Polatlı / Ankara';
+const EXACT_ADDRESS = 'Gülveren, Kutluhan Sk. No: 2/2, 06960 Polatlı / Ankara';
 const MAPS_URL =
   'https://maps.google.com/?q=Polatl%C4%B1+K%C3%B6%C5%9Fk+d%C3%BC%C4%9F%C3%BCn+salonu,+G%C3%BClveren,+Kutluhan+Sk.+2/2,+06960+Polatl%C4%B1/Ankara';
 
@@ -25,11 +50,16 @@ const contactSchema = {
     telephone: '+903126230000',
     address: {
       '@type': 'PostalAddress',
-      streetAddress: 'Gülveren, Kutluhan Sk. 2/2',
+      streetAddress: 'Gülveren, Kutluhan Sk. No: 2/2',
       addressLocality: 'Polatlı',
       addressRegion: 'Ankara',
       postalCode: '06960',
       addressCountry: 'TR',
+    },
+    geo: {
+      '@type': 'GeoCoordinates',
+      latitude: 39.5841,
+      longitude: 32.1448,
     },
   },
 };
@@ -41,6 +71,9 @@ export default function IletisimPage() {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(contactSchema) }}
       />
+
+      {/* Breadcrumb Navigation */}
+      <Breadcrumb items={[{ label: 'İletişim & Randevu' }]} />
 
       {/* Hero Header */}
       <section className={styles.heroSection}>
@@ -127,7 +160,9 @@ export default function IletisimPage() {
 
             {/* Sağ Kolon: 3 Adımlı Rezervasyon Formu */}
             <div className={styles.formColumn}>
-              <BookingForm />
+              <Suspense fallback={<div style={{ minHeight: '520px' }} />}>
+                <BookingForm />
+              </Suspense>
             </div>
           </div>
 

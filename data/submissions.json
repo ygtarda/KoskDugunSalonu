@@ -1,0 +1,22 @@
+[
+  {
+    "id": "sub_1791728194259_3srzf1",
+    "createdAt": "2026-10-11T14:16:34.259Z",
+    "fullName": "Selin & Emre Yılmaz",
+    "phone": "0532 623 00 00",
+    "email": "selin.yilmaz@example.com",
+    "eventType": "Düğün Daveti",
+    "selectedDate": null,
+    "formattedDate": "18 Temmuz 2026, Cumartesi",
+    "timeSlot": "aksam",
+    "guestCount": 800,
+    "notes": "Yemekli menü seçenekleri ve orkestra hakkında görüşmek istiyoruz.",
+    "ip": "::1",
+    "userAgent": "curl/8.7.1",
+    "emailStatus": "sent",
+    "emailProvider": "smtp",
+    "isSpam": false,
+    "spamReason": null,
+    "emailError": null
+  }
+]

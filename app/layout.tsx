@@ -1,10 +1,42 @@
 import type { Metadata } from 'next';
+import { Fraunces, DM_Sans, Cinzel, Cormorant_Garamond } from 'next/font/google';
+import dynamic from 'next/dynamic';
 import './globals.css';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
-import FloatingContactBar from '@/components/FloatingContactBar';
-import ScrollRevealProvider from '@/components/ScrollRevealProvider';
-import CustomCursor from '@/components/CustomCursor';
+
+const FloatingContactBar = dynamic(() => import('@/components/FloatingContactBar'), { ssr: false });
+const ScrollRevealProvider = dynamic(() => import('@/components/ScrollRevealProvider'), { ssr: false });
+const CustomCursor = dynamic(() => import('@/components/CustomCursor'), { ssr: false });
+
+const fraunces = Fraunces({
+  subsets: ['latin'],
+  weight: ['400', '500', '600'],
+  variable: '--font-serif',
+  display: 'swap',
+});
+
+const dmSans = DM_Sans({
+  subsets: ['latin'],
+  weight: ['400', '500', '600', '700'],
+  variable: '--font-sans',
+  display: 'swap',
+});
+
+const cinzel = Cinzel({
+  subsets: ['latin'],
+  weight: ['400', '500', '600'],
+  variable: '--font-royal',
+  display: 'swap',
+});
+
+const cormorant = Cormorant_Garamond({
+  subsets: ['latin'],
+  weight: ['400', '600'],
+  style: ['normal', 'italic'],
+  variable: '--font-cormorant',
+  display: 'swap',
+});
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://koskdugunsalonu.com'),
@@ -14,6 +46,9 @@ export const metadata: Metadata = {
   },
   description:
     'Polatlı Ankara’da 1000 kişilik kolonsuz ferah salonu, yüksek tavanı, havadar ortamı ve geniş dans pistiyle Köşk Düğün Salonu hizmetinizde.',
+  alternates: {
+    canonical: '/',
+  },
   keywords: [
     'Polatlı düğün salonu',
     'Ankara Polatlı düğün salonu',
@@ -35,7 +70,7 @@ export const metadata: Metadata = {
       'Polatlı’nın en geniş kapalı düğün salonu. 1000 kişilik kolonsuz ferah salon, yüksek tavan ve profesyonel organizasyon ekibi.',
     images: [
       {
-        url: '/images/polatli-kapali-dugun-salonu-ana-salon.jpg',
+        url: '/images/polatli-kapali-dugun-salonu-ana-salon.webp',
         width: 1200,
         height: 675,
         alt: 'Köşk Düğün Salonu Polatlı Kapalı Ana Balo Salonu',
@@ -46,7 +81,7 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     title: 'Köşk Düğün Salonu Polatlı | 1000 Kişilik Kapalı Salon',
     description: 'Polatlı Ankara’da 1000 kişilik ferah kapalı balo salonu ve davet merkezi.',
-    images: ['/images/polatli-kapali-dugun-salonu-ana-salon.jpg'],
+    images: ['/images/polatli-kapali-dugun-salonu-ana-salon.webp'],
   },
   robots: {
     index: true,
@@ -90,15 +125,15 @@ const localBusinessSchema = {
   },
   priceRange: '₺₺',
   image: [
-    'https://koskdugunsalonu.com/images/polatli-kapali-dugun-salonu-ana-salon.jpg',
-    'https://koskdugunsalonu.com/images/polatli-dugun-salonu-sahne-ve-isik.jpg',
+    'https://koskdugunsalonu.com/images/polatli-kapali-dugun-salonu-ana-salon.webp',
+    'https://koskdugunsalonu.com/images/polatli-dugun-salonu-sahne-ve-isik.webp',
   ],
   address: {
     '@type': 'PostalAddress',
-    streetAddress: 'Cumhuriyet Mah. Ankara Cad. No: 42',
+    streetAddress: 'Gülveren, Kutluhan Sk. No: 2/2',
     addressLocality: 'Polatlı',
     addressRegion: 'Ankara',
-    postalCode: '06900',
+    postalCode: '06960',
     addressCountry: 'TR',
   },
   geo: {
@@ -163,9 +198,11 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="tr">
+    <html
+      lang="tr"
+      className={`${fraunces.variable} ${dmSans.variable} ${cinzel.variable} ${cormorant.variable}`}
+    >
       <head>
-        <link rel="canonical" href="https://koskdugunsalonu.com" />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(localBusinessSchema) }}
