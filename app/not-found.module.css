@@ -1,0 +1,394 @@
+/* ==========================================================================
+   KÖŞK DÜĞÜN SALONU — ÖZEL 404 (SAYFA BULUNAMADI) STİLLERİ
+   Yalnızca tanımlı renk paleti ve tipografi değişkenleri kullanılır.
+   ========================================================================== */
+
+.errorWrapper {
+  min-height: 75vh;
+  min-height: 75svh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: clamp(3.5rem, 6vw, 6rem) clamp(1rem, 3vw, 2.5rem);
+  background-color: var(--color-bg);
+  background-image:
+    radial-gradient(circle at 50% 25%, rgba(212, 181, 158, 0.12) 0%, transparent 65%),
+    linear-gradient(to right, rgba(232, 228, 223, 0.35) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(232, 228, 223, 0.35) 1px, transparent 1px);
+  background-size: 100% 100%, 48px 48px, 48px 48px;
+  position: relative;
+}
+
+.errorCard {
+  max-width: 820px;
+  width: 100%;
+  background: var(--color-surface);
+  border: 1px solid var(--color-stone);
+  border-radius: var(--radius-md);
+  padding: clamp(2.5rem, 5vw, 4rem) clamp(1.5rem, 4vw, 3.5rem);
+  text-align: center;
+  box-shadow: 0 12px 36px rgba(44, 40, 38, 0.04);
+  position: relative;
+  overflow: hidden;
+  animation: fadeIn 0.45s ease-out;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .errorCard {
+    animation: none;
+  }
+}
+
+/* Üst Lüks Şampanya Vurgu Çizgisi */
+.errorCard::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, transparent, var(--color-champagne), transparent);
+}
+
+/* Küçük Kurumsal Rozet */
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.35rem 1rem;
+  background: var(--color-surface-subtle);
+  border: 1px solid var(--color-powder);
+  border-radius: 999px;
+  font-family: var(--font-royal);
+  font-size: 0.78rem;
+  font-weight: 500;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--color-champagne);
+  margin-bottom: 1.5rem;
+}
+
+/* Zarif, İnce Tipografik Hata Kodu */
+.errorCode {
+  font-family: var(--font-royal);
+  font-size: clamp(4rem, 10vw, 6.5rem);
+  font-weight: 400;
+  line-height: 1;
+  color: var(--color-anthracite);
+  letter-spacing: 0.06em;
+  margin: 0 0 0.5rem;
+  background: linear-gradient(180deg, var(--color-anthracite) 20%, var(--color-cashmere) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* İnce Mimari Çizgi Motif SVG Bölücü */
+.ornamentDivider {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+  margin: 0.75rem auto 1.5rem;
+  max-width: 280px;
+}
+
+.dividerLine {
+  flex: 1;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--color-powder));
+}
+
+.dividerLineRight {
+  flex: 1;
+  height: 1px;
+  background: linear-gradient(90deg, var(--color-powder), transparent);
+}
+
+.dividerDiamond {
+  width: 6px;
+  height: 6px;
+  background-color: var(--color-champagne);
+  transform: rotate(45deg);
+  flex-shrink: 0;
+}
+
+/* Başlık */
+.title {
+  font-family: var(--font-serif);
+  font-size: clamp(1.4rem, 3.5vw, 1.95rem);
+  font-weight: 500;
+  color: var(--color-anthracite);
+  margin: 0 0 1rem;
+  line-height: 1.3;
+  letter-spacing: -0.01em;
+}
+
+/* Açıklama Metni */
+.desc {
+  font-family: var(--font-sans);
+  font-size: clamp(0.95rem, 1.8vw, 1.05rem);
+  line-height: 1.7;
+  color: var(--color-text-secondary);
+  max-width: 580px;
+  margin: 0 auto 2.25rem;
+}
+
+/* Ana Aksiyon Butonları */
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 2.75rem;
+}
+
+.primaryBtn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.65rem;
+  background-color: var(--color-champagne);
+  color: #FFFFFF;
+  border: 1px solid var(--color-champagne);
+  font-family: var(--font-sans);
+  font-size: 0.94rem;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+  padding: 0.95rem 2rem;
+  min-height: 48px;
+  border-radius: var(--radius-xs);
+  text-decoration: none;
+  cursor: pointer;
+  transition: var(--transition-smooth);
+}
+
+.primaryBtn:hover {
+  background-color: #A3825C;
+  border-color: #A3825C;
+  transform: translateY(-1px);
+}
+
+.primaryBtn:focus-visible {
+  outline: 2px solid var(--color-champagne);
+  outline-offset: 3px;
+}
+
+.outlineBtn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.65rem;
+  background-color: transparent;
+  color: var(--color-anthracite);
+  border: 1px solid var(--color-stone);
+  font-family: var(--font-sans);
+  font-size: 0.94rem;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+  padding: 0.95rem 2rem;
+  min-height: 48px;
+  border-radius: var(--radius-xs);
+  text-decoration: none;
+  cursor: pointer;
+  transition: var(--transition-smooth);
+}
+
+.outlineBtn:hover {
+  border-color: var(--color-powder);
+  background-color: var(--color-accent-subtle);
+  transform: translateY(-1px);
+}
+
+.outlineBtn:focus-visible {
+  outline: 2px solid var(--color-anthracite);
+  outline-offset: 3px;
+}
+
+/* Hızlı Gezinme Kartları Grubu */
+.suggestionsWrapper {
+  border-top: 1px solid var(--color-stone);
+  padding-top: 2rem;
+  margin-bottom: 2rem;
+  text-align: left;
+}
+
+.suggestionsTitle {
+  font-family: var(--font-sans);
+  font-size: 0.82rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--color-cashmere);
+  text-align: center;
+  margin: 0 0 1.25rem;
+}
+
+.suggestionsGrid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 0.85rem;
+}
+
+.suggestionCard {
+  display: flex;
+  flex-direction: column;
+  padding: 1rem 1.15rem;
+  background-color: var(--color-surface-subtle);
+  border: 1px solid var(--color-stone);
+  border-radius: var(--radius-xs);
+  text-decoration: none;
+  transition: var(--transition-smooth);
+  min-height: 48px;
+}
+
+.suggestionCard:hover {
+  background-color: #FFFFFF;
+  border-color: var(--color-powder);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 18px rgba(44, 40, 38, 0.04);
+}
+
+.suggestionCard:focus-visible {
+  outline: 2px solid var(--color-champagne);
+  outline-offset: 2px;
+}
+
+.suggestionLabel {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-family: var(--font-serif);
+  font-size: 0.95rem;
+  font-weight: 500;
+  color: var(--color-anthracite);
+  margin-bottom: 0.25rem;
+}
+
+.suggestionDesc {
+  font-family: var(--font-sans);
+  font-size: 0.82rem;
+  color: var(--color-text-muted);
+  line-height: 1.4;
+}
+
+.suggestionChevron {
+  color: var(--color-champagne);
+  flex-shrink: 0;
+  transition: transform 0.2s ease;
+}
+
+.suggestionCard:hover .suggestionChevron {
+  transform: translateX(3px);
+}
+
+/* İletişim / Yardım Şeridi */
+.conciergeStrip {
+  background-color: var(--color-surface-subtle);
+  border: 1px solid var(--color-stone);
+  border-radius: var(--radius-xs);
+  padding: 1.1rem 1.4rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.conciergeText {
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+  font-family: var(--font-sans);
+  font-size: 0.88rem;
+  color: var(--color-text-secondary);
+}
+
+.conciergeIcon {
+  color: var(--color-champagne);
+  flex-shrink: 0;
+}
+
+.conciergeActions {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+}
+
+.conciergeLink {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-family: var(--font-sans);
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: var(--color-anthracite);
+  text-decoration: none;
+  padding: 0.35rem 0.65rem;
+  border-radius: var(--radius-xs);
+  background: #FFFFFF;
+  border: 1px solid var(--color-stone);
+  transition: var(--transition-smooth);
+}
+
+.conciergeLink:hover {
+  border-color: var(--color-champagne);
+  color: var(--color-champagne);
+}
+
+.conciergeLink:focus-visible {
+  outline: 2px solid var(--color-champagne);
+}
+
+/* ==========================================================================
+   RESPONSIVE KONTROLLERİ (375px - 1920px)
+   ========================================================================== */
+@media (max-width: 640px) {
+  .errorWrapper {
+    padding: 2.5rem 1rem 3.5rem;
+  }
+
+  .errorCard {
+    padding: 2.25rem 1.25rem;
+  }
+
+  .suggestionsGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .actions {
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .primaryBtn,
+  .outlineBtn {
+    width: 100%;
+  }
+
+  .conciergeStrip {
+    flex-direction: column;
+    align-items: stretch;
+    text-align: center;
+  }
+
+  .conciergeText {
+    justify-content: center;
+  }
+
+  .conciergeActions {
+    justify-content: center;
+  }
+}

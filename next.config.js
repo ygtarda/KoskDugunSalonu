@@ -13,6 +13,40 @@ const nextConfig = {
     imageSizes: [16, 32, 48, 64, 96, 128, 256, 384],
     minimumCacheTTL: 31536000,
   },
+  async redirects() {
+    return [
+      {
+        source: '/randevu',
+        destination: '/iletisim',
+        permanent: false,
+      },
+      {
+        source: '/rezervasyon',
+        destination: '/iletisim',
+        permanent: false,
+      },
+      {
+        source: '/booking',
+        destination: '/iletisim',
+        permanent: false,
+      },
+      {
+        source: '/teklif',
+        destination: '/iletisim',
+        permanent: false,
+      },
+      {
+        source: '/fiyat-teklifi',
+        destination: '/iletisim',
+        permanent: false,
+      },
+      {
+        source: '/fiyatlar',
+        destination: '/sss',
+        permanent: false,
+      },
+    ];
+  },
   async headers() {
     return [
       {
