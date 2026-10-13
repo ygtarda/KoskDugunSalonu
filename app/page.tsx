@@ -38,7 +38,7 @@ export default function HomePage() {
         <div className={styles.heroBgLayer}>
           <Image
             src="/images/venue/kosk-ana-balo-salonu-genel-perspektif.webp"
-            alt="Köşk Düğün Salonu 1000 Kişilik Kapalı Balo Salonu Atmosferi"
+            alt="Köşk Düğün Salonu 1.000 Kişilik Kapalı Düğün Salonu Atmosferi"
             fill
             priority
             className={styles.heroBackdropImg}
@@ -78,19 +78,19 @@ export default function HomePage() {
             <div className={styles.statsGrid}>
               <div className={styles.statItem}>
                 <span className={styles.statNumber}>1.000</span>
-                <span className={styles.statLabel}>Kişilik Kapasite</span>
+                <span className={styles.statLabel}>Kişilik Geniş Kapasite</span>
               </div>
               <div className={styles.statItem}>
-                <span className={styles.statNumber}>1.200 m²</span>
-                <span className={styles.statLabel}>Kolonsuz Geniş Alan</span>
+                <span className={styles.statNumber}>Kolonsuz</span>
+                <span className={styles.statLabel}>Ferah & Açık Salon</span>
               </div>
               <div className={styles.statItem}>
-                <span className={styles.statNumber}>6.5 m</span>
-                <span className={styles.statLabel}>Yüksek Tavan Ferahlığı</span>
+                <span className={styles.statNumber}>Yüksek Tavan</span>
+                <span className={styles.statLabel}>Havadar & Ferah Ortam</span>
               </div>
               <div className={styles.statItem}>
-                <span className={styles.statNumber}>250 Araç</span>
-                <span className={styles.statLabel}>Özel Otopark Kapasitesi</span>
+                <span className={styles.statNumber}>Geniş Otopark</span>
+                <span className={styles.statLabel}>Rahat Park İmkânı</span>
               </div>
             </div>
           </div>
@@ -184,7 +184,7 @@ export default function HomePage() {
                   </Link>
                   <Link href="/iletisim" className={`${styles.archBtn} ${styles.archBtnPrimary}`}>
                     <CalendarCheck size={17} />
-                    <span>İletişime Geçin & Teklif Alın</span>
+                    <span suppressHydrationWarning>Keşif & Fiyat Teklifi Alın</span>
                   </Link>
                 </div>
               </div>
@@ -224,7 +224,7 @@ export default function HomePage() {
               <div className="section-header-inner">
                 <div className="editorial-indicator" />
                 <div className="section-title-wrap">
-                  <div className="section-category">Kusursuz Organizasyonlar</div>
+                  <div className="section-category">Davet Konseptleri & Paketler</div>
                   <h2>Her Davet İçin Özelleştirilmiş Salon Düzeni</h2>
                   <p className="section-subtitle">
                     Düğünden kına merasimine, nişandan kurumsal toplantıya kadar geniş oturma planları.
@@ -250,8 +250,8 @@ export default function HomePage() {
                   <div className={styles.serviceCapacity}>800 – 1.000 Davetli Kapasitesi</div>
                 </div>
                 <p className={styles.serviceText}>
-                  Geniş ziyafet masa düzeni, romantik pist aydınlatması, sisli ilk dans ve
-                  özenle hazırlanan zengin ikram menüleri ile hayatınızın en görkemli gecesi.
+                  Ferah salon düzeni, geniş dans pisti, romantik aydınlatma ve
+                  taze ikram menüleriyle eksiksiz bir düğün deneyimi.
                 </p>
                 <div className={styles.serviceAction}>
                   <Link href="/hizmetler#dugun" className="btn btn-text">
@@ -329,7 +329,7 @@ export default function HomePage() {
                 </div>
                 <p className={styles.serviceText}>
                   Polatlı kurum ve şirketleri için kaliteli ses, dev projeksiyon ve sahne aydınlatmasına
-                  sahip yemekli toplantı, lansman ve mezuniyet baloları.
+                  sahip yemekli toplantı, lansman ve mezuniyet kutlamaları.
                 </p>
                 <div className={styles.serviceAction}>
                   <Link href="/hizmetler#kurumsal" className="btn btn-text">
@@ -351,8 +351,8 @@ export default function HomePage() {
               <div className="section-header-inner">
                 <div className="editorial-indicator" />
                 <div className="section-title-wrap">
-                  <div className="section-category">Kusursuz Koordinasyon</div>
-                  <h2>Bir Davetin Başından Sonuna Kusursuz Akışı</h2>
+                  <div className="section-category">Davet Süreci & Koordinasyon</div>
+                  <h2>Bir Davetin Başından Sonuna Planlı Akışı</h2>
                   <p className="section-subtitle">
                     En özel gecenizde hiçbir detayı tesadüfe bırakmıyoruz. Deneyimli ekibimizle planlanan standart adımlar:
                   </p>
@@ -482,8 +482,8 @@ export default function HomePage() {
                 <div className={styles.amenityIcon}>
                   <Car size={24} />
                 </div>
-                <h4>250 Araçlık Otopark</h4>
-                <p>Salona bitişik geniş otopark sayesinde misafirleriniz araç park sorunu yaşamaz.</p>
+                <h4>Rahat Park İmkânı</h4>
+                <p>Salona bitişik geniş otoparkımız sayesinde misafirleriniz park yeri aramakla uğraşmaz, park sorunu yaşamaz.</p>
               </div>
 
               <div className={styles.amenityCard}>
@@ -491,7 +491,7 @@ export default function HomePage() {
                   <Zap size={24} />
                 </div>
                 <h4>Kesintisiz Jeneratör</h4>
-                <p>Olası elektrik kesintilerinde hemen devreye giren otomatik jeneratör desteği.</p>
+                <p>Olası elektrik kesintilerinde anında devreye giren otomatik jeneratör güvencesiyle eğlenceniz asla bölünmez.</p>
               </div>
 
               <div className={styles.amenityCard}>
@@ -499,7 +499,7 @@ export default function HomePage() {
                   <Accessibility size={24} />
                 </div>
                 <h4>%100 Engelsiz Erişim</h4>
-                <p>Tekerlekli sandalye ve bebek arabaları için düz giriş, rampa ve kolay ulaşım imkânı.</p>
+                <p>Tekerlekli sandalye ve bebek arabalı misafirlerimiz için merdivensiz düz giriş ve rahat ulaşım imkânı.</p>
               </div>
 
               <div className={styles.amenityCard}>
@@ -507,7 +507,7 @@ export default function HomePage() {
                   <Wind size={24} />
                 </div>
                 <h4>Ferah Havalandırma</h4>
-                <p>Yüksek tavan ve düzenli havalandırma sistemiyle kalabalıkta bile salon havası taze kalır.</p>
+                <p>Yüksek tavan ve güçlü havalandırma sistemiyle kalabalık davetlerde bile salon havası daima temiz ve ferah kalır.</p>
               </div>
             </div>
           </div>
@@ -536,7 +536,7 @@ export default function HomePage() {
               <div className={styles.invitationActions}>
                 <Link href="/iletisim" className="btn btn-primary" id="home-invitation-randevu-btn">
                   <CalendarCheck size={18} />
-                  <span>İletişime Geçin & Randevu Alın</span>
+                  <span suppressHydrationWarning>Keşif & Fiyat Teklifi Alın</span>
                 </Link>
                 <a
                   href="https://wa.me/903126230000?text=Merhaba,%20K%C3%B6%C5%9Fk%20D%C3%BC%C4%9F%C3%BCn%20Salonu%20i%C3%A7in%20bilgi%20ve%20ziyaret%20randevusu%20almak%20istiyorum."

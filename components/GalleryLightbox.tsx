@@ -400,11 +400,11 @@ export default function GalleryLightbox({ items }: GalleryLightboxProps) {
                   </div>
                   <div className={styles.statPill}>
                     <span className={styles.statPillLabel}>Tavan</span>
-                    <strong className={styles.statPillVal}>6.5 Metre</strong>
+                    <strong className={styles.statPillVal}>Yüksek & Ferah</strong>
                   </div>
                   <div className={styles.statPill}>
                     <span className={styles.statPillLabel}>Otopark</span>
-                    <strong className={styles.statPillVal}>250 Araç</strong>
+                    <strong className={styles.statPillVal}>Geniş & Rahat</strong>
                   </div>
                 </div>
 

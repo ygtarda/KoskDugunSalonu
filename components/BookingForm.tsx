@@ -27,7 +27,7 @@ const EVENT_TYPES = [
   'Kına Gecesi',
   'Nişan & Söz Töreni',
   'Sünnet Düğünü',
-  'Mezuniyet & Balo',
+  'Mezuniyet Kutlaması',
   'Kurumsal Davet & Gala',
 ];
 
@@ -38,7 +38,7 @@ const PACKAGE_PARAM_MAP: Record<string, { eventType: string; defaultGuests: numb
   nisan: { eventType: 'Nişan & Söz Töreni', defaultGuests: 400 },
   sunnet: { eventType: 'Sünnet Düğünü', defaultGuests: 600 },
   kurumsal: { eventType: 'Kurumsal Davet & Gala', defaultGuests: 500 },
-  mezuniyet: { eventType: 'Mezuniyet & Balo', defaultGuests: 500 },
+  mezuniyet: { eventType: 'Mezuniyet Kutlaması', defaultGuests: 500 },
 };
 
 
@@ -1221,7 +1221,7 @@ export default function BookingForm() {
                 </>
               ) : (
                 <>
-                  <span>Keşif Randevusu & Teklif Talebini İlet</span>
+                  <span>Keşif Randevusu & Teklif Talebini İletin</span>
                   <Check size={18} />
                 </>
               )}

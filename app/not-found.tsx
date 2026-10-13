@@ -75,7 +75,7 @@ export default function NotFound() {
             <span>Anasayfaya Dön</span>
           </Link>
           <Link href="/iletisim" className={styles.outlineBtn} id="not-found-contact-btn">
-            <span>İletişime Geçin & Randevu Alın</span>
+            <span>Keşif & Fiyat Teklifi Alın</span>
             <ArrowRight size={17} />
           </Link>
         </div>

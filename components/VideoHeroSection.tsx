@@ -74,7 +74,7 @@ export default function VideoHeroSection({
         {/* Poster Image: Always rendered first for optimal LCP */}
         <Image
           src={posterSrc}
-          alt="Köşk Düğün Salonu Kolonsuz Ana Balo Salonu Genel Perspektif"
+          alt="Köşk Düğün Salonu 1.000 Kişilik Kapalı Düğün Salonu Genel Görünümü"
           fill
           priority
           className={styles.fallbackPosterImg}
@@ -103,7 +103,7 @@ export default function VideoHeroSection({
           <div className={styles.heroBadgeWrapper}>
             <span className={styles.heroBadgeDot}></span>
             <span className={styles.heroBadgeText}>
-              1.000 Kişilik Kolonsuz Ana Balo Salonu · Kesintisiz Görüş & Yüksek Tavan
+              1.000 Kişilik Ferah Düğün Salonu · Kolonsuz Geniş Görüş & Yüksek Tavan
             </span>
           </div>
         </div>

@@ -2,13 +2,13 @@ import type { Metadata } from 'next';
 import Breadcrumb from '@/components/Breadcrumb';
 import ReferanslarClient from './ReferanslarClient';
 
-export const metadata: Metadata = {
+import { buildPageMetadata } from '@/lib/og';
+
+export const metadata: Metadata = buildPageMetadata({
   title: 'Misafir Yorumları & Çift Deneyimleri | Polatlı Köşk Düğün Salonu',
   description:
     'Polatlı Köşk Düğün Salonu’nda dünyaevine giren çiftlerimizin gerçek Google yorumları ve deneyimleri. 4.9/5 yıldızlı doğrulanmış müşteri memnuniyeti.',
-  alternates: {
-    canonical: '/referanslar',
-  },
+  canonicalPath: '/referanslar',
   keywords: [
     'Polatlı düğün salonu yorumları',
     'Köşk düğün salonu referanslar',
@@ -16,20 +16,10 @@ export const metadata: Metadata = {
     'Google haritalar Polatlı düğün salonu',
     'Köşk düğün salonu çift deneyimleri',
   ],
-  openGraph: {
-    title: 'Misafir Yorumları & Referanslar | Polatlı Köşk Düğün Salonu',
-    description:
-      '1.000 kişilik kolonsuz ferah salonumuzda gerçekleşen düğün, kına ve nişan davetleri hakkında gerçek çift yorumları.',
-    url: 'https://koskdugunsalonu.com/referanslar',
-    type: 'website',
-    locale: 'tr_TR',
-  },
-  twitter: {
-    card: 'summary_large_image',
-    title: 'Misafir Yorumları | Polatlı Köşk Düğün Salonu',
-    description: 'Polatlı Köşk Düğün Salonu hakkında Google Haritalar onaylı gerçek çift değerlendirmeleri.',
-  },
-};
+  ogTitle: 'Referanslar & Misafir Yorumları',
+  ogSubtitle: '4.9 / 5.0 Google Değerlendirmesi ile Doğrulanmış Çift Deneyimleri',
+  ogTag: '★ 4.9 GOOGLE DEĞERLENDİRMESİ',
+});
 
 const reviewsSchema = {
   '@context': 'https://schema.org',
@@ -68,7 +58,7 @@ const reviewsSchema = {
       datePublished: '2024-07-20',
       reviewRating: { '@type': 'Rating', ratingValue: '5' },
       reviewBody:
-        '250 araçlık özel otopark alanı sayesinde uzaktan gelen misafirlerimiz hiç park sorunu yaşamadı. Personel son derece saygılı ve organizeydi.',
+        'Geniş otopark alanı sayesinde uzaktan gelen misafirlerimiz hiç park sorunu yaşamadı. Personel son derece saygılı ve organizeydi.',
     },
   ],
 };

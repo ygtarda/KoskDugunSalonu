@@ -24,7 +24,7 @@ const moods: MoodItem[] = [
     icon: <Heart size={18} />,
     badge: 'Sis Bulutu & Takip Spotu',
     title: 'Bulutlar Üzerinde Masalsı İlk Dans',
-    desc: 'Zemine yayılan ağır sis bulutları ve çiftimizin adımlarına eşlik eden sıcak takip spotları ile salondaki tüm gözlerin üzerinizde olduğu büyülü an.',
+    desc: 'Zemine yayılan ağır sis bulutları ve çiftimizin adımlarına eşlik eden sıcak takip spotlarıyla ilk dansınıza eşlik eden özel bir sahne aydınlatması.',
     imageSrc: '/images/venue/kosk-ilk-dans-sis-bulutu.webp',
     imageAlt: 'Köşk Düğün Salonu Sisli İlk Dans Anı',
     highlights: ['Sis Bulutu Efekti', 'Özel Takip Spotu', 'Romantik Müzik Akışı'],
@@ -60,7 +60,7 @@ const moods: MoodItem[] = [
     desc: 'Yemek ve ikram servisi boyunca göz yormayan amber tonlaması, şık masa süslemeleri ve masalar arasında rahatça geçilen geniş servis koridorları.',
     imageSrc: '/images/venue/kosk-ziyafet-masalari-ve-orkestra-gorunumu.webp',
     imageAlt: 'Köşk Düğün Salonu Ziyafet Masaları ve Oturma Planı',
-    highlights: ['Yuvarlak Banket Masaları', 'Sıcak Amber Aydınlatma', 'Ferah Geçiş Koridorları'],
+    highlights: ['Ferah Masa Düzeni', 'Sıcak Amber Aydınlatma', 'Geniş Geçiş Alanları'],
   },
 ];
 

@@ -73,7 +73,7 @@ export default function ErrorBoundary({ error, reset }: ErrorProps) {
         <aside className={styles.conciergeStrip} aria-label="Salon Yetkilisi Danışma Hattı">
           <div className={styles.conciergeText}>
             <AlertTriangle size={18} className={styles.conciergeIcon} />
-            <span>Davet planlamanız veya tarih sorgulamalarınız için bize hemen ulaşın:</span>
+            <span>Davet planlamanız veya tarih sorgulamalarınız için doğrudan bize ulaşabilirsiniz:</span>
           </div>
           <div className={styles.conciergeActions}>
             <a href="tel:+903126230000" className={styles.conciergeLink} id="error-call-link">

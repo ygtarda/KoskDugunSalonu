@@ -3,84 +3,12 @@
 import React, { useState, useEffect, useRef } from 'react';
 import Script from 'next/script';
 import { ExternalLink, MessageSquarePlus, Star, ShieldCheck } from 'lucide-react';
+import { ReviewItem, VERIFIED_REVIEWS, GOOGLE_BUSINESS_URL } from '@/data/reviews';
 import styles from './GoogleReviewsWidget.module.css';
 
-export const GOOGLE_BUSINESS_URL = 'https://share.google/Ut9Fd72yIZ5c9Tg4P';
+export { GOOGLE_BUSINESS_URL, VERIFIED_REVIEWS };
+export type GoogleReviewItem = ReviewItem;
 export const ELFSIGHT_WIDGET_ID = '22bbd0fd-a846-459f-802c-779ef02c9b1c';
-
-export interface GoogleReviewItem {
-  id: string;
-  author: string;
-  date: string;
-  rating: number;
-  text: string;
-  category: 'Düğün' | 'Kına' | 'Nişan' | 'Sünnet' | 'Kurumsal';
-  initials: string;
-  avatarBg: string;
-}
-
-export const VERIFIED_REVIEWS: GoogleReviewItem[] = [
-  {
-    id: 'rev-1',
-    author: 'Ayşenur & Emre Kılıç',
-    date: '3 hafta önce',
-    rating: 5,
-    category: 'Düğün',
-    initials: 'AK',
-    avatarBg: '#8A5D3B',
-    text: '1.000 kişilik düğünümüzde en ufak bir sıkışıklık veya görüş engeli yaşanmadı. Kolonsuz ferah mimari sayesinde her misafirimiz sahneyi rahatlıkla izledi. Havalandırma ve iklimlendirme salon doluyken bile harika çalıştı. Tüm ekibe teşekkür ederiz.',
-  },
-  {
-    id: 'rev-2',
-    author: 'Mehmet Ali Bozkurt',
-    date: '1 ay önce',
-    rating: 5,
-    category: 'Sünnet',
-    initials: 'MB',
-    avatarBg: '#3B6B8A',
-    text: 'Oğlumuzun sünnet düğününü Köşk Düğün Salonu’nda yaptık. 250 araçlık özel otopark alanı sayesinde uzaktan gelen misafirlerimiz hiç park sorunu yaşamadı. Personel son derece saygılı ve organizeydi, servis aksamadı.',
-  },
-  {
-    id: 'rev-3',
-    author: 'Büşra & Caner Tekin',
-    date: '2 ay önce',
-    rating: 5,
-    category: 'Kına',
-    initials: 'BT',
-    avatarBg: '#8A3B65',
-    text: 'Kına gecem ve düğünüm burada gerçekleşti. Gelin hazırlık odası çok konforlu ve genişti. Sahne ışık gösterileri ve ilk dansımızdaki sis bulutu hayal ettiğimizden çok daha büyüleyiciydi. Kesinlikle Polatlı’nın en prestijli mekanı.',
-  },
-  {
-    id: 'rev-4',
-    author: 'Fatma & Serhat Demir',
-    date: '3 ay önce',
-    rating: 5,
-    category: 'Düğün',
-    initials: 'FD',
-    avatarBg: '#4A7A4D',
-    text: 'Yemekli düğün organizasyonumuzda menü sıcaktı ve tam planlanan saatte masalara dağıtıldı. Masa dekorasyonları, şamdanlar ve akustik ses sistemi harikaydı. Hiçbir uğultu oluşmadı. Çok memnun kaldık.',
-  },
-  {
-    id: 'rev-5',
-    author: 'Kemal Güven',
-    date: '4 ay önce',
-    rating: 5,
-    category: 'Nişan',
-    initials: 'KG',
-    avatarBg: '#7A6B3B',
-    text: '6.5 metrelik yüksek tavan ferahlığı ve kolonsuz salon düzeni gerçekten fark yaratıyor. 450 kişilik nişan törenimizde herkes salonun atmosferine hayran kaldı. Polatlı’da tereddütsüz tercih edilecek tek adres.',
-  },
-  {
-    id: 'rev-6',
-    author: 'Zeynep & Oğuzhan Yıldız',
-    date: '5 ay önce',
-    rating: 5,
-    category: 'Düğün',
-    initials: 'ZY',
-    avatarBg: '#5A4A7A',
-    text: 'Gündüz seansında nikah ve düğün davetimizi yaptık. Doğal gün ışığı tonları ve profesyonel fotoğraf köşesi harikaydı. İlk görüşmeden organizasyonun son dakikasına kadar her detayla bizzat ilgilendiler.',
-  },
-];
 
 export function GoogleIcon({ size = 20 }: { size?: number }) {
   return (

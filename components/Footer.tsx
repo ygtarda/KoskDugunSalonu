@@ -87,14 +87,14 @@ export default function Footer() {
               </Link>
 
               <p className={styles.brandAbout}>
-                Polatlı'nın en geniş kapalı balo salonu: 1.000 kişilik kolonsuz ferah mimari, 
-                yüksek tavan ferahlığı, güçlü havalandırma ve güler yüzlü servis anlayışı.
+                1.000 kişilik ferah salonuyla Polatlı'nın en geniş kapalı düğün salonlarından biri: 
+                yüksek tavan, ferah ortam ve güler yüzlü servis anlayışı.
               </p>
               
               <div className={styles.highlightsBadge}>
                 <div className={styles.badgeItem}>
                   <ShieldCheck size={15} className={styles.badgeIcon} />
-                  <span>Kesintisiz 250 kVA Jeneratör Güvencesi</span>
+                  <span>Kesintisiz Otomatik Jeneratör Güvencesi</span>
                 </div>
                 <div className={styles.badgeItem}>
                   <Sparkles size={15} className={styles.badgeIcon} />
@@ -102,11 +102,11 @@ export default function Footer() {
                 </div>
                 <div className={styles.badgeItem}>
                   <Maximize2 size={15} className={styles.badgeIcon} />
-                  <span>Kolonsuz 1.000 Kişilik Kesintisiz Görüş</span>
+                  <span>1.000 Kişilik Ferah ve Kolonsuz Salon</span>
                 </div>
                 <div className={styles.badgeItem}>
                   <Car size={15} className={styles.badgeIcon} />
-                  <span>Salona Bitişik 250 Araçlık Özel Otopark</span>
+                  <span>Geniş Özel Otopark ve Kolay Park İmkânı</span>
                 </div>
               </div>
 
@@ -272,7 +272,7 @@ export default function Footer() {
                 <li>
                   <Link href="/salon#mimari">
                     <Maximize2 size={13} className={styles.bulletIcon} />
-                    <span>Kolonsuz Balo Salonu Mimarisi</span>
+                    <span>Kolonsuz Düğün Salonu Mimarisi</span>
                   </Link>
                 </li>
                 <li>
@@ -318,9 +318,9 @@ export default function Footer() {
             <div className={styles.seoKeywordsList}>
               <Link href="/salon">Polatlı Düğün Salonu</Link>
               <span>·</span>
-              <Link href="/salon">1000 Kişilik Düğün Salonu</Link>
+              <Link href="/salon">1.000 Kişilik Düğün Salonu</Link>
               <span>·</span>
-              <Link href="/hizmetler?paket=dugun">Kolonsuz Balo Salonu</Link>
+              <Link href="/hizmetler?paket=dugun">Kolonsuz Düğün Salonu</Link>
               <span>·</span>
               <Link href="/hizmetler?paket=kina">Polatlı Kına Mekanı</Link>
               <span>·</span>
@@ -344,7 +344,7 @@ export default function Footer() {
               © {new Date().getFullYear()} Köşk Düğün Salonu Polatlı. Tüm Hakları Saklıdır.
             </p>
             <div className={styles.bottomMeta}>
-              <span>1.000 Kişilik Kolonsuz Kapalı Balo Salonu</span>
+              <span>1.000 Kişilik Kapalı Düğün Salonu</span>
               <span className={styles.dotSeparator}></span>
               <span>Polatlı, Ankara</span>
               <span className={styles.dotSeparator}></span>

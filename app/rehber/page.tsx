@@ -21,29 +21,26 @@ import {
 import Breadcrumb from '@/components/Breadcrumb';
 import styles from './rehber.module.css';
 
-export const metadata: Metadata = {
+import { buildPageMetadata } from '@/lib/og';
+
+export const metadata: Metadata = buildPageMetadata({
   title: 'Düğün Rehberi & Uzman Tavsiyeleri | Polatlı Köşk Düğün Salonu',
   description:
-    'Polatlı ve Ankara’da düğün salonu seçimi, 1000 kişilik davet planlaması, masa düzeni, kolonsuz mekan avantajları, havalandırma ve seans tercihleri üzerine kapsamlı rehber.',
-  alternates: {
-    canonical: '/rehber',
-  },
+    'Polatlı ve Ankara’da düğün salonu seçimi, 1.000 kişilik davet planlaması, masa düzeni, kolonsuz mekan avantajları, havalandırma ve seans tercihleri üzerine kapsamlı rehber.',
+  canonicalPath: '/rehber',
   keywords: [
     'Polatlı düğün rehberi',
     'Polatlı düğün salonu seçimi',
-    '1000 kişilik düğün planlama',
+    '1.000 kişilik düğün planlama',
     'düğün salonu havalandırma',
     'kolonsuz düğün salonu avantajları',
     'Ankara Polatlı düğün tavsiyeleri',
   ],
-  openGraph: {
-    title: 'Düğün Rehberi & Uzman Tavsiyeleri | Polatlı Köşk Düğün Salonu',
-    description:
-      'Polatlı’da kusursuz bir düğün planlamak için bilmeniz gereken kritik kriterler, salon seçimi ve oturma düzeni ipuçları.',
-    url: 'https://koskdugunsalonu.com/rehber',
-    type: 'article',
-  },
-};
+  ogTitle: 'Düğün & Davet Planlama Rehberi',
+  ogSubtitle: 'Salon Seçimi, 1.000 Kişilik Oturma Düzeni, Seans Karşılaştırması ve İklimlendirme',
+  ogTag: 'UZMAN DÜĞÜN REHBERİ',
+  ogType: 'article',
+});
 
 const blogSchema = {
   '@context': 'https://schema.org',
@@ -106,18 +103,18 @@ export default function RehberPage() {
               }}
             >
               Düğün hazırlık sürecinde doğru kararlar vermeniz, en özel gecenizi sürprizlerden uzak, 
-              ferah ve kusursuz bir anıya dönüştürmeniz için hazırladığımız kapsamlı uzman rehberleri.
+              ferah ve güvenli bir davet deneyimine dönüştürmeniz için hazırladığımız kapsamlı uzman rehberleri.
             </p>
           </div>
         </div>
       </section>
 
-      {/* Sticky Table of Contents (TOC) Bar */}
-      <nav aria-label="Rehber İçindekiler" className={styles.stickyTocBar}>
-        <div className="container">
+      {/* Sayfa İçi İçindekiler Kartı (Sabit/Sticky değil, akış içinde zarif kutu) */}
+      <div className="container" style={{ marginTop: '2rem', marginBottom: '0.5rem' }}>
+        <nav aria-label="Rehber İçindekiler" className={styles.tocBox}>
           <div className={styles.tocFlex}>
             <span className={styles.tocLabel}>
-              <BookOpen size={14} style={{ color: 'var(--color-champagne)' }} />
+              <BookOpen size={15} style={{ color: 'var(--color-champagne)' }} />
               İçindekiler:
             </span>
             <div className={styles.tocLinks}>
@@ -135,8 +132,8 @@ export default function RehberPage() {
               </a>
             </div>
           </div>
-        </div>
-      </nav>
+        </nav>
+      </div>
 
       {/* Main Articles Container */}
       <section className="container" style={{ padding: '3.5rem 0 6rem 0' }}>
@@ -257,7 +254,7 @@ export default function RehberPage() {
                   </h3>
                 </div>
                 <p style={{ fontSize: '0.92rem', color: 'var(--color-text-secondary)', lineHeight: '1.65', margin: 0 }}>
-                  Beklenmedik bir şebeke arızasında salonun karanlıkta kalması ve müziğin durması kabustur. 250 kVA tam kapasiteli 
+                  Beklenmedik bir şebeke arızasında salonun karanlıkta kalması ve müziğin durması kabustur. Otomatik devreye giren 
                   kesintisiz jeneratör, hem ışık hem ses hem de klimaları saniyeler içinde devralmalıdır.
                 </p>
               </div>
@@ -270,7 +267,7 @@ export default function RehberPage() {
                   </h3>
                 </div>
                 <p style={{ fontSize: '0.92rem', color: 'var(--color-text-secondary)', lineHeight: '1.65', margin: 0 }}>
-                  Şehir merkezinde park yeri aramak davetlileri yorar. Salona özel 250 araçlık ücretsiz otopark ve yaşlı ya da 
+                  Şehir merkezinde park yeri aramak davetlileri yorar. Salona özel geniş ve ücretsiz otopark ile yaşlı ya da 
                   bebek arabalı konuklar için merdivensiz düz giriş konforun anahtarıdır.
                 </p>
               </div>
@@ -391,16 +388,16 @@ export default function RehberPage() {
                 <li style={{ display: 'flex', alignItems: 'flex-start', gap: '0.75rem' }}>
                   <CheckCircle2 size={18} style={{ color: 'var(--color-champagne)', flexShrink: 0, marginTop: '2px' }} />
                   <div>
-                    <strong style={{ color: 'var(--color-anthracite)' }}>Yuvarlak Masaların Samimiyet Avantajı:</strong>
+                    <strong style={{ color: 'var(--color-anthracite)' }}>Rahat Salon Düzeni ve Geniş Geçiş Alanları:</strong>
                     <span style={{ color: 'var(--color-text-secondary)', fontSize: '0.94rem', display: 'block' }}>
-                      10-12 kişilik yuvarlak masalar, konukların birbiriyle yüz yüze sohbet etmesine imkan tanırken servis personeline kesintisiz koridorlar açar.
+                      Masalar arasında ferah boşluklar bırakılarak konukların rahatça sohbet etmesi sağlanır ve servis personeline kolay hareket alanı açılır.
                     </span>
                   </div>
                 </li>
                 <li style={{ display: 'flex', alignItems: 'flex-start', gap: '0.75rem' }}>
                   <CheckCircle2 size={18} style={{ color: 'var(--color-champagne)', flexShrink: 0, marginTop: '2px' }} />
                   <div>
-                    <strong style={{ color: 'var(--color-anthracite)' }}>Geniş Mermer Dans Pisti (180 m²):</strong>
+                    <strong style={{ color: 'var(--color-anthracite)' }}>Geniş Mermer Dans Pisti:</strong>
                     <span style={{ color: 'var(--color-text-secondary)', fontSize: '0.94rem', display: 'block' }}>
                       Halay, zeybek ve ilk dans gibi ritüellerde yüzlerce davetlinin birbirine çarpmadan rahatça eğlenebilmesi için pist salonun merkezinde geniş tutulmalıdır.
                     </span>
@@ -423,7 +420,7 @@ export default function RehberPage() {
                 Köşk Düğün Salonu'nda 1.000 kişilik masa planını birlikte simüle edebilirsiniz.
               </span>
               <Link href="/iletisim" className="btn btn-primary">
-                <span>Tarih ve Kapasite Planı İçin Randevu Alın</span>
+                <span>Tarih ve Kapasite Planı İçin Keşif Randevusu Alın</span>
               </Link>
             </div>
           </article>
@@ -533,7 +530,7 @@ export default function RehberPage() {
                   </h3>
                 </div>
                 <p style={{ fontSize: '0.9rem', color: 'var(--color-cashmere)', marginBottom: '1rem', fontWeight: 500 }}>
-                  Görkemli Gece Balosu · Işık Gösterileri & Mistik Atmosfer
+                  Akşam Düğünü & Davetleri · Işık Gösterileri & Canlı Müzik
                 </p>
                 <ul style={{ listStyle: 'none', margin: 0, padding: 0, display: 'flex', flexDirection: 'column', gap: '0.65rem' }}>
                   <li style={{ display: 'flex', alignItems: 'center', gap: '0.55rem', fontSize: '0.9rem', color: 'var(--color-text-secondary)' }}>

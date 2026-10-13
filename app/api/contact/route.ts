@@ -187,7 +187,7 @@ function generateBookingEmailHtml(data: BookingSubmissionPayload, isPreview = fa
                 </tr>
               </table>
 
-              <!-- SECTION 2: Balo & Organizasyon Bilgileri -->
+              <!-- SECTION 2: Davet & Organizasyon Bilgileri -->
               <table width="100%" border="0" cellpadding="0" cellspacing="0" style="margin-bottom:24px;border:1px solid #E8E4DF;border-radius:6px;overflow:hidden;">
                 <tr>
                   <td style="background-color:#FAF8F5;padding:12px 18px;border-bottom:1px solid #E8E4DF;">

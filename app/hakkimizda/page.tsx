@@ -4,42 +4,23 @@ import Image from 'next/image';
 import { Award, HeartHandshake, ShieldCheck, Clock, CalendarCheck, MessageSquare } from 'lucide-react';
 import Breadcrumb from '@/components/Breadcrumb';
 
-export const metadata: Metadata = {
+import { buildPageMetadata } from '@/lib/og';
+
+export const metadata: Metadata = buildPageMetadata({
   title: 'Hakkımızda | Polatlı Köşk Düğün Salonu Hikayesi ve Felsefesi',
   description:
-    'Polatlı’da 1000 kişilik kapalı balo salonu vizyonuyla kurulan Köşk Düğün Salonu’nun hikayesi, hizmet ilkeleri ve misafir memnuniyeti odaklı organizasyon felsefesi.',
-  alternates: {
-    canonical: '/hakkimizda',
-  },
+    'Polatlı’da 1.000 kişilik ferah kapalı düğün salonu vizyonuyla kurulan Köşk Düğün Salonu’nun hikayesi, hizmet ilkeleri ve misafir memnuniyeti odaklı organizasyon felsefesi.',
+  canonicalPath: '/hakkimizda',
   keywords: [
     'Köşk Düğün Salonu hakkında',
     'Polatlı düğün salonu hikayesi',
-    'Köşk balo salonu Polatlı',
+    'Köşk düğün salonu Polatlı',
     'Polatlı düğün mekanı ilkeleri',
   ],
-  openGraph: {
-    title: 'Hakkımızda | Polatlı Köşk Düğün Salonu Hikayesi ve Felsefesi',
-    description:
-      'Polatlı’da 1000 kişilik kapalı balo salonu vizyonuyla kurulan Köşk Düğün Salonu’nun hikayesi ve hizmet ilkeleri.',
-    url: 'https://koskdugunsalonu.com/hakkimizda',
-    type: 'website',
-    locale: 'tr_TR',
-    images: [
-      {
-        url: '/images/venue/kosk-karsilama-panosu-sovale-dekoru.webp',
-        width: 1200,
-        height: 675,
-        alt: 'Köşk Düğün Salonu Giriş Fuayesi',
-      },
-    ],
-  },
-  twitter: {
-    card: 'summary_large_image',
-    title: 'Hakkımızda | Polatlı Köşk Düğün Salonu',
-    description: 'Polatlı’da zarafetin ve güvenin adresi Köşk Düğün Salonu.',
-    images: ['/images/venue/kosk-karsilama-panosu-sovale-dekoru.webp'],
-  },
-};
+  ogTitle: 'Hakkımızda & Hizmet Felsefemiz',
+  ogSubtitle: 'Polatlı’da Ferah Düğün Salonu ve Güler Yüzlü Hizmet Anlayışı',
+  ogTag: 'KURUMSAL TARİHÇE',
+});
 
 const aboutPageSchema = {
   '@context': 'https://schema.org',
@@ -85,7 +66,7 @@ export default function HakkimizdaPage() {
             </h1>
             <p style={{ fontSize: '1.12rem', color: 'var(--color-text-secondary)', lineHeight: '1.75' }}>
               Köşk Düğün Salonu, Polatlı ve çevre ilçelerdeki çiftlerin en mutlu günlerini tesadüflere 
-              bırakmamak, hava koşullarından etkilenmeyen lüks bir kapalı balo salonu deneyimi sunmak 
+              bırakmamak, hava koşullarından etkilenmeyen ferah ve konforlu bir kapalı düğün salonu deneyimi sunmak 
               amacıyla kuruldu.
             </p>
           </div>
@@ -126,9 +107,9 @@ export default function HakkimizdaPage() {
               yarattığı uğultu olduğunu fark ettik.
             </p>
             <p style={{ color: 'var(--color-text-secondary)', marginBottom: '1.5rem', lineHeight: '1.75' }}>
-              Bu eksikliği gidermek için yola çıktık: 1.200 m² kolonsuz ve geniş salon yapımız, 
-              6.5 metrelik yüksek tavanımız, 250 araçlık özel otoparkımız ve düzenli havalandırma sistemimizle tüm davetlilere ferah 
-              bir ortam sunuyoruz. Salonda kolon bulunmaması ve geniş dans pistimiz sayesinde 1.000 kişilik 
+              Bu eksikliği gidermek için yola çıktık: Kolonsuz ve ferah salon yapımız, 
+              yüksek tavanımız, geniş özel otoparkımız ve güçlü havalandırma sistemimizle tüm davetlilere ferah 
+              bir ortam sunuyoruz. Salonda kolon bulunmaması ve geniş dans pistimiz sayesinde kalabalık 
               davetlerde bile herkes eğlenceyi rahatça takip edebilir.
             </p>
             <div style={{ display: 'flex', gap: '2.5rem', borderTop: '1px solid var(--color-stone)', paddingTop: '1.5rem' }}>
@@ -301,11 +282,11 @@ export default function HakkimizdaPage() {
           <div style={{ display: 'flex', justifyContent: 'center', gap: '1.2rem', flexWrap: 'wrap' }}>
             <Link href="/iletisim" className="btn btn-primary">
               <CalendarCheck size={18} />
-              <span>İletişime Geçin & Teklif Alın</span>
+              <span>Keşif & Fiyat Teklifi Alın</span>
             </Link>
             <Link href="/referanslar" className="btn btn-outline">
               <MessageSquare size={18} />
-              <span>Gerçek Çift Yorumlarını & Deneyimleri Okuyun</span>
+              <span>Misafir Yorumlarını & Deneyimleri İnceleyin</span>
             </Link>
           </div>
         </div>

@@ -1,7 +1,7 @@
 {
   "name": "koskdugunsalonu",
   "version": "1.0.0",
-  "description": "Köşk Düğün Salonu Polatlı Ankara - 1000 Kişilik Kapalı Balo Salonu",
+  "description": "Köşk Düğün Salonu Polatlı Ankara - 1.000 Kişilik Kapalı Düğün Salonu",
   "scripts": {
     "dev": "next dev",
     "build": "next build",

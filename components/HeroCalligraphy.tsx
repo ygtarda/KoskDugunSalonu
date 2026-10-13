@@ -217,7 +217,7 @@ export default function HeroCalligraphy({ onScrollClick }: HeroCalligraphyProps)
           className={styles.btnPrimary}
           id="hero-explore-hall-btn"
         >
-          <span>Salonu Keşfet</span>
+          <span suppressHydrationWarning>Salonu Keşfedin</span>
           <ArrowRight size={16} />
         </button>
 
@@ -228,7 +228,7 @@ export default function HeroCalligraphy({ onScrollClick }: HeroCalligraphyProps)
           id="hero-book-date-btn"
         >
           <CalendarCheck size={16} />
-          <span>Tarih & Fiyat Sorgula</span>
+          <span suppressHydrationWarning>Keşif & Fiyat Teklifi Alın</span>
         </button>
       </div>
 

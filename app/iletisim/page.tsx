@@ -5,13 +5,13 @@ import Breadcrumb from '@/components/Breadcrumb';
 import { MapPin, Phone, Clock, Navigation } from 'lucide-react';
 import styles from './page.module.css';
 
-export const metadata: Metadata = {
+import { buildPageMetadata } from '@/lib/og';
+
+export const metadata: Metadata = buildPageMetadata({
   title: 'İletişim & Fiyat Teklifi | Polatlı Köşk Düğün Salonu',
   description:
     'Polatlı Köşk Düğün Salonu iletişim bilgileri, adres ve harita konumu, telefon numarası ve düğün organizasyonu teklif formu. Gülveren, Kutluhan Sk. No: 2/2, Polatlı / Ankara.',
-  alternates: {
-    canonical: '/iletisim',
-  },
+  canonicalPath: '/iletisim',
   keywords: [
     'Polatlı düğün salonu iletişim',
     'Köşk düğün salonu telefon',
@@ -19,20 +19,10 @@ export const metadata: Metadata = {
     'Polatlı düğün fiyat teklifi al',
     'Polatlı düğün salonu randevu',
   ],
-  openGraph: {
-    title: 'İletişim & Fiyat Teklifi | Polatlı Köşk Düğün Salonu',
-    description:
-      'Polatlı Köşk Düğün Salonu adres, telefon ve keşif randevusu formu. Gülveren, Kutluhan Sk. No: 2/2.',
-    url: 'https://koskdugunsalonu.com/iletisim',
-    type: 'website',
-    locale: 'tr_TR',
-  },
-  twitter: {
-    card: 'summary_large_image',
-    title: 'İletişim & Fiyat Teklifi | Polatlı Köşk Düğün Salonu',
-    description: 'Polatlı Köşk Düğün Salonu randevu ve iletişim bilgileri.',
-  },
-};
+  ogTitle: 'İletişim & Keşif Randevusu',
+  ogSubtitle: 'Gülveren Mah. Kutluhan Sk. No: 2/2 Polatlı · 0 (312) 623 00 00',
+  ogTag: 'TARİH VE FİYAT TEKLİFİ',
+});
 
 const EXACT_ADDRESS = 'Gülveren, Kutluhan Sk. No: 2/2, 06960 Polatlı / Ankara';
 const MAPS_URL =
@@ -85,8 +75,8 @@ export default function IletisimPage() {
             </div>
             <h1 className={styles.heroTitle}>İletişim ve Keşif Randevusu</h1>
             <p className={styles.heroSubtitle}>
-              Hayalinizdeki gece için salon takvimimizin müsaitliğini öğrenebilir,
-              kişiye özel menü teklifi alabilir veya salonumuzu yerinde ziyaret edebilirsiniz.
+              Özel davetiniz için salon takvimimizin müsaitliğini öğrenebilir,
+              şeffaf menü teklifi alabilir veya salonumuzu yerinde ziyaret edebilirsiniz.
             </p>
           </div>
         </div>
@@ -137,7 +127,7 @@ export default function IletisimPage() {
                     <span className={styles.channelLabel} style={{ color: '#1E9E4B' }}>
                       WhatsApp Danışma
                     </span>
-                    <span className={styles.channelValue}>Sohbet Başlat & Fotoğraf İste</span>
+                    <span className={styles.channelValue}>Sohbet Başlatın & Bilgi Alın</span>
                     <span className={styles.channelHint}>Görseller ve canlı müsaitlik bilgisi için yazın.</span>
                   </div>
                 </a>
@@ -150,7 +140,7 @@ export default function IletisimPage() {
                   <div className={styles.channelDetails}>
                     <span className={styles.channelLabel}>Salon Adresi</span>
                     <span className={styles.channelValue}>{EXACT_ADDRESS}</span>
-                    <span className={styles.channelHint}>250 Araçlık ücretsiz salon otoparkı mevcuttur.</span>
+                    <span className={styles.channelHint}>Misafirleriniz için geniş ve ücretsiz otopark mevcuttur. Park sorunu yaşanmaz.</span>
                   </div>
                 </div>
 

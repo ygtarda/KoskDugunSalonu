@@ -5,33 +5,23 @@ import GoogleReviewsWidget from '@/components/GoogleReviewsWidget';
 import Breadcrumb from '@/components/Breadcrumb';
 import { CalendarCheck, HelpCircle, MessageSquare } from 'lucide-react';
 
-export const metadata: Metadata = {
+import { buildPageMetadata } from '@/lib/og';
+
+export const metadata: Metadata = buildPageMetadata({
   title: 'Sıkça Sorulan Sorular & Misafir Yorumları | Polatlı Köşk Düğün Salonu',
   description:
     'Polatlı Köşk Düğün Salonu kapasite, rezervasyon süreci, iklimlendirme, otopark olanakları ve Google Haritalar doğrulanmış gerçek çift yorumları.',
-  alternates: {
-    canonical: '/sss',
-  },
+  canonicalPath: '/sss',
   keywords: [
     'Polatlı düğün salonu yorumları',
     'Köşk düğün salonu tavsiyeler',
     'Polatlı düğün salonu sıkça sorulan sorular',
     'Polatlı düğün fiyatı nasıl belirlenir',
   ],
-  openGraph: {
-    title: 'Sıkça Sorulan Sorular & Yorumlar | Polatlı Köşk Düğün Salonu',
-    description:
-      'Kapasite, havalandırma, rezervasyon ve ikramlar hakkında en sık sorulan sorular ve Google 4.9 yıldızlı gerçek misafir değerlendirmeleri.',
-    url: 'https://koskdugunsalonu.com/sss',
-    type: 'website',
-    locale: 'tr_TR',
-  },
-  twitter: {
-    card: 'summary_large_image',
-    title: 'Sıkça Sorulan Sorular | Polatlı Köşk Düğün Salonu',
-    description: 'Polatlı Köşk Düğün Salonu hakkında tüm merak edilenler ve gerçek kullanıcı yorumları.',
-  },
-};
+  ogTitle: 'Sıkça Sorulan Sorular (SSS)',
+  ogSubtitle: 'Kapasite, Fiyatlandırma, Otopark, İkramlar ve Rezervasyon Süreci',
+  ogTag: 'MERAK EDİLENLER',
+});
 
 const faqItems: FaqItem[] = [
   {
@@ -67,7 +57,7 @@ const faqItems: FaqItem[] = [
   {
     question: 'Davetlilerimiz için otopark ve engelli erişimi mevcut mu?',
     answer:
-      'Salonumuzun hemen bitişiğinde 250 araç kapasiteli geniş özel otoparkımız bulunmaktadır. Ayrıca salon girişimiz, fuayemiz ve lavabolarımız; tekerlekli sandalye, bebek arabası ve yaşlı misafirlerimizin konforla ulaşabileceği şekilde %100 engelsiz rampa ve geniş asansör sistemiyle donatılmıştır.',
+      'Salonumuzun hemen bitişiğinde misafirlerimize özel geniş ve ücretsiz otoparkımız bulunmaktadır; konuklarınız park sorunu yaşamaz. Ayrıca salon girişimiz, fuayemiz ve lavabolarımız; tekerlekli sandalye, bebek arabası ve yaşlı misafirlerimizin konforla ulaşabileceği şekilde düz ayak ve engelsizdir.',
   },
   {
     question: 'Menü tadımı yapıyor musunuz?',
@@ -186,7 +176,7 @@ export default function SssPage() {
               Google Haritalar Değerlendirmeleri
             </h2>
             <p style={{ color: 'var(--color-text-secondary)', fontSize: '0.96rem', lineHeight: 1.6 }}>
-              Köşk Düğün Salonu’nda unutulmaz anılar biriktiren çiftlerimizin ve davetlilerimizin doğrudan Google üzerinden paylaştığı onaylı yorumlar.
+              Köşk Düğün Salonu’nda davetlerini gerçekleştiren çiftlerimizin ve misafirlerimizin doğrudan Google üzerinden paylaştığı onaylı yorumlar.
             </p>
           </div>
 
@@ -235,7 +225,7 @@ export default function SssPage() {
           <div style={{ display: 'flex', justifyContent: 'center', gap: '1rem', flexWrap: 'wrap' }}>
             <Link href="/iletisim" className="btn btn-primary" id="sss-cta-iletisim-btn">
               <CalendarCheck size={17} />
-              <span>Keşif Randevusu & Teklif Alın</span>
+              <span>Keşif & Fiyat Teklifi Alın</span>
             </Link>
             <a
               href="https://wa.me/903126230000?text=Merhaba,%20K%C3%B6%C5%9Fk%20D%C3%BC%C4%9F%C3%BCn%20Salonu%20hakk%C4%B1nda%20sorum%20var."

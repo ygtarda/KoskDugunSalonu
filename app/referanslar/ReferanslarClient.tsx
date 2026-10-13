@@ -13,56 +13,23 @@ import {
 } from 'lucide-react';
 import {
   GoogleIcon,
-  GOOGLE_BUSINESS_URL,
-  VERIFIED_REVIEWS,
-  GoogleReviewItem,
 } from '@/components/GoogleReviewsWidget';
+import {
+  VERIFIED_REVIEWS,
+  GOOGLE_BUSINESS_URL,
+  ReviewItem,
+} from '@/data/reviews';
 import styles from './referanslar.module.css';
 
-// Genişletilmiş çift yorumları veri seti
-const ALL_REVIEWS: GoogleReviewItem[] = [
-  ...VERIFIED_REVIEWS,
-  {
-    id: 'rev-7',
-    author: 'Seda & Burak Şahin',
-    date: '6 ay önce',
-    rating: 5,
-    category: 'Kına',
-    initials: 'SŞ',
-    avatarBg: '#8A4A62',
-    text: 'Kına tahtı ve nedime dans şovları için salonun ortasında açılan geniş alan mükemmeldi. Davetlilerimiz pist çevresinde hiç sıkışmadan tüm eğlenceyi izledi. Işıklandırma ve müzik sistemi çok kaliteli.',
-  },
-  {
-    id: 'rev-8',
-    author: 'İbrahim Halil Çelik',
-    date: '7 ay önce',
-    rating: 5,
-    category: 'Sünnet',
-    initials: 'İÇ',
-    avatarBg: '#2A5D7A',
-    text: 'Polatlı’da bu büyüklükte ve bu kalitede başka bir mekan yok. Elektrik kesintisine karşı hazırda bekleyen 250 kVA jeneratörleri olması bize büyük bir güven verdi. Her şey sözleşmede konuştuğumuz gibi eksiksiz uygulandı.',
-  },
-  {
-    id: 'rev-9',
-    author: 'Gizem & Tolga Aydın',
-    date: '8 ay önce',
-    rating: 5,
-    category: 'Nişan',
-    initials: 'GA',
-    avatarBg: '#7A5A3B',
-    text: 'Söz ve nişan merasimimiz için Köşk Salonu’nu seçtik. Fotoğraf çekim köşesi, çiçek süslemeleri ve şık masalar konuklarımız tarafından çok beğenildi. Güleryüzlü garson arkadaşlara ve işletme sahiplerine çok teşekkür ederiz.',
-  },
-];
-
-const CATEGORIES = ['Tümü', 'Düğün', 'Kına', 'Nişan', 'Sünnet'];
+const CATEGORIES = ['Tümü', 'Düğün', 'Kına', 'Nişan', 'Sünnet', 'Kurumsal'];
 
 export default function ReferanslarClient() {
   const [activeCategory, setActiveCategory] = useState('Tümü');
 
   const filteredReviews =
     activeCategory === 'Tümü'
-      ? ALL_REVIEWS
-      : ALL_REVIEWS.filter((r) => r.category === activeCategory);
+      ? VERIFIED_REVIEWS
+      : VERIFIED_REVIEWS.filter((r) => r.category === activeCategory);
 
   return (
     <div className={styles.pageWrapper}>
@@ -78,7 +45,7 @@ export default function ReferanslarClient() {
             Çift Deneyimleri & Gerçek Referanslar
           </h1>
           <p className={styles.heroSubtitle}>
-            Polatlı Köşk Düğün Salonu’nda unutulmaz bir başlangıç yapan çiftlerimizin ve ailelerimizin 
+            Polatlı Köşk Düğün Salonu’nda davetlerini gerçekleştiren çiftlerimizin ve ailelerimizin 
             Google Haritalar üzerindeki bağımsız, doğrulanmış yorumları.
           </p>
 
@@ -209,11 +176,11 @@ export default function ReferanslarClient() {
         <div className="container">
           <Sparkles size={28} style={{ color: 'var(--color-champagne)', margin: '0 auto 1rem auto' }} />
           <h2 className={styles.ctaTitle}>
-            Siz de Hayalinizdeki Düğün İçin Tarihinizi Sorgulayın
+            Siz de Özel Davetiniz İçin Tarih Müsaitliğini Sorgulayın
           </h2>
           <p className={styles.ctaDesc}>
-            1.000 kişilik kolonsuz ferah salonumuz, 6.5 metrelik tavan ferahlığımız ve 250 araçlık 
-            özel otoparkımızla en özel gününüzü birlikte tasarlayalım.
+            1.000 kişilik ferah salonumuz, yüksek tavanımız ve geniş otoparkımızla 
+            en özel gününüzü birlikte planlayalım.
           </p>
           <div className={styles.ctaButtons}>
             <Link
@@ -222,7 +189,7 @@ export default function ReferanslarClient() {
               id="referanslar-cta-booking"
             >
               <CalendarCheck size={18} />
-              <span>Tarih & Fiyat Sorgulayın</span>
+              <span>Keşif & Fiyat Teklifi Alın</span>
             </Link>
             <a
               href="tel:+903126230000"

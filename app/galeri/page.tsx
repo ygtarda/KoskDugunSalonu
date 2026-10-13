@@ -4,13 +4,13 @@ import GalleryLightbox, { GalleryItem } from '@/components/GalleryLightbox';
 import Breadcrumb from '@/components/Breadcrumb';
 import { CalendarCheck, Building2 } from 'lucide-react';
 
-export const metadata: Metadata = {
+import { buildPageMetadata } from '@/lib/og';
+
+export const metadata: Metadata = buildPageMetadata({
   title: 'Fotoğraf Galerisi | Polatlı Köşk Kapalı Düğün Salonu',
   description:
     'Köşk Düğün Salonu’nun 1.000 kişilik kolonsuz kapalı salonu, ferah masa düzeni, sahne ışıklandırması ve gelin hazırlık odasından fotoğrafları inceleyin.',
-  alternates: {
-    canonical: '/galeri',
-  },
+  canonicalPath: '/galeri',
   keywords: [
     'Polatlı düğün salonu fotoğrafları',
     'Köşk düğün salonu galeri',
@@ -18,29 +18,10 @@ export const metadata: Metadata = {
     'gelin odası ve dans pisti Polatlı',
     'Polatlı kına gecesi fotoğrafları',
   ],
-  openGraph: {
-    title: 'Fotoğraf Galerisi | Polatlı Köşk Kapalı Düğün Salonu',
-    description:
-      '1.000 kişilik kolonsuz ferah salon, tiffany sandalyeler, geniş dans pisti ve sahne ışıklandırması fotoğrafları.',
-    url: 'https://koskdugunsalonu.com/galeri',
-    type: 'website',
-    locale: 'tr_TR',
-    images: [
-      {
-        url: '/images/venue/kosk-ana-balo-salonu-genel-perspektif.webp',
-        width: 1200,
-        height: 675,
-        alt: 'Köşk Düğün Salonu Kapalı Balo Salonu Panoramik Bakış',
-      },
-    ],
-  },
-  twitter: {
-    card: 'summary_large_image',
-    title: 'Fotoğraf Galerisi | Polatlı Köşk Kapalı Düğün Salonu',
-    description: '1.200 m² kolonsuz salon ve organizasyon detaylarından fotoğraflar.',
-    images: ['/images/venue/kosk-ana-balo-salonu-genel-perspektif.webp'],
-  },
-};
+  ogTitle: 'Fotoğraf & Video Galerisi',
+  ogSubtitle: 'Salon Mimarisi, Masa Dekorasyonu, Işık Gösterileri ve Gerçek Davet Kareleri',
+  ogTag: 'GÖRSEL TUR & DETAYLAR',
+});
 
 const galleryItems: GalleryItem[] = [
   // 1. Kapalı Salon & Mimari
@@ -48,7 +29,7 @@ const galleryItems: GalleryItem[] = [
     id: 'ana-salon-genel-perspektif',
     category: 'salon',
     categoryName: 'Kapalı Salon & Mimari',
-    title: '1.000 Kişilik Ana Balo Salonu Panoramik Bakış',
+    title: '1.000 Kişilik Düğün Salonu Panoramik Bakış',
     description: '1.200 m² kolonsuz ferah salon yapısı, kristal avizeler ve geniş dans pistini merkezine alan görkemli mimari yerleşim.',
     src: '/images/venue/kosk-ana-balo-salonu-genel-perspektif.webp',
     fallbackSrc: '/images/venue/kosk-ana-balo-salonu-genel-perspektif.webp',
@@ -60,7 +41,7 @@ const galleryItems: GalleryItem[] = [
     id: 'ana-salon-kusursuz-simetri',
     category: 'salon',
     categoryName: 'Kapalı Salon & Mimari',
-    title: 'Kusursuz Simetri ve Yüksek Tavan Ferahlığı',
+    title: 'Mimari Simetri ve Yüksek Tavan Ferahlığı',
     description: '6.5 metre tavan yüksekliği, sarkıt çiçek detayları ve her masadan sahneyi kesintisiz gören geniş görüş koridoru.',
     src: '/images/venue/kosk-ana-salon-kusursuz-simetri.webp',
     fallbackSrc: '/images/venue/kosk-ana-salon-kusursuz-simetri.webp',
@@ -72,8 +53,8 @@ const galleryItems: GalleryItem[] = [
     id: 'balo-salonu-panoramik-oturma-duzeni',
     category: 'salon',
     categoryName: 'Kapalı Salon & Mimari',
-    title: 'Panoramik Oturma Düzeni ve Banket Masaları',
-    description: 'Beyaz tiffany sandalyeler ve şampanya örtülü yuvarlak ziyafet masaları ile konforlu davetli yerleşimi.',
+    title: 'Panoramik Salon Düzeni ve Rahat Masalar',
+    description: 'Şık sandalyeler ve zarif örtülü masalar ile konforlu ve ferah davetli yerleşimi.',
     src: '/images/venue/kosk-balo-salonu-panoramik-oturma-duzeni.webp',
     fallbackSrc: '/images/venue/kosk-balo-salonu-panoramik-oturma-duzeni.webp',
     aspectRatio: '3/4',
@@ -358,7 +339,7 @@ const imageGallerySchema = {
   '@context': 'https://schema.org',
   '@type': 'ImageGallery',
   name: 'Köşk Düğün Salonu Fotoğraf Galerisi',
-  description: '1.000 kişilik kolonsuz kapalı balo salonu, gelin odası, ışık ve masa düzeni fotoğrafları.',
+  description: '1.000 kişilik ferah kapalı düğün salonu, gelin odası, ışık ve salon fotoğrafları.',
   url: 'https://koskdugunsalonu.com/galeri',
   image: galleryItems.slice(0, 10).map((item) => ({
     '@type': 'ImageObject',
@@ -390,7 +371,7 @@ export default function GaleriPage() {
             </h1>
             <p style={{ fontSize: '1.12rem', color: 'var(--color-text-secondary)', lineHeight: '1.75' }}>
               Köşk Düğün Salonu’nun 1.200 m² kolonsuz ferah yapısını, yüksek tavanını ve 
-              özenle hazırlanan davet masalarını inceleyin.
+              davet masalarının geniş yerleşim düzenini inceleyin.
             </p>
           </div>
         </div>
@@ -420,11 +401,11 @@ export default function GaleriPage() {
           <div style={{ display: 'flex', justifyContent: 'center', gap: '1rem', flexWrap: 'wrap' }}>
             <Link href="/salon" className="btn btn-secondary">
               <Building2 size={18} />
-              <span>Teknik Özellikleri & Mimariyi Gör</span>
+              <span>Teknik Özellikleri & Mimariyi İnceleyin</span>
             </Link>
             <Link href="/iletisim" className="btn btn-primary">
               <CalendarCheck size={18} />
-              <span>İletişime Geçin & Tarih Bilgisi Alın</span>
+              <span>Keşif & Fiyat Teklifi Alın</span>
             </Link>
           </div>
         </div>

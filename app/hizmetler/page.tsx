@@ -15,13 +15,13 @@ import {
 import Breadcrumb from '@/components/Breadcrumb';
 import styles from './hizmetler.module.css';
 
-export const metadata: Metadata = {
+import { buildPageMetadata } from '@/lib/og';
+
+export const metadata: Metadata = buildPageMetadata({
   title: 'Hizmetler & Organizasyon Paketleri | Polatlı Köşk Düğün Salonu',
   description:
     'Düğün daveti, geleneksel kına gecesi, nişan ve kurumsal etkinlikler için 1.000 kişilik kolonsuz ferah salon, zengin menüler ve eksiksiz paketler. Şeffaf fiyatlandırma.',
-  alternates: {
-    canonical: '/hizmetler',
-  },
+  canonicalPath: '/hizmetler',
   keywords: [
     'Polatlı düğün paketleri',
     'Polatlı kına gecesi organizasyonu',
@@ -30,35 +30,16 @@ export const metadata: Metadata = {
     'Polatlı kurumsal davet mekanı',
     'Köşk düğün salonu hizmetleri',
   ],
-  openGraph: {
-    title: 'Hizmetler & Organizasyon Paketleri | Polatlı Köşk Düğün Salonu',
-    description:
-      'Düğün, kına gecesi, nişan ve özel davetler için kolonsuz ve geniş salonda eksiksiz hizmet. Polatlı’da şeffaf planlama ve bütçenize uygun teklif.',
-    url: 'https://koskdugunsalonu.com/hizmetler',
-    type: 'website',
-    locale: 'tr_TR',
-    images: [
-      {
-        url: '/images/venue/kosk-ilk-dans-sis-bulutu.webp',
-        width: 1200,
-        height: 675,
-        alt: 'Köşk Düğün Salonu Organizasyon Hizmetleri',
-      },
-    ],
-  },
-  twitter: {
-    card: 'summary_large_image',
-    title: 'Hizmetler & Organizasyon Paketleri | Polatlı Köşk Düğün Salonu',
-    description: '1.000 kişilik kolonsuz salonda düğün, kına, nişan ve kurumsal etkinlikler.',
-    images: ['/images/venue/kosk-ilk-dans-sis-bulutu.webp'],
-  },
-};
+  ogTitle: 'Davet Hizmetleri & Paketler',
+  ogSubtitle: 'Düğün, Kına Gecesi, Nişan, Sünnet ve Kurumsal Gala Organizasyonları',
+  ogTag: 'ORGANİZASYON & PAKETLER',
+});
 
 const servicePackages = [
   {
     id: 'dugun',
     title: 'Düğün Daveti',
-    subtitle: '1.000 Kişilik Kolonsuz Balo Salonu',
+    subtitle: '1.000 Kişilik Ferah Düğün Salonu',
     capacity: '800 – 1.000 Kişi',
     badge: 'Ana Hizmet',
     featured: true,
@@ -66,7 +47,7 @@ const servicePackages = [
     imageAlt: 'Köşk Düğün Salonu Düğün Daveti ve İlk Dans Alanı',
     desc: 'Geniş aileleri ve kalabalık davetli listelerini ferahça ağırlamak isteyen çiftler için tasarlandı. Kolonsuz ferah salon, yüksek tavan ve güler yüzlü servis anlayışı bir arada.',
     features: [
-      'Kolonsuz ferah salonda 1.000 kişiye kadar yuvarlak masa oturma düzeni',
+      '1.000 kişiye kadar rahat salon düzeni ve masalar arası ferah geçiş alanları',
       'Geniş mermer dans pisti ve profesyonel sahne aydınlatması',
       'Özel gelin yolu süslemesi ve ilk dans için sis bulutu efekti',
       'Gelin ve damat için konforlu hazırlık ve dinlenme odası',
@@ -94,7 +75,7 @@ const servicePackages = [
       'Kına gecesine özel ikram tabağı, pasta ve meşrubat servisi',
       'Profesyonel kamera ve fotoğraf çekim hizmeti',
       'Yüksek tavan ve güçlü iklimlendirme ile ferah salon ortamı',
-      '250 araçlık geniş misafir otoparkı',
+      'Geniş misafir otoparkı ve rahat park imkânı',
     ],
   },
   {
@@ -112,7 +93,7 @@ const servicePackages = [
       'Kutlama pastası merasimi ve taze ikram/meşrubat servisi',
       'Müzik yayını, ses sistemi ve canlı müzik desteği',
       'Profesyonel video ve fotoğraf çekim hizmeti',
-      'Geniş dans pisti ve ferah yuvarlak masa oturma düzeni',
+      'Geniş dans pisti ve masalar arası ferah oturma planı',
       'Dört mevsim ideal oda sıcaklığında ferah salon konforu',
     ],
   },
@@ -131,7 +112,7 @@ const servicePackages = [
       'Geniş sahnede canlı orkestra, oyun havaları ve kaliteli ses sistemi',
       'Salona giriş anında volkan ve ışık efektleri seremonisi',
       'Tüm anları kaydeden profesyonel kamera ve fotoğraf çekimi',
-      'Kolonsuz salonda geniş masa aralıkları ve ferah oturma düzeni',
+      'Kolonsuz salonda geniş masa aralıkları ve rahat oturma düzeni',
       'Geniş misafir otoparkı ve kesintisiz jeneratör güvencesi',
     ],
   },
@@ -143,14 +124,14 @@ const servicePackages = [
     badge: 'Geniş Katılımlı Davetler',
     imageSrc: '/images/venue/kosk-dev-projeksiyon-ve-sahne-duzeni.webp',
     imageAlt: 'Köşk Düğün Salonu Kurumsal Yemek, Toplantı ve Sahne Düzeni',
-    desc: 'Polatlı’daki şirketler, sivil toplum kuruluşları ve okullar için geniş katılımlı yemekli toplantılar, gala geceleri ve mezuniyet baloları.',
+    desc: 'Polatlı’daki şirketler, sivil toplum kuruluşları ve okullar için geniş katılımlı yemekli toplantılar, gala geceleri ve mezuniyet kutlamaları.',
     features: [
       'Büyük projeksiyon ekranı, kablosuz mikrofonlar ve kaliteli ses sistemi',
       'Konuşmacı kürsüsü ve geniş sahne platformu',
-      'Davet konseptine uygun yuvarlak masa veya banket oturma planı',
+      'Davet konseptine uygun rahat ve ferah oturma planı',
       'Yemekli, kokteyl veya zengin ikram menü seçenekleri',
       'Organizasyon süresince teknik altyapı ve salon desteği',
-      'Misafirler için kolay ulaşım ve geniş otopark imkanı',
+      'Misafirler için kolay ulaşım ve rahat otopark imkânı',
     ],
   },
 ];
@@ -286,7 +267,7 @@ export default function HizmetlerPage() {
                 </div>
                 <Link href={`/iletisim?paket=${pkg.id}#concierge-booking-form`} className="btn btn-primary">
                   <CalendarCheck size={18} />
-                  <span>Bu Paket İçin Teklif & Randevu Alın</span>
+                  <span>Bu Paket İçin Keşif & Fiyat Teklifi Alın</span>
                 </Link>
               </div>
             </article>
@@ -314,7 +295,7 @@ export default function HizmetlerPage() {
               </h3>
             </div>
             <p style={{ fontSize: '0.92rem', color: 'var(--color-text-secondary)', lineHeight: 1.6, marginBottom: '1rem' }}>
-              1.200 m² kolonsuz ferah alan, 6.5 m tavan, 180 m² mermer dans pisti, 250 araçlık otopark ve 250 kVA kesintisiz jeneratör altyapımızın tüm teknik detaylarını inceleyin.
+              1.000 kişilik kolonsuz ferah salonumuz, yüksek tavanımız, geniş dans pistimiz, rahat otoparkımız ve otomatik jeneratör altyapımızın tüm olanaklarını inceleyin.
             </p>
             <Link href="/salon" className="btn btn-outline" style={{ display: 'inline-flex' }}>
               <span>Salon Detaylarını İnceleyin</span>
@@ -329,7 +310,7 @@ export default function HizmetlerPage() {
               </h3>
             </div>
             <p style={{ fontSize: '0.92rem', color: 'var(--color-text-secondary)', lineHeight: 1.6, marginBottom: '1rem' }}>
-              Masa düzeni optimizasyonu, gündüz ve akşam seansları karşılaştırması ve kusursuz bir organizasyon için uzman ipuçlarını okuyun.
+              Masa düzeni optimizasyonu, gündüz ve akşam seansları karşılaştırması ve eksiksiz bir organizasyon için uzman tavsiyelerini okuyun.
             </p>
             <Link href="/rehber" className="btn btn-outline" style={{ display: 'inline-flex' }}>
               <span>Rehberi Keşfedin</span>

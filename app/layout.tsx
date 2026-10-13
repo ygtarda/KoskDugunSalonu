@@ -41,18 +41,18 @@ const cormorant = Cormorant_Garamond({
 export const metadata: Metadata = {
   metadataBase: new URL('https://koskdugunsalonu.com'),
   title: {
-    default: 'Köşk Düğün Salonu Polatlı | 1000 Kişilik Lüks Kapalı Balo Salonu',
+    default: 'Köşk Düğün Salonu Polatlı | 1.000 Kişilik Kapalı Düğün Salonu',
     template: '%s | Köşk Düğün Salonu Polatlı',
   },
   description:
-    'Polatlı Ankara’da 1000 kişilik kolonsuz ferah salonu, yüksek tavanı, havadar ortamı ve geniş dans pistiyle Köşk Düğün Salonu hizmetinizde.',
+    'Polatlı Ankara’da 1.000 kişilik ferah kapalı düğün salonu, yüksek tavanı, güçlü havalandırması ve rahat salon düzeniyle Köşk Düğün Salonu.',
   alternates: {
     canonical: '/',
   },
   keywords: [
     'Polatlı düğün salonu',
     'Ankara Polatlı düğün salonu',
-    'Polatlı 1000 kişilik düğün salonu',
+    'Polatlı 1.000 kişilik düğün salonu',
     'Polatlı kına salonu',
     'Polatlı nişan mekanları',
     'Polatlı kapalı düğün salonu',
@@ -65,23 +65,25 @@ export const metadata: Metadata = {
     locale: 'tr_TR',
     url: 'https://koskdugunsalonu.com',
     siteName: 'Köşk Düğün Salonu Polatlı',
-    title: 'Köşk Düğün Salonu Polatlı | 1000 Kişilik Kapalı Düğün Salonu',
+    title: 'Köşk Düğün Salonu Polatlı | 1.000 Kişilik Kapalı Düğün Salonu',
     description:
-      'Polatlı’nın en geniş kapalı düğün salonu. 1000 kişilik kolonsuz ferah salon, yüksek tavan ve profesyonel organizasyon ekibi.',
+      '1.000 kişilik ferah salonu, yüksek tavanı, rahat park imkânı ve güler yüzlü ekibiyle Polatlı’nın en ferah düğün salonlarından biri.',
     images: [
       {
-        url: '/images/polatli-kapali-dugun-salonu-ana-salon.webp',
+        url: '/api/og?title=K%C3%B6%C5%9Fk%20D%C3%BC%C4%9F%C3%BCn%20Salonu&subtitle=Polatl%C4%B1%20Ankara%27da%201.000%20Ki%C5%9Filik%20Kapal%C4%B1%20D%C3%BC%C4%9F%C3%BCn%20Salonu&tag=ANKARA%20%C2%B7%20POLATLI',
         width: 1200,
-        height: 675,
-        alt: 'Köşk Düğün Salonu Polatlı Kapalı Ana Balo Salonu',
+        height: 630,
+        alt: 'Köşk Düğün Salonu Polatlı Kapalı Düğün Salonu',
       },
     ],
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Köşk Düğün Salonu Polatlı | 1000 Kişilik Kapalı Salon',
-    description: 'Polatlı Ankara’da 1000 kişilik ferah kapalı balo salonu ve davet merkezi.',
-    images: ['/images/polatli-kapali-dugun-salonu-ana-salon.webp'],
+    title: 'Köşk Düğün Salonu Polatlı | 1.000 Kişilik Kapalı Düğün Salonu',
+    description: 'Polatlı Ankara’da 1.000 kişilik ferah kapalı düğün salonu ve davet merkezi.',
+    images: [
+      '/api/og?title=K%C3%B6%C5%9Fk%20D%C3%BC%C4%9F%C3%BCn%20Salonu&subtitle=Polatl%C4%B1%20Ankara%27da%201.000%20Ki%C5%9Filik%20Kapal%C4%B1%20D%C3%BC%C4%9F%C3%BCn%20Salonu&tag=ANKARA%20%C2%B7%20POLATLI',
+    ],
   },
   robots: {
     index: true,
@@ -109,9 +111,9 @@ const localBusinessSchema = {
   '@type': ['EventVenue', 'LocalBusiness'],
   '@id': 'https://koskdugunsalonu.com/#venue',
   name: 'Köşk Düğün Salonu Polatlı',
-  alternateName: 'Köşk Davet ve Balo Salonu',
+  alternateName: 'Köşk Düğün ve Davet Salonu',
   description:
-    'Ankara Polatlı’da 800-1000 kişi kapasiteli, kolonsuz, yüksek tavanlı, geniş dans pistine sahip tam donanımlı kapalı düğün ve davet salonu.',
+    'Ankara Polatlı’da 800 – 1.000 kişi kapasiteli, kolonsuz, yüksek tavanlı, geniş dans pistine sahip tam donanımlı kapalı düğün ve davet salonu.',
   url: 'https://koskdugunsalonu.com',
   telephone: '+903126230000',
   sameAs: ['https://share.google/Ut9Fd72yIZ5c9Tg4P'],

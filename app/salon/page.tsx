@@ -17,29 +17,25 @@ import Breadcrumb from '@/components/Breadcrumb';
 import FaqAccordion, { FaqItem } from '@/components/FaqAccordion';
 import styles from './salon.module.css';
 
-export const metadata: Metadata = {
+import { buildPageMetadata } from '@/lib/og';
+
+export const metadata: Metadata = buildPageMetadata({
   title: 'Salon Mimarisi & Olanaklar | 1.000 Kişilik Kolonsuz Salon Polatlı',
   description:
-    'Polatlı’da 1.000 kişilik kolonsuz ferah salon, 6.5 m tavan yüksekliği, 180 m² dans pisti, %100 taze hava iklimlendirmesi, 250 kVA jeneratör ve 250 araçlık özel otopark.',
-  alternates: {
-    canonical: '/salon',
-  },
+    'Polatlı’da 1.000 kişilik ferah kapalı salon, yüksek tavan ferahlığı, geniş dans pisti, güçlü havalandırma, kesintisiz jeneratör ve rahat otopark imkânı.',
+  canonicalPath: '/salon',
   keywords: [
-    'Polatlı 1000 kişilik salon',
+    'Polatlı 1.000 kişilik salon',
     'kolonsuz düğün salonu Polatlı',
     'yüksek tavan düğün salonu',
     'düğün salonu otopark Polatlı',
     'Köşk salon olanakları',
-    'Polatlı balo salonu özellikleri',
+    'Polatlı düğün salonu özellikleri',
   ],
-  openGraph: {
-    title: 'Salon Mimarisi & Olanaklar | Köşk Düğün Salonu Polatlı',
-    description:
-      '1.000 kişilik kolonsuz ferah salon, 6.5 m tavan yüksekliği, 180 m² mermer dans pisti, 250 araçlık otopark ve kesintisiz jeneratör güvencesi.',
-    url: 'https://koskdugunsalonu.com/salon',
-    type: 'website',
-  },
-};
+  ogTitle: 'Salon Mimarisi & Olanaklar',
+  ogSubtitle: '1.000 Kişilik Ferah Düğün Salonu, Yüksek Tavan ve Rahat Park İmkânı',
+  ogTag: '1.000 KİŞİLİK DÜĞÜN SALONU',
+});
 
 const salonFaqSchema = {
   '@context': 'https://schema.org',
@@ -58,7 +54,7 @@ const salonFaqSchema = {
       name: '1.000 kişilik tam kapasitede havalandırma yeterli midir?',
       acceptedAnswer: {
         '@type': 'Answer',
-        text: 'Evet, salonumuz 6.5 metre tavan yüksekliğine ve saatte içeriye sürekli taze hava basan endüstriyel klima santraline sahiptir. En kalabalık yaz düğünlerinde dahi basıklık ve havasızlık yaşanmaz.',
+        text: 'Evet, salonumuz yüksek tavanlı mimarisi ve içeriye sürekli taze hava basan güçlü klima santraliyle donatılmıştır. En kalabalık yaz düğünlerinde dahi basıklık ve havasızlık yaşanmaz.',
       },
     },
     {
@@ -66,7 +62,7 @@ const salonFaqSchema = {
       name: 'Otopark imkanı ve kapasitesi nedir?',
       acceptedAnswer: {
         '@type': 'Answer',
-        text: 'Salonumuzun hemen bitişiğinde misafirlerimize özel 250 araç kapasiteli ücretsiz otopark mevcuttur. Konuklarınız park yeri aramakla vakit kaybetmez.',
+        text: 'Salonumuzun hemen yanında misafirlerimize özel geniş ve ücretsiz otoparkımız mevcuttur. Konuklarınız park yeri aramakla vakit kaybetmez, park sorunu yaşamaz.',
       },
     },
   ],
@@ -76,7 +72,7 @@ const technicalSpecs = [
   {
     icon: <Users size={24} />,
     title: '800 – 1.000 Kişilik Kapasite',
-    desc: 'Yuvarlak masalarla kalabalık ailelerin ve tüm davetlilerin ferahça oturabileceği geniş ağırlama kapasitesi.',
+    desc: 'Geniş ve rahat salon düzeniyle kalabalık ailelerin ve tüm davetlilerin ferahça oturabileceği ağırlama kapasitesi.',
   },
   {
     icon: <Maximize2 size={24} />,
@@ -85,18 +81,18 @@ const technicalSpecs = [
   },
   {
     icon: <ArrowUp size={24} />,
-    title: '6.5 Metre Tavan Yüksekliği',
+    title: 'Yüksek Tavan Ferahlığı',
     desc: 'Yüksek tavanlı mimarisi sayesinde basıklık hissi oluşturmaz; ferah, havadar ve aydınlık bir ortam sunar.',
   },
   {
     icon: <Wind size={24} />,
     title: '%100 Taze Hava Havalandırması',
-    desc: 'En kalabalık davetlerde dahi içerideki havayı sürekli tazeleyen ve filtreleyen endüstriyel iklimlendirme santrali.',
+    desc: 'En kalabalık davetlerde dahi içerideki havayı sürekli tazeleyen ve filtreleyen güçlü iklimlendirme santrali.',
   },
   {
     icon: <Volume2 size={24} />,
     title: 'Dengeli Line-Array Ses Sistemi',
-    desc: 'Davetlileri yormayan akustik ses dağılımı ve düğün coşkusunu artıran hareketli robot sahne ışıklandırması.',
+    desc: 'Davetlileri yormayan akustik ses dağılımı ve düğün coşkusunu artıran hareketli sahne ışıklandırması.',
   },
   {
     icon: <Heart size={24} />,
@@ -105,13 +101,13 @@ const technicalSpecs = [
   },
   {
     icon: <Car size={24} />,
-    title: '250 Araçlık Özel Otopark',
-    desc: 'Misafirlerinizin araçlarını park etmekte zorlanmayacağı, salona bitişik güvenli ve geniş otopark alanı.',
+    title: 'Geniş Otopark & Rahat Park İmkânı',
+    desc: 'Misafirlerinizin araçlarını rahatça park edebileceği, salona bitişik güvenli ve ücretsiz geniş otopark alanı.',
   },
   {
     icon: <Zap size={24} />,
-    title: '250 kVA Kesintisiz Jeneratör',
-    desc: 'Olası elektrik kesintilerinde otomatik olarak saniyeler içinde devreye giren tam kapasiteli jeneratör desteği.',
+    title: 'Kesintisiz Otomatik Jeneratör',
+    desc: 'Olası elektrik kesintilerinde otomatik olarak anında devreye giren tam kapasiteli jeneratör desteği.',
   },
   {
     icon: <Accessibility size={24} />,
@@ -124,17 +120,17 @@ const salonFaqItems: FaqItem[] = [
   {
     question: 'Salonda kolon var mı, masalardan sahne görünür mü?',
     answer:
-      'Kesinlikle hayır. Köşk Düğün Salonu %100 kolonsuz bir mimariyle inşa edilmiştir. 1.000 kişilik tam kapasitede dahi her masadan sahne, nikah alanı ve mermer dans pisti engelsiz ve panoramik şekilde izlenebilir.',
+      'Kesinlikle hayır. Köşk Düğün Salonu %100 kolonsuz bir mimariyle inşa edilmiştir. 1.000 kişilik tam kapasitede dahi her masadan sahne, nikah alanı ve geniş dans pisti engelsiz şekilde rahatça izlenebilir.',
   },
   {
     question: '1.000 kişilik tam kapasiteli davetlerde salon havasız kalır mı?',
     answer:
-      'Hayır. 6.5 metre yüksek tavanımız ve %100 taze hava sirkülasyonlu endüstriyel iklimlendirme sistemimiz sayesinde salonda hava sürekli yenilenir. Yaz sıcağında ferah ve serin, kış aylarında ideal oda sıcaklığında bir ortam sağlanır.',
+      'Hayır. Yüksek tavanımız ve %100 taze hava sirkülasyonlu iklimlendirme sistemimiz sayesinde salonda hava sürekli yenilenir. Yaz sıcağında ferah ve serin, kış aylarında ideal oda sıcaklığında bir ortam sağlanır.',
   },
   {
     question: 'Misafirlerimiz için otopark var mı ve ücretli midir?',
     answer:
-      'Salonumuzun hemen yanında 250 araç kapasiteli geniş özel otoparkımız bulunmaktadır ve davetlileriniz için tamamen ücretsizdir. Ayrıca salon girişimiz engelli, bebek arabalı ve yaşlı konuklarımız için %100 düz girişlidir.',
+      'Salonumuzun hemen yanında misafirlerimize özel geniş otoparkımız bulunmaktadır ve davetlileriniz için tamamen ücretsizdir. Park sorunu yaşanmaz. Ayrıca salon girişimiz düz ayak ve engelsizdir.',
   },
 ];
 
@@ -154,11 +150,11 @@ export default function SalonPage() {
         <div className="container">
           <div className={styles.heroTextWrapper}>
             <div className={styles.pagePreTitle}>1.000 Kişilik Kolonsuz Mimari</div>
-            <h1 className={styles.pageTitle}>Geniş, Ferah ve Tam Donanımlı Balo Salonumuz</h1>
+            <h1 className={styles.pageTitle}>Geniş, Ferah ve Tam Donanımlı Düğün Salonumuz</h1>
             <p className={styles.pageLead}>
-              Düğün ve büyük davetleriniz için Polatlı'nın en konforlu ortamını hazırladık. 1.000 kişilik oturma kapasitesi, 
-              kolonsuz geniş mimarisi, 6.5 metre tavan yüksekliği, güçlü taze hava havalandırması ve merkezi konumuyla 
-              davetiniz boyunca tüm misafirlerinize rahat bir ağırlama sunuyoruz.
+              Düğün ve davetleriniz için Polatlı'da ferah ve eksiksiz bir ortam hazırladık. 1.000 kişilik oturma kapasitesi, 
+              kolonsuz geniş mimarisi, yüksek tavanı, güçlü havalandırması ve rahat otoparkıyla 
+              davetiniz boyunca tüm misafirlerinize konforlu bir ağırlama sunuyoruz.
             </p>
           </div>
         </div>
@@ -172,7 +168,7 @@ export default function SalonPage() {
               <div className="editorial-indicator" />
               <div className="section-title-wrap">
                 <div className="section-category">Teknik ve Mimari Standartlar</div>
-                <h2>Kusursuz Bir Davet İçin Eksiksiz Altyapı</h2>
+                <h2>Büyük Davetler İçin Donanımlı Salon Altyapısı</h2>
                 <p className="section-subtitle">
                   Köşk Düğün Salonu, geniş alanı ve ergonomik yerleşimiyle davet boyunca konuklarınızın konforunu güvenceye alır.
                 </p>
@@ -254,7 +250,7 @@ export default function SalonPage() {
               <div style={{ marginTop: '2.25rem' }}>
                 <Link href="/iletisim#concierge-booking-form" className="btn btn-primary">
                   <CalendarCheck size={18} />
-                  <span>Salonu Yerinde İncelemek İçin Keşif Randevusu Alın</span>
+                  <span>Salonu Ziyaret Etmek İçin Keşif Randevusu Alın</span>
                 </Link>
               </div>
             </div>
