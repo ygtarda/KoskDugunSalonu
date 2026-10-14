@@ -1,13 +1,12 @@
+import React from 'react';
 import type { Metadata } from 'next';
 import { Fraunces, DM_Sans, Cinzel, Cormorant_Garamond } from 'next/font/google';
-import dynamic from 'next/dynamic';
 import './globals.css';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
-
-const FloatingContactBar = dynamic(() => import('@/components/FloatingContactBar'), { ssr: false });
-const ScrollRevealProvider = dynamic(() => import('@/components/ScrollRevealProvider'), { ssr: false });
-const CustomCursor = dynamic(() => import('@/components/CustomCursor'), { ssr: false });
+import FloatingContactBar from '@/components/FloatingContactBar';
+import ScrollRevealProvider from '@/components/ScrollRevealProvider';
+import CustomCursor from '@/components/CustomCursor';
 
 const fraunces = Fraunces({
   subsets: ['latin'],
@@ -203,14 +202,14 @@ export default function RootLayout({
     <html
       lang="tr"
       className={`${fraunces.variable} ${dmSans.variable} ${cinzel.variable} ${cormorant.variable}`}
+      suppressHydrationWarning
     >
-      <head>
+      <body>
+        {/* Schema.org LocalBusiness Structured Data */}
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(localBusinessSchema) }}
         />
-      </head>
-      <body>
         <a href="#main-content" className="sr-only-skip">
           İçeriğe Atla
         </a>

@@ -8,9 +8,10 @@ import styles from './HeroCalligraphy.module.css';
 
 interface HeroCalligraphyProps {
   onScrollClick?: () => void;
+  onBookingClick?: () => void;
 }
 
-export default function HeroCalligraphy({ onScrollClick }: HeroCalligraphyProps) {
+export default function HeroCalligraphy({ onScrollClick, onBookingClick }: HeroCalligraphyProps) {
   const router = useRouter();
   const [isScrolled, setIsScrolled] = useState(false);
 
@@ -49,6 +50,10 @@ export default function HeroCalligraphy({ onScrollClick }: HeroCalligraphyProps)
   };
 
   const handleScrollToBooking = () => {
+    if (onBookingClick) {
+      onBookingClick();
+      return;
+    }
     const target = document.getElementById('cta-banner') || document.getElementById('randevu');
     if (target) {
       target.scrollIntoView({ behavior: 'smooth', block: 'start' });
@@ -217,7 +222,7 @@ export default function HeroCalligraphy({ onScrollClick }: HeroCalligraphyProps)
           className={styles.btnPrimary}
           id="hero-explore-hall-btn"
         >
-          <span suppressHydrationWarning>Salonu Keşfedin</span>
+          <span>Salonu Keşfedin</span>
           <ArrowRight size={16} />
         </button>
 
@@ -228,7 +233,7 @@ export default function HeroCalligraphy({ onScrollClick }: HeroCalligraphyProps)
           id="hero-book-date-btn"
         >
           <CalendarCheck size={16} />
-          <span suppressHydrationWarning>Keşif & Fiyat Teklifi Alın</span>
+          <span>Keşif & Fiyat Teklifi Alın</span>
         </button>
       </div>
 

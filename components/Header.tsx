@@ -1,7 +1,6 @@
 'use client';
 
 import React, { useState, useEffect } from 'react';
-import { createPortal } from 'react-dom';
 import Link from 'next/link';
 import Image from 'next/image';
 import { usePathname } from 'next/navigation';
@@ -41,12 +40,7 @@ interface HeaderProps {
 export default function Header({ embedded = false }: HeaderProps) {
   const [scrolled, setScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-  const [mounted, setMounted] = useState(false);
   const pathname = usePathname();
-
-  useEffect(() => {
-    setMounted(true);
-  }, []);
 
   useEffect(() => {
     let ticking = false;
@@ -118,8 +112,8 @@ export default function Header({ embedded = false }: HeaderProps) {
 
   const isHome = pathname === '/';
 
-  // Yandan açılır mobil çekmece menü (React Portal ile document.body'ye direkt monte edilir)
-  const drawerPortal = mounted ? createPortal(
+  // Yandan açılır mobil çekmece menü (Doğrudan JSX olarak render edilir, portal karmaşası ve DOM uyuşmazlığı yaratmaz)
+  const drawerContent = (
     <div
       className={`${styles.mobileDrawer} ${mobileMenuOpen ? styles.mobileDrawerOpen : ''}`}
       aria-hidden={!mobileMenuOpen}
@@ -221,9 +215,8 @@ export default function Header({ embedded = false }: HeaderProps) {
           </div>
         </div>
       </aside>
-    </div>,
-    document.body
-  ) : null;
+    </div>
+  );
 
   // Anasayfada masaüstünde hero ekranında header görünmez;
   // Sadece mobilde hızlı erişim butonu sunulur ve scroll edilince embedded header devralır.
@@ -267,7 +260,7 @@ export default function Header({ embedded = false }: HeaderProps) {
             </a>
           </div>
         </div>
-        {drawerPortal}
+        {drawerContent}
       </>
     );
   }
@@ -363,8 +356,8 @@ export default function Header({ embedded = false }: HeaderProps) {
         </div>
       </header>
 
-      {/* Side Drawer Portal */}
-      {drawerPortal}
+      {/* Side Drawer */}
+      {drawerContent}
     </>
   );
 }

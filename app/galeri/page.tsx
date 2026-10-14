@@ -1,9 +1,7 @@
 import type { Metadata } from 'next';
-import Link from 'next/link';
-import GalleryLightbox, { GalleryItem } from '@/components/GalleryLightbox';
-import Breadcrumb from '@/components/Breadcrumb';
-import { CalendarCheck, Building2 } from 'lucide-react';
-
+import { GalleryItem } from '@/components/GalleryLightbox';
+import GalleryViewManager from '@/components/GalleryViewManager';
+import { Slide } from '@/components/ui/polaroid-line-carousel';
 import { buildPageMetadata } from '@/lib/og';
 
 export const metadata: Metadata = buildPageMetadata({
@@ -349,67 +347,135 @@ const imageGallerySchema = {
   })),
 };
 
+const venueSlides: Slide[] = [
+  {
+    image: '/images/venue/kosk-ana-balo-salonu-genel-perspektif.webp',
+    title: '1.000 Kişilik Balo Salonu',
+    caption: '1.200 m² kolonsuz geniş alan, kristal avizeler ve kesintisiz görüş ferahlığı.',
+    alt: 'Köşk Düğün Salonu 1.000 Kişilik Kolonsuz Kapalı Balo Salonu',
+    objectPosition: 'center 40%',
+  },
+  {
+    image: '/images/venue/kosk-balo-salonu-panoramik-oturma-duzeni.webp',
+    title: 'Panoramik Salon Düzeni',
+    caption: 'Şık sandalyeler ve zarif örtülü masalar ile konforlu ve ferah davetli yerleşimi.',
+    alt: 'Köşk Düğün Salonu Panoramik Salon Düzeni ve Rahat Masalar',
+    objectPosition: 'center 45%',
+  },
+  {
+    image: '/images/venue/kosk-ilk-dans-sis-bulutu.webp',
+    title: 'Romantik İlk Dans',
+    caption: 'Zemine yayılan ağır sis bulutu ve takip spotları altında büyülü ilk dans anı.',
+    alt: 'Köşk Düğün Salonu Sis Bulutu Üzerinde Romantik İlk Dans',
+    objectPosition: 'center 35%',
+  },
+  {
+    image: '/images/venue/kosk-karsilama-panosu-sovale-dekoru.webp',
+    title: 'Giriş Şövalesi & Karşılama',
+    caption: 'Doğal ahşap şövale üzerinde davetlileri karşılayan altın aynalı Hoş Geldiniz panosu ve gül salkımları.',
+    alt: 'Köşk Düğün Salonu Giriş Şövalesi ve Kişiselleştirilmiş Karşılama Aynası',
+    objectPosition: 'center 35%',
+  },
+  {
+    image: '/images/venue/kosk-gelin-damat-nikah-tahti-masasi.webp',
+    title: 'Nikah Tahtı & Sahne',
+    caption: 'Çiftimize özel hazırlanan zarif arka fon ve çiçek kemeriyle nikah töreni alanı.',
+    alt: 'Köşk Düğün Salonu Nikah Masası ve Taht Alanı',
+    objectPosition: 'center 40%',
+  },
+  {
+    image: '/images/venue/kosk-soz-nisan-fotograf-kosesi.webp',
+    title: 'Söz & Nişan Hatıra Köşesi',
+    caption: 'Zümrüt yeşili kadife istiridye koltuklar, dairesel çiçek arkalığı ve çiftlere özel fotoğraf çekim alanı.',
+    alt: 'Köşk Düğün Salonu Söz ve Nişan Hatıra Fotoğraf Köşesi',
+    objectPosition: 'center 40%',
+  },
+  {
+    image: '/images/venue/kosk-masa-duzeni-gold-vazo-samdan.webp',
+    title: 'Gold Detaylı Masa Aksesuarları',
+    caption: 'Zarif masa örtüleri üzerinde yüksek altın şamdan-vazo, pudra tonlarında gül çiçekleri ve kaliteli servis takımları.',
+    alt: 'Köşk Düğün Salonu Gold Detaylı Vazo ve Zarif Masa Aksesuarları',
+    objectPosition: 'center 35%',
+  },
+  {
+    image: '/images/venue/kosk-ziyafet-masalari-ve-orkestra-gorunumu.webp',
+    title: 'Zarif Ziyafet Masaları',
+    caption: 'Sıcak amber ışıklar, şık vazo süslemeleri ve rahat geçiş koridorları.',
+    alt: 'Köşk Düğün Salonu Ziyafet Masaları ve Oturma Planı',
+    objectPosition: 'center 45%',
+  },
+  {
+    image: '/images/venue/kosk-sahne-mor-isik-gosterisi.webp',
+    title: 'Kına Gecesi Ambiyansı',
+    caption: 'Mistik mor LED aydınlatmalar ve kadife kına tahtıyla unutulmaz merasimler.',
+    alt: 'Köşk Düğün Salonu Kına Gecesi Mor Işık Sahnesi',
+    objectPosition: 'center 40%',
+  },
+  {
+    image: '/images/venue/kosk-dans-pisti-spot-isik-sov.webp',
+    title: 'Geniş Dans Pisti',
+    caption: 'Tüm misafirlerin rahatça oynayıp dans edebileceği geniş mermer pist.',
+    alt: 'Köşk Düğün Salonu Dans Pisti Takip Spotu',
+    objectPosition: 'center 40%',
+  },
+  {
+    image: '/images/venue/kosk-orkestra-sahnesi-ve-dans-pisti.webp',
+    title: 'Canlı Orkestra & Akustik',
+    caption: 'Profesyonel ses ve sahne sistemiyle davetinize eşlik eden zengin müzik ziyafeti.',
+    alt: 'Köşk Düğün Salonu Canlı Orkestra ve Sahne Düzeni',
+    objectPosition: 'center 45%',
+  },
+  {
+    image: '/images/venue/kosk-nisan-soz-ozel-konsept-aynasi.webp',
+    title: 'Nişan & Söz Konsepti',
+    caption: 'Barok ayna dekorasyonu ve zarif çiçek aranjmanlarıyla özel fotoğraf köşesi.',
+    alt: 'Köşk Düğün Salonu Nişan ve Söz Özel Konsept Aynası',
+    objectPosition: 'center 35%',
+  },
+  {
+    image: '/images/venue/kosk-ana-salon-kusursuz-simetri.webp',
+    title: 'Yüksek Tavan Ferahlığı',
+    caption: '6.5 metre tavan yüksekliği ve güçlü havalandırmayla havadar atmosfer.',
+    alt: 'Köşk Düğün Salonu Yüksek Tavan ve Kolonsuz Salon Simetrisi',
+    objectPosition: 'center 40%',
+  },
+  {
+    image: '/images/venue/kosk-sahne-amber-sicak-isik-sov.webp',
+    title: 'Sıcak Amber Işıklandırma',
+    caption: 'Yemek ve karşılama boyunca göz yormayan, samimi ve asil salon atmosferi.',
+    alt: 'Köşk Düğün Salonu Sahne Amber Sıcak Işık Şovu',
+    objectPosition: 'center 40%',
+  },
+  {
+    image: '/images/venue/kosk-salon-genel-yerlesim-ve-ferah-mimari.webp',
+    title: 'Kolonsuz Ferah Mimari',
+    caption: 'Hiçbir kolonun görüşü engellemediği, her masadan sahne ve dans pistinin rahatça izlendiği salon düzeni.',
+    alt: 'Köşk Düğün Salonu Kolonsuz Ferah Salon Mimarisi',
+    objectPosition: 'center 35%',
+  },
+  {
+    image: '/images/venue/kosk-tiffany-sandalyeler-ve-genis-dans-pisti.webp',
+    title: 'Tiffany Sandalye Sıraları',
+    caption: 'Davetlilerin rahat hareket edebileceği geniş geçiş koridorları ve mermer dans pisti geçişi.',
+    alt: 'Köşk Düğün Salonu Tiffany Sandalyeler ve Dans Pisti',
+    objectPosition: 'center 45%',
+  },
+];
+
 export default function GaleriPage() {
   return (
     <div>
+      {/* Schema.org ImageGallery Structured Data */}
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(imageGallerySchema) }}
       />
 
-      {/* Breadcrumb Navigation */}
-      <Breadcrumb items={[{ label: 'Fotoğraf Galerisi' }]} />
-
-      <section style={{ padding: '2.5rem 0 2rem 0', textAlign: 'center' }}>
-        <div className="container">
-          <div style={{ maxWidth: '820px', margin: '0 auto' }}>
-            <span style={{ fontSize: '0.84rem', letterSpacing: '0.15em', textTransform: 'uppercase', color: 'var(--color-cashmere)', fontWeight: 500, display: 'block', marginBottom: '0.5rem' }}>
-              Mekân Görünümleri
-            </span>
-            <h1 style={{ fontFamily: 'var(--font-serif)', fontSize: 'clamp(2.4rem, 4.5vw, 3.8rem)', color: 'var(--color-anthracite)', marginBottom: '1.25rem', fontWeight: 450 }}>
-              Kapalı Salonumuzdan Fotoğraflar
-            </h1>
-            <p style={{ fontSize: '1.12rem', color: 'var(--color-text-secondary)', lineHeight: '1.75' }}>
-              Köşk Düğün Salonu’nun 1.200 m² kolonsuz ferah yapısını, yüksek tavanını ve 
-              davet masalarının geniş yerleşim düzenini inceleyin.
-            </p>
-          </div>
-        </div>
-      </section>
-
-      <section className="container" style={{ paddingBottom: '6rem' }}>
-        <GalleryLightbox items={galleryItems} />
-
-        <div
-          style={{
-            marginTop: '5rem',
-            textAlign: 'center',
-            background: 'var(--color-surface)',
-            border: '1px solid var(--color-stone)',
-            borderBottom: '2px solid var(--color-powder)',
-            padding: '3.5rem 2rem',
-            borderRadius: 'var(--radius-xs)',
-          }}
-        >
-          <h3 style={{ fontFamily: 'var(--font-serif)', fontSize: '1.8rem', color: 'var(--color-anthracite)', marginBottom: '0.85rem' }}>
-            Salonu Kendi Gözlerinizle Görmek İster Misiniz?
-          </h3>
-          <p style={{ maxWidth: '640px', margin: '0 auto 2rem auto', color: 'var(--color-text-secondary)', lineHeight: '1.7' }}>
-            Fotoğraflar atmosferi hissettirir; ancak yüksek tavan ferahlığını ve salonun genişliğini 
-            yerinde görmek ve tarih müsaitliğini öğrenmek için bizimle hemen iletişime geçebilirsiniz.
-          </p>
-          <div style={{ display: 'flex', justifyContent: 'center', gap: '1rem', flexWrap: 'wrap' }}>
-            <Link href="/salon" className="btn btn-secondary">
-              <Building2 size={18} />
-              <span>Teknik Özellikleri & Mimariyi İnceleyin</span>
-            </Link>
-            <Link href="/iletisim" className="btn btn-primary">
-              <CalendarCheck size={18} />
-              <span>Keşif & Fiyat Teklifi Alın</span>
-            </Link>
-          </div>
-        </div>
-      </section>
+      {/* Modern & Klasik Galeri Görünüm Yöneticisi */}
+      <GalleryViewManager
+        galleryItems={galleryItems}
+        venueSlides={venueSlides}
+      />
     </div>
   );
 }

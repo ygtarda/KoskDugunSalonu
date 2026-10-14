@@ -1,0 +1,181 @@
+/* ==========================================================================
+   Tek Sayfa Lüks Karşılama Ekranı (Welcome Hero Gate)
+   Zor geçilen, tek sayfalık karşılama sahnesi.
+   Geçildikten sonra header en tepede kalır ve karşılama tekrar çıkmaz.
+   ========================================================================== */
+
+.welcomeStage {
+  position: fixed;
+  inset: 0;
+  width: 100vw;
+  height: 100vh;
+  height: 100svh;
+  height: 100dvh;
+  z-index: 2000;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  padding: 4rem 1.5rem 2.5rem 1.5rem;
+  box-sizing: border-box;
+  background-color: #12100F;
+  touch-action: none;
+  user-select: none;
+  will-change: transform, opacity;
+  transition: transform 0.85s cubic-bezier(0.76, 0, 0.24, 1),
+              opacity 0.85s cubic-bezier(0.76, 0, 0.24, 1);
+}
+
+/* Geçiş tetiklendiğinde yukarı doğru akıcı şekilde kayıp sahneyi terk eder */
+.stageDismissing {
+  transform: translateY(-100%) !important;
+  opacity: 0.96;
+  pointer-events: none;
+}
+
+/* Tamamen geçildiğinde DOM'da gizlenir */
+.stageHidden {
+  display: none !important;
+}
+
+/* Atmosferik arka plan katmanı */
+.bgLayer {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background-color: #12100F;
+  pointer-events: none;
+}
+
+.backdropImg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  opacity: 0.38;
+  filter: contrast(1.15) brightness(0.75);
+  transform: scale(1.02);
+  transition: transform 12s ease-out;
+}
+
+/* Lüks vinyet degradesi */
+.vignette {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  background: 
+    radial-gradient(circle at 50% 45%, rgba(14, 12, 11, 0.65) 0%, rgba(14, 12, 11, 0.90) 80%, rgba(14, 12, 11, 0.98) 100%),
+    linear-gradient(180deg, rgba(14, 12, 11, 0.6) 0%, rgba(14, 12, 11, 0.96) 100%);
+  pointer-events: none;
+}
+
+/* Mimari çizgi dokusu */
+.gridLines {
+  position: absolute;
+  inset: 0;
+  z-index: 3;
+  background-image: 
+    linear-gradient(to right, rgba(212, 181, 158, 0.08) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(212, 181, 158, 0.08) 1px, transparent 1px);
+  background-size: 64px 64px;
+  pointer-events: none;
+}
+
+/* İçerik vitrini */
+.centerContainer {
+  position: relative;
+  z-index: 5;
+  width: 100%;
+  max-width: 900px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* ==========================================================================
+   "Zor Geçilsin" — Etkileşimli Eşik & İlerleme Göstergesi
+   ========================================================================== */
+.scrollPromptWrap {
+  margin-top: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.55rem;
+  pointer-events: auto;
+}
+
+.promptPill {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  background: rgba(22, 19, 18, 0.75);
+  border: 1px solid rgba(212, 181, 158, 0.3);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  padding: 0.45rem 1.1rem;
+  border-radius: 999px;
+  box-shadow: 0 4px 18px rgba(0, 0, 0, 0.35);
+  cursor: pointer;
+  transition: border-color 0.25s ease, background-color 0.25s ease, transform 0.2s ease;
+}
+
+.promptPill:hover {
+  border-color: var(--color-champagne);
+  background: rgba(22, 19, 18, 0.9);
+  transform: translateY(-2px);
+}
+
+.promptIcon {
+  color: var(--color-champagne);
+  animation: promptBounce 2s infinite ease-in-out;
+}
+
+.promptText {
+  font-size: 0.78rem;
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  color: #FAF8F5;
+  text-transform: uppercase;
+}
+
+/* Kaydırma direnci ilerleme çubuğu */
+.progressBarTrack {
+  width: 120px;
+  height: 3px;
+  background: rgba(212, 181, 158, 0.2);
+  border-radius: 999px;
+  overflow: hidden;
+  position: relative;
+}
+
+.progressBarFill {
+  height: 100%;
+  background: linear-gradient(90deg, #D4B59E 0%, #FAF8F5 100%);
+  border-radius: 999px;
+  box-shadow: 0 0 8px rgba(212, 181, 158, 0.8);
+  transition: width 0.1s ease-out;
+}
+
+@keyframes promptBounce {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(3px);
+  }
+}
+
+/* ==========================================================================
+   Erişilebilirlik ve Düşük Hareket
+   ========================================================================== */
+@media (prefers-reduced-motion: reduce) {
+  .welcomeStage {
+    transition: none !important;
+  }
+  .promptIcon {
+    animation: none !important;
+  }
+}

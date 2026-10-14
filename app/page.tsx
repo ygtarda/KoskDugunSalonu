@@ -12,52 +12,27 @@ import {
   CheckCircle2,
   Phone
 } from 'lucide-react';
-import dynamic from 'next/dynamic';
+import WelcomeHeroStage from '@/components/WelcomeHeroStage';
 import Header from '@/components/Header';
-import HeroCalligraphy from '@/components/HeroCalligraphy';
 import TiltCard from '@/components/TiltCard';
 import VideoHeroSection from '@/components/VideoHeroSection';
+import AtmosphereSwitcher from '@/components/AtmosphereSwitcher';
 import styles from './page.module.css';
-
-const AtmosphereSwitcher = dynamic(() => import('@/components/AtmosphereSwitcher'), {
-  loading: () => (
-    <div style={{ minHeight: '380px', display: 'flex', alignItems: 'center', justifyContent: 'center', color: 'var(--color-cashmere)' }}>
-      Ambiyans vitrini yükleniyor...
-    </div>
-  ),
-});
 
 export default function HomePage() {
   return (
     <div className={styles.pageRoot}>
       {/* ===================================================================
-          1. FIXED PINNED HERO (İlk Karşılama Bölümü - Kesinlikle Korundu)
-          Header-free, ultra-cinematic welcoming screen with cursive signature.
+          1. TEK SAYFA İLK KARŞILAMA BÖLÜMÜ (Welcome Hero Gate)
+          Zor geçilen tek sayfalık karşılama ekranı.
+          Geçildikten sonra header en tepede yapışık kalır ve karşılama tekrar çıkmaz.
           =================================================================== */}
-      <section className={styles.fixedHero} aria-label="Köşk Düğün Salonu Karşılama">
-        <div className={styles.heroBgLayer}>
-          <Image
-            src="/images/venue/kosk-ana-balo-salonu-genel-perspektif.webp"
-            alt="Köşk Düğün Salonu 1.000 Kişilik Kapalı Düğün Salonu Atmosferi"
-            fill
-            priority
-            className={styles.heroBackdropImg}
-            sizes="100vw"
-          />
-          <div className={styles.heroVignette} />
-          <div className={styles.heroGridLines} />
-        </div>
-
-        {/* Centerpiece: Hand-Drawn SVG Signature + Subtitles + Circular Down Arrow */}
-        <div className={styles.heroCenterContainer}>
-          <HeroCalligraphy />
-        </div>
-      </section>
+      <WelcomeHeroStage />
 
       {/* ===================================================================
-          2. SLIDING CONTENT WRAPPER (Slides up OVER the fixed hero on scroll)
+          2. ANA İÇERİK ALANI (Header en tepede yapışık başlar)
           =================================================================== */}
-      <div className={styles.slidingContent}>
+      <div className={styles.mainContentWrapper}>
         {/* Sticky Header embedded at top of content */}
         <Header embedded />
 
@@ -68,7 +43,10 @@ export default function HomePage() {
             BÖLÜM 1: SİNEMATİK TANITIM VİDEOSU HERO BÖLÜMÜ
             Tam ekran boyutunda, header'ın hemen altında konumlandırılan video alanı
             =================================================================== */}
-        <VideoHeroSection />
+        <VideoHeroSection
+          videoSrc="/hero-video.mp4"
+          posterSrc="/images/hero-video-poster.webp"
+        />
 
         {/* ===================================================================
             BÖLÜM 2: 4 TEMEL METRİK ŞERİDİ (Videonun hemen altına eklendi)
@@ -184,7 +162,7 @@ export default function HomePage() {
                   </Link>
                   <Link href="/iletisim" className={`${styles.archBtn} ${styles.archBtnPrimary}`}>
                     <CalendarCheck size={17} />
-                    <span suppressHydrationWarning>Keşif & Fiyat Teklifi Alın</span>
+                    <span>Keşif & Fiyat Teklifi Alın</span>
                   </Link>
                 </div>
               </div>
@@ -536,7 +514,7 @@ export default function HomePage() {
               <div className={styles.invitationActions}>
                 <Link href="/iletisim" className="btn btn-primary" id="home-invitation-randevu-btn">
                   <CalendarCheck size={18} />
-                  <span suppressHydrationWarning>Keşif & Fiyat Teklifi Alın</span>
+                  <span>Keşif & Fiyat Teklifi Alın</span>
                 </Link>
                 <a
                   href="https://wa.me/903126230000?text=Merhaba,%20K%C3%B6%C5%9Fk%20D%C3%BC%C4%9F%C3%BCn%20Salonu%20i%C3%A7in%20bilgi%20ve%20ziyaret%20randevusu%20almak%20istiyorum."
