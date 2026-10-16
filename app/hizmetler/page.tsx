@@ -39,6 +39,8 @@ export const metadata: Metadata = buildPageMetadata({
 const servicePackages = [
   {
     id: 'dugun',
+    detailHref: '/polatli-dugun-salonu',
+    detailLabel: 'Polatlı düğün salonu rehberi',
     title: 'Düğün Daveti',
     subtitle: '1.000 Kişilik Ferah Düğün Salonu',
     capacity: '800 – 1.000 Kişi',
@@ -61,6 +63,8 @@ const servicePackages = [
   },
   {
     id: 'kina',
+    detailHref: '/polatli-kina-gecesi-salonu',
+    detailLabel: 'Polatlı kına gecesi salonu rehberi',
     title: 'Geleneksel Kına Gecesi',
     subtitle: 'Coşkulu ve Samimi Kına Merasimi',
     capacity: '500 – 800 Kişi',
@@ -81,6 +85,8 @@ const servicePackages = [
   },
   {
     id: 'nisan',
+    detailHref: '/polatli-nisan-soz-salonu',
+    detailLabel: 'Polatlı nişan ve söz salonu rehberi',
     title: 'Nişan & Söz Töreni',
     subtitle: 'Aileler ve Sevdikleriniz İçin Sıcak Bir Başlangıç',
     capacity: '300 – 600 Kişi',
@@ -100,6 +106,8 @@ const servicePackages = [
   },
   {
     id: 'sunnet',
+    detailHref: '/polatli-sunnet-dugunu-salonu',
+    detailLabel: 'Polatlı sünnet düğünü salonu rehberi',
     title: 'Sünnet Düğünü Şöleni',
     subtitle: 'Aile Boyu Coşkulu ve Ferah Kutlama',
     capacity: '500 – 1.000 Kişi',
@@ -119,6 +127,8 @@ const servicePackages = [
   },
   {
     id: 'kurumsal',
+    detailHref: '/polatli-kurumsal-davet-salonu',
+    detailLabel: 'Polatlı kurumsal davet salonu rehberi',
     title: 'Kurumsal Davet & Mezuniyet',
     subtitle: 'Şirket, Kurum ve Mezuniyet Buluşmaları',
     capacity: '400 – 1.000 Kişi',
@@ -233,7 +243,21 @@ export default function HizmetlerPage() {
                 </div>
               </div>
 
-              <p className={styles.packageDesc}>{pkg.desc}</p>
+              <p className={styles.packageDesc}>
+                {pkg.desc}{' '}
+                <Link href={pkg.detailHref} style={{ color: 'var(--color-anthracite)', textDecoration: 'underline', textDecorationColor: 'var(--color-champagne)', textUnderlineOffset: '3px' }}>
+                  {pkg.detailLabel}
+                </Link>
+                {pkg.id === 'kurumsal' && (
+                  <>
+                    {' '}ve{' '}
+                    <Link href="/polatli-mezuniyet-balosu-mekani" style={{ color: 'var(--color-anthracite)', textDecoration: 'underline', textDecorationColor: 'var(--color-champagne)', textUnderlineOffset: '3px' }}>
+                      mezuniyet balosu mekanı rehberi
+                    </Link>
+                  </>
+                )}
+                {' '}sayfasında bu etkinliğe özel ayrıntıları bulabilirsiniz.
+              </p>
 
               <div style={{ marginBottom: '2.5rem' }}>
                 <h4 style={{ fontFamily: 'var(--font-serif)', fontSize: '1.15rem', color: 'var(--color-anthracite)', marginBottom: '1.25rem' }}>

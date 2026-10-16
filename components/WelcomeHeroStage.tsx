@@ -183,8 +183,8 @@ export default function WelcomeHeroStage() {
       {/* Atmosferik arka plan katmanı */}
       <div className={styles.bgLayer}>
         <Image
-          src="/images/venue/kosk-ana-balo-salonu-genel-perspektif.webp"
-          alt="Köşk Düğün Salonu 1.000 Kişilik Kapalı Düğün Salonu Atmosferi"
+          src="/images/venue/kosk-sahne-beyaz-isik-ve-cicek-tavani.webp"
+          alt="Köşk Düğün Salonu çiçek tavan süslemesi, sahne ışıkları ve KÖŞK logolu sahne"
           fill
           priority
           className={styles.backdropImg}

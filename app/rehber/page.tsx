@@ -301,7 +301,8 @@ export default function RehberPage() {
 
             <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: '1rem', paddingTop: '1.25rem', borderTop: '1px solid var(--color-stone)' }}>
               <span style={{ fontSize: '0.88rem', color: 'var(--color-cashmere)', fontWeight: 500 }}>
-                Köşk Düğün Salonu bu 7 kriterin tamamını standart olarak sunmaktadır.
+                Köşk Düğün Salonu bu 7 kriterin tamamını standart olarak sunmaktadır; ayrıntılar için{' '}
+              <Link href="/polatli-dugun-salonu" style={{ textDecoration: 'underline', textUnderlineOffset: '3px' }}>Polatlı düğün salonu sayfamıza</Link> bakabilirsiniz.
               </span>
               <Link href="/salon" className="btn btn-outline">
                 <span>Salonumuzun Tüm Özelliklerini İnceleyin</span>
@@ -417,7 +418,9 @@ export default function RehberPage() {
 
             <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: '1rem', paddingTop: '1.25rem', borderTop: '1px solid var(--color-stone)' }}>
               <span style={{ fontSize: '0.88rem', color: 'var(--color-cashmere)', fontWeight: 500 }}>
-                Köşk Düğün Salonu'nda 1.000 kişilik masa planını birlikte simüle edebilirsiniz.
+                Köşk Düğün Salonu'nda 1.000 kişilik masa planını birlikte simüle edebilirsiniz; kurumsal ve mezuniyet organizasyonları için{' '}
+              <Link href="/polatli-kurumsal-davet-salonu" style={{ textDecoration: 'underline', textUnderlineOffset: '3px' }}>kurumsal davet salonu</Link> ve{' '}
+              <Link href="/polatli-mezuniyet-balosu-mekani" style={{ textDecoration: 'underline', textUnderlineOffset: '3px' }}>mezuniyet balosu mekanı</Link> sayfaları da mevcuttur.
               </span>
               <Link href="/iletisim" className="btn btn-primary">
                 <span>Tarih ve Kapasite Planı İçin Keşif Randevusu Alın</span>
@@ -483,7 +486,11 @@ export default function RehberPage() {
             <p style={{ fontSize: '1.05rem', color: 'var(--color-text-secondary)', lineHeight: '1.8', marginBottom: '1.75rem' }}>
               Köşk Düğün Salonu'nda gün iki ayrı profesyonel merasim seansına ayrılmıştır: 
               <strong> ☀️ Gündüz Seansı (12:00 – 16:00)</strong> ve <strong>🌙 Akşam Seansı (19:00 – 23:00)</strong>. 
-              Hangi seansın sizin düğün konseptinize daha uygun olduğunu belirlemek için aşağıdaki karşılaştırma rehberini inceleyin:
+              Hangi seansın sizin düğün konseptinize daha uygun olduğunu belirlemek için aşağıdaki karşılaştırma rehberini inceleyin.
+              Kına, nişan veya sünnet gibi farklı organizasyonlar için ise{' '}
+              <Link href="/polatli-kina-gecesi-salonu" style={{ textDecoration: 'underline', textUnderlineOffset: '3px' }}>kına gecesi salonu</Link>,{' '}
+              <Link href="/polatli-nisan-soz-salonu" style={{ textDecoration: 'underline', textUnderlineOffset: '3px' }}>nişan ve söz salonu</Link> ve{' '}
+              <Link href="/polatli-sunnet-dugunu-salonu" style={{ textDecoration: 'underline', textUnderlineOffset: '3px' }}>sünnet düğünü salonu</Link> sayfalarımıza göz atabilirsiniz:
             </p>
 
             <div

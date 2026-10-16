@@ -1,4 +1,5 @@
 import { MetadataRoute } from 'next';
+import { landingPages } from '@/lib/landing-pages';
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const baseUrl = 'https://koskdugunsalonu.com';
@@ -59,5 +60,11 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: 'monthly',
       priority: 0.95,
     },
+    ...landingPages.map((p) => ({
+      url: `${baseUrl}/${p.slug}`,
+      lastModified: new Date(p.lastModified),
+      changeFrequency: 'monthly' as const,
+      priority: p.slug === 'polatli-dugun-salonu' ? 0.85 : 0.7,
+    })),
   ];
 }
