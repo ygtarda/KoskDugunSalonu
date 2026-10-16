@@ -65,7 +65,7 @@
 }
 
 .statCard {
-  background: #FFFFFF;
+  background: var(--color-surface);
   border: 1px solid var(--color-stone);
   border-radius: var(--radius-xs);
   padding: 1.5rem 1rem;
@@ -107,7 +107,7 @@
 }
 
 .filterBtn {
-  background: #FFFFFF;
+  background: var(--color-surface);
   border: 1px solid var(--color-stone);
   color: var(--color-anthracite);
   padding: 0.55rem 1.25rem;
@@ -145,7 +145,7 @@
 }
 
 .reviewCard {
-  background: #FFFFFF;
+  background: var(--color-surface);
   border: 1px solid var(--color-stone);
   border-radius: var(--radius-xs);
   padding: 1.75rem;
@@ -223,7 +223,7 @@
 .quoteText {
   font-size: 0.93rem;
   line-height: 1.65;
-  color: #3C3835;
+  color: var(--color-text-secondary);
   flex: 1;
   margin-bottom: 1.5rem;
   font-style: italic;
@@ -247,7 +247,7 @@
 
 /* Google Canlı Doğrulama & Harita Aksiyonu */
 .googleBanner {
-  background: #FFFFFF;
+  background: var(--color-surface);
   border: 1px solid var(--color-stone);
   border-left: 4px solid var(--color-champagne);
   border-radius: var(--radius-xs);
@@ -337,3 +337,68 @@
     justify-content: center;
   }
 }
+
+/* ==========================================================================
+   Comprehensive Dark Mode Overrides for Referanslar
+   ========================================================================== */
+:global(html.dark) .statCard {
+  background: var(--color-surface);
+  border-color: rgba(255, 255, 255, 0.08);
+}
+
+:global(html.dark) .statCard:hover {
+  border-color: var(--color-champagne);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.35);
+}
+
+:global(html.dark) .filterBtn {
+  background: var(--color-surface);
+  border-color: rgba(255, 255, 255, 0.12);
+  color: var(--color-anthracite);
+}
+
+:global(html.dark) .filterBtn:hover:not(.filterBtnActive) {
+  border-color: var(--color-champagne);
+  background: var(--color-surface-subtle);
+  color: var(--color-champagne);
+}
+
+:global(html.dark) .filterBtnActive {
+  background: var(--color-champagne);
+  border-color: var(--color-champagne);
+  color: #12100F;
+}
+
+:global(html.dark) .filterBtnActive:hover {
+  background: var(--color-powder);
+  border-color: var(--color-powder);
+  color: #12100F;
+}
+
+:global(html.dark) .reviewCard {
+  background: var(--color-surface);
+  border-color: rgba(255, 255, 255, 0.08);
+}
+
+:global(html.dark) .reviewCard:hover {
+  border-color: var(--color-champagne);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.45);
+}
+
+:global(html.dark) .categoryTag {
+  background: rgba(201, 164, 119, 0.15);
+  color: var(--color-champagne);
+  border-color: rgba(201, 164, 119, 0.3);
+}
+
+:global(html.dark) .googleBanner {
+  background: var(--color-surface);
+  border-color: rgba(255, 255, 255, 0.08);
+  border-left-color: var(--color-champagne);
+}
+
+:global(html.dark) .ctaSection {
+  background: var(--color-surface-subtle);
+  border-top-color: rgba(255, 255, 255, 0.08);
+}
+

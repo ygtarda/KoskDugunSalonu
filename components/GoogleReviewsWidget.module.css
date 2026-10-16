@@ -40,7 +40,7 @@
   width: 44px;
   height: 44px;
   border-radius: 50%;
-  background: #FFFFFF;
+  background: var(--color-surface);
   border: 1px solid var(--color-stone);
   display: flex;
   align-items: center;
@@ -74,7 +74,7 @@
   display: inline-flex;
   align-items: center;
   gap: 0.45rem;
-  background: #FFFFFF;
+  background: var(--color-surface);
   border: 1px solid var(--color-stone);
   color: var(--color-anthracite);
   padding: 0.55rem 1.1rem;
@@ -88,7 +88,7 @@
 .btnStripGoogle:hover {
   border-color: var(--color-champagne);
   color: var(--color-champagne);
-  background: var(--color-sand);
+  background: var(--color-surface-subtle);
 }
 
 .btnStripReview {
@@ -107,6 +107,51 @@
 
 .btnStripReview:hover {
   background: var(--color-champagne);
+  color: #FFFFFF;
+}
+
+:global(html.dark) .topGoogleStrip {
+  background: var(--color-surface);
+  border-color: rgba(255, 255, 255, 0.08);
+  border-left-color: var(--color-champagne);
+}
+
+:global(html.dark) .topGoogleStrip:hover {
+  border-color: var(--color-champagne);
+  box-shadow: 0 6px 24px rgba(0, 0, 0, 0.4);
+}
+
+:global(html.dark) .googleGLogo {
+  background: var(--color-surface-subtle);
+  border-color: rgba(255, 255, 255, 0.12);
+}
+
+:global(html.dark) .btnStripGoogle {
+  background: var(--color-surface);
+  border-color: rgba(255, 255, 255, 0.14);
+  color: var(--color-anthracite);
+}
+
+:global(html.dark) .btnStripGoogle:hover {
+  background: var(--color-surface-subtle);
+  border-color: var(--color-champagne);
+  color: var(--color-champagne);
+}
+
+:global(html.dark) .btnStripReview {
+  background: var(--color-champagne);
+  color: #12100F;
+}
+
+:global(html.dark) .btnStripReview:hover {
+  background: var(--color-powder);
+  color: #12100F;
+}
+
+:global(html.dark) .ratingBadge {
+  background: rgba(218, 165, 32, 0.15);
+  color: #F0D498;
+  border-color: rgba(218, 165, 32, 0.3);
 }
 
 /* Live Stream Container */

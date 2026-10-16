@@ -11,6 +11,7 @@ import {
   Heart,
   CheckCircle2,
   ShieldCheck,
+  ArrowRight,
 } from 'lucide-react';
 import Breadcrumb from '@/components/Breadcrumb';
 import styles from './hizmetler.module.css';
@@ -275,48 +276,56 @@ export default function HizmetlerPage() {
         </div>
 
         {/* SEO Cross-Links Section */}
-        <div
-          style={{
-            marginTop: '4rem',
-            padding: '2.5rem',
-            background: 'var(--color-surface)',
-            border: '1px solid var(--color-stone)',
-            borderRadius: 'var(--radius-xs)',
-            display: 'grid',
-            gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))',
-            gap: '2rem',
-          }}
-        >
-          <div>
-            <div style={{ display: 'flex', alignItems: 'center', gap: '0.6rem', color: 'var(--color-champagne)', marginBottom: '0.5rem' }}>
-              <Building2 size={20} />
-              <h3 style={{ fontFamily: 'var(--font-serif)', fontSize: '1.25rem', margin: 0, color: 'var(--color-anthracite)' }}>
-                Salon Olanakları & Mimari
-              </h3>
-            </div>
-            <p style={{ fontSize: '0.92rem', color: 'var(--color-text-secondary)', lineHeight: 1.6, marginBottom: '1rem' }}>
-              1.000 kişilik kolonsuz ferah salonumuz, yüksek tavanımız, geniş dans pistimiz, rahat otoparkımız ve otomatik jeneratör altyapımızın tüm olanaklarını inceleyin.
-            </p>
-            <Link href="/salon" className="btn btn-outline" style={{ display: 'inline-flex' }}>
-              <span>Salon Detaylarını İnceleyin</span>
-            </Link>
+        <section className={styles.crossLinksSection}>
+          <div className={styles.crossLinksHeader}>
+            <span className={styles.crossLinksPreTitle}>Daha Fazla Keşfedin</span>
+            <h3 className={styles.crossLinksTitle}>Salon Mimarimiz ve Davet Rehberimiz</h3>
           </div>
 
-          <div>
-            <div style={{ display: 'flex', alignItems: 'center', gap: '0.6rem', color: 'var(--color-champagne)', marginBottom: '0.5rem' }}>
-              <BookOpen size={20} />
-              <h3 style={{ fontFamily: 'var(--font-serif)', fontSize: '1.25rem', margin: 0, color: 'var(--color-anthracite)' }}>
-                Düğün & Kına Planlama Rehberi
-              </h3>
+          <div className={styles.crossLinksGrid}>
+            <div className={styles.crossLinkCard}>
+              <div className={styles.crossLinkTop}>
+                <div className={styles.crossLinkIconWrap}>
+                  <Building2 size={22} />
+                </div>
+                <span className={styles.crossLinkBadge}>Salon Mimarisi & Konfor</span>
+              </div>
+              <h4 className={styles.crossLinkHeading}>
+                Salon Olanakları & Mimari
+              </h4>
+              <p className={styles.crossLinkDesc}>
+                1.000 kişilik kolonsuz ferah salonumuz, yüksek tavanımız, geniş dans pistimiz, rahat otoparkımız ve otomatik jeneratör altyapımızın tüm olanaklarını inceleyin.
+              </p>
+              <div className={styles.crossLinkAction}>
+                <Link href="/salon" className={`btn btn-outline ${styles.crossLinkBtn}`}>
+                  <span>Salon Detaylarını İnceleyin</span>
+                  <ArrowRight size={16} className={styles.crossLinkArrow} />
+                </Link>
+              </div>
             </div>
-            <p style={{ fontSize: '0.92rem', color: 'var(--color-text-secondary)', lineHeight: 1.6, marginBottom: '1rem' }}>
-              Masa düzeni optimizasyonu, gündüz ve akşam seansları karşılaştırması ve eksiksiz bir organizasyon için uzman tavsiyelerini okuyun.
-            </p>
-            <Link href="/rehber" className="btn btn-outline" style={{ display: 'inline-flex' }}>
-              <span>Rehberi Keşfedin</span>
-            </Link>
+
+            <div className={styles.crossLinkCard}>
+              <div className={styles.crossLinkTop}>
+                <div className={styles.crossLinkIconWrap}>
+                  <BookOpen size={22} />
+                </div>
+                <span className={styles.crossLinkBadge}>Planlama & Tavsiyeler</span>
+              </div>
+              <h4 className={styles.crossLinkHeading}>
+                Düğün & Kına Planlama Rehberi
+              </h4>
+              <p className={styles.crossLinkDesc}>
+                Masa düzeni optimizasyonu, gündüz ve akşam seansları karşılaştırması ve eksiksiz bir organizasyon için uzman tavsiyelerini okuyun.
+              </p>
+              <div className={styles.crossLinkAction}>
+                <Link href="/rehber" className={`btn btn-outline ${styles.crossLinkBtn}`}>
+                  <span>Rehberi Keşfedin</span>
+                  <ArrowRight size={16} className={styles.crossLinkArrow} />
+                </Link>
+              </div>
+            </div>
           </div>
-        </div>
+        </section>
       </section>
     </div>
   );

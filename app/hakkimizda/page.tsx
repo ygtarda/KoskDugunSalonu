@@ -159,17 +159,7 @@ export default function HakkimizdaPage() {
               gap: '1.75rem',
             }}
           >
-            <div
-              style={{
-                background: '#FFFFFF',
-                border: '1px solid var(--color-stone)',
-                borderTop: '3px solid var(--color-champagne)',
-                borderRadius: 'var(--radius-xs)',
-                padding: '2rem 1.75rem',
-                boxShadow: '0 4px 16px rgba(0,0,0,0.03)',
-                transition: 'var(--transition-smooth)',
-              }}
-            >
+            <div className="principle-card">
               <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '1.25rem' }}>
                 <div style={{ color: 'var(--color-champagne)' }}>
                   <Clock size={28} />
@@ -185,17 +175,7 @@ export default function HakkimizdaPage() {
               </p>
             </div>
 
-            <div
-              style={{
-                background: '#FFFFFF',
-                border: '1px solid var(--color-stone)',
-                borderTop: '3px solid var(--color-champagne)',
-                borderRadius: 'var(--radius-xs)',
-                padding: '2rem 1.75rem',
-                boxShadow: '0 4px 16px rgba(0,0,0,0.03)',
-                transition: 'var(--transition-smooth)',
-              }}
-            >
+            <div className="principle-card">
               <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '1.25rem' }}>
                 <div style={{ color: 'var(--color-champagne)' }}>
                   <ShieldCheck size={28} />
@@ -211,17 +191,7 @@ export default function HakkimizdaPage() {
               </p>
             </div>
 
-            <div
-              style={{
-                background: '#FFFFFF',
-                border: '1px solid var(--color-stone)',
-                borderTop: '3px solid var(--color-champagne)',
-                borderRadius: 'var(--radius-xs)',
-                padding: '2rem 1.75rem',
-                boxShadow: '0 4px 16px rgba(0,0,0,0.03)',
-                transition: 'var(--transition-smooth)',
-              }}
-            >
+            <div className="principle-card">
               <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '1.25rem' }}>
                 <div style={{ color: 'var(--color-champagne)' }}>
                   <HeartHandshake size={28} />
@@ -237,17 +207,7 @@ export default function HakkimizdaPage() {
               </p>
             </div>
 
-            <div
-              style={{
-                background: '#FFFFFF',
-                border: '1px solid var(--color-stone)',
-                borderTop: '3px solid var(--color-champagne)',
-                borderRadius: 'var(--radius-xs)',
-                padding: '2rem 1.75rem',
-                boxShadow: '0 4px 16px rgba(0,0,0,0.03)',
-                transition: 'var(--transition-smooth)',
-              }}
-            >
+            <div className="principle-card">
               <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '1.25rem' }}>
                 <div style={{ color: 'var(--color-champagne)' }}>
                   <Award size={28} />

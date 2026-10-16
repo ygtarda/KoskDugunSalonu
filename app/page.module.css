@@ -28,7 +28,7 @@
 
 /* Key Metrics Strip at top of sliding content */
 .welcomeStatsBar {
-  background-color: #FFFFFF;
+  background-color: var(--color-surface);
   border-bottom: 1px solid var(--color-stone);
   padding: 3.8rem 0;
   position: relative;
@@ -45,7 +45,7 @@
   flex-direction: column;
   align-items: center;
   text-align: center;
-  background: #FFFFFF;
+  background: var(--color-surface);
   padding: 1.6rem 1.2rem;
   border-radius: var(--radius-xs);
   border: 1px solid var(--color-stone);
@@ -208,14 +208,14 @@
 }
 
 .archBtnSecondary {
-  background-color: #FFFFFF;
+  background-color: var(--color-surface);
   color: var(--color-anthracite);
   border: 1px solid var(--color-stone);
 }
 
 .archBtnSecondary:hover {
   border-color: var(--color-powder);
-  background-color: #FCFBFA;
+  background-color: var(--color-surface-subtle);
   transform: translateY(-1px);
 }
 
@@ -276,7 +276,7 @@
 
 .serviceStripe:hover {
   border-left-color: var(--color-champagne);
-  background-color: #FCFBFA;
+  background-color: var(--color-surface-subtle);
   transform: translateX(4px);
 }
 
@@ -433,7 +433,7 @@
 }
 
 .amenityCard {
-  background: #FFFFFF;
+  background: var(--color-surface);
   border: 1px solid var(--color-stone);
   border-bottom: 2px solid var(--color-stone);
   border-radius: var(--radius-xs);
@@ -479,7 +479,7 @@
    Ziyaret & Kahveye Davet (Invitation Banner)
    ========================================================================== */
 .invitationCard {
-  background: #FFFFFF;
+  background: var(--color-surface);
   border: 1px solid var(--color-stone);
   border-top: 3px solid var(--color-champagne);
   border-radius: var(--radius-xs);
@@ -602,3 +602,76 @@
     width: 100%;
   }
 }
+
+/* ==========================================================================
+   Comprehensive Dark Mode Overrides for Home Page
+   ========================================================================== */
+:global(html.dark) .welcomeStatsBar {
+  background-color: var(--color-surface);
+  border-bottom-color: rgba(255, 255, 255, 0.08);
+}
+
+:global(html.dark) .statItem {
+  background: var(--color-surface);
+  border-color: rgba(255, 255, 255, 0.08);
+}
+
+:global(html.dark) .statItem:hover {
+  border-color: var(--color-champagne);
+  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.4);
+}
+
+:global(html.dark) .archBtnSecondary {
+  background-color: var(--color-surface);
+  border-color: rgba(255, 255, 255, 0.14);
+  color: var(--color-anthracite);
+}
+
+:global(html.dark) .archBtnSecondary:hover {
+  border-color: var(--color-champagne);
+  background-color: var(--color-surface-subtle);
+  color: var(--color-champagne);
+}
+
+:global(html.dark) .serviceStripe {
+  background: var(--color-surface);
+  border-color: rgba(255, 255, 255, 0.08);
+}
+
+:global(html.dark) .serviceStripe:hover {
+  background-color: var(--color-surface-subtle);
+  border-left-color: var(--color-champagne);
+}
+
+:global(html.dark) .timelineStepCard {
+  background: var(--color-surface);
+  border-color: rgba(255, 255, 255, 0.08);
+}
+
+:global(html.dark) .timelineStepCard:hover {
+  border-bottom-color: var(--color-champagne);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.45);
+}
+
+:global(html.dark) .amenityCard {
+  background: var(--color-surface);
+  border-color: rgba(255, 255, 255, 0.08);
+}
+
+:global(html.dark) .amenityCard:hover {
+  border-bottom-color: var(--color-champagne);
+  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.4);
+}
+
+:global(html.dark) .amenityIcon {
+  background: var(--color-surface-subtle);
+  border-color: rgba(255, 255, 255, 0.1);
+}
+
+:global(html.dark) .invitationCard {
+  background: var(--color-surface);
+  border-color: rgba(255, 255, 255, 0.08);
+  border-top-color: var(--color-champagne);
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.5);
+}
+

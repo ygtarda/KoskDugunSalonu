@@ -7,7 +7,7 @@
 }
 
 .accordionItem {
-  background: #FFFFFF;
+  background: var(--color-surface);
   border: 1.5px solid var(--color-stone);
   border-bottom: 2.5px solid var(--color-stone);
   border-radius: var(--radius-xs);
@@ -19,7 +19,7 @@
 .accordionItemOpen {
   border-color: var(--color-champagne);
   border-bottom-color: var(--color-champagne);
-  background: #FFFFFF;
+  background: var(--color-surface);
   box-shadow: 0 8px 24px -6px rgba(184, 149, 110, 0.16);
 }
 
@@ -38,7 +38,7 @@
 }
 
 .questionButton:hover {
-  background-color: rgba(250, 248, 245, 0.6);
+  background-color: var(--color-surface-subtle);
 }
 
 .questionText {
@@ -96,7 +96,7 @@
 
 .answerContent {
   padding: 0 1.8rem 1.6rem 1.8rem;
-  border-top: 1px solid rgba(232, 228, 223, 0.8);
+  border-top: 1px solid var(--color-stone);
   margin-top: -0.25rem;
   padding-top: 1.35rem;
   opacity: 0;
@@ -126,4 +126,31 @@
     animation: none !important;
   }
 }
+
+:global(html.dark) .accordionItem {
+  background: var(--color-surface);
+  border-color: rgba(255, 255, 255, 0.08);
+}
+
+:global(html.dark) .accordionItemOpen {
+  background: var(--color-surface);
+  border-color: var(--color-champagne);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.35);
+}
+
+:global(html.dark) .questionButton:hover {
+  background-color: var(--color-surface-subtle);
+}
+
+:global(html.dark) .chevronWrapper {
+  background: var(--color-surface-subtle);
+  border-color: rgba(255, 255, 255, 0.1);
+}
+
+:global(html.dark) .chevronOpen {
+  background: rgba(201, 164, 119, 0.2);
+  border-color: var(--color-champagne);
+  color: var(--color-champagne);
+}
+
 

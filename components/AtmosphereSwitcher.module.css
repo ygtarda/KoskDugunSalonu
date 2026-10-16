@@ -44,13 +44,13 @@
   transition: color 0.3s ease;
 }
 
-.tabBtn:hover {
+.tabBtn:hover:not(.tabBtnActive) {
   border-color: var(--color-powder);
-  background: #FCFBFA;
+  background: var(--color-surface-subtle);
   transform: translateY(-2px);
 }
 
-.tabBtn:hover .tabIcon {
+.tabBtn:hover:not(.tabBtnActive) .tabIcon {
   color: var(--color-champagne);
 }
 
@@ -61,7 +61,15 @@
   box-shadow: 0 6px 20px rgba(44, 40, 38, 0.18);
 }
 
-.tabBtnActive .tabIcon {
+.tabBtnActive:hover {
+  transform: translateY(-2px);
+  background: #2C2826 !important;
+  color: #FFFFFF !important;
+  border-color: #2C2826 !important;
+}
+
+.tabBtnActive .tabIcon,
+.tabBtnActive:hover .tabIcon {
   color: var(--color-powder) !important;
 }
 
@@ -184,3 +192,39 @@
     padding: 1.75rem;
   }
 }
+
+:global(html.dark) .tabBtn {
+  background: var(--color-surface);
+  border-color: rgba(255, 255, 255, 0.1);
+  color: var(--color-anthracite);
+}
+
+:global(html.dark) .tabBtn:hover:not(.tabBtnActive) {
+  background: var(--color-surface-subtle);
+  border-color: var(--color-champagne);
+  color: var(--color-champagne);
+}
+
+:global(html.dark) .tabBtnActive,
+:global(html.dark) .tabBtnActive:hover {
+  background: var(--color-champagne) !important;
+  border-color: var(--color-champagne) !important;
+  color: #12100F !important;
+  box-shadow: 0 4px 18px rgba(201, 164, 119, 0.35);
+}
+
+:global(html.dark) .tabBtnActive .tabIcon,
+:global(html.dark) .tabBtnActive:hover .tabIcon {
+  color: #12100F !important;
+}
+
+:global(html.dark) .moodDisplayCard {
+  background: var(--color-surface);
+  border-color: rgba(255, 255, 255, 0.08);
+}
+
+:global(html.dark) .pillItem {
+  background: var(--color-surface-subtle);
+  border-color: rgba(255, 255, 255, 0.08);
+}
+

@@ -9,25 +9,19 @@ import styles from './Header.module.css';
 
 const leftNavLinks = [
   { href: '/', label: 'Anasayfa' },
-  { href: '/salon', label: 'Salonumuz' },
   { href: '/hizmetler', label: 'Hizmetler' },
   { href: '/galeri', label: 'Galeri' },
 ];
 
 const rightNavLinks = [
-  { href: '/referanslar', label: 'Referanslar' },
-  { href: '/rehber', label: 'Rehber' },
   { href: '/hakkimizda', label: 'Hakkımızda' },
   { href: '/sss', label: 'SSS' },
 ];
 
 const drawerNavLinks = [
   { href: '/', label: 'Anasayfa' },
-  { href: '/salon', label: 'Salon & Olanaklar' },
   { href: '/hizmetler', label: 'Hizmetlerimiz & Paketler' },
   { href: '/galeri', label: 'Fotoğraf Galerisi' },
-  { href: '/referanslar', label: 'Misafir Yorumları & Referanslar' },
-  { href: '/rehber', label: 'Düğün Rehberi & Blog' },
   { href: '/hakkimizda', label: 'Hakkımızda & Değerlerimiz' },
   { href: '/sss', label: 'Sıkça Sorulan Sorular' },
   { href: '/iletisim', label: 'İletişim & Randevu Talebi' },

@@ -204,6 +204,13 @@ export default function RootLayout({
       className={`${fraunces.variable} ${dmSans.variable} ${cinzel.variable} ${cormorant.variable}`}
       suppressHydrationWarning
     >
+      <head>
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `(function(){try{var t=localStorage.getItem('kosk_theme');if(t==='dark'){document.documentElement.classList.add('dark');}}catch(e){}})();`,
+          }}
+        />
+      </head>
       <body>
         {/* Schema.org LocalBusiness Structured Data */}
         <script

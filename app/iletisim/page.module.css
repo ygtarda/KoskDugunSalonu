@@ -148,7 +148,7 @@
 
 .channelItem:hover .channelIcon {
   border-color: var(--color-champagne, #B8956E);
-  background-color: #FFFFFF;
+  background-color: var(--color-surface);
 }
 
 .whatsappIcon {
@@ -301,3 +301,43 @@
     height: 260px;
   }
 }
+
+/* ==========================================================================
+   Comprehensive Dark Mode Overrides for İletişim Page
+   ========================================================================== */
+:global(html.dark) .contactInfoCard {
+  background: var(--color-surface);
+  border-color: rgba(255, 255, 255, 0.08);
+}
+
+:global(html.dark) .channelItem:hover {
+  background-color: var(--color-surface-subtle);
+  border-color: rgba(255, 255, 255, 0.1);
+}
+
+:global(html.dark) .channelIcon {
+  background: var(--color-surface-subtle);
+  border-color: rgba(255, 255, 255, 0.1);
+}
+
+:global(html.dark) .channelItem:hover .channelIcon {
+  border-color: var(--color-champagne);
+  background-color: var(--color-surface);
+}
+
+:global(html.dark) .fullWidthMapCard {
+  background: var(--color-surface);
+  border-color: rgba(255, 255, 255, 0.08);
+}
+
+:global(html.dark) .mapExternalLink {
+  background: var(--color-surface-subtle);
+  border-color: rgba(255, 255, 255, 0.12);
+  color: var(--color-champagne);
+}
+
+:global(html.dark) .mapExternalLink:hover {
+  background-color: rgba(201, 164, 119, 0.16);
+  border-color: var(--color-champagne);
+}
+

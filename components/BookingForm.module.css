@@ -383,7 +383,7 @@
   left: 0;
   right: 0;
   z-index: 200;
-  background: #FFFFFF;
+  background: var(--color-surface, #FFFFFF);
   border: 1px solid var(--color-stone, #E8E4DF);
   border-radius: var(--radius-xs, 2px);
   box-shadow: 0 12px 32px rgba(44, 40, 38, 0.12);
@@ -473,7 +473,7 @@
   left: 0;
   width: min(330px, 92vw);
   z-index: 250;
-  background: #FFFFFF;
+  background: var(--color-surface, #FFFFFF);
   border: 1px solid var(--color-stone, #E8E4DF);
   border-radius: var(--radius-sm, 4px);
   box-shadow: 0 16px 40px rgba(44, 40, 38, 0.14);
@@ -632,7 +632,7 @@
 .guestStepper {
   display: inline-flex;
   align-items: center;
-  background: #FFFFFF;
+  background: var(--color-surface, #FFFFFF);
   border: 1px solid var(--color-stone, #E8E4DF);
   border-radius: 20px;
   padding: 2px 4px;
@@ -697,7 +697,7 @@
   position: relative;
   width: 100%;
   height: 6px;
-  background: #DDD8D2;
+  background: var(--color-stone, #DDD8D2);
   border-radius: 3px;
   overflow: visible;
 }
@@ -719,7 +719,7 @@
   width: 18px;
   height: 18px;
   border-radius: 50%;
-  background: #FFFFFF;
+  background: var(--color-surface, #FFFFFF);
   border: 2.5px solid var(--color-champagne, #B8956E);
   box-shadow: 0 2px 6px rgba(44, 40, 38, 0.22);
   transform: translate(-50%, -50%);
@@ -765,7 +765,7 @@
 }
 
 .guestPresetBtn {
-  background: #FFFFFF;
+  background: var(--color-surface, #FFFFFF);
   border: 1px solid var(--color-stone, #E8E4DF);
   border-radius: 4px;
   padding: 0.38rem 0.2rem;
@@ -780,7 +780,7 @@
 
 .guestPresetBtn:hover {
   border-color: var(--color-powder, #D4B59E);
-  background: #FAF8F5;
+  background: var(--color-surface-subtle, #FAF8F5);
 }
 
 .guestPresetBtnActive {
@@ -1090,7 +1090,7 @@
 }
 
 .resetBtn {
-  background: #FFFFFF;
+  background: var(--color-surface, #FFFFFF);
   border: 1.5px solid var(--color-champagne, #B8956E);
   color: var(--color-anthracite, #2C2826);
   padding: 0.7rem 1.4rem;
@@ -1175,13 +1175,13 @@
   outline: none;
 }
 
-.segmentBtn:hover {
+.segmentBtn:hover:not(.segmentBtnActive) {
   color: var(--color-anthracite, #2C2826);
-  background: rgba(255, 255, 255, 0.5);
+  background: var(--color-surface, rgba(255, 255, 255, 0.5));
 }
 
 .segmentBtnActive {
-  background: #FFFFFF !important;
+  background: var(--color-surface, #FFFFFF) !important;
   color: var(--color-anthracite, #2C2826) !important;
   font-weight: 600 !important;
   border-color: rgba(184, 149, 110, 0.45) !important;
@@ -1244,4 +1244,149 @@
   overflow: hidden !important;
   clip: rect(0, 0, 0, 0) !important;
 }
+
+/* ==========================================================================
+   Comprehensive Dark Mode Rules for Booking Form
+   ========================================================================== */
+:global(html.dark) .formContainer {
+  background: var(--color-surface);
+  border-color: rgba(255, 255, 255, 0.08);
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.4);
+}
+
+:global(html.dark) .textInput,
+:global(html.dark) .dateTrigger,
+:global(html.dark) .selectTrigger {
+  background: var(--color-surface);
+  border-color: rgba(255, 255, 255, 0.12);
+  color: var(--color-anthracite);
+}
+
+:global(html.dark) .textInput:focus,
+:global(html.dark) .dateTrigger:focus-visible,
+:global(html.dark) .dateTriggerOpen,
+:global(html.dark) .selectTrigger:focus-visible,
+:global(html.dark) .selectTriggerOpen {
+  border-color: var(--color-champagne);
+  box-shadow: 0 0 0 3px rgba(201, 164, 119, 0.2);
+}
+
+:global(html.dark) .segmentedControl {
+  background: rgba(255, 255, 255, 0.04);
+  border-color: rgba(255, 255, 255, 0.08);
+}
+
+:global(html.dark) .segmentBtn {
+  color: var(--color-text-secondary);
+}
+
+:global(html.dark) .segmentBtn:hover:not(.segmentBtnActive) {
+  background: rgba(255, 255, 255, 0.06);
+  color: var(--color-anthracite);
+}
+
+:global(html.dark) .segmentBtnActive {
+  background: #2A2420 !important;
+  border-color: var(--color-champagne) !important;
+  color: var(--color-champagne) !important;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
+}
+
+:global(html.dark) .guestStepper {
+  background: var(--color-surface);
+  border-color: rgba(255, 255, 255, 0.12);
+}
+
+:global(html.dark) .stepperBtn {
+  color: var(--color-anthracite);
+}
+
+:global(html.dark) .stepperBtn:hover {
+  background: rgba(255, 255, 255, 0.08);
+  color: var(--color-champagne);
+}
+
+:global(html.dark) .sliderTrackBg {
+  background: #38302A;
+}
+
+:global(html.dark) .sliderCustomThumb {
+  background: #241F1C;
+  border-color: var(--color-champagne);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
+}
+
+:global(html.dark) .guestPresetBtn {
+  background: var(--color-surface);
+  border-color: rgba(255, 255, 255, 0.1);
+  color: var(--color-anthracite);
+}
+
+:global(html.dark) .guestPresetBtn:hover:not(.guestPresetBtnActive) {
+  background: rgba(255, 255, 255, 0.06);
+  border-color: var(--color-champagne);
+  color: var(--color-champagne);
+}
+
+:global(html.dark) .guestPresetBtnActive {
+  background: var(--color-champagne) !important;
+  border-color: var(--color-champagne) !important;
+  color: #12100F !important;
+}
+
+:global(html.dark) .dropdownMenu,
+:global(html.dark) .calendarPopover {
+  background: #221D1A;
+  border-color: rgba(255, 255, 255, 0.14);
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.7);
+}
+
+:global(html.dark) .dropdownOption {
+  color: var(--color-anthracite);
+}
+
+:global(html.dark) .dropdownOption:hover {
+  background-color: rgba(255, 255, 255, 0.06);
+}
+
+:global(html.dark) .dropdownOptionSelected {
+  background-color: rgba(201, 164, 119, 0.2);
+  color: var(--color-champagne);
+}
+
+:global(html.dark) .calendarDay {
+  color: var(--color-anthracite);
+}
+
+:global(html.dark) .calendarDay:hover:not(:disabled) {
+  background-color: rgba(255, 255, 255, 0.08);
+}
+
+:global(html.dark) .daySelected {
+  background-color: var(--color-champagne) !important;
+  color: #12100F !important;
+}
+
+:global(html.dark) .dayDisabled {
+  color: #55504C;
+}
+
+:global(html.dark) .resetBtn {
+  background: var(--color-surface);
+  border-color: var(--color-champagne);
+  color: var(--color-anthracite);
+}
+
+:global(html.dark) .resetBtn:hover {
+  background-color: var(--color-champagne);
+  color: #12100F;
+}
+
+:global(html.dark) .receiptCard,
+:global(html.dark) .previewCard,
+:global(html.dark) .sliderCompactCard {
+  background: var(--color-surface);
+  border-color: rgba(255, 255, 255, 0.08);
+}
+
 

@@ -62,7 +62,7 @@
 .tocLink:hover {
   border-color: var(--color-champagne);
   color: var(--color-champagne);
-  background: #FFFFFF;
+  background: var(--color-surface);
   transform: translateY(-1px);
 }
 
@@ -89,3 +89,22 @@
     padding: 0.4rem 0.85rem;
   }
 }
+
+:global(html.dark) .tocBox {
+  background: var(--color-surface);
+  border-color: rgba(255, 255, 255, 0.08);
+  border-left-color: var(--color-champagne);
+}
+
+:global(html.dark) .tocLink {
+  background: var(--color-surface-subtle);
+  border-color: rgba(255, 255, 255, 0.1);
+  color: var(--color-anthracite);
+}
+
+:global(html.dark) .tocLink:hover {
+  background: var(--color-surface);
+  border-color: var(--color-champagne);
+  color: var(--color-champagne);
+}
+
