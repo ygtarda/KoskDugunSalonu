@@ -117,19 +117,21 @@ export default function RehberPage() {
               <BookOpen size={15} style={{ color: 'var(--color-champagne)' }} />
               İçindekiler:
             </span>
-            <div className={styles.tocLinks}>
-              <a href="#polatlida-dugun-salonu-secerken-dikkat-edilmesi-gerekenler" className={styles.tocLink}>
-                <span>1. Salon Seçerken 7 Kriter</span>
-              </a>
-              <a href="#1000-kisilik-buyuk-dugunlerde-masa-duzeni-ve-misafir-konforu" className={styles.tocLink}>
-                <span>2. 1.000 Kişilik Masa Düzeni</span>
-              </a>
-              <a href="#gunduz-ve-aksam-dugun-seansi-farklari" className={styles.tocLink}>
-                <span>3. Gündüz vs Akşam Seansı</span>
-              </a>
-              <a href="#kapali-dugun-salonunda-havadar-ortam-ve-ses-duzeni" className={styles.tocLink}>
-                <span>4. Havalandırma & Akustik</span>
-              </a>
+            <div className={styles.tocLinksWrapper}>
+              <div className={styles.tocLinks}>
+                <a href="#polatlida-dugun-salonu-secerken-dikkat-edilmesi-gerekenler" className={styles.tocLink}>
+                  <span>1. Salon Seçerken 7 Kriter</span>
+                </a>
+                <a href="#1000-kisilik-buyuk-dugunlerde-masa-duzeni-ve-misafir-konforu" className={styles.tocLink}>
+                  <span>2. 1.000 Kişilik Masa Düzeni</span>
+                </a>
+                <a href="#gunduz-ve-aksam-dugun-seansi-farklari" className={styles.tocLink}>
+                  <span>3. Gündüz vs Akşam Seansı</span>
+                </a>
+                <a href="#kapali-dugun-salonunda-havadar-ortam-ve-ses-duzeni" className={styles.tocLink}>
+                  <span>4. Havalandırma & Akustik</span>
+                </a>
+              </div>
             </div>
           </div>
         </nav>

@@ -98,9 +98,9 @@ export default function EventLanding({ page }: { page: LandingPageData }) {
                   <CalendarCheck size={18} />
                   <span>Keşif &amp; Fiyat Teklifi Alın</span>
                 </Link>
-                <a href="tel:+903126230000" className="btn btn-outline">
+                <a href="tel:+905382969079" className="btn btn-outline">
                   <Phone size={17} />
-                  <span>0 (312) 623 00 00</span>
+                  <span>0538 296 90 79</span>
                 </a>
               </div>
             </div>
@@ -203,7 +203,7 @@ export default function EventLanding({ page }: { page: LandingPageData }) {
                 <CalendarCheck size={18} />
                 <span>Keşif Randevusu Alın</span>
               </Link>
-              <a href="https://wa.me/903126230000" className="btn btn-outline">
+              <a href="https://wa.me/905382969079" className="btn btn-outline">
                 <span>WhatsApp ile Yazın</span>
               </a>
             </div>

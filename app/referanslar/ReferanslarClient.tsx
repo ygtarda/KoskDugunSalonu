@@ -70,20 +70,22 @@ export default function ReferanslarClient() {
       {/* 2. Filtreleme & Yorum Kartları */}
       <section className={styles.filterSection}>
         <div className="container">
-          {/* Filtre Butonları */}
-          <div className={styles.filterTabs}>
-            {CATEGORIES.map((cat) => (
-              <button
-                key={cat}
-                type="button"
-                className={`${styles.filterBtn} ${
-                  activeCategory === cat ? styles.filterBtnActive : ''
-                }`}
-                onClick={() => setActiveCategory(cat)}
-              >
-                {cat === 'Tümü' ? 'Tüm Organizasyonlar' : `${cat} Deneyimleri`}
-              </button>
-            ))}
+          {/* Filtre Butonları (Mobilde Sağa Kaydırma Degrade İpucu ile) */}
+          <div className={styles.filterTabsWrapper}>
+            <div className={styles.filterTabs}>
+              {CATEGORIES.map((cat) => (
+                <button
+                  key={cat}
+                  type="button"
+                  className={`${styles.filterBtn} ${
+                    activeCategory === cat ? styles.filterBtnActive : ''
+                  }`}
+                  onClick={() => setActiveCategory(cat)}
+                >
+                  {cat === 'Tümü' ? 'Tüm Organizasyonlar' : `${cat} Deneyimleri`}
+                </button>
+              ))}
+            </div>
           </div>
 
           <div style={{ margin: '2rem 0 1rem 0', textAlign: 'center' }}>
@@ -192,13 +194,13 @@ export default function ReferanslarClient() {
               <span>Keşif & Fiyat Teklifi Alın</span>
             </Link>
             <a
-              href="tel:+903126230000"
+              href="tel:+905382969079"
               className="btn btn-outline"
               style={{ color: '#FFFFFF', borderColor: 'rgba(255,255,255,0.4)' }}
               id="referanslar-cta-phone"
             >
               <Phone size={16} />
-              <span>0 (312) 623 00 00</span>
+              <span>0538 296 90 79</span>
             </a>
           </div>
         </div>

@@ -228,7 +228,7 @@ export default function SssPage() {
               <span>Keşif & Fiyat Teklifi Alın</span>
             </Link>
             <a
-              href="https://wa.me/903126230000?text=Merhaba,%20K%C3%B6%C5%9Fk%20D%C3%BC%C4%9F%C3%BCn%20Salonu%20hakk%C4%B1nda%20sorum%20var."
+              href="https://wa.me/905382969079?text=Merhaba,%20K%C3%B6%C5%9Fk%20D%C3%BC%C4%9F%C3%BCn%20Salonu%20hakk%C4%B1nda%20sorum%20var."
               target="_blank"
               rel="noopener noreferrer"
               className="btn btn-outline"

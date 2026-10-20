@@ -276,6 +276,30 @@
   .galleryRow {
     grid-template-columns: 1fr;
   }
+
+  .factsBar {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .heroActions,
+  .ctaActions {
+    flex-direction: column;
+    width: 100%;
+    gap: 0.75rem;
+  }
+
+  .heroActions a,
+  .ctaActions a {
+    width: 100%;
+    min-height: 48px;
+    justify-content: center;
+  }
+}
+
+@media (max-width: 360px) {
+  .factsBar {
+    grid-template-columns: 1fr;
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {

@@ -446,6 +446,19 @@
     gap: 2.5rem;
   }
 
+  .linkList {
+    gap: 0.25rem;
+  }
+
+  .linkList a {
+    min-height: 44px;
+    padding: 0.45rem 0;
+    display: inline-flex;
+    align-items: center;
+    width: 100%;
+    font-size: 0.92rem;
+  }
+
   .bottomFlex {
     flex-direction: column;
     align-items: flex-start;

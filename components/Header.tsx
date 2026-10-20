@@ -55,8 +55,23 @@ export default function Header({ embedded = false }: HeaderProps) {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  // Sayfa değiştiğinde menüyü otomatik kapat
+  // Karşılama ekranının bir kez geçildikten sonra asla tekrar açılmaması için cookie & storage senkronizasyonu
+  const handleHomeNavigation = () => {
+    try {
+      document.cookie = 'kosk_welcome_dismissed=true; path=/; max-age=31536000; SameSite=Lax';
+      localStorage.setItem('kosk_welcome_dismissed', 'true');
+      sessionStorage.setItem('kosk_welcome_dismissed', 'true');
+      document.documentElement.classList.add('welcome-dismissed');
+    } catch {
+      // noop
+    }
+  };
+
+  // İç sayfalardayken veya gezinirken karşılama ekranını kalıcı olarak atlat
   useEffect(() => {
+    if (pathname !== '/') {
+      handleHomeNavigation();
+    }
     setMobileMenuOpen(false);
   }, [pathname]);
 
@@ -131,7 +146,10 @@ export default function Header({ embedded = false }: HeaderProps) {
           <Link
             href="/"
             className={styles.drawerBrandLink}
-            onClick={() => setMobileMenuOpen(false)}
+            onClick={() => {
+              handleHomeNavigation();
+              setMobileMenuOpen(false);
+            }}
             aria-label="Köşk Düğün Salonu Anasayfa"
           >
             <div className={styles.drawerBrandLogoWrapper}>
@@ -168,7 +186,12 @@ export default function Header({ embedded = false }: HeaderProps) {
                 key={link.href}
                 href={link.href}
                 className={`${styles.drawerLink} ${isActive ? styles.drawerLinkActive : ''}`}
-                onClick={() => setMobileMenuOpen(false)}
+                onClick={() => {
+                  if (link.href === '/') {
+                    handleHomeNavigation();
+                  }
+                  setMobileMenuOpen(false);
+                }}
               >
                 <span>{link.label}</span>
                 <ChevronRight size={16} className={styles.drawerChevron} />
@@ -189,16 +212,16 @@ export default function Header({ embedded = false }: HeaderProps) {
           </Link>
 
           <a
-            href="tel:+903126230000"
+            href="tel:+905382969079"
             className={styles.drawerPhoneCard}
-            aria-label="Telefonla Arayın: 0 312 623 00 00"
+            aria-label="Telefonla Arayın: 0538 296 90 79"
           >
             <div className={styles.drawerPhoneIcon}>
               <Phone size={18} />
             </div>
             <div className={styles.drawerPhoneMeta}>
               <span className={styles.drawerPhoneLabel}>Hemen Arayın & Bilgi Alın</span>
-              <span className={styles.drawerPhoneNumber}>0 (312) 623 00 00</span>
+              <span className={styles.drawerPhoneNumber}>0538 296 90 79</span>
             </div>
           </a>
 
@@ -233,7 +256,7 @@ export default function Header({ embedded = false }: HeaderProps) {
           </button>
           <div className={styles.mobileFloatingActionGroup}>
             <a
-              href="https://wa.me/903126230000?text=Merhaba,%20K%C3%B6%C5%9Fk%20D%C3%BC%C4%9F%C3%BCn%20Salonu%20hakk%C4%B1nda%20bilgi%20ve%20tarih%20m%C3%BCsaitli%C4%9Fi%20%C3%B6%C4%9Frenmek%20istiyorum."
+              href="https://wa.me/905382969079?text=Merhaba,%20K%C3%B6%C5%9Fk%20D%C3%BC%C4%9F%C3%BCn%20Salonu%20hakk%C4%B1nda%20bilgi%20ve%20tarih%20m%C3%BCsaitli%C4%9Fi%20%C3%B6%C4%9Frenmek%20istiyorum."
               target="_blank"
               rel="noopener noreferrer"
               className={styles.mobileFloatingWhatsappBtn}
@@ -245,9 +268,9 @@ export default function Header({ embedded = false }: HeaderProps) {
               </svg>
             </a>
             <a
-              href="tel:+903126230000"
+              href="tel:+905382969079"
               className={styles.mobileFloatingPhoneBtn}
-              aria-label="Hemen Arayın: 0 312 623 00 00"
+              aria-label="Hemen Arayın: 0538 296 90 79"
               id="mobile-floating-call-btn"
             >
               <Phone size={18} />
@@ -290,6 +313,7 @@ export default function Header({ embedded = false }: HeaderProps) {
                   key={link.href}
                   href={link.href}
                   className={`${styles.navLink} ${isActive ? styles.activeNavLink : ''}`}
+                  onClick={link.href === '/' ? handleHomeNavigation : undefined}
                 >
                   {link.label}
                 </Link>
@@ -302,6 +326,7 @@ export default function Header({ embedded = false }: HeaderProps) {
             <Link
               href="/"
               className={styles.brandLink}
+              onClick={handleHomeNavigation}
               aria-label="Köşk Düğün Salonu Anasayfa"
               id="header-brand-logo-link"
             >
@@ -339,7 +364,7 @@ export default function Header({ embedded = false }: HeaderProps) {
           {/* Mobile Right Call Icon */}
           <div className={styles.mobileRightAction}>
             <a
-              href="tel:+903126230000"
+              href="tel:+905382969079"
               className={styles.mobilePhoneBtn}
               aria-label="Salon Yetkilisi ile Hemen Ara"
               id="mobile-quick-call"

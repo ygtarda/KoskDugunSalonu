@@ -26,7 +26,7 @@ const reviewsSchema = {
   '@type': 'LocalBusiness',
   name: 'Köşk Düğün Salonu',
   image: 'https://koskdugunsalonu.com/images/venue/kosk-ana-balo-salonu-genel-perspektif.webp',
-  telephone: '+903126230000',
+  telephone: '+905382969079',
   address: {
     '@type': 'PostalAddress',
     streetAddress: 'Gülveren, Kutluhan Sk. No: 2/2',

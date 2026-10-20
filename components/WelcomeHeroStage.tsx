@@ -12,7 +12,20 @@ const TOUCH_THRESHOLD = 80;   // Mobilde gereken dikey parmak kaydırma mesafesi
 
 export default function WelcomeHeroStage() {
   const router = useRouter();
-  const [isDismissed, setIsDismissed] = useState(false);
+  const [isDismissed, setIsDismissed] = useState<boolean>(() => {
+    if (typeof window === 'undefined') return false;
+    try {
+      const hasCookie = document.cookie.indexOf('kosk_welcome_dismissed=true') !== -1;
+      const hasStorage =
+        localStorage.getItem('kosk_welcome_dismissed') === 'true' ||
+        sessionStorage.getItem('kosk_welcome_dismissed') === 'true';
+      const hasClass = document.documentElement.classList.contains('welcome-dismissed');
+      const hasHash = Boolean(window.location.hash);
+      return hasCookie || hasStorage || hasClass || hasHash;
+    } catch {
+      return false;
+    }
+  });
   const [isDismissing, setIsDismissing] = useState(false);
   const [scrollProgress, setScrollProgress] = useState(0);
 
@@ -29,11 +42,14 @@ export default function WelcomeHeroStage() {
     setIsDismissing(true);
     setScrollProgress(1);
 
-    // Oturum boyunca tekrar çıkmaması için kaydet
+    // Bir kez geçildikten sonra sayfayı yenilese de, logoya tıklasa da bir daha ASLA çıkmasın
     try {
+      document.cookie = 'kosk_welcome_dismissed=true; path=/; max-age=31536000; SameSite=Lax';
+      localStorage.setItem('kosk_welcome_dismissed', 'true');
       sessionStorage.setItem('kosk_welcome_dismissed', 'true');
+      document.documentElement.classList.add('welcome-dismissed');
     } catch {
-      // sessionStorage erişim kısıtlaması durumunda sessiz kal
+      // noop
     }
 
     // 850ms'lik lüks bezier geçişi tamamlandığında kilidi aç ve DOM'dan kaldır
@@ -57,21 +73,25 @@ export default function WelcomeHeroStage() {
 
   // İlk yükleme kontrolü
   useEffect(() => {
-    // Sayfa doğrudan bir çapa (#randevu vb.) ile açıldıysa karşılama ekranını atla
-    if (window.location.hash) {
-      setIsDismissed(true);
-      return;
-    }
-
-    // Sayfa F5 / Cmd+R ile yenilenmişse geliştiricinin/kullanıcının tekrar görebilmesi için sıfırla;
-    // normal sayfa içi gezinmelerde ise oturum boyunca "tekrar çıkmasın" kuralını koru.
+    // Sayfa daha önce geçilmişse veya bir çapa (#randevu vb.) ile açıldıysa doğrudan atla
     try {
-      const navEntry = performance.getEntriesByType('navigation')[0] as PerformanceNavigationTiming | undefined;
-      const isReload = navEntry?.type === 'reload';
-      if (isReload) {
-        sessionStorage.removeItem('kosk_welcome_dismissed');
-      } else if (sessionStorage.getItem('kosk_welcome_dismissed') === 'true') {
+      const hasCookie = document.cookie.indexOf('kosk_welcome_dismissed=true') !== -1;
+      const alreadyDismissed =
+        hasCookie ||
+        localStorage.getItem('kosk_welcome_dismissed') === 'true' ||
+        sessionStorage.getItem('kosk_welcome_dismissed') === 'true' ||
+        document.documentElement.classList.contains('welcome-dismissed') ||
+        Boolean(window.location.hash);
+
+      if (alreadyDismissed) {
         setIsDismissed(true);
+        document.documentElement.classList.add('welcome-dismissed');
+        document.cookie = 'kosk_welcome_dismissed=true; path=/; max-age=31536000; SameSite=Lax';
+        try {
+          localStorage.setItem('kosk_welcome_dismissed', 'true');
+          sessionStorage.setItem('kosk_welcome_dismissed', 'true');
+        } catch {}
+        document.body.style.overflow = '';
         return;
       }
     } catch {
@@ -174,7 +194,8 @@ export default function WelcomeHeroStage() {
 
   return (
     <aside
-      className={`${styles.welcomeStage} ${isDismissing ? styles.stageDismissing : ''}`}
+      data-welcome-stage="true"
+      className={`${styles.welcomeStage} welcomeStageRoot ${isDismissing ? styles.stageDismissing : ''}`}
       style={{
         transform: isDismissing ? undefined : `translate3d(0, ${tensionTranslateY}px, 0)`,
       }}

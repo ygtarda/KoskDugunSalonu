@@ -3,6 +3,11 @@
    ========================================================================== */
 
 /* 1. Category Filter Bar */
+.filterBarWrapper {
+  position: relative;
+  width: 100%;
+}
+
 .filterBar {
   display: flex;
   align-items: center;
@@ -564,14 +569,59 @@
 }
 
 @media (max-width: 680px) {
+  .filterBarWrapper {
+    position: relative;
+  }
+
+  .filterBarWrapper::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 1.75rem;
+    width: 52px;
+    background: linear-gradient(to right, rgba(250, 248, 245, 0) 0%, var(--color-sand) 100%);
+    pointer-events: none;
+    z-index: 5;
+  }
+
+  .filterBar {
+    display: flex;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    justify-content: flex-start;
+    padding: 0.35rem 0.25rem 0.75rem 0.25rem;
+    gap: 0.5rem;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+    margin-bottom: 1.75rem;
+  }
+
+  .filterBar::-webkit-scrollbar {
+    display: none;
+  }
+
+  .filterBtn {
+    flex-shrink: 0;
+    scroll-snap-align: center;
+    min-height: 44px;
+    display: inline-flex;
+    align-items: center;
+    padding: 0.6rem 1.15rem;
+    white-space: nowrap;
+  }
+
   .galleryGrid {
     grid-template-columns: 1fr;
     gap: 1.5rem;
   }
 
   .stageArrow {
-    width: 36px;
-    height: 36px;
+    width: 44px;
+    height: 44px;
+    min-width: 44px;
+    min-height: 44px;
   }
 
   .stageArrowPrev {
@@ -580,6 +630,25 @@
 
   .stageArrowNext {
     right: 0.5rem;
+  }
+
+  .lightboxModal {
+    padding: 0.4rem;
+  }
+
+  .lightboxContainer {
+    max-height: 94dvh;
+    border-radius: var(--radius-sm);
+  }
+
+  .lightboxStage {
+    min-height: 280px;
+    max-height: 42dvh;
+    padding: 0.5rem;
+  }
+
+  .stageImage {
+    max-height: 40dvh;
   }
 }
 

@@ -166,7 +166,7 @@ export default function GlobalError({ error, reset }: GlobalErrorProps) {
           >
             Acil bilgi ve rezervasyon için:{' '}
             <a
-              href="tel:+903126230000"
+              href="tel:+905382969079"
               style={{
                 color: '#2C2826',
                 fontWeight: 600,
@@ -174,7 +174,7 @@ export default function GlobalError({ error, reset }: GlobalErrorProps) {
                 marginLeft: '0.25rem',
               }}
             >
-              0 (312) 623 00 00
+              0538 296 90 79
             </a>
           </div>
         </main>

@@ -2,11 +2,18 @@
   width: 100%;
 }
 
+.tabsScrollerWrap {
+  position: relative;
+  width: 100%;
+}
+
 .tabsScroller {
   overflow-x: auto;
   padding-bottom: 0.5rem;
   margin-bottom: 2rem;
   scrollbar-width: none;
+  scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch;
 }
 
 .tabsScroller::-webkit-scrollbar {
@@ -25,7 +32,8 @@
   display: inline-flex;
   align-items: center;
   gap: 0.65rem;
-  padding: 0.85rem 1.4rem;
+  min-height: 44px;
+  padding: 0.75rem 1.4rem;
   background: var(--color-surface);
   border: 1px solid var(--color-stone);
   border-radius: var(--radius-xs);
@@ -35,6 +43,8 @@
   cursor: pointer;
   transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
   outline: none;
+  flex-shrink: 0;
+  scroll-snap-align: center;
 }
 
 .tabIcon {
@@ -190,6 +200,38 @@
     grid-template-columns: 1fr;
     gap: 2rem;
     padding: 1.75rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .tabsScrollerWrap {
+    position: relative;
+    max-width: 100%;
+    overflow: hidden;
+    box-sizing: border-box;
+  }
+
+  .tabsScrollerWrap::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 2rem;
+    width: 52px;
+    background: linear-gradient(to right, rgba(250, 248, 245, 0) 0%, var(--color-sand) 100%);
+    pointer-events: none;
+    z-index: 5;
+  }
+
+  .tabsList {
+    justify-content: flex-start;
+    padding: 0.25rem 0.5rem 0.5rem 0.5rem;
+    margin: 0;
+  }
+
+  .moodDisplayCard {
+    padding: clamp(1.25rem, 3.5vw, 1.75rem);
+    gap: 1.5rem;
   }
 }
 

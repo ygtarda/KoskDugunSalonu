@@ -105,21 +105,35 @@
 /* Responsive adjustments */
 @media (max-width: 768px) {
   .floatingDock {
-    bottom: 1.25rem;
-    right: 1.25rem;
-    gap: 0.65rem;
+    bottom: calc(1rem + env(safe-area-inset-bottom, 0px));
+    right: calc(1rem + env(safe-area-inset-right, 0px));
+    gap: 0;
+  }
+
+  /* Mobilde ekranı kapatan 3'lü dikey yığın yerine sadece 1 adet temiz WhatsApp butonu sunulur. Telefon header'da zaten sabittir. */
+  .btnInstagram,
+  .btnPhone {
+    display: none !important;
   }
 
   .actionButton {
-    width: 46px;
-    height: 46px;
+    width: 48px;
+    height: 48px;
+    min-width: 48px;
+    min-height: 48px;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.28);
+  }
+
+  .actionButton:active {
+    transform: scale(0.92);
   }
 
   .tooltip {
     display: none; /* Hide tooltips on touch devices */
   }
 
-  .hideOnMobileHome {
+  .hideOnMobileHome,
+  .hideOnContact {
     display: none !important;
   }
 }

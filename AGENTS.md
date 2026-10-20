@@ -8,8 +8,8 @@ All autonomous and pair-programming AI coding agents working on this project MUS
 ## 1. CANONICAL SINGLE SOURCES OF TRUTH (NAP & VENUE DATA)
 Never invent or alter these core business facts:
 - **Venue Address (NAP):** `Gülveren, Kutluhan Sk. No: 2/2, 06960 Polatlı / Ankara` (Must match in Header, Footer, Contact, and schema.org JSON-LD).
-- **Official Phone:** `0 (312) 623 00 00` (`tel:+903126230000`).
-- **Official WhatsApp:** `+90 312 623 00 00` (`https://wa.me/903126230000`).
+- **Official Phone:** `0538 296 90 79` (`tel:+905382969079`).
+- **Official WhatsApp:** `+90 538 296 90 79` (`https://wa.me/905382969079`).
 - **Capacity:** `1.000 Kişilik Kapalı Düğün Salonu` (kolonsuz ferah alan).
 - **Ceiling Height:** `Yüksek Tavan Ferahlığı` (6.5 Metre).
 - **Private Parking:** `Geniş Özel Otopark` (Rahat park imkânı, park sorunu yok).

@@ -261,7 +261,7 @@ function generateBookingEmailHtml(data: BookingSubmissionPayload, isPreview = fa
                 <tr>
                   <td align="center" style="font-size:12px;color:#7A7471;line-height:1.6;">
                     <strong>Köşk Düğün Salonu Polatlı</strong><br>
-                    Cumhuriyet Mah. Ankara Cad. No: 42, Polatlı / Ankara · Tel: 0 (312) 623 00 00<br>
+                    Gülveren, Kutluhan Sk. No: 2/2, 06960 Polatlı / Ankara · Tel: 0538 296 90 79<br>
                     <span style="font-size:11px;color:#AAA49F;margin-top:6px;display:inline-block;">
                       Bu e-posta koskdugunsalonu.com web sitesi randevu sistemi tarafından otomatik olarak oluşturulmuştur.
                     </span>
@@ -307,7 +307,7 @@ export async function GET(request: Request) {
 
   const sampleData: BookingSubmissionPayload = {
     fullName: searchParams.get('ad') || 'Selin & Emre Yılmaz',
-    phone: searchParams.get('tel') || '0532 623 00 00',
+    phone: searchParams.get('tel') || '0532 000 00 00',
     email: searchParams.get('email') || 'selin.yilmaz@example.com',
     eventType: searchParams.get('tur') || 'Düğün Daveti',
     formattedDate: searchParams.get('tarih') || '18 Temmuz 2026, Cumartesi',
@@ -337,7 +337,7 @@ export async function POST(request: Request) {
     if (!rateLimit.allowed) {
       return NextResponse.json(
         {
-          error: 'Çok fazla form gönderimi yapıldı. Lütfen biraz bekleyip tekrar deneyin veya doğrudan 0 (312) 623 00 00 numaramızdan bize ulaşın.',
+          error: 'Çok fazla form gönderimi yapıldı. Lütfen biraz bekleyip tekrar deneyin veya doğrudan 0538 296 90 79 numaramızdan bize ulaşın.',
           code: 'RATE_LIMITED',
         },
         { status: 429 }

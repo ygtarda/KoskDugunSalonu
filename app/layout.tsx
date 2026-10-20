@@ -1,5 +1,16 @@
 import React from 'react';
-import type { Metadata } from 'next';
+import type { Metadata, Viewport } from 'next';
+
+export const viewport: Viewport = {
+  width: 'device-width',
+  initialScale: 1,
+  maximumScale: 5,
+  viewportFit: 'cover',
+  themeColor: [
+    { media: '(prefers-color-scheme: light)', color: '#FAF8F5' },
+    { media: '(prefers-color-scheme: dark)', color: '#131110' },
+  ],
+};
 import { Fraunces, DM_Sans, Cinzel, Cormorant_Garamond } from 'next/font/google';
 import './globals.css';
 import Header from '@/components/Header';
@@ -114,7 +125,7 @@ const localBusinessSchema = {
   description:
     'Ankara Polatlı’da 800 – 1.000 kişi kapasiteli, kolonsuz, yüksek tavanlı, geniş dans pistine sahip tam donanımlı kapalı düğün ve davet salonu.',
   url: 'https://koskdugunsalonu.com',
-  telephone: '+903126230000',
+  telephone: '+905382969079',
   sameAs: ['https://share.google/Ut9Fd72yIZ5c9Tg4P'],
   aggregateRating: {
     '@type': 'AggregateRating',
@@ -207,7 +218,7 @@ export default function RootLayout({
       <head>
         <script
           dangerouslySetInnerHTML={{
-            __html: `(function(){try{var t=localStorage.getItem('kosk_theme');if(t==='dark'){document.documentElement.classList.add('dark');}}catch(e){}})();`,
+            __html: `(function(){try{var t=localStorage.getItem('kosk_theme');if(t==='dark'){document.documentElement.classList.add('dark');}var hasCookie=document.cookie.indexOf('kosk_welcome_dismissed=true')!==-1;var hasStorage=localStorage.getItem('kosk_welcome_dismissed')==='true'||sessionStorage.getItem('kosk_welcome_dismissed')==='true';var isInnerPage=window.location.pathname!=='/'&&window.location.pathname!=='';var hasHash=Boolean(window.location.hash);if(hasCookie||hasStorage||isInnerPage||hasHash){document.documentElement.classList.add('welcome-dismissed');document.cookie='kosk_welcome_dismissed=true; path=/; max-age=31536000; SameSite=Lax';try{localStorage.setItem('kosk_welcome_dismissed','true');sessionStorage.setItem('kosk_welcome_dismissed','true');}catch(e){}}}catch(e){}})();`,
           }}
         />
       </head>

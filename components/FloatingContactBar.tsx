@@ -7,15 +7,16 @@ import styles from './FloatingContactBar.module.css';
 export default function FloatingContactBar() {
   const pathname = usePathname();
   const isHome = pathname === '/';
+  const isContact = pathname === '/iletisim';
 
   const whatsappUrl =
-    'https://wa.me/903126230000?text=Merhaba,%20K%C3%B6%C5%9Fk%20D%C3%BC%C4%9F%C3%BCn%20Salonu%20hakk%C4%B1nda%20bilgi%20ve%20tarih%20m%C3%BCsaitli%C4%9Fi%20%C3%B6%C4%9Frenmek%20istiyorum.';
+    'https://wa.me/905382969079?text=Merhaba,%20K%C3%B6%C5%9Fk%20D%C3%BC%C4%9F%C3%BCn%20Salonu%20hakk%C4%B1nda%20bilgi%20ve%20tarih%20m%C3%BCsaitli%C4%9Fi%20%C3%B6%C4%9Frenmek%20istiyorum.';
   const instagramUrl = 'https://www.instagram.com/koskdugunsalonu';
-  const phoneUrl = 'tel:+903126230000';
+  const phoneUrl = 'tel:+905382969079';
 
   return (
     <aside
-      className={`${styles.floatingDock} ${isHome ? styles.hideOnMobileHome : ''}`}
+      className={`${styles.floatingDock} ${isHome ? styles.hideOnMobileHome : ''} ${isContact ? styles.hideOnContact : ''}`}
       aria-label="Hızlı İletişim Kanalları"
     >
       {/* 1. WhatsApp Button */}
@@ -70,7 +71,7 @@ export default function FloatingContactBar() {
       <a
         href={phoneUrl}
         className={`${styles.actionButton} ${styles.btnPhone}`}
-        aria-label="Hemen Arayın: 0 (312) 623 00 00"
+        aria-label="Hemen Arayın: 0538 296 90 79"
         id="floating-phone-btn"
       >
         <svg
@@ -86,7 +87,7 @@ export default function FloatingContactBar() {
         >
           <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z" />
         </svg>
-        <span className={styles.tooltip}>Hemen Arayın: 0 (312) 623 00 00</span>
+        <span className={styles.tooltip}>Hemen Arayın: 0538 296 90 79</span>
       </a>
     </aside>
   );

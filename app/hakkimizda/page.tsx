@@ -1,10 +1,31 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
 import Image from 'next/image';
-import { Award, HeartHandshake, ShieldCheck, Clock, CalendarCheck, MessageSquare } from 'lucide-react';
+import dynamic from 'next/dynamic';
+import { CalendarCheck, MessageSquare } from 'lucide-react';
 import Breadcrumb from '@/components/Breadcrumb';
 
 import { buildPageMetadata } from '@/lib/og';
+
+const Timeline = dynamic(() => import('@/components/ui/timeline'), {
+  ssr: false,
+  loading: () => (
+    <div
+      style={{
+        minHeight: '400px',
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center',
+        backgroundColor: 'var(--color-surface-subtle)',
+        color: 'var(--color-cashmere)',
+        fontSize: '0.95rem',
+        letterSpacing: '0.05em',
+      }}
+    >
+      <span>Köşk Düğün Salonu zaman tüneli yükleniyor...</span>
+    </div>
+  ),
+});
 
 export const metadata: Metadata = buildPageMetadata({
   title: 'Hakkımızda | Polatlı Köşk Düğün Salonu Hikayesi ve Felsefesi',
@@ -65,8 +86,8 @@ export default function HakkimizdaPage() {
               Polatlı’da Zarafetin ve Güvenin Adresi
             </h1>
             <p style={{ fontSize: '1.12rem', color: 'var(--color-text-secondary)', lineHeight: '1.75' }}>
-              Köşk Düğün Salonu, Polatlı ve çevre ilçelerdeki çiftlerin en mutlu günlerini tesadüflere 
-              bırakmamak, hava koşullarından etkilenmeyen ferah ve konforlu bir kapalı düğün salonu deneyimi sunmak 
+              Köşk Düğün Salonu, Polatlı ve çevre ilçelerdeki çiftlerin en mutlu günlerini tesadüflere
+              bırakmamak, hava koşullarından etkilenmeyen ferah ve konforlu bir kapalı düğün salonu deneyimi sunmak
               amacıyla kuruldu.
             </p>
           </div>
@@ -78,8 +99,8 @@ export default function HakkimizdaPage() {
         <div
           style={{
             display: 'grid',
-            gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))',
-            gap: '4rem',
+            gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))',
+            gap: 'clamp(2rem, 4vw, 4rem)',
             alignItems: 'center',
           }}
         >
@@ -98,133 +119,50 @@ export default function HakkimizdaPage() {
             <span style={{ fontSize: '0.82rem', letterSpacing: '0.12em', textTransform: 'uppercase', color: 'var(--color-cashmere)', fontWeight: 500, display: 'block', marginBottom: '0.4rem' }}>
               Hikayemiz
             </span>
-            <h2 style={{ fontFamily: 'var(--font-serif)', fontSize: '2.4rem', color: 'var(--color-anthracite)', marginBottom: '1.2rem', fontWeight: 450 }}>
+            <h2 style={{ fontFamily: 'var(--font-serif)', fontSize: 'clamp(1.8rem, 3vw, 2.4rem)', color: 'var(--color-anthracite)', marginBottom: '1.2rem', fontWeight: 450 }}>
               Büyük Davetlerde Konfor Standartlarını Yeniden Tanımladık
             </h2>
             <p style={{ color: 'var(--color-text-secondary)', marginBottom: '1.2rem', lineHeight: '1.75' }}>
-              Yıllar boyunca Polatlı’daki düğün organizasyonlarını gözlemlediğimizde, ailelerin ve çiftlerin 
-              en büyük endişelerinin kapalı salonlardaki havasızlık, basık tavanlar ve orkestra sesinin 
+              Yıllar boyunca Polatlı’daki düğün organizasyonlarını gözlemlediğimizde, ailelerin ve çiftlerin
+              en büyük endişelerinin kapalı salonlardaki havasızlık, basık tavanlar ve orkestra sesinin
               yarattığı uğultu olduğunu fark ettik.
             </p>
             <p style={{ color: 'var(--color-text-secondary)', marginBottom: '1.5rem', lineHeight: '1.75' }}>
-              Bu eksikliği gidermek için yola çıktık: Kolonsuz ve ferah salon yapımız, 
-              yüksek tavanımız, geniş özel otoparkımız ve güçlü havalandırma sistemimizle tüm davetlilere ferah 
-              bir ortam sunuyoruz. Salonda kolon bulunmaması ve geniş dans pistimiz sayesinde kalabalık 
+              Bu eksikliği gidermek için yola çıktık: Kolonsuz ve ferah salon yapımız,
+              yüksek tavanımız, geniş özel otoparkımız ve güçlü havalandırma sistemimizle tüm davetlilere ferah
+              bir ortam sunuyoruz. Salonda kolon bulunmaması ve geniş dans pistimiz sayesinde kalabalık
               davetlerde bile herkes eğlenceyi rahatça takip edebilir.
             </p>
-            <div style={{ display: 'flex', gap: '2.5rem', borderTop: '1px solid var(--color-stone)', paddingTop: '1.5rem' }}>
+            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, minmax(0, 1fr))', gap: 'clamp(0.5rem, 2vw, 1.25rem)', borderTop: '1px solid var(--color-stone)', paddingTop: '1.5rem', width: '100%', boxSizing: 'border-box' }}>
               <div>
-                <span style={{ display: 'block', fontFamily: 'var(--font-serif)', fontSize: '2.2rem', color: 'var(--color-anthracite)', fontWeight: 500 }}>
+                <span style={{ display: 'block', fontFamily: 'var(--font-serif)', fontSize: 'clamp(1.35rem, 3.8vw, 2.2rem)', color: 'var(--color-anthracite)', fontWeight: 500, lineHeight: 1.2 }}>
                   1.000+
                 </span>
-                <span style={{ fontSize: '0.85rem', color: 'var(--color-cashmere)' }}>Mutlu Çift & Aile</span>
+                <span style={{ fontSize: 'clamp(0.72rem, 1.8vw, 0.82rem)', color: 'var(--color-cashmere)', display: 'block', marginTop: '0.2rem' }}>Mutlu Çift & Aile</span>
               </div>
               <div>
-                <span style={{ display: 'block', fontFamily: 'var(--font-serif)', fontSize: '2.2rem', color: 'var(--color-anthracite)', fontWeight: 500 }}>
+                <span style={{ display: 'block', fontFamily: 'var(--font-serif)', fontSize: 'clamp(1.35rem, 3.8vw, 2.2rem)', color: 'var(--color-anthracite)', fontWeight: 500, lineHeight: 1.2 }}>
                   %99.4
                 </span>
-                <span style={{ fontSize: '0.85rem', color: 'var(--color-cashmere)' }}>Misafir Memnuniyeti</span>
+                <span style={{ fontSize: 'clamp(0.72rem, 1.8vw, 0.82rem)', color: 'var(--color-cashmere)', display: 'block', marginTop: '0.2rem' }}>Misafir Memnuniyeti</span>
               </div>
               <div>
-                <span style={{ display: 'block', fontFamily: 'var(--font-serif)', fontSize: '2.2rem', color: 'var(--color-anthracite)', fontWeight: 500 }}>
+                <span style={{ display: 'block', fontFamily: 'var(--font-serif)', fontSize: 'clamp(1.35rem, 3.8vw, 2.2rem)', color: 'var(--color-anthracite)', fontWeight: 500, lineHeight: 1.2 }}>
                   15+ Yıl
                 </span>
-                <span style={{ fontSize: '0.85rem', color: 'var(--color-cashmere)' }}>Sektörel Deneyim</span>
+                <span style={{ fontSize: 'clamp(0.72rem, 1.8vw, 0.82rem)', color: 'var(--color-cashmere)', display: 'block', marginTop: '0.2rem' }}>Sektörel Deneyim</span>
               </div>
             </div>
           </div>
         </div>
       </section>
 
-      {/* 4 Pillars of Köşk */}
-      <section className="section-spacing" style={{ backgroundColor: 'var(--color-surface-subtle)' }}>
-        <div className="container">
-          <div className="section-header">
-            <div className="section-header-inner">
-              <div className="editorial-indicator" />
-              <div className="section-title-wrap">
-                <div className="section-category">Hizmet Felsefemiz</div>
-                <h2>Bizi Farklı Kılan Dört Temel İlke</h2>
-                <p className="section-subtitle">
-                  Sıradan bir düğün salonu işletmeciliğinin ötesinde, her davete bir sanat eseri titizliğiyle yaklaşıyoruz.
-                </p>
-              </div>
-            </div>
-          </div>
+      {/* Köşk Düğün Salonu Kilometre Taşları & Hikayemiz Zaman Tüneli */}
+      <Timeline
+        title="Köşk Hikayesi & Kilometre Taşları"
+        periodLabel="2010 — 2026"
+      />
 
-          <div
-            style={{
-              display: 'grid',
-              gridTemplateColumns: 'repeat(auto-fit, minmax(260px, 1fr))',
-              gap: '1.75rem',
-            }}
-          >
-            <div className="principle-card">
-              <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '1.25rem' }}>
-                <div style={{ color: 'var(--color-champagne)' }}>
-                  <Clock size={28} />
-                </div>
-                <span style={{ fontSize: '0.85rem', fontWeight: 600, color: 'var(--color-cashmere)', letterSpacing: '0.1em' }}>01</span>
-              </div>
-              <h3 style={{ fontFamily: 'var(--font-serif)', fontSize: '1.3rem', color: 'var(--color-anthracite)', marginBottom: '0.65rem' }}>
-                Dakik Zaman Yönetimi
-              </h3>
-              <p style={{ fontSize: '0.94rem', color: 'var(--color-text-secondary)', lineHeight: '1.65' }}>
-                Karşılama kokteylinden nikâh seremonisine, ilk danstan pasta kesimine kadar tüm akış 
-                deneyimli organizasyon şefimiz tarafından koordine edilir.
-              </p>
-            </div>
-
-            <div className="principle-card">
-              <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '1.25rem' }}>
-                <div style={{ color: 'var(--color-champagne)' }}>
-                  <ShieldCheck size={28} />
-                </div>
-                <span style={{ fontSize: '0.85rem', fontWeight: 600, color: 'var(--color-cashmere)', letterSpacing: '0.1em' }}>02</span>
-              </div>
-              <h3 style={{ fontFamily: 'var(--font-serif)', fontSize: '1.3rem', color: 'var(--color-anthracite)', marginBottom: '0.65rem' }}>
-                Sıfır Aksaklık Garantisi
-              </h3>
-              <p style={{ fontSize: '0.94rem', color: 'var(--color-text-secondary)', lineHeight: '1.65' }}>
-                Elektrik kesintilerine karşı tam otomatik kesintisiz jeneratör desteği ve düzenli havalandırma 
-                ile geceniz en ufak bir aksamaya uğramaz.
-              </p>
-            </div>
-
-            <div className="principle-card">
-              <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '1.25rem' }}>
-                <div style={{ color: 'var(--color-champagne)' }}>
-                  <HeartHandshake size={28} />
-                </div>
-                <span style={{ fontSize: '0.85rem', fontWeight: 600, color: 'var(--color-cashmere)', letterSpacing: '0.1em' }}>03</span>
-              </div>
-              <h3 style={{ fontFamily: 'var(--font-serif)', fontSize: '1.3rem', color: 'var(--color-anthracite)', marginBottom: '0.65rem' }}>
-                Şeffaf ve Dürüst İletişim
-              </h3>
-              <p style={{ fontSize: '0.94rem', color: 'var(--color-text-secondary)', lineHeight: '1.65' }}>
-                Sözleşmede ne konuştuysak düğün günü harfiyen onu uygularız. Gizli maliyetler veya sürpriz 
-                ek ücretler Köşk prensiplerinde asla yer almaz.
-              </p>
-            </div>
-
-            <div className="principle-card">
-              <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '1.25rem' }}>
-                <div style={{ color: 'var(--color-champagne)' }}>
-                  <Award size={28} />
-                </div>
-                <span style={{ fontSize: '0.85rem', fontWeight: 600, color: 'var(--color-cashmere)', letterSpacing: '0.1em' }}>04</span>
-              </div>
-              <h3 style={{ fontFamily: 'var(--font-serif)', fontSize: '1.3rem', color: 'var(--color-anthracite)', marginBottom: '0.65rem' }}>
-                Seçkin Ziyafet Standardı
-              </h3>
-              <p style={{ fontSize: '0.94rem', color: 'var(--color-text-secondary)', lineHeight: '1.65' }}>
-                İkram edilen kuru pasta, yaş pasta ve yemekli menülerimizin her biri günlük taze üretimdir. 
-                Sıcak servisler aynı anda ve nezaketle masalara ulaştırılır.
-              </p>
-            </div>
-          </div>
-        </div>
-      </section>
 
       {/* CTA Section */}
       <section className="section-spacing">
@@ -236,7 +174,7 @@ export default function HakkimizdaPage() {
             Kahvemizi İçmeye ve Salonumuzu Gezmeye Davetlisiniz
           </h2>
           <p style={{ color: 'var(--color-text-secondary)', marginBottom: '2.5rem', lineHeight: '1.75' }}>
-            Düğün tarihinizi netleştirmeden önce salonumuzu ziyaret edin, geniş iç mekân ferahlığını hissedin 
+            Düğün tarihinizi netleştirmeden önce salonumuzu ziyaret edin, geniş iç mekân ferahlığını hissedin
             ve aklınızdaki tüm soruları yöneticilerimizle yüz yüze değerlendirin.
           </p>
           <div style={{ display: 'flex', justifyContent: 'center', gap: '1.2rem', flexWrap: 'wrap' }}>

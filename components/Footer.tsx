@@ -29,8 +29,8 @@ const KOSK_FOOTER_COLUMNS: FooterColumn[] = [
   {
     title: 'İletişim & Konum',
     links: [
-      { label: '0 (312) 623 00 00', href: 'tel:+903126230000' },
-      { label: 'WhatsApp Danışma Hattı', href: 'https://wa.me/903126230000' },
+      { label: '0538 296 90 79', href: 'tel:+905382969079' },
+      { label: 'WhatsApp Danışma Hattı', href: 'https://wa.me/905382969079' },
       { label: 'Gülveren, Kutluhan Sk. No: 2/2', href: '/iletisim' },
       { label: 'Keşif & Fiyat Teklifi Al', href: '/iletisim' },
     ],

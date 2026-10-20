@@ -76,12 +76,12 @@ export default function ErrorBoundary({ error, reset }: ErrorProps) {
             <span>Davet planlamanız veya tarih sorgulamalarınız için doğrudan bize ulaşabilirsiniz:</span>
           </div>
           <div className={styles.conciergeActions}>
-            <a href="tel:+903126230000" className={styles.conciergeLink} id="error-call-link">
+            <a href="tel:+905382969079" className={styles.conciergeLink} id="error-call-link">
               <Phone size={14} />
-              <span>0 (312) 623 00 00</span>
+              <span>0538 296 90 79</span>
             </a>
             <a
-              href="https://wa.me/903126230000?text=Merhaba%2C%20web%20sitenizde%20bir%20hata%20ile%20kar%C5%9F%C4%B1la%C5%9Ft%C4%B1m.%20Bilgi%20almak%20istiyorum."
+              href="https://wa.me/905382969079?text=Merhaba%2C%20web%20sitenizde%20bir%20hata%20ile%20kar%C5%9F%C4%B1la%C5%9Ft%C4%B1m.%20Bilgi%20almak%20istiyorum."
               target="_blank"
               rel="noopener noreferrer"
               className={styles.conciergeLink}

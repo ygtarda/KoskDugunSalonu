@@ -111,8 +111,8 @@ const DEFAULT_COLUMNS: FooterColumn[] = [
   {
     title: "İletişim & Ulaşım",
     links: [
-      { label: "0 (312) 623 00 00", href: "tel:+903126230000" },
-      { label: "WhatsApp Bilgi Hattı", href: "https://wa.me/903126230000" },
+      { label: "0538 296 90 79", href: "tel:+905382969079" },
+      { label: "WhatsApp Bilgi Hattı", href: "https://wa.me/905382969079" },
       { label: "Gülveren, Kutluhan Sk. No: 2/2", href: "/iletisim" },
       { label: "Randevu & Keşif Formu", href: "/iletisim" },
     ],
@@ -214,6 +214,15 @@ const HWF_CSS = `
 @media (max-width: 820px) {
   .hwf-top { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); row-gap: 22px; }
   .hwf-brand { grid-column: 1 / -1; }
+  .hwf-col li { margin-bottom: 0; }
+  .hwf-col a, .hwf-up {
+    min-height: 44px;
+    display: inline-flex;
+    align-items: center;
+    padding: 0.35rem 0;
+    width: 100%;
+    font-size: 12px;
+  }
   .hwf-rule { flex-direction: column; align-items: flex-start; gap: 12px; }
   .hwf-actions { width: 100%; display: flex; justify-content: space-between; align-items: center; }
 }
@@ -638,7 +647,7 @@ export default function HalftoneWordmarkFooter({
         {copyright ? <span className="hwf-copyright">{copyright}</span> : null}
         <div className="hwf-actions">
           {showThemeToggle ? (
-            <SunMoonThemeToggle size={32} sky={true} defaultTheme="light" storageKey="kosk_theme" />
+            <SunMoonThemeToggle size={44} sky={true} defaultTheme="light" storageKey="kosk_theme" />
           ) : null}
           {backToTop ? (
             <button type="button" className="hwf-up" onClick={toTop}>

@@ -98,11 +98,16 @@
   grid-template-columns: 1fr 1fr;
   gap: 4rem;
   align-items: center;
+  min-width: 0;
+  max-width: 100%;
 }
 
 .deepDiveContent {
   display: flex;
   flex-direction: column;
+  min-width: 0;
+  max-width: 100%;
+  box-sizing: border-box;
 }
 
 .deepDiveContent h2 {
@@ -218,6 +223,9 @@
 .deepDiveMedia {
   position: relative;
   width: 100%;
+  max-width: 100%;
+  min-width: 0;
+  box-sizing: border-box;
   aspect-ratio: 4 / 3;
   border-radius: var(--radius-xs);
   overflow: hidden;
@@ -247,5 +255,17 @@
 @media (max-width: 640px) {
   .specsGrid {
     grid-template-columns: 1fr;
+  }
+
+  .deepDiveContent {
+    width: 100%;
+    max-width: 100%;
+  }
+
+  .deepDiveContent a[class*="btn"] {
+    width: 100%;
+    white-space: normal;
+    text-align: center;
+    box-sizing: border-box;
   }
 }

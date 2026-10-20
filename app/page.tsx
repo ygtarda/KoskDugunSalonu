@@ -12,6 +12,7 @@ import {
   CheckCircle2,
   Phone
 } from 'lucide-react';
+import { cookies } from 'next/headers';
 import WelcomeHeroStage from '@/components/WelcomeHeroStage';
 import Header from '@/components/Header';
 import TiltCard from '@/components/TiltCard';
@@ -20,6 +21,9 @@ import AtmosphereSwitcher from '@/components/AtmosphereSwitcher';
 import styles from './page.module.css';
 
 export default function HomePage() {
+  const cookieStore = cookies();
+  const isDismissed = cookieStore.get('kosk_welcome_dismissed')?.value === 'true';
+
   return (
     <div className={styles.pageRoot}>
       {/* ===================================================================
@@ -27,7 +31,7 @@ export default function HomePage() {
           Zor geçilen tek sayfalık karşılama ekranı.
           Geçildikten sonra header en tepede yapışık kalır ve karşılama tekrar çıkmaz.
           =================================================================== */}
-      <WelcomeHeroStage />
+      {!isDismissed && <WelcomeHeroStage />}
 
       {/* ===================================================================
           2. ANA İÇERİK ALANI (Header en tepede yapışık başlar)
@@ -517,7 +521,7 @@ export default function HomePage() {
                   <span>Keşif & Fiyat Teklifi Alın</span>
                 </Link>
                 <a
-                  href="https://wa.me/903126230000?text=Merhaba,%20K%C3%B6%C5%9Fk%20D%C3%BC%C4%9F%C3%BCn%20Salonu%20i%C3%A7in%20bilgi%20ve%20ziyaret%20randevusu%20almak%20istiyorum."
+                  href="https://wa.me/905382969079?text=Merhaba,%20K%C3%B6%C5%9Fk%20D%C3%BC%C4%9F%C3%BCn%20Salonu%20i%C3%A7in%20bilgi%20ve%20ziyaret%20randevusu%20almak%20istiyorum."
                   target="_blank"
                   rel="noopener noreferrer"
                   className="btn btn-outline"

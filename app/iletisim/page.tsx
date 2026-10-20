@@ -20,7 +20,7 @@ export const metadata: Metadata = buildPageMetadata({
     'Polatlı düğün salonu randevu',
   ],
   ogTitle: 'İletişim & Keşif Randevusu',
-  ogSubtitle: 'Gülveren Mah. Kutluhan Sk. No: 2/2 Polatlı · 0 (312) 623 00 00',
+  ogSubtitle: 'Gülveren Mah. Kutluhan Sk. No: 2/2 Polatlı · 0538 296 90 79',
   ogTag: 'TARİH VE FİYAT TEKLİFİ',
 });
 
@@ -37,7 +37,7 @@ const contactSchema = {
   mainEntity: {
     '@type': 'LocalBusiness',
     name: 'Köşk Düğün Salonu',
-    telephone: '+903126230000',
+    telephone: '+905382969079',
     address: {
       '@type': 'PostalAddress',
       streetAddress: 'Gülveren, Kutluhan Sk. No: 2/2',
@@ -98,20 +98,20 @@ export default function IletisimPage() {
 
               <div className={styles.channelList}>
                 {/* Telefon */}
-                <a href="tel:+903126230000" className={styles.channelItem} id="contact-phone-link">
+                <a href="tel:+905382969079" className={styles.channelItem} id="contact-phone-link">
                   <div className={styles.channelIcon}>
                     <Phone size={19} />
                   </div>
                   <div className={styles.channelDetails}>
                     <span className={styles.channelLabel}>Telefon ile Danışma</span>
-                    <span className={styles.channelValuePhone}>0 (312) 623 00 00</span>
+                    <span className={styles.channelValuePhone}>0538 296 90 79</span>
                     <span className={styles.channelHint}>Hemen arayarak takvim durumunu sorabilirsiniz.</span>
                   </div>
                 </a>
 
                 {/* WhatsApp */}
                 <a
-                  href="https://wa.me/903126230000?text=Merhaba,%20K%C3%B6%C5%9Fk%20D%C3%BC%C4%9F%C3%BCn%20Salonu%20i%C3%A7in%20bilgi%20ve%20randevu%20almak%20istiyorum."
+                  href="https://wa.me/905382969079?text=Merhaba,%20K%C3%B6%C5%9Fk%20D%C3%BC%C4%9F%C3%BCn%20Salonu%20i%C3%A7in%20bilgi%20ve%20randevu%20almak%20istiyorum."
                   target="_blank"
                   rel="noopener noreferrer"
                   className={styles.channelItem}

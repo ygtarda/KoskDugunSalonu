@@ -70,25 +70,27 @@ export default function AtmosphereSwitcher() {
 
   return (
     <div className={styles.switcherRoot}>
-      {/* Tab Navigation Buttons */}
-      <div className={styles.tabsScroller}>
-        <div className={styles.tabsList} role="tablist" aria-label="Salon Ambiyans Seçimi">
-          {moods.map((mood) => {
-            const isActive = mood.id === activeMoodId;
-            return (
-              <button
-                key={mood.id}
-                role="tab"
-                aria-selected={isActive}
-                type="button"
-                className={`${styles.tabBtn} ${isActive ? styles.tabBtnActive : ''}`}
-                onClick={() => setActiveMoodId(mood.id)}
-              >
-                <span className={styles.tabIcon}>{mood.icon}</span>
-                <span className={styles.tabText}>{mood.tabLabel}</span>
-              </button>
-            );
-          })}
+      {/* Tab Navigation Buttons with Mobile Right Fade Hint */}
+      <div className={styles.tabsScrollerWrap}>
+        <div className={styles.tabsScroller}>
+          <div className={styles.tabsList} role="tablist" aria-label="Salon Ambiyans Seçimi">
+            {moods.map((mood) => {
+              const isActive = mood.id === activeMoodId;
+              return (
+                <button
+                  key={mood.id}
+                  role="tab"
+                  aria-selected={isActive}
+                  type="button"
+                  className={`${styles.tabBtn} ${isActive ? styles.tabBtnActive : ''}`}
+                  onClick={() => setActiveMoodId(mood.id)}
+                >
+                  <span className={styles.tabIcon}>{mood.icon}</span>
+                  <span className={styles.tabText}>{mood.tabLabel}</span>
+                </button>
+              );
+            })}
+          </div>
         </div>
       </div>
 

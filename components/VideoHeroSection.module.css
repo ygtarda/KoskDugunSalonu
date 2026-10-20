@@ -11,7 +11,6 @@
   min-height: 520px;
   background-color: #12100F;
   overflow: hidden;
-  border-bottom: 1px solid var(--color-stone);
 }
 
 .videoContainer {
@@ -219,7 +218,9 @@
 .controlBtn {
   display: inline-flex;
   align-items: center;
+  justify-content: center;
   gap: 0.5rem;
+  min-height: 44px;
   background: transparent;
   border: none;
   color: #FAF8F5;
@@ -290,7 +291,9 @@
 
   .controlBtn {
     font-size: 0.78rem;
-    padding: 0.4rem 0.7rem;
+    padding: 0.5rem 0.85rem;
+    min-height: 44px;
+    justify-content: center;
   }
 }
 

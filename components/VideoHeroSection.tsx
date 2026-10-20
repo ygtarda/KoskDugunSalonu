@@ -26,21 +26,29 @@ export default function VideoHeroSection({
 
   // Header yüksekliğini dinamik olarak ölçüp CSS değişkenine aktar
   useEffect(() => {
+    const header = document.getElementById('main-site-header');
+
     const updateHeaderHeight = () => {
-      const header = document.getElementById('main-site-header');
-      if (header) {
-        document.documentElement.style.setProperty(
-          '--header-actual-height',
-          `${header.offsetHeight}px`
-        );
+      const target = document.getElementById('main-site-header');
+      if (target) {
+        // Aşağı yuvarla: hero ekranı en az tam dolduracak şekilde 1px'lik açık çizgiyi önler
+        const h = Math.floor(target.getBoundingClientRect().height);
+        document.documentElement.style.setProperty('--header-actual-height', `${h}px`);
       }
     };
 
     updateHeaderHeight();
     window.addEventListener('resize', updateHeaderHeight);
 
+    let observer: ResizeObserver | null = null;
+    if (header && 'ResizeObserver' in window) {
+      observer = new ResizeObserver(updateHeaderHeight);
+      observer.observe(header);
+    }
+
     return () => {
       window.removeEventListener('resize', updateHeaderHeight);
+      observer?.disconnect();
     };
   }, []);
 

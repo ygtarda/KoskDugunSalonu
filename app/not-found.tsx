@@ -103,12 +103,12 @@ export default function NotFound() {
             <span>Doğrudan bir soru iletmek ya da tarih sorgulamak için:</span>
           </div>
           <div className={styles.conciergeActions}>
-            <a href="tel:+903126230000" className={styles.conciergeLink} id="not-found-call-link">
+            <a href="tel:+905382969079" className={styles.conciergeLink} id="not-found-call-link">
               <Phone size={14} />
-              <span>0 (312) 623 00 00</span>
+              <span>0538 296 90 79</span>
             </a>
             <a
-              href="https://wa.me/903126230000?text=Merhaba%2C%20web%20sitenizden%20ula%C5%9F%C4%B1yorum.%20Bilgi%20almak%20istiyorum."
+              href="https://wa.me/905382969079?text=Merhaba%2C%20web%20sitenizden%20ula%C5%9F%C4%B1yorum.%20Bilgi%20almak%20istiyorum."
               target="_blank"
               rel="noopener noreferrer"
               className={styles.conciergeLink}

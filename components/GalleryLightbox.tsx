@@ -225,21 +225,23 @@ export default function GalleryLightbox({ items }: GalleryLightboxProps) {
 
   return (
     <div>
-      {/* Category Filter Pills */}
-      <div className={styles.filterBar}>
-        {categories.map((cat) => (
-          <button
-            key={cat.id}
-            type="button"
-            className={`${styles.filterBtn} ${activeCategory === cat.id ? styles.filterBtnActive : ''}`}
-            onClick={() => {
-              setActiveCategory(cat.id);
-              setSelectedIdx(null);
-            }}
-          >
-            {cat.label}
-          </button>
-        ))}
+      {/* Category Filter Pills with Right Fade Hint on Mobile */}
+      <div className={styles.filterBarWrapper}>
+        <div className={styles.filterBar}>
+          {categories.map((cat) => (
+            <button
+              key={cat.id}
+              type="button"
+              className={`${styles.filterBtn} ${activeCategory === cat.id ? styles.filterBtnActive : ''}`}
+              onClick={() => {
+                setActiveCategory(cat.id);
+                setSelectedIdx(null);
+              }}
+            >
+              {cat.label}
+            </button>
+          ))}
+        </div>
       </div>
 
       {/* 16:9 Cinematic Gallery Grid */}
@@ -411,7 +413,7 @@ export default function GalleryLightbox({ items }: GalleryLightboxProps) {
                 {/* Tasteful Action Buttons */}
                 <div className={styles.actionCard}>
                   <a
-                    href="tel:+903126230000"
+                    href="tel:+905382969079"
                     className={styles.phoneActionBtn}
                   >
                     <Phone size={16} />

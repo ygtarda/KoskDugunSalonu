@@ -402,13 +402,13 @@ export default function BookingForm() {
         const errorMsg =
           errorData?.message ||
           errorData?.error ||
-          'Talebiniz iletilemedi. Lütfen doğrudan 0 (312) 623 00 00 numaramızdan bizi arayınız veya WhatsApp üzerinden iletiniz.';
+          'Talebiniz iletilemedi. Lütfen doğrudan 0538 296 90 79 numaramızdan bizi arayınız veya WhatsApp üzerinden iletiniz.';
         setSubmitError(errorMsg);
       }
     } catch (err) {
       console.error('Randevu formu iletilirken hata:', err);
       setSubmitError(
-        'Bağlantı hatası nedeniyle talebiniz iletilemedi. Lütfen doğrudan 0 (312) 623 00 00 numaramızdan bizi arayınız.'
+        'Bağlantı hatası nedeniyle talebiniz iletilemedi. Lütfen doğrudan 0538 296 90 79 numaramızdan bizi arayınız.'
       );
     } finally {
       setIsSubmitting(false);
@@ -502,7 +502,7 @@ export default function BookingForm() {
         </div>
 
         <a
-          href={`https://wa.me/903126230000?text=${whatsappText}`}
+          href={`https://wa.me/905382969079?text=${whatsappText}`}
           target="_blank"
           rel="noopener noreferrer"
           className={styles.whatsappForwardBtn}
