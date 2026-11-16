@@ -502,6 +502,7 @@ export default function PolaroidLineCarousel({
                     alt={sl.alt || sl.title || ''}
                     fill
                     sizes="(max-width: 768px) 240px, 320px"
+                    loading="lazy"
                     draggable={false}
                     className="pl-img"
                     style={{ objectPosition: sl.objectPosition || 'center' }}
