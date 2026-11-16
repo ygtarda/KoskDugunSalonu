@@ -12,7 +12,6 @@ import {
   CheckCircle2,
   Phone
 } from 'lucide-react';
-import { cookies } from 'next/headers';
 import WelcomeHeroStage from '@/components/WelcomeHeroStage';
 import Header from '@/components/Header';
 import TiltCard from '@/components/TiltCard';
@@ -21,9 +20,6 @@ import AtmosphereSwitcher from '@/components/AtmosphereSwitcher';
 import styles from './page.module.css';
 
 export default function HomePage() {
-  const cookieStore = cookies();
-  const isDismissed = cookieStore.get('kosk_welcome_dismissed')?.value === 'true';
-
   return (
     <div className={styles.pageRoot}>
       {/* ===================================================================
@@ -31,7 +27,7 @@ export default function HomePage() {
           Zor geçilen tek sayfalık karşılama ekranı.
           Geçildikten sonra header en tepede yapışık kalır ve karşılama tekrar çıkmaz.
           =================================================================== */}
-      {!isDismissed && <WelcomeHeroStage />}
+      <WelcomeHeroStage />
 
       {/* ===================================================================
           2. ANA İÇERİK ALANI (Header en tepede yapışık başlar)

@@ -2,15 +2,21 @@ const withBundleAnalyzer = require('@next/bundle-analyzer')({
   enabled: process.env.ANALYZE === 'true',
 });
 
+const isGithubPages = process.env.GITHUB_PAGES === 'true';
+
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   reactStrictMode: true,
   poweredByHeader: false,
   compress: true,
+  output: isGithubPages ? 'export' : undefined,
+  basePath: isGithubPages ? '/KoskDugunSalonu' : '',
+  trailingSlash: isGithubPages ? true : false,
   experimental: {
     outputFileTracingExcludes: { '*': ['.env*', '_originals/**'] },
   },
   images: {
+    unoptimized: isGithubPages ? true : false,
     formats: ['image/avif', 'image/webp'],
     deviceSizes: [640, 750, 828, 1080, 1200, 1920],
     imageSizes: [16, 32, 48, 64, 96, 128, 256, 384],
@@ -23,6 +29,7 @@ const nextConfig = {
     ],
   },
   async redirects() {
+    if (isGithubPages) return [];
     return [
       {
         source: '/randevu',
@@ -62,7 +69,7 @@ const nextConfig = {
     ];
   },
   async headers() {
-    if (process.env.NODE_ENV !== 'production') {
+    if (isGithubPages || process.env.NODE_ENV !== 'production') {
       return [];
     }
     return [
