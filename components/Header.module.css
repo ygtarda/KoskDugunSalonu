@@ -5,10 +5,14 @@
   right: 0;
   z-index: 1000;
   width: 100%;
-  transition: background-color 0.4s cubic-bezier(0.16, 1, 0.3, 1),
+  will-change: transform, opacity;
+  transform: translate3d(0, 0, 0);
+  opacity: 1;
+  transition: transform 0.36s cubic-bezier(0.16, 1, 0.3, 1),
+              opacity 0.28s cubic-bezier(0.16, 1, 0.3, 1),
+              background-color 0.4s cubic-bezier(0.16, 1, 0.3, 1),
               backdrop-filter 0.4s cubic-bezier(0.16, 1, 0.3, 1),
               border-color 0.4s ease,
-              padding 0.35s ease,
               box-shadow 0.4s ease;
 }
 
@@ -26,6 +30,27 @@
   border-bottom: 1px solid rgba(212, 181, 158, 0.45);
   padding: 0.65rem 0;
   box-shadow: 0 4px 20px rgba(44, 40, 38, 0.05);
+  will-change: transform, opacity;
+  transform: translate3d(0, 0, 0);
+  opacity: 1;
+  transition: transform 0.36s cubic-bezier(0.16, 1, 0.3, 1),
+              opacity 0.28s cubic-bezier(0.16, 1, 0.3, 1),
+              background-color 0.4s cubic-bezier(0.16, 1, 0.3, 1),
+              box-shadow 0.4s ease;
+}
+
+/* Aşağı kaydırırken gizlenen, yukarı kaydırınca animasyonla geri dönen durum */
+.headerHidden {
+  transform: translate3d(0, -105%, 0);
+  opacity: 0;
+  pointer-events: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .header,
+  .headerEmbedded {
+    transition: none;
+  }
 }
 
 /* Sayfa en üstündeyken (Hero üzerinde şeffaf ve beyaz metinler) */

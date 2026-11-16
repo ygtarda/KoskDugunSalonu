@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { usePathname } from 'next/navigation';
@@ -33,16 +33,36 @@ interface HeaderProps {
 
 export default function Header({ embedded = false }: HeaderProps) {
   const [scrolled, setScrolled] = useState(false);
+  const [headerHidden, setHeaderHidden] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const lastScrollYRef = useRef(0);
   const pathname = usePathname();
 
   useEffect(() => {
+    setHeaderHidden(false);
+  }, [pathname]);
+
+  useEffect(() => {
     let ticking = false;
+    lastScrollYRef.current = Math.max(0, window.scrollY);
 
     const handleScroll = () => {
       if (!ticking) {
         window.requestAnimationFrame(() => {
-          setScrolled(window.scrollY > 40);
+          const currentScrollY = Math.max(0, window.scrollY);
+          setScrolled(currentScrollY > 40);
+
+          const diff = currentScrollY - lastScrollYRef.current;
+
+          if (currentScrollY <= 90) {
+            setHeaderHidden(false);
+          } else if (diff > 6) {
+            setHeaderHidden(true);
+          } else if (diff < -4) {
+            setHeaderHidden(false);
+          }
+
+          lastScrollYRef.current = currentScrollY;
           ticking = false;
         });
         ticking = true;
@@ -282,11 +302,14 @@ export default function Header({ embedded = false }: HeaderProps) {
     );
   }
 
-  const headerClass = embedded
-    ? styles.headerEmbedded
-    : isHome && !scrolled
-    ? styles.headerTransparent
-    : styles.headerScrolled;
+  const isHidden = headerHidden && !mobileMenuOpen;
+  const headerClass = `${
+    embedded
+      ? styles.headerEmbedded
+      : isHome && !scrolled
+      ? `${styles.header} ${styles.headerTransparent}`
+      : `${styles.header} ${styles.headerScrolled}`
+  } ${isHidden ? styles.headerHidden : ''}`.trim();
 
   return (
     <>

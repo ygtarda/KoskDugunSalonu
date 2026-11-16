@@ -271,7 +271,7 @@ html {
   font-family: var(--font-sans);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  overflow-x: hidden;
+  overflow-x: clip;
   max-width: 100vw;
 }
 
@@ -281,7 +281,7 @@ body {
   background-color: var(--color-sand);
   color: var(--color-text-primary);
   line-height: 1.65;
-  overflow-x: hidden;
+  overflow-x: clip;
   max-width: 100vw;
   position: relative;
 }
